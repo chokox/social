@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class CatalogoMunicipio extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'idMunicipio';
+    protected $primaryKey = 'id_municipio';
 }

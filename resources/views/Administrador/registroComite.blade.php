@@ -8,12 +8,13 @@
                     <div class="card-header">Registro de comite</div>
 
                     <div class="card-body">
-                        <form>
+                         <form method="POST" action="{{ route('comites.store') }}">
+                                            @csrf
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1">municipio</label>
+                                <label for="exampleFormControlSelect1">Municipio</label>
                                 <select class="form-control" name="municipio">
                                     @foreach($municipios as $municipios)
-                                       <option value="{{$municipios->idMunicipio}}">{{$municipios->municipio}}</option> 
+                                       <option value="{{$municipios->id_municipio}}">{{$municipios->nombre}}</option> 
                                     @endforeach
                                 </select>
                             </div>
@@ -46,7 +47,10 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Autorizo acreditacion</label>
                                 <select class="form-control" name="capacito_comite">
-                                    <option>Usuario</option>
+                                    @foreach($user as $user)
+                                        <option {{$user->id}}>{{$user->name}}</option>
+                                    @endforeach
+                                    
                                 </select>
                             </div>
                             <div class="form-group">
@@ -65,7 +69,7 @@
                                 <label for="exampleInputPassword1">Estatus de la informacion</label>
                                 <input type="text" class="form-control" name="estatus">
                             </div>
-                            <br><br>
+                            <br>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>
                     </div>
