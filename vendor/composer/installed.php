@@ -457,6 +457,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'laraveles/spanish' => array(
+            'pretty_version' => '1.5.0',
+            'version' => '1.5.0.0',
+            'reference' => '2224e3db7ec399952523b0769a7677de0b6afd8b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laraveles/spanish',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'league/commonmark' => array(
             'pretty_version' => '2.4.1',
             'version' => '2.4.1.0',

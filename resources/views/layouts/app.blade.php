@@ -8,6 +8,8 @@
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
 
+        @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+        
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
