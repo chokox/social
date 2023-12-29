@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\CatalogoMunicipio;
 use App\Models\User;
 use App\Models\AcreditacionComite;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ComitesController extends Controller
 {
@@ -28,7 +29,9 @@ class ComitesController extends Controller
     {
         $municipios = CatalogoMunicipio::all();
         $user = User::where('rol', 'administrador')->get();
-        return view('Administrador/registroComite')->with('municipios', $municipios)->with('user', $user);
+        return view('Municipios/registroComite')
+            ->with('municipios', $municipios)
+            ->with('user', $user);
     }
 
     /**
@@ -40,33 +43,35 @@ class ComitesController extends Controller
     public function store(Request $request)
     {
         $registro = new AcreditacionComite();
-        $registro->id_municipio = $request->input('municipio');
-        $registro->ejercicio = now()->year;
 
-        //$folioMunicipio = CatalogoMunicipio::where('idMunicipio', $request->input('municipio'))->get();
-       // $folioMunicipio= $folioMunicipio[0]->folio;
-
-        $estaAcreditado= AcreditacionComite::BuscaMunicipioEjercicio($request->input('municipio'), $registro->ejercicio)->get();
-       
-        if ($estaAcreditado->count() > 0) {
-            dd('esta lleno');
+        $estaAcreditado = AcreditacionComite::BuscaMunicipioEjercicio($request->input('municipio'), now()->year)->get();
+        if ($estaAcreditado->isNotEmpty()) {
+            Alert::error('Comite ya acreditado', 'Este comite ya se encuentra acreditado');
+            return back();
         } else {
-            //$registro->folio = ; 
-        }
-        $registro->ejercicio = now()->year;
-        $registro->nombramiento = $request->input('nombramiento');
-        $registro->acreditacion = $request->input('acreditacion');
-        $registro->elaboracion_acreditacion = $request->input('elaboracion');
-        $registro->acredito_en = $request->input('se_acredito');
-        $registro->capacito_comite = $request->input('capacito_comite');
-        $registro->id_user_autorizo_fk = $request->input('autorizo_acreditacion');
-        $registro->acta_asamblea = $request->input('acta_asamblea');
-        $registro->lista_asistencia = $request->input('lista_asamblea');
-        $registro->datos_municipio = $request->input('datos_municipio');
-        $registro->estatus = $request->input('estatus');
-        //$registro->save();
+            $folioMunicipio = CatalogoMunicipio::where('id_municipio', $request->input('municipio'))->first();
+            $folioMunicipio = $folioMunicipio->folio;
+            $numeroConsecutivo = AcreditacionComite::BuscaEjercicio(now()->year)->count() + 1;
+            $numeroConsecutivoFormateado = str_pad($numeroConsecutivo, 3, '0', STR_PAD_LEFT);
+            $registro->folio = $folioMunicipio . ' ' . $numeroConsecutivoFormateado;
+            $registro->id_catalogo_municipio_fk = $request->input('municipio');
+            $registro->ejercicio = now()->year;
+            $registro->nombramiento = $request->input('nombramiento');
+            $registro->acreditacion = $request->input('acreditacion');
+            $registro->elaboracion_acreditacion = $request->input('elaboracion');
+            $registro->acredito_en = $request->input('se_acredito');
+            $registro->capacito_comite = $request->input('capacito_comite');
+            $registro->id_user_autorizo_fk = $request->input('autorizo_comite');
+            $registro->acta_asamblea = $request->input('acta_asamblea');
+            $registro->lista_asistencia = $request->input('lista_asamblea');
+            $registro->datos_municipio = $request->input('datos_municipio');
+            $registro->estatus = $request->input('estatus');
+            $registro->save();
 
-        return view('Administrador/registroComite');
+            Alert::success('Comite guardado', null);
+            return back();
+            
+        }
     }
 
     /**

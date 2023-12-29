@@ -8,8 +8,8 @@
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
 
-        @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
-        
+
+
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
@@ -247,14 +247,11 @@
                             <ul class="navbar-nav">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboards" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="uil-dashboard"></i>Dashboards <div class="arrow-down"></div>
+                                        <i class="uil-dashboard"></i>Comites <div class="arrow-down"></div>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
-                                        <a href="dashboard-analytics.html" class="dropdown-item">Analytics</a>
-                                        <a href="index.html" class="dropdown-item">Ecommerce</a>
-                                        <a href="dashboard-projects.html" class="dropdown-item">Projects</a>
-                                        <a href="dashboard-crm.html" class="dropdown-item">CRM</a>
-                                        <a href="dashboard-wallet.html" class="dropdown-item">E-Wallet</a>
+                                        <a href="{{ route('comites.create') }}" class="dropdown-item">Registro Comite</a>
+                                        <a href="dashboard-analytics.html" class="dropdown-item">Registro Integrantes Comites</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -1068,6 +1065,8 @@
 
         <!-- App js -->
         <script src="{{ asset('js/app.min.js')}}"></script>
+
+        @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
     </body>
 </html>

@@ -13,6 +13,11 @@ class AcreditacionComite extends Model
     //BUSCA UN MUNICIPIO BUSCANDO POR SU ID
     public function scopeBuscaMunicipioEjercicio($query, $id, $ejercicio)
     {
-        return $query->where('id_municipio', $id)->where('ejercicio', $ejercicio);
+        return $query->where('id_catalogo_municipio_fk', $id)->where('ejercicio', $ejercicio);
+    }
+
+    public function scopeBuscaEjercicio($query, $ejercicio)
+    {
+        return $query->where('ejercicio', $ejercicio);
     }
 }
