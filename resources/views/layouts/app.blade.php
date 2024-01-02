@@ -321,6 +321,18 @@
                                         <a href="apps-file-manager.html" class="dropdown-item">File Manager</a>
                                     </div>
                                 </li>
+                                 <!-- menu catalogo municipios -->
+                                 <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-item arrow-none" href="{{ route('catalogo_municipios.index') }}" >
+                                        <i class="ri-bank-line"></i>Municipios 
+                                    </a>
+                                </li>
+                                <!-- menu catalogo usuarios -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle arrow-none" href="#" >
+                                        <i class=" ri-contacts-line"></i>Usuarios 
+                                    </a>
+                                </li>
                                 
                             </ul>
                         </div>

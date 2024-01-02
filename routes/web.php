@@ -21,3 +21,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/comites', 'App\Http\Controllers\ComitesController');
+//Catalogo municipios 
+Route::resource('/catalogo_municipios', 'App\Http\Controllers\MunicipioController');
+//Catalogo Usuarios
