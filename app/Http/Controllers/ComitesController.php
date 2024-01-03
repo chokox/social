@@ -17,7 +17,8 @@ class ComitesController extends Controller
      */
     public function index()
     {
-        //
+        $municipios= CatalogoMunicipio::ConAcreditacionComites(now()->year)->get();;
+        return view('Municipios/comites')->with('municipios', $municipios);
     }
 
     /**
@@ -27,11 +28,16 @@ class ComitesController extends Controller
      */
     public function create()
     {
-        $municipios = CatalogoMunicipio::all();
+        
+    }
+
+    public function crearComite($id)
+    {
+        
+        $municipio = CatalogoMunicipio::where('id_municipio',$id)->first();
+        $municipio = $municipio->nombre;
         $user = User::where('rol', 'administrador')->get();
-        return view('Municipios/registroComite')
-            ->with('municipios', $municipios)
-            ->with('user', $user);
+        return view('Municipios/registroComite', compact('municipio', 'id'))->with('user', $user);
     }
 
     /**
@@ -69,8 +75,7 @@ class ComitesController extends Controller
             $registro->save();
 
             Alert::success('Comite guardado', null);
-            return back();
-            
+            return redirect()->route('comites.index');;
         }
     }
 

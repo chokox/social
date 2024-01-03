@@ -20,7 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//RUTAS DEL MODULO DE MUNICIPIOS
 Route::resource('/comites', 'App\Http\Controllers\ComitesController');
-//Catalogo municipios 
+Route::get('/registrar_comite/{id}', 'App\Http\Controllers\ComitesController@crearComite')->name('crearComite');
 Route::resource('/catalogo_municipios', 'App\Http\Controllers\MunicipioController');
-//Catalogo Usuarios
+//FIN DE RUTAS DEL MODULO DE MUNICIPIOS

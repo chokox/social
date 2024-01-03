@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Registro de Comite</h4>
+                            <h4 class="page-title">Registro del Comite de {{$municipio}}</h4>
                         </div>
                     </div>
                 </div>
@@ -24,25 +24,19 @@
                                 <form method="POST" action="{{ route('comites.store') }}">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="exampleFormControlSelect1">Municipio</label>
-                                        <select class="form-control" name="municipio">
-                                            @foreach ($municipios as $municipios)
-                                                <option value="{{ $municipios->id_municipio }}">{{ $municipios->nombre }}
-                                                </option>
-                                            @endforeach
-                                        </select>
+                                        <input type="text" class="form-control" name="municipio" value="{{$id}}" hidden>
                                     </div>
                                     <div class="mb-3">
                                         <label  for="simpleinput" class="form-label">Nombramiento en el acta de asamblea</label>
-                                        <input type="text" class="form-control" name="nombramiento">
+                                        <input type="date" class="form-control" name="nombramiento">
                                     </div>
                                     <div class="mb-3">
                                         <label for="simpleinput" class="form-label">Entrega de acreditacion</label>
-                                        <input type="text" class="form-control" name="acreditacion">
+                                        <input type="date" class="form-control" name="acreditacion">
                                     </div>
                                     <div class="mb-3">
                                         <label for="simpleinput" class="form-label">Elaboracion de acreditacion</label>
-                                        <input type="text" class="form-control" name="elaboracion">
+                                        <input type="date" class="form-control" name="elaboracion">
                                     </div>
                                     <div class="mb-3">
                                         <label for="simpleinput" class="form-label">Se acredito en:</label>
@@ -80,10 +74,12 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="simpleinput" class="form-label">Estatus de la informacion</label>
-                                        <input type="text" class="form-control" name="estatus">
+                                        <select class="form-control" name="estatus">
+                                                <option value="0">Información completa (solo faltan integrantes)</option>
+                                        </select>
                                     </div>
                                     <br>
-                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                    <button type="submit" class="btn btn-primary">Registrar</button>
                                 </form>
                             </div>
                         </div>

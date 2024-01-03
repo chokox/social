@@ -20,4 +20,5 @@ class AcreditacionComite extends Model
     {
         return $query->where('ejercicio', $ejercicio);
     }
+
 }
