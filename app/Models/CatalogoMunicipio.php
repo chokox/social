@@ -12,6 +12,22 @@ class CatalogoMunicipio extends Model
     protected $primaryKey = 'id_municipio';
 
 
+    protected $fillable = ['folio', 'nombre', 'region', 'distrito'];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        //agrega automaticamente a mayusculas en la tabla
+        static::saving(function ($model) {
+            $model->folio = strtoupper($model->folio);
+            $model->nombre = strtoupper($model->nombre);
+            $model->region = strtoupper($model->region);
+            $model->distrito = strtoupper($model->distrito);
+        });
+    }
+
+
     public function scopeConAcreditacionComites($query, $year)
     {
         return $query
