@@ -26,3 +26,6 @@ Route::resource('/comites', 'App\Http\Controllers\ComitesController');
 Route::get('/registrar_comite/{id}', 'App\Http\Controllers\ComitesController@crearComite')->name('crearComite');
 Route::resource('/catalogo_municipios', 'App\Http\Controllers\MunicipioController');
 //FIN DE RUTAS DEL MODULO DE MUNICIPIOS
+
+//RUTAS DEL MODULO DE USUARIOS
+Route::resource('/catalogo_usuarios', 'App\Http\Controllers\UserController');

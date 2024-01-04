@@ -180,7 +180,7 @@
                                 </li>
                                 <!-- menu catalogo usuarios -->
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle arrow-none" href="#" >
+                                    <a class="nav-link dropdown-toggle arrow-none" href="{{ route('catalogo_usuarios.index') }}" >
                                         <i class=" ri-contacts-line"></i>Usuarios 
                                     </a>
                                 </li>
