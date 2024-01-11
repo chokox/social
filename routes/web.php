@@ -28,6 +28,8 @@ Route::put('/subir_documentacion/{id}', 'App\Http\Controllers\ComitesController@
 Route::delete('/eliminar_documentacion/{id}', 'App\Http\Controllers\ComitesController@eliminarDocumentacion')->name('CEliminarDoc');
 Route::resource('/comites', 'App\Http\Controllers\ComitesController');
 Route::resource('/integrantes', 'App\Http\Controllers\IntegrantesComiteController');
+Route::put('/subir_documentacion_integrantes/{id}', 'App\Http\Controllers\IntegrantesComiteController@subirDocumentacionIntegrantes')->name('CSubirDocInt');
+Route::delete('/eliminar_documentacion_integrantes/{id}', 'App\Http\Controllers\IntegrantesComiteController@eliminarDocumentacionIntegrantes')->name('CEliminarDocInt');
 Route::resource('/catalogo_municipios', 'App\Http\Controllers\MunicipioController');
 //FIN DE RUTAS DEL MODULO DE MUNICIPIOS
 

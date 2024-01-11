@@ -61,7 +61,7 @@ class IntegrantesComiteController extends Controller
         return back();
     }
 
-    public function subirDocumentacion(Request $request, $id)
+    public function subirDocumentacionIntegrantes(Request $request, $id)
     {
         $dato = IntegrantesComite::find($id);
         $id_comite= $dato->id_acreditacion_comite_fk;
@@ -95,6 +95,36 @@ class IntegrantesComiteController extends Controller
             Alert::error('Error', 'No se pudo subir el archivo, porfavor intente mas tarde');
             return back();
         }
+    }
+
+    public function eliminarDocumentacionIntegrantes($id)
+    {
+        $tipo = substr($id, 0, 1);
+        $idd = substr($id, 1);
+        $documento = IntegrantesComite::find($idd);
+
+        if (!$documento) {
+            Alert::error('Error', 'Archivo no encontrado');
+            return back();
+        }
+
+        if ($tipo == 1) {
+            Storage::disk('public')->delete($documento->archivo_ine);
+            $documento->archivo_ine = null;
+        } elseif ($tipo == 2) {
+            Storage::disk('public')->delete($documento->archivo_protesta);
+            $documento->archivo_protesta = null;
+        } elseif ($tipo == 3) {
+            Storage::disk('public')->delete($documento->archivo_constancia);
+            $documento->archivo_constancia = null;
+        } elseif ($tipo == 4) {
+            Storage::disk('public')->delete($documento->archivo_fotografia);
+            $documento->archivo_fotografia = null;
+        }
+        $documento->save();
+
+        Alert::success('Documentacion eliminada', null);
+        return back();
     }
 
     /**
