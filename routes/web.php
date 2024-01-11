@@ -33,3 +33,5 @@ Route::resource('/catalogo_municipios', 'App\Http\Controllers\MunicipioControlle
 
 //RUTAS DEL MODULO DE USUARIOS
 Route::resource('/catalogo_usuarios', 'App\Http\Controllers\UserController');
+//RUTAS DE RESUMEN DE ACREDITACIOENS
+Route::get('/resumen_acreditaciones', 'App\Http\Controllers\ComitesController@resumenAcreditaciones')->name('resumenAcreditaciones');

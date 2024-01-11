@@ -169,6 +169,8 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
                                         <a href="{{ route('comites.index') }}" class="dropdown-item">Comites</a>
+                                         {{-- Resumen de Acreditaciones --}}
+                                         <a href="" class="dropdown-item">Resumen de Acreditaciones</a>
                                     </div>
                                 </li>
                             
