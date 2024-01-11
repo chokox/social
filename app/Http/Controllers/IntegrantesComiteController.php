@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\IntegrantesComite;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Storage;
 
 class IntegrantesComiteController extends Controller
 {
@@ -58,6 +59,42 @@ class IntegrantesComiteController extends Controller
 
         Alert::success('Integrante agregado', null );
         return back();
+    }
+
+    public function subirDocumentacion(Request $request, $id)
+    {
+        $dato = IntegrantesComite::find($id);
+        $id_comite= $dato->id_acreditacion_comite_fk;
+        $ruta = 'comites/' . now()->year . '/' . $id_comite . '/integrantes/' . $id;
+
+        if ($request->input('tipo') == 'ine' && ($request->hasFile('archivo_ine') && $request->file('archivo_ine')->isValid())) {
+            $nombreArchivo = $request->file('archivo_ine')->store($ruta, 'public');
+        } elseif ($request->input('tipo') == 'protesta' && ($request->hasFile('archivo_protesta') && $request->file('archivo_protesta')->isValid())) {
+            $nombreArchivo = $request->file('archivo_protesta')->store($ruta, 'public');
+        } elseif ($request->input('tipo') == 'constancia' && ($request->hasFile('archivo_constancia') && $request->file('archivo_constancia')->isValid())) {
+            $nombreArchivo = $request->file('archivo_constancia')->store($ruta, 'public');
+        } elseif ($request->input('tipo') == 'fotografia' && ($request->hasFile('archivo_fotografia') && $request->file('archivo_fotografia')->isValid())) {
+            $nombreArchivo = $request->file('archivo_fotografia')->store($ruta, 'public');
+        }
+
+        if (Storage::disk('public')->exists($nombreArchivo)) {
+            if ($request->input('tipo') == 'ine') {
+                $dato->archivo_ine = $nombreArchivo;
+            } elseif ($request->input('tipo') == 'protesta') {
+                $dato->archivo_protesta = $nombreArchivo;
+            } elseif ($request->input('tipo') == 'constancia') {
+                $dato->archivo_constancia = $nombreArchivo;
+            } elseif ($request->input('tipo') == 'fotografia') {
+                $dato->archivo_fotografia = $nombreArchivo;
+            }
+            $dato->save();
+
+            Alert::success('Documentacion cargada', null);
+            return back();
+        } else {
+            Alert::error('Error', 'No se pudo subir el archivo, porfavor intente mas tarde');
+            return back();
+        }
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends('layouts.app')¿
+@extends('layouts.app')
 @section('content')
     <div class="content-page">
         <div class="content">
@@ -65,8 +65,215 @@
                                                 <td>{{ $integrantes->correo }}</td>
                                                 <td>{{ $integrantes->acceso_internet }}</td>
                                                 <td>{{ $integrantes->observacion_identificacion }} {{ $integrantes->observacion_fotografia }} {{ $integrantes->observacion_carta }} {{ $integrantes->observacion_constancia }}</td>
-                                                <td> </td>
+                                                <td> <a type="button" class="btn btn-primary" title="Documentacion"
+                                                        href="" class="btn btn-info" data-bs-toggle="modal"
+                                                        data-bs-target="#bs-example-modal-lg-{{ $integrantes->id_integrante_comite }}"><i
+                                                            class="ri-folder-open-fill"></i></a> editar, borrar
+                                                </td>
                                             </tr>
+
+                                            <!-- modal documentacion integrantes-->
+                                                    <div class="modal fade"
+                                                        id="bs-example-modal-lg-{{ $integrantes->id_integrante_comite }}" tabindex="-1"
+                                                        role="dialog" aria-labelledby="myLargeModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title" id="myLargeModalLabel">
+                                                                        Documentacion de {{$integrantes->nombre_completo}}</h4>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal" aria-hidden="true"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <table class="table table-centered mb-0">
+                                                                        <thead class="table-dark">
+                                                                            <tr>
+                                                                                <th>Nombre</th>
+                                                                                <th>Archivo</th>
+
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>Credencial de elector</td>
+                                                                                @if (empty($mun->archivo_acta))
+                                                                                    <td>
+                                                                                        <form
+                                                                                            action="{{ route('CSubirDoc', $integrantes->id_integrante_comite) }}"
+                                                                                            method="POST"
+                                                                                            enctype="multipart/form-data">
+                                                                                            @csrf
+                                                                                            @method('PUT')
+                                                                                            <input type="text"
+                                                                                                name="tipo"
+                                                                                                value="ine" hidden>
+                                                                                            <input type="file"
+                                                                                                name="archivo_ine"
+                                                                                                accept=".doc, .docx, .pdf">&nbsp;&nbsp;
+                                                                                            <button type="submit"
+                                                                                                class="btn btn-info">Cargar</button>
+                                                                                        </form>
+                                                                                    </td>
+                                                                                @else
+                                                                                    <td><a type="button"
+                                                                                            class="btn btn-primary"
+                                                                                            href="{{ asset('storage/' . $mun->archivo_acta) }}"><i
+                                                                                                class="ri-file-download-line"></i>
+                                                                                            Descargar</a>&nbsp;
+                                                                                        <form
+                                                                                            action="{{ route('CEliminarDoc', ['id' => '1' . $integrantes->id_integrante_comite]) }}"
+                                                                                            method="post">
+                                                                                            @csrf
+                                                                                            @method('delete')
+
+                                                                                            <button type="submit"
+                                                                                                class="btn btn-danger" onclick="confirmarEliminar()">
+                                                                                                <i
+                                                                                                    class="ri-delete-bin-6-line"></i>
+                                                                                                Eliminar
+                                                                                            </button>
+                                                                                        </form>
+
+                                                                                    </td>
+                                                                                @endif
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Carta bajo protesta</td>
+                                                                                @if (empty($mun->archivo_lista))
+                                                                                    <td>
+                                                                                        <form
+                                                                                            action="{{ route('CSubirDoc', $integrantes->id_integrante_comite) }}"
+                                                                                            method="POST"
+                                                                                            enctype="multipart/form-data">
+                                                                                            @csrf
+                                                                                            @method('PUT')
+                                                                                            <input type="text"
+                                                                                                name="tipo"
+                                                                                                value="protesta" hidden>
+                                                                                            <input type="file"
+                                                                                                name="archivo_protesta"
+                                                                                                accept=".doc, .docx, .pdf">&nbsp;&nbsp;
+                                                                                            <button type="submit"
+                                                                                                class="btn btn-info">Cargar</button>
+                                                                                        </form>
+                                                                                    </td>
+                                                                                @else
+                                                                                    <td><a type="button"
+                                                                                            class="btn btn-primary"
+                                                                                            href="{{ asset('storage/' . $mun->archivo_lista) }}"><i
+                                                                                                class="ri-file-download-line"></i>
+                                                                                            Descargar</a>&nbsp;
+                                                                                        <form
+                                                                                            action="{{ route('CEliminarDoc', ['id' => '2' . $integrantes->id_integrante_comite]) }}"
+                                                                                            method="post">
+                                                                                            @csrf
+                                                                                            @method('delete')
+
+                                                                                            <button type="submit"
+                                                                                                class="btn btn-danger" onclick="confirmarEliminar()">
+                                                                                                <i
+                                                                                                    class="ri-delete-bin-6-line"></i>
+                                                                                                Eliminar
+                                                                                            </button>
+                                                                                        </form>
+
+                                                                                    </td>
+                                                                                @endif
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Constancia emitida por la Autoridad Municipal</td>
+                                                                                @if (empty($mun->archivo_acuse))
+                                                                                    <td>
+                                                                                        <form
+                                                                                            action="{{ route('CSubirDoc', $integrantes->id_integrante_comite) }}"
+                                                                                            method="POST"
+                                                                                            enctype="multipart/form-data">
+                                                                                            @csrf
+                                                                                            @method('PUT')
+                                                                                            <input type="text"
+                                                                                                name="tipo"
+                                                                                                value="constancia" hidden>
+                                                                                            <input type="file"
+                                                                                                name="archivo_constancia"
+                                                                                                accept=".doc, .docx, .pdf">&nbsp;&nbsp;
+                                                                                            <button type="submit"
+                                                                                                class="btn btn-info">Cargar</button>
+                                                                                        </form>
+                                                                                    </td>
+                                                                                @else
+                                                                                    <td><a type="button"
+                                                                                            class="btn btn-primary"
+                                                                                            href="{{ asset('storage/' . $mun->archivo_acuse) }}"><i
+                                                                                                class="ri-file-download-line"></i>
+                                                                                            Descargar</a>&nbsp;
+                                                                                        <form
+                                                                                            action="{{ route('CEliminarDoc', ['id' => '3' . $integrantes->id_integrante_comite]) }}"
+                                                                                            method="post">
+                                                                                            @csrf
+                                                                                            @method('delete')
+
+                                                                                            <button type="submit"
+                                                                                                class="btn btn-danger" onclick="confirmarEliminar()">
+                                                                                                <i
+                                                                                                    class="ri-delete-bin-6-line"></i>
+                                                                                                Eliminar
+                                                                                            </button>
+                                                                                        </form>
+
+                                                                                    </td>
+                                                                                @endif
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Fotografía tamaño infantil</td>
+                                                                                @if (empty($mun->archivo_acuse))
+                                                                                    <td>
+                                                                                        <form
+                                                                                            action="{{ route('CSubirDoc', $integrantes->id_integrante_comite) }}"
+                                                                                            method="POST"
+                                                                                            enctype="multipart/form-data">
+                                                                                            @csrf
+                                                                                            @method('PUT')
+                                                                                            <input type="text"
+                                                                                                name="tipo"
+                                                                                                value="fotografia" hidden>
+                                                                                            <input type="file"
+                                                                                                name="archivo_fotografia"
+                                                                                                accept=".doc, .docx, .pdf">&nbsp;&nbsp;
+                                                                                            <button type="submit"
+                                                                                                class="btn btn-info">Cargar</button>
+                                                                                        </form>
+                                                                                    </td>
+                                                                                @else
+                                                                                    <td><a type="button"
+                                                                                            class="btn btn-primary"
+                                                                                            href="{{ asset('storage/' . $mun->archivo_acuse) }}"><i
+                                                                                                class="ri-file-download-line"></i>
+                                                                                            Descargar</a>&nbsp;
+                                                                                        <form
+                                                                                            action="{{ route('CEliminarDoc', ['id' => '3' . $integrantes->id_integrante_comite]) }}"
+                                                                                            method="post">
+                                                                                            @csrf
+                                                                                            @method('delete')
+
+                                                                                            <button type="submit"
+                                                                                                class="btn btn-danger" onclick="confirmarEliminar()">
+                                                                                                <i
+                                                                                                    class="ri-delete-bin-6-line"></i>
+                                                                                                Eliminar
+                                                                                            </button>
+                                                                                        </form>
+
+                                                                                    </td>
+                                                                                @endif
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- fin de modal documentacion integrantes -->
                                         @endforeach
                                     </tbody>
                                 </table>

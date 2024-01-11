@@ -74,7 +74,6 @@ class ComitesController extends Controller
     {
         $tipo = substr($id, 0, 1);
         $idd = substr($id, 1);
-
         $documento = AcreditacionComite::find($idd);
 
         if (!$documento) {
@@ -83,13 +82,16 @@ class ComitesController extends Controller
         }
 
         if ($tipo == 1) {
-            Storage::delete('public/comites/' . now()->year . '/' .$idd . '/' . $documento->arhivo_acta);
+            Storage::disk('public')->delete($documento->archivo_acta);
+            $documento->archivo_acta = null;
         } elseif ($tipo == 2) {
-            Storage::delete('public/comites/' . now()->year . '/' . $idd . '/' . $documento->arhivo_lista);
+            Storage::disk('public')->delete($documento->archivo_lista);
+            $documento->archivo_lista = null;
         } elseif ($tipo == 3) {
-            Storage::delete('public/comites/' . now()->year . '/' . $idd . '/' . $documento->arhivo_acuse);
+            Storage::disk('public')->delete($documento->archivo_acuse);
+            $documento->archivo_acuse = null;
         }
-        $documento->delete();
+        $documento->save();
 
         Alert::success('Documentacion eliminada', null);
         return back();
@@ -114,7 +116,7 @@ class ComitesController extends Controller
             $folioMunicipio = $folioMunicipio->folio;
             $numeroConsecutivo = AcreditacionComite::BuscaEjercicio(now()->year)->count() + 1;
             $numeroConsecutivoFormateado = str_pad($numeroConsecutivo, 3, '0', STR_PAD_LEFT);
-            $registro->folio = $folioMunicipio . ' ' . $numeroConsecutivoFormateado;
+            $registro->folio_comite = $folioMunicipio . ' ' . $numeroConsecutivoFormateado;
             $registro->id_catalogo_municipio_fk = $request->input('municipio');
             $registro->ejercicio = now()->year;
             $registro->nombramiento = $request->input('nombramiento');
