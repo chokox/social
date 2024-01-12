@@ -47,20 +47,20 @@
                             <!-- Logo light -->
                             <a href="index.html" class="logo-light">
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo.png" alt="logo">
+                                    <img src="{{ asset('imagenes/logoCS.png') }}" width="150" alt="logo">
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-sm.png" alt="small logo">
+                                    <img src="{{ asset('imagenes/logoCS.png') }}" width="150" alt="small logo">
                                 </span>
                             </a>
 
                             <!-- Logo Dark -->
                             <a href="index.html" class="logo-dark">
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-dark.png" alt="dark logo">
+                                    <img src="{{ asset('imagenes/logoCS.png') }}" style="height: 60px;" alt="dark logo">
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-dark-sm.png" alt="small logo">
+                                    <img src="{{ asset('imagenes/logoCS.png') }}" width="150" alt="small logo">
                                 </span>
                             </a>
                         </div>
@@ -131,11 +131,11 @@
                         <li class="dropdown">
                             <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="account-user-avatar">
-                                    <img src="assets/images/users/avatar-1.jpg" alt="user-image" width="32" class="rounded-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" /></svg>
                                 </span>
                                 <span class="d-lg-flex flex-column gap-1 d-none">
-                                    <h5 class="my-0">Nombre</h5>
-                                    <h6 class="my-0 fw-normal">rol</h6>
+                                    <h5 class="my-0">{{ Auth::user()->name }}</h5>
+                                    <h6 class="my-0 fw-normal">{{ Auth::user()->rol }}</h6>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
@@ -144,11 +144,17 @@
                                     <h6 class="text-overflow m-0">Bienvenido !</h6>
                                 </div>
 
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="mdi mdi-logout me-1"></i>
-                                    <span>Logout</span>
-                                </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+
+                                
                             </div>
                         </li>
                     </ul>

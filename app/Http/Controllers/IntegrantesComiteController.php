@@ -16,7 +16,6 @@ class IntegrantesComiteController extends Controller
      */
     public function index()
     {
-        
     }
 
     /**
@@ -37,11 +36,11 @@ class IntegrantesComiteController extends Controller
      */
     public function store(Request $request)
     {
-        $registro= new IntegrantesComite ();
-        $registro->id_acreditacion_comite_fk= $request->input('id_comite');
+        $registro = new IntegrantesComite();
+        $registro->id_acreditacion_comite_fk = $request->input('id_comite');
         $registro->nombre_completo = $request->input('nombre');
         $registro->sexo = $request->input('sexo');
-        $registro->fecha_nacimiento= $request->input('fecha_nacimiento');
+        $registro->fecha_nacimiento = $request->input('fecha_nacimiento');
         $registro->ocupacion = $request->input('ocupacion');
         $registro->escolaridad = $request->input('escolaridad');
         $registro->lengua_indigena = $request->input('lengua_indigena');
@@ -57,14 +56,14 @@ class IntegrantesComiteController extends Controller
         $registro->observacion_constancia = $request->input('obs_constancia');
         $registro->save();
 
-        Alert::success('Integrante agregado', null );
+        Alert::success('Integrante agregado', null);
         return back();
     }
 
     public function subirDocumentacionIntegrantes(Request $request, $id)
     {
         $dato = IntegrantesComite::find($id);
-        $id_comite= $dato->id_acreditacion_comite_fk;
+        $id_comite = $dato->id_acreditacion_comite_fk;
         $ruta = 'comites/' . now()->year . '/' . $id_comite . '/integrantes/' . $id;
 
         if ($request->input('tipo') == 'ine' && ($request->hasFile('archivo_ine') && $request->file('archivo_ine')->isValid())) {
@@ -135,7 +134,7 @@ class IntegrantesComiteController extends Controller
      */
     public function show($id)
     {
-        $integrantes= IntegrantesComite::where('id_acreditacion_comite_fk',$id)->get();
+        $integrantes = IntegrantesComite::where('id_acreditacion_comite_fk', $id)->get();
         return view('Municipios/integrantesComite', compact('id'))->with('integrantes', $integrantes);
     }
 
@@ -159,7 +158,60 @@ class IntegrantesComiteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dato = IntegrantesComite::find($id);
+
+        if ($request->filled('nombre')) {
+            $dato->nombre_completo = $request->input('nombre');
+        }
+        if ($request->filled('sexo')) {
+            $dato->sexo = $request->input('sexo');
+        }
+        if ($request->filled('fecha_nacimiento')) {
+            $dato->fecha_nacimiento = $request->input('fecha_nacimiento');
+        }
+        if ($request->filled('ocupacion')) {
+            $dato->ocupacion = $request->input('ocupacion');
+        }
+        if ($request->filled('escolaridad')) {
+            $dato->escolaridad = $request->input('escolaridad');
+        }
+        if ($request->filled('lengua_indigena')) {
+            $dato->lengua_indigena = $request->input('lengua_indigena');
+        }
+        if ($request->filled('usa_computadora')) {
+            $dato->usa_computadora = $request->input('usa_computadora');
+        }
+        if ($request->filled('domicilio')) {
+            $dato->domicilio = $request->input('domicilio');
+        }
+        if ($request->filled('telefono_fijo')) {
+            $dato->telefono = $request->input('telefono_fijo');
+        }
+        if ($request->filled('telefono_celular')) {
+            $dato->celular = $request->input('telefono_celular');
+        }
+        if ($request->filled('correo')) {
+            $dato->correo = $request->input('correo');
+        }
+        if ($request->filled('acceso_internet')) {
+            $dato->acceso_internet = $request->input('acceso_internet');
+        }
+        if ($request->filled('obs_identificacion')) {
+            $dato->observacion_identificacion = $request->input('obs_identificacion');
+        }
+        if ($request->filled('obs_fotografia')) {
+            $dato->observacion_fotografia = $request->input('obs_fotografia');
+        }
+        if ($request->filled('obs_carta')) {
+            $dato->observacion_carta = $request->input('obs_carta');
+        }
+        if ($request->filled('obs_constancia')) {
+            $dato->observacion_constancia = $request->input('obs_constancia');
+        }
+
+        $dato->save();
+        Alert::success('Informacion actualizada', null);
+        return back();
     }
 
     /**
@@ -170,6 +222,15 @@ class IntegrantesComiteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $integrante = IntegrantesComite::find($id);
+        if ($integrante) {
+            $integrante->delete();
+
+            Alert::success('Exito', 'El usuario se ha eliminado con exito');
+            return back();
+        } else {
+            Alert::error('Error', 'No se pudo eliminar el usuario');
+            return back();
+        }
     }
 }

@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::group(['middleware' => 'auth'], function () {
 //RUTAS DEL MODULO DE MUNICIPIOS
 Route::resource('/comites', 'App\Http\Controllers\ComitesController');
 Route::get('/registrar_comite/{id}', 'App\Http\Controllers\ComitesController@crearComite')->name('crearComite');
@@ -37,3 +38,4 @@ Route::resource('/catalogo_municipios', 'App\Http\Controllers\MunicipioControlle
 Route::resource('/catalogo_usuarios', 'App\Http\Controllers\UserController');
 //RUTAS DE RESUMEN DE ACREDITACIOENS
 Route::get('/resumen_acreditaciones', 'App\Http\Controllers\ComitesController@resumenAcreditaciones')->name('resumenAcreditaciones');
+});
