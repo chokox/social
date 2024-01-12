@@ -1,13 +1,41 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en" data-layout-mode="detached" data-topbar-color="dark" data-menu-color="light" data-sidenav-user="true">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+    <head>
+        <meta charset="utf-8" />
+        <title>Iniciar Sesion| Hyper - Honestidad</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
 
-                <div class="card-body">
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        
+        <!-- Theme Config Js -->
+        <script src="{{asset('js/hyper-config.js')}}"></script>
+
+        <!-- App css -->
+        <link href="{{asset('css/app-modern.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
+
+        <!-- Icons css -->
+        <link href="{{asset('css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    </head>
+    
+    <body class="authentication-bg">
+        <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xxl-4 col-lg-5">
+                        <div class="card">
+
+                            <!-- Logo -->
+                            <div class="card-header py-4 text-center bg-primary">
+                                <a href="index.html">
+                                    <span><img src="imagenes/escudooax.png" alt="logo" height="50"></span>
+                                </a>
+                            </div>
+
+                            <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -66,8 +94,33 @@
                         </div>
                     </form>
                 </div>
+                            <!-- end card-body -->
+                        </div>
+                        <!-- end card -->
+
+                        <div class="row mt-3">
+                            <div class="col-12 text-center">
+                                <p class="text-muted">No tienes una cuenta? <a href="pages-register.html" class="text-muted ms-1"><b>Ingresar aquí</b></a></p>
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
             </div>
+            <!-- end container -->
         </div>
-    </div>
-</div>
-@endsection
+        <!-- end page -->
+
+        <footer class="footer footer-alt">
+            2018 - <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+        </footer>
+        <!-- Vendor js -->
+        <script src="{{asset('js/vendor.min.js')}}"></script>
+        
+        <!-- App js -->
+        <script src="{{asset('js/app.min.js')}}"></script>
+
+    </body>
+</html>
