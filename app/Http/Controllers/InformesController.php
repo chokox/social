@@ -14,7 +14,7 @@ class InformesController extends Controller
 {
     public function resumenAcreditaciones()
     {
-        //$totComites = AcreditacionComite::ContarPorRegion(now()->year)->get();
+        $totComites = AcreditacionComite::ContarPorRegion(now()->year)->get();
         $totintegrantes = IntegrantesComite::ContarPorIntegrantes(now()->year)->get();
         
 
