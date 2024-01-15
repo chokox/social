@@ -21,4 +21,14 @@ class AcreditacionComite extends Model
         return $query->where('ejercicio', $ejercicio);
     }
 
+    public function scopeContarPorRegion($query, $ejercicio)
+    {
+        return $query->join('catalogo_municipios', 'acreditacion_comites.id_catalogo_municipio_fk', '=', 'catalogo_municipios.id_municipio')
+        ->selectRaw('catalogo_municipios.region, COUNT(*) as total')
+        ->where('acreditacion_comites.estatus', 4)->where('acreditacion_comites.ejercicio', $ejercicio)
+        ->groupBy('catalogo_municipios.region');
+    }
+
+
+
 }

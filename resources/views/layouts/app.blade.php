@@ -47,10 +47,10 @@
                             <!-- Logo light -->
                             <a href="index.html" class="logo-light">
                                 <span class="logo-lg">
-                                    <img src="{{ asset('imagenes/logoCS.png') }}" width="150" alt="logo">
+                                    <img src="{{ asset('imagenes/logoCS.png') }}" style="height: 60px;" alt="logo">
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="{{ asset('imagenes/logoCS.png') }}" width="150" alt="small logo">
+                                    <img src="{{ asset('imagenes/logoCS.png') }}" style="height: 60px;" alt="small logo">
                                 </span>
                             </a>
 
@@ -60,7 +60,7 @@
                                     <img src="{{ asset('imagenes/logoCS.png') }}" style="height: 60px;" alt="dark logo">
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="{{ asset('imagenes/logoCS.png') }}" width="150" alt="small logo">
+                                    <img src="{{ asset('imagenes/logoCS.png') }}" style="height: 60px;" alt="small logo">
                                 </span>
                             </a>
                         </div>
@@ -176,7 +176,7 @@
                                     <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
                                         <a href="{{ route('comites.index') }}" class="dropdown-item">Comites</a>
                                          {{-- Resumen de Acreditaciones --}}
-                                         <a href="" class="dropdown-item">Resumen de Acreditaciones</a>
+                                         <a href="{{ route('resumenAcreditaciones') }}" class="dropdown-item">Resumen de Acreditaciones</a>
                                     </div>
                                 </li>
                             
