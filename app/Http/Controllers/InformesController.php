@@ -18,8 +18,8 @@ class InformesController extends Controller
         $totintegrantes = IntegrantesComite::ContarPorIntegrantes(now()->year)->get();
         
 
-        dd($totintegrantes);
-        //return view('Municipios/comites')->with('municipios', $municipios);
+       // dd($totintegrantes);
+         return view('Informe/ResumenAcreditaciones');
    
     }//10227 10222
 }
