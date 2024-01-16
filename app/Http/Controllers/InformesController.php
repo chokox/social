@@ -16,9 +16,8 @@ class InformesController extends Controller
     {
         $totComites = AcreditacionComite::ContarPorRegion(now()->year)->get();
         $totintegrantes = IntegrantesComite::ContarPorIntegrantes(now()->year)->get();
-        
-
-       // dd($totintegrantes);
+       //;$sqlQuery = $totComites->toSql();
+       // dd ($sqlQuery); 
          return view('Informe/ResumenAcreditaciones');
    
     }//10227 10222
