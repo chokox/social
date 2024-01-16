@@ -46,7 +46,7 @@ html[data-theme=dark] {
     --ct-dark-rgb: 241, 241, 241;
     --ct-box-shadow: 0px 0px 35px 0px rgba(49, 57, 66, 0.5);
     --ct-card-bg-custom: #37404a;
-    --ct-dropdown-bg-custom: #3b444e;
+    --ct-dropdown-bg-custom: #4e3b3b;
     --ct-input-bg-custom: #404954
 }
 
@@ -86,7 +86,7 @@ html[data-theme=dark][data-menu-color=light] {
 html[data-topbar-color=light] {
     --ct-topbar-bg: #ffffff;
     --ct-topbar-item-color: #6c757d;
-    --ct-topbar-item-hover-color: #536de6;
+    --ct-topbar-item-hover-color: #b14e64;
     --ct-topbar-search-bg: #f0f3f8;
     --ct-topbar-user-bg: #fafafd;
     --ct-topbar-user-border: #eef2f7
@@ -148,7 +148,7 @@ html[data-theme=dark][data-topbar-color=light] {
     --ct-danger: #F98927;
     --ct-light: #eef2f7;
     --ct-dark: #313a46;
-    --ct-primary-rgb: 83, 109, 230;
+    --ct-primary-rgb: 157, 36, 73;
     --ct-secondary-rgb: 108, 117, 125;
     --ct-success-rgb: 16, 196, 105;
     --ct-info-rgb: 53, 184, 224;
@@ -15847,7 +15847,7 @@ html[data-layout-mode=detached]:not([data-layout=topnav])[data-sidenav-size=full
 }
 
 .navbar-custom {
-    background: #ffffff;
+    /* background: #ffffff; */
     -webkit-box-shadow: var(--ct-box-shadow);
     box-shadow: var(--ct-box-shadow);
     min-height: var(--ct-topbar-height);
@@ -15904,8 +15904,6 @@ html[data-layout-mode=detached]:not([data-layout=topnav])[data-sidenav-size=full
 .navbar-custom .topbar-menu .nav-link {
     padding: 0;
     position: relative;
-    color: #ffffff;
-    background-color: #B38E5D;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -16114,9 +16112,9 @@ html[data-theme=dark] #light-dark-mode .ri-moon-line::before {
     align-items: center;
     gap: 10px;
     border-width: 0 1px;
-    border-style: solid;
-    border-color: var(--ct-topbar-user-border);
-    background-color: var(--ct-topbar-user-bg);
+    /*border-style: solid;
+     border-color: var(--ct-topbar-user-border);
+    background-color: var(--ct-topbar-user-bg); */
     min-height: var(--ct-topbar-height);
     -webkit-transition: none;
     transition: none
