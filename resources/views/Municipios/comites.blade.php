@@ -250,12 +250,15 @@
                                                         </div>
                                                         <!-- fin de modal documentacion comite -->
                                                         <a type="button" class="btn btn-primary" title="Editar"
-                                                            href="{{ route('integrantes.show', $mun->id_acreditacion) }}"><i
+                                                            href="{{ route('comites.edit', $mun->id_acreditacion) }}"><i
                                                                 class="ri-pencil-fill"></i></a>
+
+                                                            @if ($mun->estatus != 4)
                                                         <a type="button" class="btn btn-primary"
                                                             title="Informacion Completa"
-                                                            href="{{ route('integrantes.show', $mun->id_acreditacion) }}"><i
+                                                            href="{{ route('validarComite', $mun->id_acreditacion) }}"><i
                                                                 class="ri-thumb-up-fill"></i></a>
+                                                                @endif
                                                     @endif
                                                 </td>
                                             </tr>

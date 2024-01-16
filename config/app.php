@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Laraveles\Spanish\SpanishServiceProvider::class,
+        Elibyy\TCPDF\ServiceProvider::class,
 
 
         /*
@@ -233,7 +234,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
-        
+        'PDF' => Elibyy\TCPDF\Facades\TCPDF::class
 
     ],
 

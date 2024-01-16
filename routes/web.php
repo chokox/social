@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
 //RUTAS DEL MODULO DE MUNICIPIOS
 Route::resource('/comites', 'App\Http\Controllers\ComitesController');
 Route::get('/registrar_comite/{id}', 'App\Http\Controllers\ComitesController@crearComite')->name('crearComite');
+Route::get('/validar_comite/{id}', 'App\Http\Controllers\ComitesController@validarComite')->name('validarComite');
 Route::put('/subir_documentacion/{id}', 'App\Http\Controllers\ComitesController@subirDocumentacion')->name('CSubirDoc');
 Route::delete('/eliminar_documentacion/{id}', 'App\Http\Controllers\ComitesController@eliminarDocumentacion')->name('CEliminarDoc');
 Route::resource('/comites', 'App\Http\Controllers\ComitesController');

@@ -36,7 +36,8 @@ class ComitesController extends Controller
         $municipio = CatalogoMunicipio::where('id_municipio', $id)->first();
         $municipio = $municipio->nombre;
         $user = User::where('rol', 'administrador')->get();
-        return view('Municipios/registroComite', compact('municipio', 'id'))->with('user', $user);
+        $edicion='--';
+        return view('Municipios/registroComite', compact('municipio', 'id', 'edicion'))->with('user', $user);
     }
 
     public function subirDocumentacion(Request $request, $id)
@@ -144,7 +145,15 @@ class ComitesController extends Controller
      */
     public function show($id)
     {
-        //
+    }
+
+    public function validarComite($id)
+    {
+        $dato = AcreditacionComite::find($id);
+        $dato->estatus='4';
+        $dato->save();
+        Alert::success('Comite Validado', null);
+        return redirect()->route('comites.index');
     }
 
     /**
@@ -155,7 +164,14 @@ class ComitesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dato = AcreditacionComite::find($id);
+        $municipio = CatalogoMunicipio::where('id_municipio', $dato->id_catalogo_municipio_fk)->first();
+        $municipio = $municipio->nombre;
+        $user = User::where('rol', 'administrador')->get();
+        $edicion = 'edicion';
+        return view('Municipios/registroComite', compact('municipio', 'id', 'edicion'))
+            ->with('user', $user)
+            ->with('dato', $dato);
     }
 
     /**
@@ -167,7 +183,40 @@ class ComitesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dato = AcreditacionComite::find($id);
+
+        if ($request->filled('nombramiento')) {
+            $dato->nombramiento = $request->input('nombramiento');
+        }
+        if ($request->filled('acreditacion')) {
+            $dato->acreditacion = $request->input('acreditacion');
+        }
+        if ($request->filled('elaboracion')) {
+            $dato->elaboracion_acreditacion = $request->input('elaboracion');
+        }
+        if ($request->filled('se_acredito')) {
+            $dato->acredito_en = $request->input('se_acredito');
+        }
+        if ($request->filled('capacito_comite')) {
+            $dato->capacito_comite = $request->input('capacito_comite');
+        }
+        if ($request->filled('autorizo_comite')) {
+            $dato->id_user_autorizo_fk = $request->input('autorizo_comite');
+        }
+        if ($request->filled('acta_asamblea')) {
+            $dato->acta_asamblea = $request->input('acta_asamblea');
+        }
+        if ($request->filled('lista_asamblea')) {
+            $dato->lista_asistencia = $request->input('lista_asamblea');
+        }
+        if ($request->filled('datos_municipio')) {
+            $dato->datos_municipio = $request->input('datos_municipio');
+        }
+
+        $dato->save();
+
+        Alert::success('Comite actualizado', null);
+        return redirect()->route('comites.index');
     }
 
     /**

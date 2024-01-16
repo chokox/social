@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es" data-layout="topnav">
-
     <head>
         <meta charset="utf-8" />
         <title>Sistema de Gene - Bebe</title>
@@ -41,12 +40,23 @@
                             <!-- Logo light -->
                             <a href="index.html" class="logo-light">
                                 <span class="logo-lg">
-                                    <img src="{{ asset('imagenes/logoCS.png') }}" style="height: 60px;" alt="logo">
+                                    <img src="{{ asset('imagenes/logoCSNEW.png') }}" style="height: 65px;" alt="logo">
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="{{ asset('imagenes/logoCS.png') }}" style="height: 60px;" alt="small logo">
+                                    <img src="{{ asset('imagenes/logoCSNEW.png') }}" style="height: 65px;" alt="small logo">
                                 </span>
                             </a>
+
+                            <!-- Logo Dark -->
+                            <a href="index.html" class="logo-dark">
+                                <span class="logo-lg">
+                                    <img src="{{ asset('imagenes/logoCSNEW.png') }}" style="filter: grayscale(100%) brightness(500%); padding: 5px;" alt="dark logo">
+                                </span>
+                                <span class="logo-sm">
+                                    <img src="{{ asset('imagenes/logoCSNEW.png') }}" style="filter: grayscale(100%) brightness(500%); padding: 5px;" alt="small logo">
+                                </span>
+                            </a>
+                            
                         </div>
 
                         <!-- Sidebar Menu Toggle Button -->
@@ -63,8 +73,18 @@
                             </div>
                         </button>
                     </div>
-
+                    
                     <ul class="topbar-menu d-flex align-items-center gap-3" >
+                         <li class="d-none d-sm-inline-block">
+                            <div class="nav-link" id="light-dark-mode" data-bs-toggle="tooltip" data-bs-placement="left" title="Theme Mode">
+                                <i class="ri-moon-line font-22"></i>
+                            </div>
+                        </li>
+                        <li class="d-none d-md-inline-block">
+                            <a class="nav-link" href="" data-toggle="fullscreen">
+                                <i class="ri-fullscreen-line font-22"></i>
+                            </a>
+                        </li>
 
                         <li class="dropdown" >
                             <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
