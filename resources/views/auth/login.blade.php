@@ -36,7 +36,6 @@
     <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
-<<<<<<< Updated upstream
 <body class="authentication-bg">
     <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
         <div class="container">
@@ -60,7 +59,6 @@
                                     acceder al panel de administración.</p>
                             </div>
 
-=======
                             <div class="card-body p-4">
 
                             <div class="text-center w-75 m-auto">
@@ -98,7 +96,6 @@
                             <div class="form-check">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
->>>>>>> Stashed changes
 
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
