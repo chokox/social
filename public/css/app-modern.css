@@ -16936,7 +16936,7 @@ html[data-theme=dark] .text-secondary {
 
 .hero-section {
   position: relative;
-  padding: 80px 0 120px 0;
+  padding: 20px 0 60px 0;
 }
 .hero-section:after {
   content: " ";
@@ -16950,7 +16950,7 @@ html[data-theme=dark] .text-secondary {
   width: 100%;
   border-radius: 0;
   -webkit-transform: skewY(-3deg);
-          transform: skewY(-3deg);
+          transform: skewx(-3deg);
 }
 .hero-section .hero-title {
   line-height: 42px;

@@ -7,12 +7,21 @@
     }
 </style>
 
+<<<<<<< Updated upstream
 <head>
     <meta charset="utf-8" />
     <title>Iniciar Sesion| Hyper - Honestidad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
+=======
+    <head>
+        <meta charset="utf-8" />
+        <title>Iniciar Sesion| Honestidad</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+>>>>>>> Stashed changes
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -27,6 +36,7 @@
     <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
+<<<<<<< Updated upstream
 <body class="authentication-bg">
     <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
         <div class="container">
@@ -50,6 +60,45 @@
                                     acceder al panel de administración.</p>
                             </div>
 
+=======
+                            <div class="card-body p-4">
+
+                            <div class="text-center w-75 m-auto">
+                                    <h4 class="text-dark-50 text-center pb-0 fw-bold">Iniciar sesión</h4>
+                                    <p class="text-muted mb-4">Ingrese su dirección de correo electrónico y contraseña para acceder al panel de administración.</p>
+                                </div>
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">{{ __('Correo Electronico') }}</label>
+
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Ingrese correo electronico">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">{{ __('Password') }}</label>
+
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete placeholder="Ingrese Contraseña">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+>>>>>>> Stashed changes
 
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
@@ -67,7 +116,15 @@
                                     @enderror
                                 </div>
 
+<<<<<<< Updated upstream
                                 <div class="mb-3">
+=======
+                        <div class="text-center w-75 m-auto">
+                            <div class="center">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Login') }}
+                                </button>
+>>>>>>> Stashed changes
 
                                     <label for="password" class="form-label">Contraseña</label>
                                     <div class="input-group input-group-merge">
