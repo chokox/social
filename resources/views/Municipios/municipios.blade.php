@@ -22,23 +22,59 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($catalogo as $item)
-                                    <tr>
-                                        <td>{{ $item['folio'] }}</td>
-                                        <td>{{ $item['nombre'] }}</td>
-                                        <td>{{ $item['region'] }}</td>
-                                        <td>{{ $item['distrito'] }}</td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signup-modal"
-                                            data-target="#modalEditarMunicipio{{ $item['id_municipio'] }}">
-                                                <i class="material-icons ">Editar</i>
-                                            </button>
-                                            
-                                        </td>   
-                                    </tr>
-                                    <!--modal editar municipios-->
-                                    
-                                    <!--modal editar municipios-->
+                            @foreach ($catalogo as $item)
+                                <tr>
+                                    <td>{{ $item['folio'] }}</td>
+                                    <td>{{ $item['nombre'] }}</td>
+                                    <td>{{ $item['region'] }}</td>
+                                    <td>{{ $item['distrito'] }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signup-modal"
+                                        data-target="#modalEditarMunicipio{{ $item['id_municipio'] }}">
+                                            <i class="material-icons ">Editar</i>
+                                        </button>
+                                        
+                                    </td>   
+                                </tr>
+                                <!--modal editar municipios-->
+                                <div id="modalEditarMunicipio{{ $item['id_municipio'] }}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" > Editar Municipios </h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form method="POST"
+                                            action="{{ route('catalogo_municipios.update', $item['id_municipio']) }}">
+                                            @csrf
+                                            @method('PUT')
+                                                <div class="modal-body">
+                                                    <div class=" mb-3">
+                                                        <label >Folio</label>
+                                                        <input type="text" class="form-control form-control-sm" name="txtFolio" placeholder="{{ $item['folio'] }}" />
+                                                    </div>
+                                                    <div class=" mb-3">
+                                                        <label >Municipio</label>
+                                                        <input type="text" class="form-control form-control-sm" name="txtMunicipio" placeholder="{{ $item['nombre'] }}"   />
+                                                    </div>
+                                                    <div class=" mb-3">
+                                                        <label >Region</label>
+                                                        <input type="text" class="form-control form-control-sm" name="txtRegion" placeholder="{{ $item['region'] }}"  />
+                                                    </div>
+                                                    <div class=" mb-3">
+                                                        <label >Distrito</label>
+                                                        <input type="text" class="form-control form-control-sm" name="txtDistrito" placeholder="{{ $item['distrito'] }}" />
+                                                    </div>   
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit"  class="btn btn-primary">Guardar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--modal editar municipios-->
                                 @endforeach
                             </tbody>
                         </table>

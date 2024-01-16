@@ -17,79 +17,92 @@
                 </div>
             </div>
 
-            <ul class="nav nav-tabs mb-3">
-                <li class="nav-item">
-                    <a href="#home" data-bs-toggle="tab" aria-expanded="true" class="nav-link active">
-                        <i class="mdi mdi-home-variant d-md-none d-block"></i>
-                        <span class="d-none d-md-block"> Ejercicio 2024</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#profile" data-bs-toggle="tab" aria-expanded="false" class="nav-link ">
-                        <i class="mdi mdi-account-circle d-md-none d-block"></i>
-                        <span class="d-none d-md-block"> Ejercicio 2023</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#settings" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
-                        <i class="mdi mdi-settings-outline d-md-none d-block"></i>
-                        <span class="d-none d-md-block"> Ejercicio 2022</span>
-                    </a>
-                </li>
-            </ul>
-            
-            <div class="tab-content">
-                <div class="tab-pane show active" id="home">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="ejercicioAño-select" class="form-label">Año</label>
+                                <select class="form-select selectpicker" id="ejercicioAño-select" data-width="auto" style="max-width: 150px;">
+                                    <option value="2024">Ejercicio 2024</option>
+                                    <option value="2023">Ejercicio 2023</option>
+                                    <option value="2022">Ejercicio 2022</option>
+                                    <option value="2021">Ejercicio 2021</option>
+                                    <option value="2020">Ejercicio 2020</option>
+                                </select>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane show active" id="scroll-horizontal-preview">
+                                    <table id="scroll-horizontal-datatable" class="table table-striped w-100 nowrap">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th>Región</th>
+                                                <th>Total de Comités</th>
+                                                <th>Total de Integrantes</th>
+                                                <th>Integrantes Mujeres</th>
+                                                <th>Integrantes Hombres</th>
+                                                <th>Hablan lengua indígena</th>
+                                                {{--  <th>Municipios con solo mujeres</th>
+                                               <th>Municipios con solo hombres</th>
+                                                <th>Municipios con al menos una mujer</th> --}}
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $totalComites = 0;
+                                                $totalIntegrantes = 0;
+                                                $totalMujeres = 0;
+                                                $totalHombres = 0;
+                                                $totalHablanLenguaIndigena = 0;
+                                            @endphp
+                                        
+                                            @foreach ($totComites as $itemA)
+                                                <tr>
+                                                    <td>{{ $itemA['region'] }}</td>
+                                                    <td>{{ $itemA['total'] }}</td>
+                                        
+                                                    @php
+                                                        $totalComites += $itemA['total'];
+                                                    @endphp
+                                        
+                                                    @foreach ($totintegrantes as $itemB)
+                                                        @if ($itemA['region'] == $itemB['region'])
+                                                            <td>{{ $itemB['totalIntegrantes'] }}</td>
+                                                            <td>{{ $itemB['total_mujeres'] }}</td>
+                                                            <td>{{ $itemB['total_hombres'] }}</td>
+                                                            <td>{{ $itemB['total_hablan_lengua_indigena'] }}</td>
+                                        
 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="tab-content">
-                                        <div class="tab-pane show active" id="datatable-municipios-preview">
-                                            <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Región</th>
-                                                        <th>Total de Comités</th>
-                                                        <th>Total de Integrantes</th>
-                                                        <th>Integrantes Mujeres</th>
-                                                        <th>Integrantes Hombres</th>
-                                                        <th>Hablan lengua indígena</th>
-                                                        <th>Municipios con solo mujeres</th>
-                                                        <th>Municipios con solo hombres</th>
-                                                        <th>Municipios con al menos una mujer</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                   {{--  @foreach ($catalogo as $item)
-                                                        <tr>
-                                                            <td>{{ $item['folio'] }}</td>
-                                                            <td>{{ $item['nombre'] }}</td>
-                                                            <td>{{ $item['region'] }}</td>
-                                                            <td>{{ $item['distrito'] }}</td>
-                                                        </tr>
-                                                    @endforeach --}}
-                                                </tbody>
-                                            </table>
-                                        </div> 
-                                    </div> 
+                                                            @php
+                                                                $totalIntegrantes += $itemB['totalIntegrantes'];
+                                                                $totalMujeres += $itemB['total_mujeres'];
+                                                                $totalHombres += $itemB['total_hombres'];
+                                                                $totalHablanLenguaIndigena += $itemB['total_hablan_lengua_indigena'];
+                                                            @endphp
+                                                        @endif
+                                                    @endforeach
+                                                </tr>
+                                            @endforeach
+                                        
+                                        </tbody>
+                                        <tr style="font-weight: bold; font-size: larger; background-color: black; color: white;">
+                                            <td>TOTAL</td>
+                                            <td>{{ $totalComites }}</td>
+                                            <td>{{ $totalIntegrantes }}</td>
+                                            <td>{{ $totalMujeres }}</td>
+                                            <td>{{ $totalHombres }}</td>
+                                            <td>{{ $totalHablanLenguaIndigena }}</td>
+                                        </tr>
+                                        
+                                    </table>
                                 </div> 
                             </div> 
-                        </div>
-                    </div>
-
-                </div>
-                <div class="tab-pane" id="profile">
-                    <p>2023</p>
-                </div>
-                <div class="tab-pane" id="settings">
-                    <p>2022</p>
+                            
+                        </div> 
+                    </div> 
                 </div>
             </div>
-            
 
-            
         </div>
     </div>
 </div>

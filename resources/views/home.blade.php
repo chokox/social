@@ -4,12 +4,10 @@
 <div class="content-page">
     <div class="content">
         <div class="container-fluid">
-
-                    {{ __('You are logged in!') }}
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">Informacion General</h4>
+                        <h2 class="page-title">Información General</h2>
                     </div>
                 </div>
             </div>
