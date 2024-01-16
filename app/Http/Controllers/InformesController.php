@@ -14,11 +14,15 @@ class InformesController extends Controller
 {
     public function resumenAcreditaciones()
     {
-        $totComites = AcreditacionComite::ContarPorRegion(now()->year)->get();
-        $totintegrantes = IntegrantesComite::ContarPorIntegrantes(now()->year)->get();
+       
        //;$sqlQuery = $totComites->toSql();
        // dd ($sqlQuery); 
-         return view('Informe/ResumenAcreditaciones');
+    $defaultYear = 2023; // Año por defecto
+    $totComites = AcreditacionComite::ContarPorRegion($defaultYear)->get();
+    $totintegrantes = IntegrantesComite::ContarPorIntegrantes($defaultYear)->get();
+
+    return view('Informe/ResumenAcreditaciones',compact('totComites', 'totintegrantes'));
+         
    
-    }//10227 10222
+    }
 }

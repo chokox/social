@@ -38,4 +38,6 @@ Route::resource('/catalogo_municipios', 'App\Http\Controllers\MunicipioControlle
 Route::resource('/catalogo_usuarios', 'App\Http\Controllers\UserController');
 //RUTAS DE RESUMEN DE ACREDITACIOENS
 Route::get('/resumen_acreditaciones', 'App\Http\Controllers\InformesController@resumenAcreditaciones')->name('resumenAcreditaciones');
+
 });
+
