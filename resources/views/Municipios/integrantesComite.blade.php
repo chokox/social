@@ -25,7 +25,7 @@
                                 </div>
                                 <br>
                                 <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
-                                    <thead>
+                                    <thead class="table-dark">
                                         <tr>
                                             <th>Nombre</th>
                                             <th>Sexo</th>

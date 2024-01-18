@@ -33,8 +33,8 @@
                             </div>
                             <div class="tab-content">
                                 <div class="tab-pane show active" id="scroll-horizontal-preview">
-                                    <table id="scroll-horizontal-datatable" class="table table-striped w-100 nowrap">
-                                        <thead class="table-dark">
+                                    <table  id="scroll-horizontal-datatable" class="table nowrap order-column w-100">
+                                        <thead class="table-dark ">
                                             <tr>
                                                 <th>Región</th>
                                                 <th>Total de Comités</th>
@@ -42,9 +42,9 @@
                                                 <th>Integrantes Mujeres</th>
                                                 <th>Integrantes Hombres</th>
                                                 <th>Hablan lengua indígena</th>
-                                                {{--  <th>Municipios con solo mujeres</th>
-                                               <th>Municipios con solo hombres</th>
-                                                <th>Municipios con al menos una mujer</th> --}}
+                                                <th>Municipios con solo mujeres</th>
+                                                <th>Municipios con solo hombres</th>
+                                                <th>Municipios con al menos una mujer</th> 
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -54,6 +54,10 @@
                                                 $totalMujeres = 0;
                                                 $totalHombres = 0;
                                                 $totalHablanLenguaIndigena = 0;
+                                                $totalMunicipiosMujeres = 0;
+                                                $totalMunicipiosHombres = 0;
+                                                $totalMunipiosAlmenosMujer = 0;
+                                                
                                             @endphp
                                         
                                             @foreach ($totComites as $itemA)
@@ -71,6 +75,9 @@
                                                             <td>{{ $itemB['total_mujeres'] }}</td>
                                                             <td>{{ $itemB['total_hombres'] }}</td>
                                                             <td>{{ $itemB['total_hablan_lengua_indigena'] }}</td>
+                                                            <td>{{ $itemB['municipios_solo_mujeres'] }}</td>
+                                                            <td>{{ $itemB['municipios_solo_hombres'] }}</td>
+                                                            <td>{{ $itemB['municipios_al_menos_una_mujer'] }}</td>
                                         
 
                                                             @php
@@ -78,22 +85,26 @@
                                                                 $totalMujeres += $itemB['total_mujeres'];
                                                                 $totalHombres += $itemB['total_hombres'];
                                                                 $totalHablanLenguaIndigena += $itemB['total_hablan_lengua_indigena'];
+                                                                $totalMunicipiosMujeres += $itemB['municipios_solo_mujeres'];
+                                                                $totalMunicipiosHombres += $itemB['municipios_solo_hombres'];
+                                                                $totalMunipiosAlmenosMujer += $itemB['municipios_al_menos_una_mujer'];
                                                             @endphp
                                                         @endif
                                                     @endforeach
                                                 </tr>
                                             @endforeach
-                                        
                                         </tbody>
-                                        <tr style="font-weight: bold; font-size: larger; background-color: black; color: white;">
+                                        <tr style="font-weight: bold;">
                                             <td>TOTAL</td>
                                             <td>{{ $totalComites }}</td>
                                             <td>{{ $totalIntegrantes }}</td>
                                             <td>{{ $totalMujeres }}</td>
                                             <td>{{ $totalHombres }}</td>
                                             <td>{{ $totalHablanLenguaIndigena }}</td>
+                                            <td>{{ $totalMunicipiosMujeres }}</td>
+                                            <td>{{ $totalMunicipiosHombres }}</td>
+                                            <td>{{ $totalMunipiosAlmenosMujer }}</td>
                                         </tr>
-                                        
                                     </table>
                                 </div> 
                             </div> 
@@ -106,7 +117,9 @@
         </div>
     </div>
 </div>
+<script>
 
+</script>
 @endsection
  
 

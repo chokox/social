@@ -20,7 +20,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
-                                    <thead>
+                                    <thead class="table-dark">
                                         <tr>
                                             <th>Folio</th>
                                             <th>Region</th>
