@@ -15,7 +15,7 @@
     <meta content="Coderthemes" name="author" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="imagenes/favicon.ico">
 
     <!-- Theme Config Js -->
     <script src="{{ asset('js/hyper-config.js') }}"></script>
@@ -27,9 +27,9 @@
     <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
-<body class="authentication-bg">
-    <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
-        <div class="container">
+<body class="authentication-bg" >
+    <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5" >
+        <div class="container" style="background-image: url('img/escudo-greca.png');">
             <div class="row justify-content-center">
                 <div class="col-xxl-6 col-lg-5">
                     <div class="card">

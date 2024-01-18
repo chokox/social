@@ -90,29 +90,29 @@
                                 Marco Legal<div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
-                                <a href="inicio.blade.php?c=Public&a=ShowPDF&pdf=CONSTITUCION POLITICA DE LOS ESTADOS UNIDOS MEXICANOS.pdf"
+                                <a target="_blank" href="{{ asset('files/CONSTITUCION POLITICA DE LOS ESTADOS UNIDOS MEXICANOS.pdf')}}"
                                     class="dropdown-item">CONSTITUCIÓN POLITICA DE LOS ESTADOS UNIDOS MEXICANOS</a>
-                                <a href="index.html" class="dropdown-item">CONSTITUCIÓN POLÍTICA DEL ESTADO LIBRE Y
+                                <a target="_blank" href="{{ asset('files/CONSTITUCION POLITICA DEL ESTADO LIBRE Y SOBERANO DE OAXACA.pdf') }}" class="dropdown-item">CONSTITUCIÓN POLÍTICA DEL ESTADO LIBRE Y
                                     SOBERANO
                                     DE OAXACA</a>
-                                <a href="dashboard-projects.html" class="dropdown-item">LEY ORGANICA MUNICIPAL DEL
+                                <a target="_blank" href="{{ asset('files/LEY ORGANICA MUNICIPAL DEL ESTADO DE OAXACA.pdf') }}" class="dropdown-item">LEY ORGANICA MUNICIPAL DEL
                                     ESTADO DE
                                     OAXACA</a>
-                                <a href="dashboard-crm.html" class="dropdown-item">LEY ORGANICA DEL PODER EJECUTIVO
+                                <a target="_blank" href="{{ asset('files/LEY ORGANICA DEL PODER EJECUTIVO DEL ESTADO DE OAXACA.pdf') }}" class="dropdown-item">LEY ORGANICA DEL PODER EJECUTIVO
                                     DEL
                                     ESTADO DE OAXACA</a>
-                                <a href="dashboard-wallet.html" class="dropdown-item">LEY DE TRANSPARENCIA, ACCESO A
+                                <a target="_blank" href="{{ asset('files/LEY DE TRANSPARENCIA, ACCESO A LA INFORMACION PUBLICA Y BUEN GOBIERNO DEL ESTADO DE OAXACA.pdf') }}" class="dropdown-item">LEY DE TRANSPARENCIA, ACCESO A
                                     LA
                                     INFORMACION PUBLICA <br> Y BUEN GOBIERNO DEL ESTADO DE OAXACA</a>
-                                <a href="dashboard-wallet.html" class="dropdown-item">LINEAMIENTOS PARA LA
+                                <a target="_blank" href="{{ asset('files/LINEAMIENTOS PARA LA INTEGRACION, FUNCIONAMIENTO Y PROMOCION DE LA CONTRALORIA SOCIAL EN EL ESTADO DE OAXACA.pdf') }}" class="dropdown-item">LINEAMIENTOS PARA LA
                                     INTEGRACIÓN,
                                     FUNCIONAMIENTO Y <br>PROMOCIÓN DE LA CONTRALORÍA SOCIAL EN EL ESTADO DE OAXACA</a>
-                                <a href="dashboard-wallet.html" class="dropdown-item">REGLAMENTO INTERNO DE LA
+                                <a target="_blank" href="{{ asset('files/REGLAMENTO INTERNO DE LA SECRETARIA DE HONESTIDAD, TRANSPARENCIA Y FUNCION PUBLICA.pdf') }}" class="dropdown-item">REGLAMENTO INTERNO DE LA
                                     SECRETARÍA
                                     DE HONESTIDAD, <br>TRANSPARENCIA Y FUNCIÓN PÚBLICA</a>
-                                <a href="dashboard-wallet.html" class="dropdown-item">CONVENIO DE COLABORACIÓN
+                                <a target="_blank" href="{{ asset('files/CONVENIO DE COLABORACION COPLADE-SCTG.pdf') }}" class="dropdown-item">CONVENIO DE COLABORACIÓN
                                     COPLADE-SCTG</a>
-                                <a href="dashboard-wallet.html" class="dropdown-item">CIRCULAR PARA LA FORMALIZACIÓN
+                                <a target="_blank" href="{{ asset('files/CIRCULAR PARA LA FORMALIZACION DE LA ACREDITACION.pdf') }}" class="dropdown-item">CIRCULAR PARA LA FORMALIZACIÓN
                                     DE LA
                                     ACREDITACIÓN Y <br>ENTREGA DE RESPORTES EN MATERIA DE CONTRALORÍA SOCIAL</a>
                             </div>
@@ -123,14 +123,14 @@
                                 Buzones<div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
-                                <a href="inicio.blade.php?c=Public&a=ShowPDF&pdf=CONSTITUCION POLITICA DE LOS ESTADOS UNIDOS MEXICANOS.pdf"
+                                <a target="_blank" href="{{ asset('files/BUZONES DE ATENCION CIUDADANA.pdf') }}"
                                     class="dropdown-item">¿Qué es?</a>
-                                <a href="index.html" class="dropdown-item">Resultados buzones de atención ciudadana
+                                <a target="_blank" href="{{ asset('files/RESULTADOS BUZONES DE ATENCION CIUDADANA.pdf') }}" class="dropdown-item">Resultados buzones de atención ciudadana
                                     2023</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle arrow-none" target="_blank" href="{{ asset('files/RESULTADOS EVALUAR PARA MEJORAR.pdf') }}" role="button"
+                                 aria-haspopup="true" aria-expanded="false">
                                 Resultados 2023<div class="arrow-down"></div>
                             </a>
                         <li class="nav-item dropdown">
@@ -139,11 +139,8 @@
                                 Presupuesto ciudadano<div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
-                                <a target="_blank" href="{{ asset('files/PROMOCION DE CONTRALORIA SOCIAL.pdf') }}"
-                                    class="dropdown-item">2023</a>
-                                <a target="_blank"
-                                    href="{{ asset('files/CAPACITACIONES A COMITES DE CONTRALORIA SOCIAL.pdf') }}"
-                                    class="dropdown-item">2022</a>
+                                <a target="_blank" href="{{ route('presupuesto2023') }}"class="dropdown-item">2023</a>
+                                <a href="{{ route('presupuesto2022') }}" class="dropdown-item">2022</a>
                             </div>
                         </li>
                     </ul>
@@ -151,7 +148,7 @@
                     <!-- right menu -->
                     <ul class="navbar-nav ms-auto align-items-center">
                         <li class="nav-item me-0">
-                        <a type="button" class="btn btn-dark rounded-pill" href="{{ route('login') }}"><i class="ri-key-fill"></i> Iniciar sesion</a>
+                        <a type="button"  class="btn btn-info rounded-pill" href="{{ route('login') }}"><i class="ri-key-fill"></i> Iniciar sesion</a>
                         </li>
                     </ul>
             </div>

@@ -19,6 +19,8 @@ Route::get('/', function () {
 //RUTAS MICROSITIO
 Route::view('contraloriasocial','/micrositio/contraloriasocial')->name('contraloriasocial');
 Route::view('formatos','/micrositio/formatos')->name('formatos');
+Route::view('presupuesto2023','/micrositio/presupuesto2023')->name('presupuesto2023');
+Route::view('presupuesto2022','/micrositio/presupuesto2022')->name('presupuesto2022');
 Route::view('inicio','/welcome')->name('inicio');
 Auth::routes();
 

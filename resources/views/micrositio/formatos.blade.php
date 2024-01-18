@@ -6,6 +6,8 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <h1 class="mt-0"></h1>
+                            <img class="mx-auto d-block" style="width: 30%;"
+                                src="{{ asset('imagenes/Acreditacion.svg') }}" height="100" alt="">
                             <h3>Formatos <span class="text-primary">Acreditación de Comités </span>de Contraloria Social</h3>
                         </div>
                     </div>
@@ -81,6 +83,8 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <h1 class="mt-0"></h1>
+                            <img class="mx-auto d-block" style="width: 30%;"
+                                src="{{ asset('imagenes/seguimiento.svg') }}" height="100" alt="">
                             <h3>Formatos <span class="text-primary">Reportes de vigilancia </span></h3>
                         </div>
                     </div>
@@ -94,7 +98,7 @@
                                     <i class="ri-article-line text-primary font-24"></i>
                                 </span>
                             </div>
-                            <h4><a target="_blank" class="mt-3" href="{{asset('files/SOLICITUD DE INFORMACION.pdf')}}">Solicitud de información<</a></h4>
+                            <h4><a target="_blank" class="mt-3" href="{{asset('files/SOLICITUD DE INFORMACION.pdf')}}">Solicitud de información</a></h4>
                         </div>
                     </div>
 
