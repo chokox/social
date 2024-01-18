@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//RUTAS MICROSITIO
+Route::view('contraloriasocial','/micrositio/contraloriasocial')->name('contraloriasocial');
+Route::view('formatos','/micrositio/formatos')->name('formatos');
+Route::view('inicio','/welcome')->name('inicio');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -39,6 +42,7 @@ Route::resource('/catalogo_municipios', 'App\Http\Controllers\MunicipioControlle
 Route::resource('/catalogo_usuarios', 'App\Http\Controllers\UserController');
 //RUTAS DE RESUMEN DE ACREDITACIOENS
 Route::get('/resumen_acreditaciones', 'App\Http\Controllers\InformesController@resumenAcreditaciones')->name('resumenAcreditaciones');
+
 
 });
 

@@ -19373,13 +19373,12 @@ html[data-theme=dark] .text-secondary {
 
 .hero-section {
     position: relative;
-    padding: -10px 0 -10px 0
 }
 
 .hero-section:after {
     content: " ";
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#6379c3), to(#546ee5));
-    background-image: linear-gradient(to bottom, #6379c3, #546ee5);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#0098D4), to(#0098D4));
+    background-image: linear-gradient(to bottom, #0098D4, #0098D4);
     position: absolute;
     top: -400px;
     right: 0;
@@ -19392,7 +19391,7 @@ html[data-theme=dark] .text-secondary {
 }
 
 .hero-section .hero-title {
-    line-height: 50px
+    line-height: 70px
 }
 
 .auth-brand {
