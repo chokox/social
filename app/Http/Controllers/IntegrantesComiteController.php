@@ -6,6 +6,7 @@ use App\Models\IntegrantesComite;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Storage;
+use App\Models\AcreditacionComite;
 
 class IntegrantesComiteController extends Controller
 {
@@ -55,6 +56,13 @@ class IntegrantesComiteController extends Controller
         $registro->observacion_carta = $request->input('obs_carta');
         $registro->observacion_constancia = $request->input('obs_constancia');
         $registro->save();
+
+        $integrantes = IntegrantesComite::ContarPorComite(now()->year, $request->input('id_comite'))->count();
+        if ($integrantes >= 2) {
+            $dato = AcreditacionComite::find($request->input('id_comite'));
+            $dato->estatus = '1';
+            $dato->save();
+        }
 
         Alert::success('Integrante agregado', null);
         return back();

@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="utf-8" />
-    <title> Contraloria Social| Honestidad</title>
+    <title> Contraloría Social| Honestidad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="imagenes/favicon48.ico">
+    <link rel="shortcut icon" href="imagenes/favicon.ico">
 
     <!-- Theme Config Js -->
     <script src="{{ asset('js/hyper-config.js') }}"></script>
@@ -25,12 +25,12 @@
 <body>
 
     <!-- NAVBAR START -->
-    <nav class="navbar navbar-expand-lg py-lg-3 navbar-dark">
+    <nav class="navbar navbar-expand-lg py-lg-1 navbar-dark">
         <div class="container">
 
             <!-- logo -->
             <a href="index.html" class="navbar-brand me-lg-1">
-                <img src="imagenes/logo_social.png" alt="logo" class="logo-dark" height="150" />
+                <img src="imagenes/ConSocial1.svg" alt="logo" class="logo-dark" height="80" />
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -43,45 +43,114 @@
 
                 <!-- left menu -->
                 <ul class="navbar-nav me-auto align-items-center">
-                    <li class="nav-item mx-lg-1">
-                        <a class="nav-link active" href="">Contraloria Social</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" role="button" aria-haspopup="true"
+                            aria-expanded="false" href="{{ route('inicio') }}">Inicio</a>
                     </li>
-                    <li class="nav-item mx-lg-1">
-                        <a class="nav-link" href="">Requisitos</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" role="button" aria-haspopup="true"
+                            aria-expanded="false" href="{{ route('contraloriasocial') }}">Contraloria Social</a>
                     </li>
-                    <li class="nav-item mx-lg-1">
-                        <a class="nav-link" href="">Capacitaciones</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Requisitos<div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
+                            <a target="_blank"
+                                href="{{ asset('files/REQUISITOS PARA SER INTEGRANTE DEL COMITE DE CONTRALORIA SOCIAL.pdf') }}"
+                                class="dropdown-item">Requisitos para ser Integrante del Comité de Contraloría
+                                Social</a>
+                            <a target="_blank"
+                                href="{{ asset('files/REQUISITOS PARA ACREDITAR AL COMITE DE CONTRALORIA SOCIAL  ANTE LA SHTFP.pdf') }}"
+                                class="dropdown-item">Requisitos para Acreditar al Comité de la Contraloría Social ante
+                                la SHTFP</a>
                     </li>
-                    <li class="nav-item mx-lg-1">
-                        <a class="nav-link" href="">Formatos</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Capacitaciones<div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
+                            <a target="_blank" href="{{ asset('files/PROMOCION DE CONTRALORIA SOCIAL.pdf') }}"
+                                class="dropdown-item">Promoción de Contraloría Social</a>
+                            <a target="_blank"
+                                href="{{ asset('files/CAPACITACIONES A COMITES DE CONTRALORIA SOCIAL.pdf') }}"
+                                class="dropdown-item">Capacitación a Comités de Contraloría Social</a>
+                        </div>
                     </li>
-                    <li class="nav-item mx-lg-1">
-                        <a class="nav-link" href="">Marco Legal</a>
-                    </li>
-                    <li class="nav-item mx-lg-1">
-                        <a class="nav-link" href="">Resultados 2023</a>
-                    </li>
-                    <li class="nav-item mx-lg-1">
-                        <a class="nav-link" href="">Presupuesto Ciudadano</a>
-                    </li>
-                    <li class="nav-item mx-lg-1">
-                        <a class="nav-link" href="">Buzones</a>
-                    </li>
-                    <li class="nav-item mx-lg-1">
-                        <a class="nav-link" href="">Buzones</a>
-                    </li>
-                </ul>
+                    <ul class="navbar-nav me-auto align-items-center">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle arrow-none" role="button" aria-haspopup="true"
+                                aria-expanded="false" href="{{ route('formatos') }}">Formatos</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Marco Legal<div class="arrow-down"></div>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
+                                <a target="_blank" href="{{ asset('files/CONSTITUCION POLITICA DE LOS ESTADOS UNIDOS MEXICANOS.pdf')}}"
+                                    class="dropdown-item">CONSTITUCIÓN POLITICA DE LOS ESTADOS UNIDOS MEXICANOS</a>
+                                <a target="_blank" href="{{ asset('files/CONSTITUCION POLITICA DEL ESTADO LIBRE Y SOBERANO DE OAXACA.pdf') }}" class="dropdown-item">CONSTITUCIÓN POLÍTICA DEL ESTADO LIBRE Y
+                                    SOBERANO
+                                    DE OAXACA</a>
+                                <a target="_blank" href="{{ asset('files/LEY ORGANICA MUNICIPAL DEL ESTADO DE OAXACA.pdf') }}" class="dropdown-item">LEY ORGANICA MUNICIPAL DEL
+                                    ESTADO DE
+                                    OAXACA</a>
+                                <a target="_blank" href="{{ asset('files/LEY ORGANICA DEL PODER EJECUTIVO DEL ESTADO DE OAXACA.pdf') }}" class="dropdown-item">LEY ORGANICA DEL PODER EJECUTIVO
+                                    DEL
+                                    ESTADO DE OAXACA</a>
+                                <a target="_blank" href="{{ asset('files/LEY DE TRANSPARENCIA, ACCESO A LA INFORMACION PUBLICA Y BUEN GOBIERNO DEL ESTADO DE OAXACA.pdf') }}" class="dropdown-item">LEY DE TRANSPARENCIA, ACCESO A
+                                    LA
+                                    INFORMACION PUBLICA <br> Y BUEN GOBIERNO DEL ESTADO DE OAXACA</a>
+                                <a target="_blank" href="{{ asset('files/LINEAMIENTOS PARA LA INTEGRACION, FUNCIONAMIENTO Y PROMOCION DE LA CONTRALORIA SOCIAL EN EL ESTADO DE OAXACA.pdf') }}" class="dropdown-item">LINEAMIENTOS PARA LA
+                                    INTEGRACIÓN,
+                                    FUNCIONAMIENTO Y <br>PROMOCIÓN DE LA CONTRALORÍA SOCIAL EN EL ESTADO DE OAXACA</a>
+                                <a target="_blank" href="{{ asset('files/REGLAMENTO INTERNO DE LA SECRETARIA DE HONESTIDAD, TRANSPARENCIA Y FUNCION PUBLICA.pdf') }}" class="dropdown-item">REGLAMENTO INTERNO DE LA
+                                    SECRETARÍA
+                                    DE HONESTIDAD, <br>TRANSPARENCIA Y FUNCIÓN PÚBLICA</a>
+                                <a target="_blank" href="{{ asset('files/CONVENIO DE COLABORACION COPLADE-SCTG.pdf') }}" class="dropdown-item">CONVENIO DE COLABORACIÓN
+                                    COPLADE-SCTG</a>
+                                <a target="_blank" href="{{ asset('files/CIRCULAR PARA LA FORMALIZACION DE LA ACREDITACION.pdf') }}" class="dropdown-item">CIRCULAR PARA LA FORMALIZACIÓN
+                                    DE LA
+                                    ACREDITACIÓN Y <br>ENTREGA DE RESPORTES EN MATERIA DE CONTRALORÍA SOCIAL</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Buzones<div class="arrow-down"></div>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
+                                <a target="_blank" href="{{ asset('files/BUZONES DE ATENCION CIUDADANA.pdf') }}"
+                                    class="dropdown-item">¿Qué es?</a>
+                                <a target="_blank" href="{{ asset('files/RESULTADOS BUZONES DE ATENCION CIUDADANA.pdf') }}" class="dropdown-item">Resultados buzones de atención ciudadana
+                                    2023</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle arrow-none" target="_blank" href="{{ asset('files/RESULTADOS EVALUAR PARA MEJORAR.pdf') }}" role="button"
+                                 aria-haspopup="true" aria-expanded="false">
+                                Resultados 2023<div class="arrow-down"></div>
+                            </a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Presupuesto ciudadano<div class="arrow-down"></div>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
+                                <a target="_blank" href="{{ route('presupuesto2023') }}"class="dropdown-item">2023</a>
+                                <a href="{{ route('presupuesto2022') }}" class="dropdown-item">2022</a>
+                            </div>
+                        </li>
+                    </ul>
 
-                <!-- right menu -->
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item me-0">
-                        <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
-                            target="_blank" class="nav-link d-lg-none">Iniciar Sesion</a>
-                        <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
-                            target="_blank" class="btn btn-sm btn-light rounded-pill d-none d-lg-inline-flex">
-                            <i class="ri-key-fill"></i> Iniciar </a>
-                    </li>
-                </ul>
+                    <!-- right menu -->
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item me-0">
+                        <a type="button"  class="btn btn-info rounded-pill" href="{{ route('login') }}"><i class="ri-key-fill"></i> Iniciar sesion</a>
+                        </li>
+                    </ul>
             </div>
         </div>
     </nav>
@@ -90,14 +159,7 @@
     <!-- START HERO -->
     <section class="hero-section">
         <div class="container">
-            <div class="row align-items-center">
 
-                <div class="col-md-5 offset-md-2">
-                    <div class="text-md-end mt-3 mt-md-0">
-                        <img src="assets/images/svg/startup.svg" alt="" class="img-fluid" />
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <!-- END HERO -->
@@ -105,16 +167,15 @@
         <p></p>
     </div>
     @yield('content')
-
-
     <footer class="bg-dark py-3">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+            <div class="col-1"></div>
+                <div class="col-2">
                     <img src="imagenes/escudooax.png" alt="logo" class="logo-dark" height="40" />
-                    <p class="text-muted mt-4">Direccion de Contraloria Social</p>
+                    <br class="text-muted mt-4" >Direccion de Contraloria Social
 
-                    <ul class="social-list list-inline mt-3">
+                    <ul class="social-list list-inline mt-3" >
                         <li class="list-inline-item text-center">
                             <a href="https://www.facebook.com/HonestidadGobOax"
                                 class="social-list-item border-primary text-primary"><i
@@ -126,20 +187,18 @@
                         </li>
                     </ul>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="mt-1">
-                            <h4>
-                                <p class = "text-muted mt-4 text-center mb-0">
-                                    <br> Ciudad Administrativa (Edificio 2 “Rufino Tamayo”, Planta Baja)
-                                    <br> Carretera Internacional Oaxaca-Istmo, km. 11.5
-                                    <br> Tlalixtac de Cabrera, Oaxaca C.P. 68270
-                                </p>
-                            </h4>
-                        </div>
-                    </div>
+                <div class="col-1"></div>                
+                <div class="col-5">
+                    <h4>
+                        <p class = "text-center">
+                            <br> Ciudad Administrativa (Edificio 2 “Rufino Tamayo”, Planta Baja)
+                            <br> Carretera Internacional Oaxaca-Istmo, km. 11.5
+                            <br> Tlalixtac de Cabrera, Oaxaca C.P. 68270
+                        </p>
+                    </h4>
                 </div>
             </div>
+        </div>
     </footer>
     <!-- END FOOTER -->
     <!-- Vendor js -->
@@ -147,5 +206,9 @@
 
     <!-- App js -->
     <script src="{{ asset('js/app.min.js') }}"></script>
+
+    <!-- Remixicons Icons Demo js -->
+    <script src="{{ asset('js/pages/demo.remixicons.js') }}"></script>
 </body>
+
 </html>

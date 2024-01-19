@@ -26,7 +26,7 @@
                                             <th>Region</th>
                                             <th>Distrito</th>
                                             <th>Municipio</th>
-                                            <th>Fecha nombramiento/acreditacion</th>
+                                            <th>Atendido por</th>
                                             <th>Estatus</th>
                                             <th>Acciones</th>
                                         </tr>
@@ -35,29 +35,26 @@
                                         @foreach ($municipios as $mun)
                                             <tr>
                                                 @if (empty($mun->folio_comite))
-                                                    <td style="color: red">Sin comite</td>
+                                                    <td > S/F</td>
                                                 @else
                                                     <td>{{ $mun->folio_comite }}</td>
                                                 @endif
                                                 <td>{{ $mun->region }}</td>
                                                 <td>{{ $mun->distrito }}</td>
                                                 <td>{{ $mun->nombre }}</td>
-                                                @if (empty($mun->nombramiento))
-                                                    <td style="color: red">Sin comite</td>
-                                                @else
-                                                    <td>{{ $mun->nombramiento }}</td>
-                                                @endif
+                                                <td>{{ $mun->name }}</td>
+
                                                 @switch($mun->estatus ?? -1)
                                                     @case(0)
-                                                        <td style="color: green">Comité registrado</td>
+                                                        <td style="color:  orange">Comité registrado, falta documentacion e integrantes</td>
                                                     @break
 
                                                     @case(1)
-                                                        <td style="color: green">Comité e integrantes registrados</td>
+                                                        <td style="color:  orange">Comité e integrantes registrados, falta documentacion</td>
                                                     @break
 
                                                     @case(2)
-                                                        <td style="color: yellow">Información incompleta y/o faltan integrantes
+                                                        <td style="color:  orange">Comité y documentación registrados, faltan integrantes
                                                         </td>
                                                     @break
 
@@ -69,11 +66,15 @@
                                                         <td style="color: green">Comité validado</td>
                                                     @break
 
+                                                    @case(5)
+                                                        <td style="color: red">Revisar informacion</td>
+                                                    @break
+
                                                     @default
                                                         <td style="color: red">Sin comite</td>
                                                 @endswitch
                                                 <td>
-                                                    @if (empty($mun->folio_comite))
+                                                    @if (empty($mun->nombramiento))
                                                         <a type="button" class="btn btn-secondary" title="Registrar"
                                                             href="{{ route('crearComite', $mun->id_municipio) }}"><i
                                                                 class="ri-quill-pen-line"></i></a>
@@ -249,16 +250,28 @@
                                                             </div>
                                                         </div>
                                                         <!-- fin de modal documentacion comite -->
-                                                        <a type="button" class="btn btn-primary" title="Editar"
+                                                        <a type="button" class="btn btn-primary" title="Ver/Editar"
                                                             href="{{ route('comites.edit', $mun->id_acreditacion) }}"><i
-                                                                class="ri-pencil-fill"></i></a>
+                                                                class="ri-eye-fill"></i></a>
 
-                                                            @if ($mun->estatus != 4)
+                                                            @if ($mun->estatus == 3)
                                                         <a type="button" class="btn btn-primary"
-                                                            title="Informacion Completa"
+                                                            title="Validar"
                                                             href="{{ route('validarComite', $mun->id_acreditacion) }}"><i
                                                                 class="ri-thumb-up-fill"></i></a>
                                                                 @endif
+                                                                 @if ($mun->estatus != 5)
+                                                                <a type="button" class="btn btn-primary"
+                                                            title="Validar Informacion"
+                                                            href="{{ route('revisarComite', $mun->id_acreditacion) }}"><i
+                                                                class="ri-thumb-down-fill"></i></a>
+                                                                @endif
+                                                      {{--   @if ($mun->estatus == 4) --}}
+                                                                <a type="button" class="btn btn-primary"
+                                                            title="Constancia"
+                                                            href="{{ route('constancia_municipio', $mun->id_acreditacion) }}"><i
+                                                                class="ri-profile-line"></i></a>
+                                                            {{-- @endif --}}
                                                     @endif
                                                 </td>
                                             </tr>
