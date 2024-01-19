@@ -130,26 +130,76 @@ class IntegrantesComite extends Model
     ->join('acreditacion_comites as ac', 'ac.id_acreditacion', '=', 'ic.id_acreditacion_comite_fk')
     ->join('catalogo_municipios as cm', 'cm.id_municipio', '=', 'ac.id_catalogo_municipio_fk')
     ->where('ac.estatus', 4)
-    ->where('ac.ejercicio', $ejercicio);
-        if ($flag == 1) {
-            $query->where('cm.region', 'COSTA');
-        } elseif ($flag == 2) {
-            $query->where('cm.region', 'CUENCA DEL PAPALOAPAN');
-        } elseif ($flag == 3) {
-            $query->where('cm.region', 'ISTMO');
-        } elseif ($flag == 4) {
-            $query->where('cm.region', 'MIXTECA');
-        } elseif ($flag == 5) {
-            $query->where('cm.region', 'SIERRA DE FLORES MAGÓ');
-        } elseif ($flag == 6) {
-            $query->where('cm.region', 'SIERRA DE JUÁREZ');
-        } elseif ($flag == 7) {
-            $query->where('cm.region', 'SIERRA SUR');
-        } elseif ($flag == 8) {
-            $query->where('cm.region', 'VALLES CENTRALES');
-        } 
+    ->where('ac.ejercicio', $ejercicio)
+    ->where('cm.region', $flag);
+        
+    return $query;
+        
 
-        return $query;
+    }
+
+    public function scopeModalMunicipiosMujer($query, $ejercicio, $flag){
+        
+        return $query->selectRaw('
+        cm.region,
+        ac.folio_comite,
+        cm.nombre,
+        COUNT(DISTINCT CASE WHEN ic.sexo = "Mujer" AND NOT EXISTS (SELECT 1 FROM integrantes_comites AS sub_ic WHERE sub_ic.id_acreditacion_comite_fk = ac.id_acreditacion AND sub_ic.sexo = "Hombre") THEN ac.id_acreditacion END) AS municipios_solo_mujeres
+    ')
+    ->from('integrantes_comites AS ic')
+    ->join('acreditacion_comites as ac', 'ac.id_acreditacion', '=', 'ic.id_acreditacion_comite_fk')
+    ->join('catalogo_municipios as cm', 'cm.id_municipio', '=', 'ac.id_catalogo_municipio_fk')
+    ->where('ac.estatus', 4)
+    ->where('ac.ejercicio', $ejercicio)
+    ->where('cm.region', $flag)
+    ->groupBy('cm.region', 'ac.folio_comite', 'cm.nombre')
+    ->having('municipios_solo_mujeres', '=', 1);
+        
+    return $query;
+        
+
+    }
+
+    public function scopeModalMunicipiosHombre($query, $ejercicio, $flag){
+        
+        return $query->selectRaw('
+        cm.region,
+        ac.folio_comite,
+        cm.nombre,
+        COUNT(DISTINCT CASE WHEN ic.sexo = "Hombre" AND NOT EXISTS(SELECT 1 FROM integrantes_comites AS sub_ic WHERE sub_ic.id_acreditacion_comite_fk = ac.id_acreditacion AND sub_ic.sexo = "Mujer") THEN ac.id_acreditacion END) AS municipios_solo_hombres
+    ')
+    ->from('integrantes_comites AS ic')
+    ->join('acreditacion_comites as ac', 'ac.id_acreditacion', '=', 'ic.id_acreditacion_comite_fk')
+    ->join('catalogo_municipios as cm', 'cm.id_municipio', '=', 'ac.id_catalogo_municipio_fk')
+    ->where('ac.estatus', 4)
+    ->where('ac.ejercicio', $ejercicio)
+    ->where('cm.region', $flag)
+    ->groupBy('cm.region', 'ac.folio_comite', 'cm.nombre')
+    ->having('municipios_solo_hombres', '=', 1);
+        
+    return $query;
+        
+
+    }
+
+    public function scopeModalMunicipioAlMenosMujer($query, $ejercicio, $flag){
+        
+        return $query->selectRaw('
+        cm.region,
+        ac.folio_comite,
+        cm.nombre,
+        COUNT(DISTINCT CASE WHEN ic.sexo = "Mujer" AND (NOT EXISTS(SELECT 1 FROM integrantes_comites AS sub_ic WHERE sub_ic.id_acreditacion_comite_fk = ac.id_acreditacion AND sub_ic.sexo = "Hombre") OR EXISTS(SELECT 1 FROM integrantes_comites AS sub_ic WHERE sub_ic.id_acreditacion_comite_fk = ac.id_acreditacion AND sub_ic.sexo = "Mujer")) THEN ac.id_acreditacion END) AS municipios_al_menos_una_mujer
+        ')
+    ->from('integrantes_comites AS ic')
+    ->join('acreditacion_comites as ac', 'ac.id_acreditacion', '=', 'ic.id_acreditacion_comite_fk')
+    ->join('catalogo_municipios as cm', 'cm.id_municipio', '=', 'ac.id_catalogo_municipio_fk')
+    ->where('ac.estatus', 4)
+    ->where('ac.ejercicio', $ejercicio)
+    ->where('cm.region', $flag)
+    ->groupBy('cm.region', 'ac.folio_comite', 'cm.nombre')
+    ->having('municipios_al_menos_una_mujer', '=', 1);
+        
+    return $query;
         
 
     }

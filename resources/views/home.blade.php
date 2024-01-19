@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="content-page">
-    <div class="content">
-        <div class="container-fluid">
+    <div class="content" >
+        <div class="container-fluid" style="background-image: url('img/escudosara.png');">
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">

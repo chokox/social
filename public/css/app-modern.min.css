@@ -5873,8 +5873,8 @@ fieldset:disabled .btn {
     --ct-pagination-focus-bg: var(--ct-gray-200);
     --ct-pagination-focus-box-shadow: 0 0 0 0.15rem rgba(83, 109, 230, 0.25);
     --ct-pagination-active-color: #fff;
-    --ct-pagination-active-bg: #536de6;
-    --ct-pagination-active-border-color: #536de6;
+    --ct-pagination-active-bg:  #9D2449;
+    --ct-pagination-active-border-color:  #9D2449;
     --ct-pagination-disabled-color: var(--ct-gray-600);
     --ct-pagination-disabled-bg: var(--ct-card-bg-custom);
     --ct-pagination-disabled-border-color: var(--ct-gray-300);

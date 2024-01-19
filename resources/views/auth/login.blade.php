@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Iniciar Sesion| Hyper - Honestidad</title>
+    <title>Iniciar Sesion|Honestidad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -27,9 +27,9 @@
     <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
-<body class="authentication-bg" >
+<body class="authentication-bg" style="background-image: url('img/escudo-greca.png');">
     <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5" >
-        <div class="container" style="background-image: url('img/escudo-greca.png');">
+        <div class="container" >
             <div class="row justify-content-center">
                 <div class="col-xxl-6 col-lg-5">
                     <div class="card">
