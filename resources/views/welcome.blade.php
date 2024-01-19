@@ -31,6 +31,33 @@
         <div class="col-sm-1"></div>
         </div>
     </section>
+
+            <!-- START FEATURES 2 -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row mt-2 py-5 align-items-center">
+                    <div class="col-lg-5 col-md-6">
+                        <img src="{{asset('imagenes/logo_social.png')}}" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 offset-md-1 col-md-5">
+                    <div class="text-center">
+                            <h1 class="mt-0"><i class="ri-contacts-book-line"></i></h1>
+                            <h2> <span class="text-success">Directorio</span></h2>
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="fw-normal"><i class="mdi mdi-circle-medium text-primary"></i>Departamento de Seguimiento a Municipios</h3>
+                            <h4 class="fw-normal">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;951 501 50 00 ext. 10192, 11704, 10472</h4>
+                            <h3 class="fw-normal"><i class="mdi mdi-circle-medium text-primary"></i>Departamento de Seguimiento a Programas Sociales</h3>
+                            <h4 class="fw-normal">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;951 501 50 00 ext. 11702, 10493, 11706, 11703</h4>
+                            <h3 class="fw-normal"><i class="mdi mdi-circle-medium text-primary"></i>Departamento de Atención Ciudadana</h3>
+                            <h4 class="fw-normal">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;951 501 50 00 ext. 10203, 10440</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END FEATURES 2 -->
+    
         <!-- START SERVICES -->
     <section class="py-5">
         <div class="container">
@@ -160,7 +187,10 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
+                
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4">
                     <div class="text-center p-2 p-sm-3">
                         <div class=" m-auto">
                             <img class="mx-auto d-block" style="width: 30%;"
@@ -173,7 +203,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4">
                     <div class="text-center p-2 p-sm-3">
                         <div class="m-auto">
                             <img class="mx-auto d-block" style="width: 30%;"
