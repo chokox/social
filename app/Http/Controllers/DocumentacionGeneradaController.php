@@ -13,7 +13,7 @@ class DocumentacionGeneradaController extends Controller
     {
         $datos = CatalogoMunicipio::MunicipioYAcreditacion($id)->get();
         $meses3 = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-        $fecha3 = Carbon::parse($datos[0]->created_at);
+        $fecha3 = Carbon::parse($datos[0]->fecha_validado);
         $mes3 = $meses3[$fecha3->format('n') - 1];
         $input3 = $fecha3->format('d') . ' de ' . $mes3 . ' de ' . $fecha3->format('Y');
 
@@ -74,7 +74,7 @@ Directora de Contraloría Social</strong><br><br><br><br></div>
         $datos = IntegrantesComite::IntegranteComiteMunicipio($id)->get();
         
         $meses3 = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-        $fecha3 = Carbon::parse($datos[0]->created_at);
+        $fecha3 = Carbon::parse($datos[0]->fecha_validado);
         $mes3 = $meses3[$fecha3->format('n') - 1];
         $input3 = $fecha3->format('d') . ' de ' . $mes3 . ' de ' . $fecha3->format('Y');
 
