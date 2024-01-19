@@ -8,6 +8,7 @@
         <meta content="Coderthemes" name="author" />
         
         <!-- Theme Config Js -->
+        
         <script src="{{ asset('js/hyper-config.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
