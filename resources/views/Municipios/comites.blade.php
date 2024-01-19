@@ -266,12 +266,12 @@
                                                             href="{{ route('revisarComite', $mun->id_acreditacion) }}"><i
                                                                 class="ri-thumb-down-fill"></i></a>
                                                                 @endif
-                                                      {{--   @if ($mun->estatus == 4) --}}
+                                                         @if ($mun->estatus == 4) 
                                                                 <a type="button" class="btn btn-primary"
                                                             title="Constancia"
                                                             href="{{ route('constancia_municipio', $mun->id_acreditacion) }}"><i
                                                                 class="ri-profile-line"></i></a>
-                                                            {{-- @endif --}}
+                                                            @endif 
                                                     @endif
                                                 </td>
                                             </tr>

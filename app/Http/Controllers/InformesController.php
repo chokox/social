@@ -38,20 +38,11 @@ class InformesController extends Controller
         12 => 'diciembre',
     ];
 
-    //;$sqlQuery = $contraloresMensual->toSql();
-    //dd ($sqlQuery); 
-    return view('Informe/ResumenAcreditaciones',compact('totComites','totintegrantes','comitesMensual','contraloresMensual','meses'));
+    return view('Municipios/ResumenAcreditaciones',compact('totComites','totintegrantes','comitesMensual','contraloresMensual','meses'));
   
     }
 
-    public function modalIntegrantesResumen(Request $request){
-       // $defaultYear = 2023;
-       // $aux = $request->input('modalAux');
-       // $modalIntegrantes = IntegrantesComite::ModalIntegrantes($defaultYear,$aux)->get();
-       
-        return view('Informe/ModalIntegrantes');
-  
-    }
+
 
 
 

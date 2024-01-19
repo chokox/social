@@ -10,6 +10,7 @@
         <link rel="shortcut icon" href="imagenes/favicon.ico">
         
         <!-- Theme Config Js -->
+        
         <script src="{{ asset('js/hyper-config.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
@@ -140,6 +141,7 @@
                                     </div>
                                 </li>
                             
+                                 @if (Auth::user()->super() or Auth::user()->administrador())
                                  <!-- menu catalogo municipios -->
                                  <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-item arrow-none" href="{{ route('catalogo_municipios.index') }}" >
@@ -147,11 +149,13 @@
                                     </a>
                                 </li>
                                 <!-- menu catalogo usuarios -->
+                                 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle arrow-none" href="{{ route('catalogo_usuarios.index') }}" >
                                         <i class=" ri-contacts-line"></i>Usuarios 
                                     </a>
                                 </li>
+                                @endif
                                 
                             </ul>
                         </div>

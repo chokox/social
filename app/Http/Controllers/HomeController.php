@@ -23,8 +23,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        $defaultYear = date('Y');
-        //$defaultYear = '2023';
+        //$defaultYear = date('Y');
+        $defaultYear = '2023';
         $comitesAcreditados = AcreditacionComite::comitesAcreditados($defaultYear, 1)->first(); 
         $comitesNoAcreditados = AcreditacionComite::comitesAcreditados($defaultYear, 2)->first(); 
         $comitesTotal = AcreditacionComite::comitesAcreditados($defaultYear, 3)->first(); 

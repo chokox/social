@@ -155,6 +155,7 @@ class ComitesController extends Controller
         $dato->folio_comite = $folioMunicipio . ' ' . $numeroConsecutivoFormateado;
         $dato->id_user_autorizo_fk = Auth::id();
         $dato->estatus='4';
+        $dato->fecha_validado = now();
         $dato->save();
 
         Alert::success('Comite Validado', null);
