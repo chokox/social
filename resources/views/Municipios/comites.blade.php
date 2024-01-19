@@ -137,7 +137,7 @@
                                                                                                 href="{{ asset('storage/' . $mun->archivo_acta) }}"><i
                                                                                                     class="ri-file-download-line"></i>
                                                                                                 Descargar</a>&nbsp;
-                                                                                                @if($mun->estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
+                                                                                                @if(Auth::user()->super() or Auth::user()->administrador())
                                                                                             <form
                                                                                                 action="{{ route('CEliminarDoc', ['id' => '1' . $mun->id_acreditacion]) }}"
                                                                                                 method="post" style="display: inline-block; vertical-align: middle;">
@@ -182,7 +182,7 @@
                                                                                                 href="{{ asset('storage/' . $mun->archivo_lista) }}"><i
                                                                                                     class="ri-file-download-line"></i>
                                                                                                 Descargar</a>&nbsp;
-                                                                                                 @if($mun->estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
+                                                                                                 @if(Auth::user()->super() or Auth::user()->administrador())
                                                                                             <form
                                                                                                 action="{{ route('CEliminarDoc', ['id' => '2' . $mun->id_acreditacion]) }}"
                                                                                                 method="post" style="display: inline-block; vertical-align: middle;">
@@ -227,7 +227,7 @@
                                                                                                 href="{{ asset('storage/' . $mun->archivo_acuse) }}"><i
                                                                                                     class="ri-file-download-line"></i>
                                                                                                 Descargar</a>&nbsp;
-                                                                                                 @if($mun->estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
+                                                                                                 @if(Auth::user()->super() or Auth::user()->administrador())
                                                                                             <form
                                                                                                 action="{{ route('CEliminarDoc', ['id' => '3' . $mun->id_acreditacion]) }}"
                                                                                                 method="post" style="display: inline-block; vertical-align: middle;">
