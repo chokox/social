@@ -83,10 +83,10 @@
                                                     <a type="button" class="btn btn-primary"
                                                             title="Credencial"
                                                             href="{{ route('credencial_integrante', $integrantes->id_integrante_comite) }}"><i
-                                                                class="ri-profile-line"></i></a>
+                                                                class="ri-contacts-book-2-line"></i></a>
                                                     <form
                                                         action="{{ route('integrantes.destroy', $integrantes->id_integrante_comite) }}"
-                                                        method="post">
+                                                        method="post" style="display: inline-block; vertical-align: middle;">
                                                         @csrf
                                                         @method('delete')
 
