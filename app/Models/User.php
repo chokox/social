@@ -26,6 +26,21 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function super()
+    {
+        return $this->rol === 'super';
+    }
+
+    public function administrador()
+    {
+        return $this->rol === 'administrador';
+    }
+
+    public function enlace()
+    {
+        return $this->rol === 'enlace';
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -44,5 +59,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function scopeUsuariosParaAdmin($query)
+    {
+
+        return $query->where('deprecated', 0)->whereIn('rol',['enlace','administrador']);
+    }
 
 }

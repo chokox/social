@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AcreditacionComite extends Model
 {
     use HasFactory;
+    protected $dates = ['fecha_validado'];
     protected $primaryKey = 'id_acreditacion';
 
     //BUSCA UN MUNICIPIO BUSCANDO POR SU ID
