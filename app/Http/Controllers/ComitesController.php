@@ -9,6 +9,7 @@ use App\Models\AcreditacionComite;
 use RealRashid\SweetAlert\Facades\Alert;
 use Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\IntegrantesComite;
 
 class ComitesController extends Controller
 {
@@ -64,10 +65,27 @@ class ComitesController extends Controller
             }
             $dato->save();
 
+            //VERIFICA SI ESTAN LOS ARCHIVOS DE LOS INTEGRANTES COMPLETOS
+            $resultado = IntegrantesComite::ContarPorComite(now()->year, $id)->get();
+            $todosRellenados = $resultado->every(function ($item) {
+                return $item->archivo_ine !== null &&
+                $item->archivo_protesta !== null &&
+                $item->archivo_constancia !== null &&
+                $item->archivo_fotografia !== null;
+            });
+
+            $variable = $todosRellenados ? 1 : 0;
+            //FIN DE LA VERIFICACION
+        
             if (!empty($dato->archivo_acta) && !empty($dato->archivo_lista) && !empty($dato->archivo_acuse)) {
                 $dato->estatus = '2';
                 $dato->save();
             } 
+            
+            if ((!empty($dato->archivo_acta) && !empty($dato->archivo_lista) && !empty($dato->archivo_acuse)) and $variable==1) {
+                $dato->estatus = '3';
+                $dato->save();
+            }
 
             Alert::success('Documentacion cargada', null);
             return back();

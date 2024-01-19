@@ -96,6 +96,24 @@ class IntegrantesComiteController extends Controller
             }
             $dato->save();
 
+            //VERIFICA SI ESTAN LOS ARCHIVOS DE LOS INTEGRANTES COMPLETOS
+            $resultado = IntegrantesComite::ContarPorComite(now()->year, $id_comite)->get();
+            $todosRellenados = $resultado->every(function ($item) {
+                return $item->archivo_ine !== null &&
+                    $item->archivo_protesta !== null &&
+                    $item->archivo_constancia !== null &&
+                    $item->archivo_fotografia !== null;
+            });
+            $variable = $todosRellenados ? 1 : 0;
+            $doc=AcreditacionComite::where('id_acreditacion', $id_comite)->first();
+            
+            //FIN DE LA VERIFICACION
+
+            if ((!empty($doc->archivo_acta) && !empty($doc->archivo_lista) && !empty($doc->archivo_acuse)) and $variable == 1) {
+                $doc->estatus = '3';
+                $doc->save();
+            }
+
             Alert::success('Documentacion cargada', null);
             return back();
         } else {
@@ -143,7 +161,9 @@ class IntegrantesComiteController extends Controller
     public function show($id)
     {
         $integrantes = IntegrantesComite::where('id_acreditacion_comite_fk', $id)->get();
-        return view('Municipios/integrantesComite', compact('id'))->with('integrantes', $integrantes);
+        $doc = AcreditacionComite::where('id_acreditacion', $id)->first();
+        $estatus=$doc->estatus;
+        return view('Municipios/integrantesComite', compact('id', 'estatus'))->with('integrantes', $integrantes);
     }
 
     /**

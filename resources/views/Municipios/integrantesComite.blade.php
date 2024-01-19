@@ -76,6 +76,7 @@
                                                         href="" class="btn btn-info" data-bs-toggle="modal"
                                                         data-bs-target="#bs-example-modal-editar-{{ $integrantes->id_integrante_comite }}"><i
                                                             class="ri-pencil-fill"></i></a>
+                                                            @if($estatus == 4)
                                                    <a type="button" class="btn btn-primary"
                                                             title="Constancia"
                                                             href="{{ route('constancia_integrante', $integrantes->id_integrante_comite) }}"><i
@@ -84,6 +85,7 @@
                                                             title="Credencial"
                                                             href="{{ route('credencial_integrante', $integrantes->id_integrante_comite) }}"><i
                                                                 class="ri-contacts-book-2-line"></i></a>
+                                                                @endif
                                                     <form
                                                         action="{{ route('integrantes.destroy', $integrantes->id_integrante_comite) }}"
                                                         method="post" style="display: inline-block; vertical-align: middle;">
@@ -127,7 +129,7 @@
                                                                                         <form
                                                                                             action="{{ route('CSubirDocInt', $integrantes->id_integrante_comite) }}"
                                                                                             method="POST"
-                                                                                            enctype="multipart/form-data">
+                                                                                            enctype="multipart/form-data" style="display: inline-block; vertical-align: middle;">
                                                                                             @csrf
                                                                                             @method('PUT')
                                                                                             <input type="text"
@@ -148,7 +150,7 @@
                                                                                             Descargar</a>&nbsp;
                                                                                         <form
                                                                                             action="{{ route('CEliminarDocInt', ['id' => '1' . $integrantes->id_integrante_comite]) }}"
-                                                                                            method="post">
+                                                                                            method="post" style="display: inline-block; vertical-align: middle;">
                                                                                             @csrf
                                                                                             @method('delete')
 
@@ -171,7 +173,7 @@
                                                                                         <form
                                                                                             action="{{ route('CSubirDocInt', $integrantes->id_integrante_comite) }}"
                                                                                             method="POST"
-                                                                                            enctype="multipart/form-data">
+                                                                                            enctype="multipart/form-data" style="display: inline-block; vertical-align: middle;">
                                                                                             @csrf
                                                                                             @method('PUT')
                                                                                             <input type="text"
@@ -192,7 +194,7 @@
                                                                                             Descargar</a>&nbsp;
                                                                                         <form
                                                                                             action="{{ route('CEliminarDocInt', ['id' => '2' . $integrantes->id_integrante_comite]) }}"
-                                                                                            method="post">
+                                                                                            method="post" style="display: inline-block; vertical-align: middle;">
                                                                                             @csrf
                                                                                             @method('delete')
 
@@ -216,7 +218,7 @@
                                                                                         <form
                                                                                             action="{{ route('CSubirDocInt', $integrantes->id_integrante_comite) }}"
                                                                                             method="POST"
-                                                                                            enctype="multipart/form-data">
+                                                                                            enctype="multipart/form-data" style="display: inline-block; vertical-align: middle;">
                                                                                             @csrf
                                                                                             @method('PUT')
                                                                                             <input type="text"
@@ -237,7 +239,7 @@
                                                                                             Descargar</a>&nbsp;
                                                                                         <form
                                                                                             action="{{ route('CEliminarDocInt', ['id' => '3' . $integrantes->id_integrante_comite]) }}"
-                                                                                            method="post">
+                                                                                            method="post" style="display: inline-block; vertical-align: middle;">
                                                                                             @csrf
                                                                                             @method('delete')
 
@@ -260,7 +262,7 @@
                                                                                         <form
                                                                                             action="{{ route('CSubirDocInt', $integrantes->id_integrante_comite) }}"
                                                                                             method="POST"
-                                                                                            enctype="multipart/form-data">
+                                                                                            enctype="multipart/form-data" style="display: inline-block; vertical-align: middle;">
                                                                                             @csrf
                                                                                             @method('PUT')
                                                                                             <input type="text"
@@ -281,7 +283,7 @@
                                                                                             Descargar</a>&nbsp;
                                                                                         <form
                                                                                             action="{{ route('CEliminarDocInt', ['id' => '4' . $integrantes->id_integrante_comite]) }}"
-                                                                                            method="post">
+                                                                                            method="post" style="display: inline-block; vertical-align: middle;">
                                                                                             @csrf
                                                                                             @method('delete')
 

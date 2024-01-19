@@ -46,15 +46,15 @@
 
                                                 @switch($mun->estatus ?? -1)
                                                     @case(0)
-                                                        <td style="color:  orange">Comité registrado, falta documentacion e integrantes</td>
+                                                        <td style="color:  orange">Comité registrado</td>
                                                     @break
 
                                                     @case(1)
-                                                        <td style="color:  orange">Comité e integrantes registrados, falta documentacion</td>
+                                                        <td style="color:  orange">Comité e integrantes registrados</td>
                                                     @break
 
                                                     @case(2)
-                                                        <td style="color:  orange">Comité y documentación registrados, faltan integrantes
+                                                        <td style="color:  orange">Comité y documentación registrados
                                                         </td>
                                                     @break
 
@@ -118,7 +118,7 @@
                                                                                             <form
                                                                                                 action="{{ route('CSubirDoc', $mun->id_acreditacion) }}"
                                                                                                 method="POST"
-                                                                                                enctype="multipart/form-data">
+                                                                                                enctype="multipart/form-data" style="display: inline-block; vertical-align: middle;"> 
                                                                                                 @csrf
                                                                                                 @method('PUT')
                                                                                                 <input type="text"
@@ -137,9 +137,10 @@
                                                                                                 href="{{ asset('storage/' . $mun->archivo_acta) }}"><i
                                                                                                     class="ri-file-download-line"></i>
                                                                                                 Descargar</a>&nbsp;
+                                                                                                @if($mun->estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
                                                                                             <form
                                                                                                 action="{{ route('CEliminarDoc', ['id' => '1' . $mun->id_acreditacion]) }}"
-                                                                                                method="post">
+                                                                                                method="post" style="display: inline-block; vertical-align: middle;">
                                                                                                 @csrf
                                                                                                 @method('delete')
 
@@ -151,7 +152,7 @@
                                                                                                     Eliminar
                                                                                                 </button>
                                                                                             </form>
-
+                                                                                                @endif
                                                                                         </td>
                                                                                     @endif
                                                                                 </tr>
@@ -162,7 +163,7 @@
                                                                                             <form
                                                                                                 action="{{ route('CSubirDoc', $mun->id_acreditacion) }}"
                                                                                                 method="POST"
-                                                                                                enctype="multipart/form-data">
+                                                                                                enctype="multipart/form-data" style="display: inline-block; vertical-align: middle;">
                                                                                                 @csrf
                                                                                                 @method('PUT')
                                                                                                 <input type="text"
@@ -181,9 +182,10 @@
                                                                                                 href="{{ asset('storage/' . $mun->archivo_lista) }}"><i
                                                                                                     class="ri-file-download-line"></i>
                                                                                                 Descargar</a>&nbsp;
+                                                                                                 @if($mun->estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
                                                                                             <form
                                                                                                 action="{{ route('CEliminarDoc', ['id' => '2' . $mun->id_acreditacion]) }}"
-                                                                                                method="post">
+                                                                                                method="post" style="display: inline-block; vertical-align: middle;">
                                                                                                 @csrf
                                                                                                 @method('delete')
 
@@ -195,7 +197,7 @@
                                                                                                     Eliminar
                                                                                                 </button>
                                                                                             </form>
-
+                                                                                                @endif
                                                                                         </td>
                                                                                     @endif
                                                                                 </tr>
@@ -206,7 +208,7 @@
                                                                                             <form
                                                                                                 action="{{ route('CSubirDoc', $mun->id_acreditacion) }}"
                                                                                                 method="POST"
-                                                                                                enctype="multipart/form-data">
+                                                                                                enctype="multipart/form-data" style="display: inline-block; vertical-align: middle;">
                                                                                                 @csrf
                                                                                                 @method('PUT')
                                                                                                 <input type="text"
@@ -225,9 +227,10 @@
                                                                                                 href="{{ asset('storage/' . $mun->archivo_acuse) }}"><i
                                                                                                     class="ri-file-download-line"></i>
                                                                                                 Descargar</a>&nbsp;
+                                                                                                 @if($mun->estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
                                                                                             <form
                                                                                                 action="{{ route('CEliminarDoc', ['id' => '3' . $mun->id_acreditacion]) }}"
-                                                                                                method="post">
+                                                                                                method="post" style="display: inline-block; vertical-align: middle;">
                                                                                                 @csrf
                                                                                                 @method('delete')
 
@@ -239,7 +242,7 @@
                                                                                                     Eliminar
                                                                                                 </button>
                                                                                             </form>
-
+                                                                                                @endif
                                                                                         </td>
                                                                                     @endif
                                                                                 </tr>
@@ -262,7 +265,7 @@
                                                                 @endif
                                                                  @if ($mun->estatus != 5)
                                                                 <a type="button" class="btn btn-primary"
-                                                            title="Validar Informacion"
+                                                            title="Revisar Informacion"
                                                             href="{{ route('revisarComite', $mun->id_acreditacion) }}"><i
                                                                 class="ri-thumb-down-fill"></i></a>
                                                                 @endif
