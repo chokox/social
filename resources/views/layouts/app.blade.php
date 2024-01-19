@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
-
+        
         <!-- Theme Config Js -->
         <script src="{{ asset('js/hyper-config.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -193,6 +193,7 @@
 
         <!-- App js -->
         <script src="{{ asset('js/app.min.js')}}"></script>
+        
 
         @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 

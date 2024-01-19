@@ -7,6 +7,7 @@ use App\Models\CatalogoMunicipio;
 use App\Models\User;
 use App\Models\AcreditacionComite;
 use RealRashid\SweetAlert\Facades\Alert;
+use Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ComitesController extends Controller
@@ -35,9 +36,9 @@ class ComitesController extends Controller
     {
         $municipio = CatalogoMunicipio::where('id_municipio', $id)->first();
         $municipio = $municipio->nombre;
-        $user = User::where('rol', 'administrador')->get();
+        //$user = User::where('rol', 'administrador')->get();
         $edicion='--';
-        return view('Municipios/registroComite', compact('municipio', 'id', 'edicion'))->with('user', $user);
+        return view('Municipios/registroComite', compact('municipio', 'id', 'edicion'));
     }
 
     public function subirDocumentacion(Request $request, $id)
@@ -62,6 +63,11 @@ class ComitesController extends Controller
                 $dato->archivo_acuse = $nombreArchivo;
             }
             $dato->save();
+
+            if (!empty($dato->archivo_acta) && !empty($dato->archivo_lista) && !empty($dato->archivo_acuse)) {
+                $dato->estatus = '2';
+                $dato->save();
+            } 
 
             Alert::success('Documentacion cargada', null);
             return back();
@@ -108,16 +114,6 @@ class ComitesController extends Controller
     {
         $registro = new AcreditacionComite();
 
-        $estaAcreditado = AcreditacionComite::BuscaMunicipioEjercicio($request->input('municipio'), now()->year)->get();
-        if ($estaAcreditado->isNotEmpty()) {
-            Alert::error('Comite ya acreditado', 'Este comite ya se encuentra acreditado');
-            return back();
-        } else {
-            $folioMunicipio = CatalogoMunicipio::where('id_municipio', $request->input('municipio'))->first();
-            $folioMunicipio = $folioMunicipio->folio;
-            $numeroConsecutivo = AcreditacionComite::BuscaEjercicio(now()->year)->count() + 1;
-            $numeroConsecutivoFormateado = str_pad($numeroConsecutivo, 3, '0', STR_PAD_LEFT);
-            $registro->folio_comite = $folioMunicipio . ' ' . $numeroConsecutivoFormateado;
             $registro->id_catalogo_municipio_fk = $request->input('municipio');
             $registro->ejercicio = now()->year;
             $registro->nombramiento = $request->input('nombramiento');
@@ -125,16 +121,16 @@ class ComitesController extends Controller
             $registro->elaboracion_acreditacion = $request->input('elaboracion');
             $registro->acredito_en = $request->input('se_acredito');
             $registro->capacito_comite = $request->input('capacito_comite');
-            $registro->id_user_autorizo_fk = $request->input('autorizo_comite');
+            $registro->id_user_atendio_fk = Auth::id();
             $registro->acta_asamblea = $request->input('acta_asamblea');
             $registro->lista_asistencia = $request->input('lista_asamblea');
             $registro->datos_municipio = $request->input('datos_municipio');
-            $registro->estatus = $request->input('estatus');
+            $registro->estatus = 0;
             $registro->save();
 
             Alert::success('Comite guardado', null);
             return redirect()->route('comites.index');
-        }
+        
     }
 
     /**
@@ -150,9 +146,28 @@ class ComitesController extends Controller
     public function validarComite($id)
     {
         $dato = AcreditacionComite::find($id);
+
+        $folioMunicipio = CatalogoMunicipio::where('id_municipio', $dato->id_catalogo_municipio_fk)->first();
+        $folioMunicipio = $folioMunicipio->folio;
+        $numeroConsecutivo = AcreditacionComite::BuscaEjercicio(now()->year)->count() + 1;
+        $numeroConsecutivoFormateado = str_pad($numeroConsecutivo, 3, '0', STR_PAD_LEFT);
+
+        $dato->folio_comite = $folioMunicipio . ' ' . $numeroConsecutivoFormateado;
+        $dato->id_user_autorizo_fk = Auth::id();
         $dato->estatus='4';
         $dato->save();
+
         Alert::success('Comite Validado', null);
+        return redirect()->route('comites.index');
+    }
+
+    public function RevisarInformacion($id)
+    {
+        $dato = AcreditacionComite::find($id);
+        $dato->estatus = '5';
+        $dato->save();
+
+        Alert::success('Comite en revision', null);
         return redirect()->route('comites.index');
     }
 
@@ -167,10 +182,20 @@ class ComitesController extends Controller
         $dato = AcreditacionComite::find($id);
         $municipio = CatalogoMunicipio::where('id_municipio', $dato->id_catalogo_municipio_fk)->first();
         $municipio = $municipio->nombre;
-        $user = User::where('rol', 'administrador')->get();
+        $atendio = User::find($dato->id_user_atendio_fk);
+        if (empty($atendio)) {
+            $atendio='No atendido';
+        } else {
+            $atendio = $atendio->name;
+        }
+        $autorizo = User::find($dato->id_user_autorizo_fk);
+        if (empty($atendio)) {
+            $autorizo='Sin autorizar';
+        } else {
+            $autorizo = $autorizo->name;
+        }
         $edicion = 'edicion';
-        return view('Municipios/registroComite', compact('municipio', 'id', 'edicion'))
-            ->with('user', $user)
+        return view('Municipios/registroComite', compact('municipio', 'id', 'edicion','atendio','autorizo'))
             ->with('dato', $dato);
     }
 
@@ -200,9 +225,6 @@ class ComitesController extends Controller
         if ($request->filled('capacito_comite')) {
             $dato->capacito_comite = $request->input('capacito_comite');
         }
-        if ($request->filled('autorizo_comite')) {
-            $dato->id_user_autorizo_fk = $request->input('autorizo_comite');
-        }
         if ($request->filled('acta_asamblea')) {
             $dato->acta_asamblea = $request->input('acta_asamblea');
         }
@@ -213,6 +235,7 @@ class ComitesController extends Controller
             $dato->datos_municipio = $request->input('datos_municipio');
         }
 
+        $dato->id_user_reviso_fk = Auth::id();
         $dato->save();
 
         Alert::success('Comite actualizado', null);

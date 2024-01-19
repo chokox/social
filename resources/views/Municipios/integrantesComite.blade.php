@@ -21,7 +21,7 @@
                             <div class="card-body">
                                 <div class="text-xl-end mt-xl-0 mt-2">
                                     <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                                        data-bs-target="#bs-example-modal-lg">Agregar integrante</button>
+                                        data-bs-target="#bs-example-modal-lg"><i class=" ri-user-add-fill"></i>Agregar integrante</button>
                                 </div>
                                 <br>
                                 <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
@@ -76,6 +76,14 @@
                                                         href="" class="btn btn-info" data-bs-toggle="modal"
                                                         data-bs-target="#bs-example-modal-editar-{{ $integrantes->id_integrante_comite }}"><i
                                                             class="ri-pencil-fill"></i></a>
+                                                   <a type="button" class="btn btn-primary"
+                                                            title="Constancia"
+                                                            href="{{ route('constancia_integrante', $integrantes->id_integrante_comite) }}"><i
+                                                                class="ri-profile-line"></i></a>
+                                                    <a type="button" class="btn btn-primary"
+                                                            title="Credencial"
+                                                            href="{{ route('credencial_integrante', $integrantes->id_integrante_comite) }}"><i
+                                                                class="ri-profile-line"></i></a>
                                                     <form
                                                         action="{{ route('integrantes.destroy', $integrantes->id_integrante_comite) }}"
                                                         method="post">
@@ -91,19 +99,19 @@
                                                     <!-- modal documentacion integrantes-->
                                                     <div class="modal fade"
                                                         id="bs-example-modal-lg-{{ $integrantes->id_integrante_comite }}"
-                                                        tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog modal-lg">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h4 class="modal-title" id="myLargeModalLabel">
-                                                                        Documentacion de
-                                                                        {{ $integrantes->nombre_completo }}</h4>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-hidden="true"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <table class="table table-centered mb-0">
+                                                        tabindex="-1" role="dialog"
+                                                            aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title" id="myLargeModalLabel">
+                                                                            Documentacion de integrante</h4>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-hidden="true"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <table class="table table-centered mb-0">
                                                                         <thead class="table-dark">
                                                                             <tr>
                                                                                 <th>Nombre</th>
@@ -287,14 +295,14 @@
                                                                                         </form>
 
                                                                                     </td>
-                                                                                @endif
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                                                    @endif
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
                                                     <!-- fin de modal documentacion integrantes -->
                                                     <!-- modal edicion integrantes-->
                                                     <div class="modal fade"

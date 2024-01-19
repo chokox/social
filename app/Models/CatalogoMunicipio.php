@@ -31,10 +31,19 @@ class CatalogoMunicipio extends Model
     public function scopeConAcreditacionComites($query, $year)
     {
         return $query
-            ->leftJoin('acreditacion_comites', function ($join) use ($year) {
-                $join->on('catalogo_municipios.id_municipio', '=', 'acreditacion_comites.id_catalogo_municipio_fk')
-                ->where('acreditacion_comites.ejercicio', $year);
-            });
+        ->leftJoin('acreditacion_comites', function ($join) use ($year) {
+            $join->on('catalogo_municipios.id_municipio', '=', 'acreditacion_comites.id_catalogo_municipio_fk')
+            ->where('acreditacion_comites.ejercicio', $year);
+        })
+        ->leftJoin('users', 'acreditacion_comites.id_user_atendio_fk', '=', 'users.id');
+
+    }
+
+    public function scopeMunicipioYAcreditacion($query, $id)
+    {
+        return $query
+            ->Join('acreditacion_comites', 'acreditacion_comites.id_catalogo_municipio_fk', '=', 'id_municipio')
+            ->where('acreditacion_comites.id_acreditacion', $id);
     }
 
 
