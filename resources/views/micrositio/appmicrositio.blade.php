@@ -191,10 +191,7 @@
                                 class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
                         </li>
                     </ul>
-                    <!-- Contador de visitas --> 
-<a href="https://websmultimedia.com/contador-de-visitas-gratis" title="Contador De Visitas Gratis">
-<img style="border: 0px solid; display: inline;" alt="contador de visitas" src="https://websmultimedia.com/contador-de-visitas.php?id=14427"></a>
-<!-- Fin Contador de visitas -->
+
                 </div>
                 <div class="col-1"></div>                
                 <div class="col-5">
@@ -203,6 +200,14 @@
                             <br> Ciudad Administrativa (Edificio 2 “Rufino Tamayo”, Planta Baja)
                             <br> Carretera Internacional Oaxaca-Istmo, km. 11.5
                             <br> Tlalixtac de Cabrera, Oaxaca C.P. 68270
+                                                 <!-- Contador de visitas -->
+                <div class="text-center">
+                    <a href="https://websmultimedia.com/contador-de-visitas-gratis" title="Contador De Visitas Gratis">
+                        <img style="border: 0px solid; display: inline;" alt="contador de visitas"
+                            src="https://websmultimedia.com/contador-de-visitas.php?id=14427">
+                    </a>
+                </div>
+                <!-- Fin Contador de visitas -->
                             
                         </p>
                                             
