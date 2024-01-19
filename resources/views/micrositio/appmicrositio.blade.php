@@ -19,6 +19,11 @@
 
     <!-- Icons css -->
     <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <style>
+    .font-head{
+        color:  #0a0a0a
+    }
+    </style>
 
 </head>
 
@@ -44,17 +49,17 @@
                 <!-- left menu -->
                 <ul class="navbar-nav me-auto align-items-center">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" role="button" aria-haspopup="true"
-                            aria-expanded="false" href="{{ route('inicio') }}">Inicio</a>
+                        <a class="nav-link dropdown-toggle arrow-none" purple role="button" aria-haspopup="true"
+                            aria-expanded="false" href="{{ route('inicio') }}"><strong>Inicio</strong></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" role="button" aria-haspopup="true"
-                            aria-expanded="false" href="{{ route('contraloriasocial') }}">Contraloria Social</a>
+                            aria-expanded="false" href="{{ route('contraloriasocial') }}"><strong>Contraloria Social</strong></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Requisitos<div class="arrow-down"></div>
+                            <strong>Requisitos</strong><div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
                             <a target="_blank"
@@ -69,7 +74,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Capacitaciones<div class="arrow-down"></div>
+                            <strong>Capacitaciones</strong><div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
                             <a target="_blank" href="{{ asset('files/PROMOCION DE CONTRALORIA SOCIAL.pdf') }}"
@@ -82,12 +87,12 @@
                     <ul class="navbar-nav me-auto align-items-center">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" role="button" aria-haspopup="true"
-                                aria-expanded="false" href="{{ route('formatos') }}">Formatos</a>
+                                aria-expanded="false" href="{{ route('formatos') }}"><strong>Formatos</strong></a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Marco Legal<div class="arrow-down"></div>
+                                <strong>Marco Legal</strong><div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
                                 <a target="_blank" href="{{ asset('files/CONSTITUCION POLITICA DE LOS ESTADOS UNIDOS MEXICANOS.pdf')}}"
@@ -120,7 +125,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Buzones<div class="arrow-down"></div>
+                                <strong>Buzones</strong><div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
                                 <a target="_blank" href="{{ asset('files/BUZONES DE ATENCION CIUDADANA.pdf') }}"
@@ -131,12 +136,12 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" target="_blank" href="{{ asset('files/RESULTADOS EVALUAR PARA MEJORAR.pdf') }}" role="button"
                                  aria-haspopup="true" aria-expanded="false">
-                                Resultados 2023<div class="arrow-down"></div>
+                                <strong>Resultados 2023</strong><div class="arrow-down"></div>
                             </a>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Presupuesto ciudadano<div class="arrow-down"></div>
+                                <strong>Presupuesto ciudadano</strong><div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
                                 <a target="_blank" href="{{ route('presupuesto2023') }}"class="dropdown-item">2023</a>
@@ -186,6 +191,10 @@
                                 class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
                         </li>
                     </ul>
+                    <!-- Contador de visitas --> 
+<a href="https://websmultimedia.com/contador-de-visitas-gratis" title="Contador De Visitas Gratis">
+<img style="border: 0px solid; display: inline;" alt="contador de visitas" src="https://websmultimedia.com/contador-de-visitas.php?id=14427"></a>
+<!-- Fin Contador de visitas -->
                 </div>
                 <div class="col-1"></div>                
                 <div class="col-5">
@@ -194,8 +203,11 @@
                             <br> Ciudad Administrativa (Edificio 2 “Rufino Tamayo”, Planta Baja)
                             <br> Carretera Internacional Oaxaca-Istmo, km. 11.5
                             <br> Tlalixtac de Cabrera, Oaxaca C.P. 68270
+                            
                         </p>
+                                            
                     </h4>
+
                 </div>
             </div>
         </div>
