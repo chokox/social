@@ -93,7 +93,7 @@ html[data-topbar-color=light] {
 }
 
 html[data-topbar-color=dark] {
-    --ct-topbar-bg: #313a46;
+    --ct-topbar-bg: #ffffff;
     --ct-topbar-item-color: #8391a2;
     --ct-topbar-item-hover-color: #bccee4;
     --ct-topbar-search-bg: #464f5b;
@@ -15847,7 +15847,7 @@ html[data-layout-mode=detached]:not([data-layout=topnav])[data-sidenav-size=full
 }
 
 .navbar-custom {
-    /* background: #ffffff; */
+    background: var(--ct-topbar-bg);
     -webkit-box-shadow: var(--ct-box-shadow);
     box-shadow: var(--ct-box-shadow);
     min-height: var(--ct-topbar-height);
