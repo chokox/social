@@ -11,10 +11,10 @@ class AcreditacionComite extends Model
     protected $primaryKey = 'id_acreditacion';
 
     //BUSCA UN MUNICIPIO BUSCANDO POR SU ID
-    public function scopeBuscaMunicipioEjercicio($query, $id, $ejercicio)
+    /* public function scopeBuscaMunicipioEjercicio($query, $id, $ejercicio)
     {
         return $query->where('id_catalogo_municipio_fk', $id)->where('ejercicio', $ejercicio);
-    }
+    } */
 
     public function scopeBuscaEjercicio($query, $ejercicio)
     {
