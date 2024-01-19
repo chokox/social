@@ -20,7 +20,7 @@
                                 <i class="mdi mdi-account-group widget-icon"></i>
                             </div>
                             <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Comites</h5>
-                            <h3 class="mt-3 mb-3">numerico</h3>
+                            <h3 class="mt-3 mb-3">{{ $comitesTotal->total }}</h3>
                         </div> 
                     </div> 
                 </div> 
@@ -31,7 +31,7 @@
                                 <i class="mdi mdi-badge-account-horizontal widget-icon bg-success-lighten text-success"></i>
                             </div>
                             <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Integrantes De Comite</h5>
-                            <h3 class="mt-3 mb-3">numerico</h3>
+                            <h3 class="mt-3 mb-3">{{ $integrantesTotal->totalIntegrantes }}</h3>
                         </div> 
                     </div> 
                 </div> 
@@ -42,7 +42,7 @@
                                 <i class="mdi mdi-account-multiple-check widget-icon bg-success-lighten text-success"></i>
                             </div>
                             <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Comites Acreditados</h5>
-                            <h3 class="mt-3 mb-3">numerico</h3>
+                            <h3 class="mt-3 mb-3">{{ $comitesAcreditados->total }}</h3>
                         </div> 
                     </div> 
                 </div> 
@@ -53,7 +53,7 @@
                                 <i class="mdi mdi-account-multiple widget-icon"></i>
                             </div>
                             <h5 class="text-muted fw-normal mt-0" title="Growth">Comites No Acreditados</h5>
-                            <h3 class="mt-3 mb-3">numerico</h3>
+                            <h3 class="mt-3 mb-3">{{ $comitesNoAcreditados->total }}</h3>
                         </div> 
                     </div> 
                 </div> 
@@ -77,12 +77,12 @@
 </div>
 <script>
    var options = {
-          series: [{
-          name: 'Comites',
-          data: [44, 55, 57, 56, 340, 58, 63, 60, 66, 34, 98]
+    series: [{
+            name: 'Comites',
+            data: {!! json_encode(array_values($comites[0]->toArray())) !!}
         }, {
-          name: 'Contralores',
-          data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 32, 54]
+            name: 'Contralores',
+            data: {!! json_encode(array_values($contralores[0]->toArray())) !!}
         }],
           chart: {
           type: 'bar',
@@ -91,12 +91,16 @@
         plotOptions: {
           bar: {
             horizontal: false,
-            columnWidth: '55%',
+            columnWidth: '60%',
             endingShape: 'rounded',
+            borderRadius: 8,
+            dataLabels: {
+              position: 'top', // top, center, bottom
+            },
           },
         },
         dataLabels: {
-          enabled: false
+          enabled: true
         },
         stroke: {
           show: true,
@@ -104,7 +108,7 @@
           colors: ['transparent']
         },
         xaxis: {
-          categories: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre','Noviembre','Diciembre'],
+          categories: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre','Octubre','Noviembre','Diciembre'],
         },
         fill: {
           opacity: 1
