@@ -41,7 +41,7 @@
                         <!-- Topbar Brand Logo -->
                         <div class="logo-topbar" >
                             <!-- Logo light -->
-                            <a href="index.html" class="logo-light">
+                            <a href="{{ asset('/home') }}" class="logo-light">
                                 <span class="logo-lg">
                                     <img src="{{ asset('imagenes/logoCSNEW.png') }}" style="height: 65px;" alt="logo">
                                 </span>
