@@ -543,6 +543,7 @@ class ComposerStaticInitf17c6fa804e26aca8029fb81bcf07a31
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\ComitesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ComitesController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\DocumentacionGeneradaController' => __DIR__ . '/../..' . '/app/Http/Controllers/DocumentacionGeneradaController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\InformesController' => __DIR__ . '/../..' . '/app/Http/Controllers/InformesController.php',
         'App\\Http\\Controllers\\IntegrantesComiteController' => __DIR__ . '/../..' . '/app/Http/Controllers/IntegrantesComiteController.php',
