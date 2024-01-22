@@ -202,10 +202,7 @@
                             <br> Tlalixtac de Cabrera, Oaxaca C.P. 68270
                                                  <!-- Contador de visitas -->
                 <div class="text-center">
-                    <a href="https://websmultimedia.com/contador-de-visitas-gratis" title="Contador De Visitas Gratis">
-                        <img style="border: 0px solid; display: inline;" alt="contador de visitas"
-                            src="https://websmultimedia.com/contador-de-visitas.php?id=14427">
-                    </a>
+                    Eres la visita numero: {{$contador}}
                 </div>
                 <!-- Fin Contador de visitas -->
                             

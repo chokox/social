@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {return view('welcome');});
+Route::get('/', 'App\Http\Controllers\WelcomeController@incrementarContador');
+
 //RUTAS MICROSITIO
 Route::view('contraloriasocial','/micrositio/contraloriasocial')->name('contraloriasocial');
 Route::view('formatos','/micrositio/formatos')->name('formatos');
