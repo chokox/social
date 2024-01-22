@@ -114,8 +114,8 @@
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <div  class="table-responsive">
-                                                                            <table class="table table-bordered table-centered mb-0">
+                                                                        <div class="table-responsive">
+                                                                            <table id="basic-datatable-{{ $aux }}" class="table dt-responsive nowrap w-100">
                                                                                 <thead class="table-dark">
                                                                                     <tr>
                                                                                         <th class="text-center">Region</th>
@@ -152,6 +152,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                       
+                                                       
                                                         <!-- Fin del modal integrantes -->
                                                         </td>                                                         
                                                             <td>{{ $itemB['total_mujeres'] }}</td>
@@ -406,6 +408,13 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        for (let i = 1; i <= 8; i++) {
+            $("#basic-datatable-" + i).DataTable();
+        }
+    });
+</script>
 
 @endsection
  
