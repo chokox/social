@@ -17,17 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\WelcomeController@incrementarContador');
 
 //RUTAS MICROSITIO
-Route::view('contraloriasocial','/micrositio/contraloriasocial')->name('contraloriasocial');
-Route::view('formatos','/micrositio/formatos')->name('formatos');
-Route::view('presupuesto2023','/micrositio/presupuesto2023')->name('presupuesto2023');
-Route::view('presupuesto2022','/micrositio/presupuesto2022')->name('presupuesto2022');
-Route::view('inicio','/welcome')->name('inicio');
+Route::view('contraloriasocial', '/micrositio/contraloriasocial')->name('contraloriasocial');
+Route::view('formatos', '/micrositio/formatos')->name('formatos');
+Route::view('presupuesto2023', '/micrositio/presupuesto2023')->name('presupuesto2023');
+Route::view('presupuesto2022', '/micrositio/presupuesto2022')->name('presupuesto2022');
+Route::view('inicio', '/welcome')->name('inicio');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::group(['middleware' => 'auth'], function () {
-    //RUTAS DEL MODULO DE MUNICIPIOS
+//RUTAS DEL MODULO DEL DEPARTAMENTO DE CAPACITACION A MUNICIPIOS
+Route::middleware(['auth', 'departamento:1'])->group(function () {
     Route::resource('/comites', 'App\Http\Controllers\ComitesController');
     Route::get('/registrar_comite/{id}', 'App\Http\Controllers\ComitesController@crearComite')->name('crearComite');
     Route::get('/validar_comite/{id}', 'App\Http\Controllers\ComitesController@validarComite')->name('validarComite');
@@ -43,16 +41,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/constancia_municipio/{id}', 'App\Http\Controllers\DocumentacionGeneradaController@constanciaMunicipio')->name('constancia_municipio');
     Route::get('/constancia_integrante/{id}', 'App\Http\Controllers\DocumentacionGeneradaController@constanciaIntegrante')->name('constancia_integrante');
     Route::get('/credencial_integrante/{id}', 'App\Http\Controllers\DocumentacionGeneradaController@credencialIntegrante')->name('credencial_integrante');
-    //RUTAS DEL MODULO DE USUARIOS
-    Route::resource('/catalogo_usuarios', 'App\Http\Controllers\UserController');
-    //RUTAS DE RESUMEN DE ACREDITACIOENS
-    Route::get('/resumen_acreditaciones', 'App\Http\Controllers\InformesController@resumenAcreditaciones')->name('resumenAcreditaciones');
-
-    //RUTAS DEL MODULO DE USUARIOS
-    Route::resource('/catalogo_usuarios', 'App\Http\Controllers\UserController');
-    //RUTAS DE RESUMEN DE ACREDITACIOENS
+    //RUTAS DE RESUMEN DE ACREDITACIONESS
     Route::get('/resumen_acreditaciones', 'App\Http\Controllers\InformesController@resumenAcreditaciones')->name('resumenAcreditaciones');
     Route::get('/modalIntegrantes', 'App\Http\Controllers\InformesController@modalIntegrantesResumen')->name('modalIntegrantes');
-
 });
 
+//RUTAS DEL MODULO DEL DEPARTAMENTO DE ATENCION CIUDADANA
+Route::middleware(['auth', 'departamento:2'])->group(function () {
+    Route::resource('/buzon', 'App\Http\Controllers\BuzonesController');
+});
+
+// RUTAS GENERALES PARA USUARIOS AUTENTICADOS
+Route::middleware('auth')->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('/catalogo_usuarios', 'App\Http\Controllers\UserController');
+});

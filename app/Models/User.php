@@ -60,10 +60,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function scopeUsuariosParaAdmin($query)
+    public function scopeUsuariosParaAdmin($query,$departamento)
     {
 
-        return $query->where('deprecated', 0)->whereIn('rol',['enlace','administrador']);
+        return $query->whereIn('rol',['enlace','administrador'])->where('departamento', $departamento);
     }
 
 }
