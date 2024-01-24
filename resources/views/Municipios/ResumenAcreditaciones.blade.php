@@ -127,8 +127,10 @@
                                                                  $region='VALLES CENTRALES';
                                                             } 
                                                             //$defaultYear = 2023; 
-                                                            $defaultYear = date('Y');
+                                                           $defaultYear = date('Y');
+                                                            
                                                             $modalIntegrantes =  App\Models\IntegrantesComite::ModalIntegrantes($defaultYear,$region)->get();
+                                                            //;$sqlQuery = $modalIntegrantes->toSql();dd ($sqlQuery);
                                                             $modalMunicipiosMujeres =  App\Models\IntegrantesComite::ModalMunicipiosMujer($defaultYear,$region)->get();
                                                             $modalMunicipiosHombres =  App\Models\IntegrantesComite::ModalMunicipiosHombre($defaultYear,$region)->get();
                                                             $modalMunicipiosAlMenosMujer =  App\Models\IntegrantesComite::ModalMunicipioAlMenosMujer($defaultYear,$region)->get();
@@ -154,7 +156,7 @@
                                                                             <table id="basic-datatable-Integrantes{{ $aux }}" class="table dt-responsive nowrap w-100">
                                                                                 <thead class="table-dark">
                                                                                     <tr>
-                                                                                        <th class="text-center">Region</th>
+                                                                                        <th class="text-center">Región</th>
                                                                                         <th class="text-center">Distrito</th>
                                                                                         <th class="text-center">Municipio</th>
                                                                                         <th class="text-center">Nombre</th>
@@ -214,7 +216,7 @@
                                                                                     <table id="basic-datatable-municipioM{{ $aux }}" class="table dt-responsive nowrap w-100">
                                                                                         <thead class="table-dark">
                                                                                             <tr>
-                                                                                                <th class="text-center">Region</th>
+                                                                                                <th class="text-center">Región</th>
                                                                                                 <th class="text-center">Folio Del Comite</th>
                                                                                                 <th class="text-center">Municipio</th>
                                                                                             </tr>
@@ -254,7 +256,7 @@
                                                                                     <table id="basic-datatable-municipioH{{ $aux }}" class="table dt-responsive nowrap w-100">
                                                                                         <thead class="table-dark">
                                                                                             <tr>
-                                                                                                <th class="text-center">Region</th>
+                                                                                                <th class="text-center">Región</th>
                                                                                                 <th class="text-center">Folio Del Comite</th>
                                                                                                 <th class="text-center">Municipio</th>
                                                                                             </tr>
@@ -294,7 +296,7 @@
                                                                                     <table id="basic-datatable-municipioAlMenosM{{ $aux }}" class="table dt-responsive nowrap w-100">
                                                                                         <thead class="table-dark">
                                                                                             <tr>
-                                                                                                <th class="text-center">Region</th>
+                                                                                                <th class="text-center">Región</th>
                                                                                                 <th class="text-center">Folio Del Comite</th>
                                                                                                 <th class="text-center">Municipio</th>
                                                                                             </tr>
@@ -355,7 +357,7 @@
                             <table id="basic-datatable-segundo"  class="table table-bordered table-centered mb-0">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th rowspan="2" class="align-middle">Region</th>
+                                        <th rowspan="2" class="align-middle">Región</th>
                                         @for ($i = 1; $i <= 12; $i++)
                                             <th colspan="2" style="text-align: center;">{{ strtoupper(Carbon::create()->month($i)->locale('es')->isoFormat('MMMM')) }}</th>
                                         @endfor
@@ -461,13 +463,8 @@ $(document).ready(function () {
                 paging: false,
                 info:     false
         });
-
-        // Oculta la tabla por defecto
         $('#basic-datatable-primeroCopia').hide();
-
-        // Muestra la tabla cuando se haga clic en el botón de exportar
         $('.dt-buttons').on('click', function () {
-            //$('#basic-datatable-primeroCopia').show();
         });
 
     $('#basic-datatable-primero').DataTable({

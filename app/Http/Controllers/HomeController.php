@@ -27,7 +27,6 @@ class HomeController extends Controller
         //$defaultYear = '2023';
         $comitesAcreditados = AcreditacionComite::comitesAcreditados($defaultYear, 1)->first(); 
         $comitesNoAcreditados = AcreditacionComite::comitesAcreditados($defaultYear, 2)->first(); 
-        $comitesTotal = AcreditacionComite::comitesAcreditados($defaultYear, 3)->first(); 
         $integrantesTotal = IntegrantesComite::IntegrantesTotal($defaultYear)->first();
         $comites = AcreditacionComite::Comites($defaultYear)->get();
         $contralores = IntegrantesComite::Contralores($defaultYear)->get();
@@ -35,6 +34,6 @@ class HomeController extends Controller
        
         //$sqlQuery = $comites->toSql();
         //dd ($sqlQuery); 
-        return view('home', compact('comitesAcreditados','comitesNoAcreditados','comitesTotal','integrantesTotal','comites','contralores'));
+        return view('home', compact('comitesAcreditados','comitesNoAcreditados','integrantesTotal','comites','contralores'));
     }
 }

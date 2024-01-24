@@ -47,7 +47,7 @@
                                                         <td>{{ $item['rol'] }}</td>
                                                         @switch($item['departamento'])
                                                                 @case(0)
-                                                                <td>Unidad de Informatica y Estadistica</td>
+                                                                <td>Unidad de Informática y Estadistica</td>
                                                             @break
 
                                                             @case(1)
@@ -95,14 +95,14 @@
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
                                                                                 name="txtNombre"
-                                                                                placeholder="{{ $item['name'] }}" />
+                                                                                placeholder="{{ $item['name'] }}" maxlength="255" />
                                                                         </div>
                                                                         <div class=" mb-3">
                                                                             <label>Correo Electronico </label>
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
                                                                                 name="txtEmail"
-                                                                                placeholder="{{ $item['email'] }}" />
+                                                                                placeholder="{{ $item['email'] }}" maxlength="255" />
                                                                         </div>
                                                                         <div class=" mb-3">
                                                                             <label>Contraseña</label>

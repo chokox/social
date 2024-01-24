@@ -151,9 +151,12 @@
                     <!-- right menu -->
                     <ul class="navbar-nav ms-auto align-items-center">
                         <li class="nav-item me-0">
-                        <a type="button"  class="btn btn-info rounded-pill" href="{{ route('login') }}"><i class="ri-key-fill"></i> Iniciar sesion</a>
+                            <a type="button" class="btn btn-info rounded-pill" href="{{ route('login') }}">
+                                <i class="ri-key-fill"></i> Iniciar Sesión
+                            </a>
                         </li>
                     </ul>
+                    
             </div>
         </div>
     </nav>
