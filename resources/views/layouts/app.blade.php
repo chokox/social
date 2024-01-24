@@ -2,7 +2,7 @@
 <html lang="es" data-layout="topnav">
     <head>
         <meta charset="utf-8" />
-        <title>Sistema de Gene - Bebe</title>
+        <title>Sistema de Contraloria Social</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="imagenes/favicon.ico">
         
         <!-- Theme Config Js -->
-        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
         <script src="{{ asset('js/hyper-config.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
@@ -135,21 +135,24 @@
                                         <i class="uil-dashboard"></i>Comites <div class="arrow-down"></div>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
+                                        <a class="dropdown-item" href="{{ route('catalogo_municipios.index') }}" >Municipios </a>
                                         <a href="{{ route('comites.index') }}" class="dropdown-item">Comites</a>
-                                         {{-- Resumen de Acreditaciones --}}
                                          <a href="{{ route('resumenAcreditaciones') }}" class="dropdown-item">Resumen de Acreditaciones</a>
                                     </div>
                                 </li>
-                            
-                                 @if (Auth::user()->super() or Auth::user()->administrador())
-                                 <!-- menu catalogo municipios -->
-                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-item arrow-none" href="{{ route('catalogo_municipios.index') }}" >
-                                        <i class="ri-bank-line"></i>Municipios 
+                                
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboards" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="uil-dashboard"></i>Buzon Digital <div class="arrow-down"></div>
                                     </a>
+                                    <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
+                                        <a href="{{ route('buzon.index') }}" class="dropdown-item">Buzones</a>
+                                         <a href="{{ route('resumenAcreditaciones') }}" class="dropdown-item">Informes</a>
+                                    </div>
                                 </li>
-                                <!-- menu catalogo usuarios -->
                                  
+                                @if (Auth::user()->super() or Auth::user()->administrador())
+                                <!-- menu catalogo usuarios -->
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle arrow-none" href="{{ route('catalogo_usuarios.index') }}" >
                                         <i class=" ri-contacts-line"></i>Usuarios 
