@@ -29,20 +29,12 @@
                                                 <path d="M12 11v-8h4l2 2l-2 2h-4" />
                                                 <path d="M6 15h1" />
                                             </svg></i> <span> Agregar Buzon</span>
-                                        </a>
-                               
+                                    </a>
+
                                     <a type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                                        data-bs-target="#modalAgregarBuzon">
-                                        <i><svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-mailbox" width="24" height="24"
-                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path d="M10 21v-6.5a3.5 3.5 0 0 0 -7 0v6.5h18v-6a4 4 0 0 0 -4 -4h-10.5" />
-                                                <path d="M12 11v-8h4l2 2l-2 2h-4" />
-                                                <path d="M6 15h1" />
-                                            </svg></i> <span> Registrar Dependencia/Programa</span>
-                                        </a>
+                                        data-bs-target="#modalRegistrarTipo">
+                                        <i class="ri-pantone-line"></i> <span> Registrar Dependencia/Programa</span>
+                                    </a>
                                 </div><br>
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="datatable-municipios-preview">
@@ -146,11 +138,11 @@
                                                             </select>
                                                         </div>
                                                         <div class=" mb-3">
-                                                         
-                                                        <select class="form-control form-control-sm" name="txtTipoBuzon"
-                                                            id="txtTipoBuzon">
-                                                            <!-- Opciones serán agregadas dinámicamente -->
-                                                        </select>
+
+                                                            <select class="form-control form-control-sm"
+                                                                name="txtTipoBuzon" id="txtTipoBuzon">
+                                                                <!-- Opciones serán agregadas dinámicamente -->
+                                                            </select>
                                                         </div>
 
                                                         <div class=" mb-3">
@@ -171,59 +163,43 @@
                                 </div>
                                 <!-- fin  Modal de agregar buzon -->
                                 <!-- inicioModal de resgistrar dependencia/priograma-->
-                                    <div id="modalAgregarBuzon" class="modal fade" tabindex="-1" role="dialog"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title"> Agregar Buzon </h4>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <form method="POST" action="{{ route('buzon.store') }}">
-                                                    @csrf
-                                                    <div class="modal-body">
-                                                        <div class=" mb-3">
-                                                            <label>Numero de Buzon</label>
-                                                            <input type="text" class="form-control form-control-sm"
-                                                                name="txtAgregarNombre" />
-                                                        </div>
-                                                        <div class=" mb-3">
-                                                            <label>Dependencia/Programa </label>
-                                                            <select class="form-control form-control-sm"
-                                                                name="txtAgregarRol" id="txtAgregarRol">
-                                                                <option value="0">Seleccione una opcion</option>
-                                                                <option value="1">Dependencia/Entidad</option>
-                                                                <option value="2">Programa Federal</option>
-                                                                <option value="3">Programa social</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class=" mb-3">
-                                                         
-                                                        <select class="form-control form-control-sm" name="txtTipoBuzon"
-                                                            id="txtTipoBuzon">
-                                                            <!-- Opciones serán agregadas dinámicamente -->
-                                                        </select>
-                                                        </div>
-
-                                                        <div class=" mb-3">
-                                                            <label>Ubicacion</label>
-                                                            <textarea class="form-control form-control-sm"></textarea>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-light"
-                                                            data-bs-dismiss="modal">Cerrar</button>
-                                                        <button type="submit" class="btn btn-primary">Agregar</button>
-                                                    </div>
-                                                </form>
+                                <div id="modalRegistrarTipo" class="modal fade" tabindex="-1" role="dialog"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title"> Registrar Dependencia/Programa </h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
                                             </div>
+                                            <form method="POST" action="{{ route('registrar_tipo_buzon') }}">
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <div class=" mb-3">
+                                                        <label>Tipo </label>
+                                                        <select class="form-control form-control-sm" name="txtAgregarTipo"
+                                                            id="txtAgregarTipo">
+                                                            <option value="1">Dependencia/Entidad</option>
+                                                            <option value="2">Programa Federal</option>
+                                                            <option value="3">Programa social</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class=" mb-3">
+                                                        <label>Nombre de la Dependencia, Programa o Municipio </label>
+                                                        <input class="form-control form-control-sm" name="nombre_dpm">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-light"
+                                                        data-bs-dismiss="modal">Cerrar</button>
+                                                    <button type="submit" class="btn btn-primary">Agregar</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- fin  Modal de resgistrar dependencia/priograma -->
                             </div>
+                            <!-- fin  Modal de resgistrar dependencia/priograma -->
                         </div>
                     </div>
                 </div>
@@ -231,38 +207,36 @@
         </div>
     </div>
     </div>
+    </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#txtAgregarRol').on('change', function () {
-            var tipo = $(this).val();
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#txtAgregarRol').on('change', function() {
+                var tipo = $(this).val();
 
-            $.ajax({
-                url: '/obtener-tipos-buzon/' + tipo,
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    $('#txtTipoBuzon').empty(); 
+                $.ajax({
+                    url: '/obtener-tipos-buzon/' + tipo,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#txtTipoBuzon').empty();
 
-                    $.each(data, function (key, value) {
-                        $('#txtTipoBuzon').append($('<option>', {
-                            value: value.id_tipo_buzon,
-                            text: value.nombre_dependecia_programa
-                        }));
-                    });
+                        $.each(data, function(key, value) {
+                            $('#txtTipoBuzon').append($('<option>', {
+                                value: value.id_tipo_buzon,
+                                text: value.nombre_dependecia_programa
+                            }));
+                        });
 
-                    $('#txtTipoBuzon').selectpicker('refresh');
-                },
-                error: function (error) {
-                    console.log(error);
-                }
+                        $('#txtTipoBuzon').selectpicker('refresh');
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
             });
+            $('#txtAgregarRol, #txtTipoBuzon').selectpicker();
         });
-        $('#txtAgregarRol, #txtTipoBuzon').selectpicker();
-    });
-</script>
-
-
-
+    </script>
 @endsection

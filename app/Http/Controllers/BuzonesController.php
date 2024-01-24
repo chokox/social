@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Buzone;
 use App\Models\TipoBuzone;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BuzonesController extends Controller
 {
@@ -25,6 +26,17 @@ class BuzonesController extends Controller
     {
         $resultados = TipoBuzone::where('tipo', $tipo)->get();
         return response()->json($resultados);
+    }
+
+    public function registrarTiposBuzon(Request $request)
+    {
+        $registro = new TipoBuzone();
+        $registro->tipo = $request->input('txtAgregarTipo');
+        $registro->nombre_dependecia_programa = $request->input('nombre_dpm');
+        $registro->save();
+
+        Alert::success('Registro correcto', 'La Dependencia, Programa o Municipio fue registrado de manera satisfactoria');
+        return back();
     }
 
     /**

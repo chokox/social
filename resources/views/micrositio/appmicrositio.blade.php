@@ -200,7 +200,7 @@
                             <br> Tlalixtac de Cabrera, Oaxaca C.P. 68270
                                                  <!-- Contador de visitas -->
                 <div class="text-center">
-                    <!-- Eres la visita numero:  -->
+                     Eres la visita numero: {{$contador}}
                 </div>
                 <!-- Fin Contador de visitas -->
                             

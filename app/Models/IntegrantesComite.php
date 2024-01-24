@@ -29,6 +29,14 @@ class IntegrantesComite extends Model
             ->where('integrantes_comites.id_integrante_comite', $id);
     }
 
+    public function scopeTodosIntegranteComite($query, $id)
+    {
+        return $query
+            ->join('acreditacion_comites', 'acreditacion_comites.id_acreditacion', '=', 'integrantes_comites.id_acreditacion_comite_fk')
+            ->join('catalogo_municipios', 'catalogo_municipios.id_municipio', '=', 'acreditacion_comites.id_catalogo_municipio_fk')
+            ->where('acreditacion_comites.id_acreditacion', $id);
+    }
+
 
      public function scopeIntegrantesTotal ($query, $ejercicio){
         

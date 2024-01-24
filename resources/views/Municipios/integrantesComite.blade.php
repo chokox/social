@@ -20,8 +20,14 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-xl-end mt-xl-0 mt-2">
-                                    <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                                        data-bs-target="#bs-example-modal-lg"><i class=" ri-user-add-fill"></i>Agregar integrante</button>
+                                    <a type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#bs-example-modal-lg"><i class=" ri-user-add-fill"></i>Agregar integrante</a>
+                                         @if($estatus == 4)
+                                                    <a type="button" class="btn btn-secondary"
+                                                            title="Credencial"
+                                                            href="{{ route('credencial_integrante', $id) }}"><i
+                                                                class="ri-contacts-book-2-line"></i>Credenciales</a>
+                                                                @endif
                                 </div>
                                 <br>
                                 <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
@@ -81,10 +87,6 @@
                                                             title="Constancia"
                                                             href="{{ route('constancia_integrante', $integrantes->id_integrante_comite) }}"><i
                                                                 class="ri-profile-line"></i></a>
-                                                    <a type="button" class="btn btn-primary"
-                                                            title="Credencial"
-                                                            href="{{ route('credencial_integrante', $integrantes->id_integrante_comite) }}"><i
-                                                                class="ri-contacts-book-2-line"></i></a>
                                                                 @endif
                                                     <form
                                                         action="{{ route('integrantes.destroy', $integrantes->id_integrante_comite) }}"
