@@ -119,9 +119,10 @@ Directora de Contraloría Social</strong><br><br></div>
 
         PDF::setHeaderCallback(function ($pdf) {
             // Agregar la imagen a la página
-            $pdf->Image('grecas.jpg', 185, 0, 50, null, '', '', '', false, 300, '', false, false, 0);
+            $pdf->Image('grecas.jpg', 185, 0, 50, null, '', '', '', false, 500, '', false, false, 0);
             $pdf->Image('grecas.jpg', 185, 240, 50, null, '', '', '', false, 300, '', false, false, 0);
-            $pdf->Image('cs.png', 15, 10, 180, 28, '', '', '', false, 300, '', false, false, 0);
+            $pdf->Image('grecas.jpg', 185, 240, 50, null, '', '', '', false, 300, '', false, false, 0);
+            $pdf->Image('lcs.png', 15, 10, 180, 28, '', '', '', false, 300, '', false, false, 0);
             $pdf->Image('abajo.jpg', -8, 270, 0, 8, '', '', '', false, 300, '', false, false, 0);
         });
 
@@ -145,39 +146,67 @@ Directora de Contraloría Social</strong><br><br></div>
         $imageUrl = 'storage/' . $datos[0]->archivo_fotografia;
         $ano= now()->year;
         
-        $tbl =
-        '<div align="center"><strong>
-               <font style="color:#616161;" size="14"> '.$datos[0]->nombre_completo . '</font><br><br>
-     <img src="' . $imageUrl . '" alt="foto" style="width: 100px; height: 100px; margin-top: 10mm;"><br><br>';
-        if ($datos[0]->sexo == 'HOMBRE') {
-            $tbl .=
-            '<font style="color:#B38E5D;">CONTRALOR SOCIAL</font><br><font style="color:#9D2449;" size="14">' . $datos[0]->nombre . '</font><br>';
-        } else {
-            $tbl .=
-            '<font style="color:#B38E5D;">CONTRALORA SOCIAL</font><br><font style="color:#9D2449;" size="14">' . $datos[0]->nombre . '</font><br>';
-        }
-        $tbl .= '
-<br><br><br><br>
-Lic. María Teresa Jiménez Martínez<br></strong>
-Directora de Contraloría Social<br><br><br>
-Folio comite: <font style="color:#9D2449;" size="14"><strong>' . $datos[0]->folio_comite . '</strong></font> <br><br><br>
-Lada sin costo:<br>
-<font style="color:#9D2449;">01 951 50 15000 <br>Ext. 11704, 11705, 10192 y 104772 </font><br><br><br>
-Personalmente
-<br><font style="color:#9D2449;">Ciudad Administrativa, Edificio 2 "Rufino Tamayo", Planta baja, Carretera Internacional Oaxaca-Istmo Km 11.5, Tlalixtac de Cabrera, Oaxaca.</font><br><br>
-<br><br><strong>Vigencia al 31 de diciembre del ' . $ano . '</strong></div><br>
-    <div align="right"><strong><font style="color:#B38E5D;">www.oaxaca.gob.mx/</font><font style="color:#9D2449;">honestidad</font></strong></div>
-  
+        $tbl ='
+        <table cellspacing="0" cellpadding="1" border="1">
+        <tr>
+            <td width="200">
+                <div align="center"><strong>
+                <br><br>
+                        <font style="color:#616161;" size="14"> '.$datos[0]->nombre_completo . '</font><br><br>
+                        <img src="' . $imageUrl . '" alt="foto"
+                            style="width: 70px; height: 70px; margin-top: 10mm;"><br>';
+                        if ($datos[0]->sexo == 'HOMBRE') {
+                        $tbl .=
+                        '<font style="color:#B38E5D;">CONTRALOR SOCIAL</font><br>
+                        <font style="color:#9D2449;" size="12">' . $datos[0]->nombre . '</font><br>';
+                        } else {
+                        $tbl .=
+                        '<font style="color:#B38E5D;">CONTRALORA SOCIAL</font><br>
+                        <font style="color:#9D2449;" size="12">' . $datos[0]->nombre . '</font><br>';
+                        }
+                        $tbl .= '
+                        <br>
+                        <br>
+                        <br>
+                        Lic. María Teresa Jiménez Martínez<br>
+                    </strong>
+                    Directora de Contraloría Social<br><br><br><br>
+                    Folio comite: <font style="color:#9D2449;" size="14"><strong>' . $datos[0]->folio_comite . '</strong>
+                    </font> <br><br><br>
+                    Lada sin costo:<br>
+                    <font style="color:#9D2449;">01 951 50 15000 <br>Ext. 11704, 11705, 10192 y 104772 </font><br><br>
+                    Personalmente
+                    <br>
+                    <font style="color:#9D2449;">Ciudad Administrativa, Edificio 2 "Rufino Tamayo", Planta baja, Carretera
+                        Internacional Oaxaca-Istmo Km 11.5, Tlalixtac de Cabrera, Oaxaca.</font><br><br>
+                    <strong>Vigencia al 31 de diciembre del ' . $ano . '</strong>
+                </div>
+                <div align="center"><strong>
+                        <font style="color:#B38E5D;">www.oaxaca.gob.mx/</font>
+                        <font style="color:#9D2449;">honestidad</font>
+                    </strong></div>
+            </td>
+            <td width="200">Hola 2</td>
+            <td width="200">Hola 3</td>
+        </tr>
+        </table>
 ';
 
         PDF::setHeaderCallback(function ($pdf) {
             // Agregar la imagen a la página
-            $pdf->Image('grecas.jpg', 90, 0, null, null, '', '', '', false, 300, '', false, false, 0);
-            $pdf->Image('grecas.jpg', 90, 109, null, null, '', '', '', false, 300, '', false, false, 0);
-            $pdf->Image('lcs.jpg', 7, 5, 80, 12, '', '', '', false, 300, '', false, false, 0);
-            $pdf->Image('abajo.jpg', -8, 140, 0, 5, '', '', '', false, 300, '', false, false, 0);
-            //$pdf->Image($imageUrl, 36, 40, 30, 30, '', '', '', false, 300, '', false, false, 0);
-            
+            $pdf->Image('grecas.jpg', 70, 22, null, null, '', '', '', false, 300, '', false, false, 0);
+            $pdf->Image('grecas.jpg', 140, 22, null, null, '', '', '', false, 300, '', false, false, 0);
+            $pdf->Image('grecas.jpg', 210, 22, null, null, '', '', '', false, 300, '', false, false, 0);
+            $pdf->Image('cs.png', 17, 25, 75, 12, '', '', '', false, 100, '', false, false, 0);
+            $pdf->Image('abajo1.png', 20, 113, 0, 5, '', '', '', false, 300, '', false, false, 0);
+            $pdf->Image('abajo1.png', 20, 108, 0, 5, '', '', '', false, 300, '', false, false, 0);
+            $pdf->Image('abajo1.png', 55, 108, 0, 5, '', '', '', false, 300, '', false, false, 0);
+            $pdf->Image('abajo1.png', 55, 113, 0, 5, '', '', '', false, 300, '', false, false, 0);
+            $pdf->StartTransform();
+            $pdf->Rotate(180, 50, 50);
+            $pdf->Text(0,22, 'MirrorP');
+            $pdf->StopTransform();
+            //$pdf->RotateText(50, 50, 45, 'Texto Rotado');
         });
 
         PDF::SetAuthor('CS');
@@ -186,11 +215,12 @@ Personalmente
         PDF::SetMargins(20, 22, 25);
         PDF::SetFontSubsetting(false);
         PDF::SetAutoPageBreak(true, 10);
-        PDF::AddPage('P', 'A6');
+        PDF::AddPage('L', 'LETTER');
         // PDF::SetFont('Montserrat-Regular', '', 14);
         PDF::SetFont('times', '', '11');
         PDF::writeHTML($tbl, true, false, true, false, '');
+        
         //PDF::AddPage();
-        PDF::Output('Constancia de municipio.pdf', 'D');
+        PDF::Output('Constancia de municipio.pdf', 'I');
     }
 }

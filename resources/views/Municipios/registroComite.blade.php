@@ -63,9 +63,9 @@
                                         <option>Oficina Regional</option>
                                     </select>
                                 </div><br>
-                                <h4>PERSONAL QUE ATENDIÓ AL COMITÉ</h4> <br>
+                                <h4>PERSONA QUE CAPACITO AL COMITÉ</h4> <br>
                                 <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Capacito comite</label>
+                                    <label for="simpleinput" class="form-label">Persona que</label>
                                     <select class="form-control" name="capacito_comite">
                                         @if ($edicion == 'edicion')
                                             <option>{{ $dato->capacito_comite }}</option>

@@ -271,7 +271,7 @@
                                                                 @endif
                                                          @if ($mun->estatus == 4) 
                                                                 <a type="button" class="btn btn-primary"
-                                                            title="Constancia"
+                                                            title="Constancia" target="_blank"
                                                             href="{{ route('constancia_municipio', $mun->id_acreditacion) }}"><i
                                                                 class="ri-profile-line"></i></a>
                                                             @endif 

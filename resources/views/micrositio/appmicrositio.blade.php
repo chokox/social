@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" data-layout-mode="detached" data-topbar-color="dark" data-menu-color="light" data-sidenav-user="true">
-
 <head>
     <meta charset="utf-8" />
     <title> Contraloría Social| Honestidad</title>
@@ -16,7 +15,6 @@
 
     <!-- App css -->
     <link href="{{ asset('css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
-
     <!-- Icons css -->
     <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <style>
@@ -202,7 +200,7 @@
                             <br> Tlalixtac de Cabrera, Oaxaca C.P. 68270
                                                  <!-- Contador de visitas -->
                 <div class="text-center">
-                    Eres la visita numero: {{$contador}}
+                    <!-- Eres la visita numero:  -->
                 </div>
                 <!-- Fin Contador de visitas -->
                             
