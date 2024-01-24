@@ -49,6 +49,7 @@ Route::middleware(['auth', 'departamento:1'])->group(function () {
 //RUTAS DEL MODULO DEL DEPARTAMENTO DE ATENCION CIUDADANA
 Route::middleware(['auth', 'departamento:2'])->group(function () {
     Route::resource('/buzon', 'App\Http\Controllers\BuzonesController');
+    Route::get('/obtener-tipos-buzon/{tipo}', 'App\Http\Controllers\BuzonesController@obtenerTiposBuzon');
 });
 
 // RUTAS GENERALES PARA USUARIOS AUTENTICADOS

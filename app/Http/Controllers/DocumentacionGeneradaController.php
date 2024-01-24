@@ -192,7 +192,7 @@ Directora de Contraloría Social</strong><br><br></div>
         </table>
 ';
 
-        PDF::setHeaderCallback(function ($pdf) {
+        PDF::setHeaderCallback(function ($pdf) use ($tbl){
             // Agregar la imagen a la página
             $pdf->Image('grecas.jpg', 70, 22, null, null, '', '', '', false, 300, '', false, false, 0);
             $pdf->Image('grecas.jpg', 140, 22, null, null, '', '', '', false, 300, '', false, false, 0);
@@ -203,10 +203,16 @@ Directora de Contraloría Social</strong><br><br></div>
             $pdf->Image('abajo1.png', 55, 108, 0, 5, '', '', '', false, 300, '', false, false, 0);
             $pdf->Image('abajo1.png', 55, 113, 0, 5, '', '', '', false, 300, '', false, false, 0);
             $pdf->StartTransform();
+            
             $pdf->Rotate(180, 50, 50);
-            $pdf->Text(0,22, 'MirrorP');
-            $pdf->StopTransform();
-            //$pdf->RotateText(50, 50, 45, 'Texto Rotado');
+            $pdf->writeHTMLCell(100, 100, 50, 50, $tbl, 1, 0, 0, true, '', true);
+            //$pdf->Text(0,22, 'MirrorP');
+            $pdf->StopTransform(); 
+            
+
+
+            
+
         });
 
         PDF::SetAuthor('CS');
