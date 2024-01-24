@@ -17,26 +17,24 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                    <div align="right">
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#modalAgregarUsuario">
-                                            <i class=" ri-user-add-fill"></i> <span> Usuario</span>
-                                        </button>
-                                    </div><br>
-                             
+                                <div align="right">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#modalAgregarUsuario">
+                                        <i class=" ri-user-add-fill"></i> <span> Usuario</span>
+                                    </button>
+                                </div><br>
+
 
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="datatable-usuarios-preview">
                                         <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
                                             <thead class="table-dark">
                                                 <tr>
-                                                    <th>Identificador</th>
+                                                    <th>Id</th>
                                                     <th>Nombre</th>
                                                     <th>Correo Electronico</th>
                                                     <th>Rol</th>
-                                                    @if (Auth::user()->super())
-                                                        <th>Estatus</th>
-                                                    @endif
+                                                    <th>Departamento</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
@@ -47,95 +45,105 @@
                                                         <td>{{ $item['name'] }}</td>
                                                         <td>{{ $item['email'] }}</td>
                                                         <td>{{ $item['rol'] }}</td>
-                                                        @if (Auth::user()->super())
-                                                                @if ($item['deprecated'] == 1)
-                                                            <td style="color: red">Eliminado</td>
-                                                        @else
-                                                            <td style="color: green">Activo</td>
-                                                        @endif
-                                                @endif
-                                                <td>
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                        data-bs-target="#modalEditarUsuario{{ $item['id'] }}">
-                                                        <i class="ri-file-edit-line"></i>
-                                                    </button>
-                                                    <form action="{{ route('catalogo_usuarios.destroy', $item['id']) }}"
-                                                        method="POST" style="display: inline;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-primary">
-                                                            <i class="ri-delete-bin-2-fill"></i>
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                                </tr>
-                                                <!--modal editar usuarios-->
-                                                <div id="modalEditarUsuario{{ $item['id'] }}" class="modal fade"
-                                                    tabindex="-1" role="dialog" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title"> Editar Usuario </h4>
-                                                                <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <form method="POST"
-                                                                action="{{ route('catalogo_usuarios.update', $item['id']) }}">
+                                                        @switch($item['departamento'])
+                                                                @case(0)
+                                                                <td>Unidad de Informatica y Estadistica</td>
+                                                            @break
+
+                                                            @case(1)
+                                                                <td>Departamento de Capacitación a Municipios</td>
+                                                            @break
+
+                                                            @case(2)
+                                                                <td>Departamento de Atención Ciudadana</td>
+                                                            @break
+                                                        @endswitch
+                                                        <td>
+                                                            <button type="button" class="btn btn-primary"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#modalEditarUsuario{{ $item['id'] }}">
+                                                                <i class="ri-file-edit-line"></i>
+                                                            </button>
+                                                            <form
+                                                                action="{{ route('catalogo_usuarios.destroy', $item['id']) }}"
+                                                                method="POST" style="display: inline;">
                                                                 @csrf
-                                                                @method('PUT')
-                                                                <div class="modal-body">
-                                                                    <div class=" mb-3">
-                                                                        <label>Nombre</label>
-                                                                        <input type="text"
-                                                                            class="form-control form-control-sm"
-                                                                            name="txtNombre"
-                                                                            placeholder="{{ $item['name'] }}" />
-                                                                    </div>
-                                                                    <div class=" mb-3">
-                                                                        <label>Correo Electronico </label>
-                                                                        <input type="text"
-                                                                            class="form-control form-control-sm"
-                                                                            name="txtEmail"
-                                                                            placeholder="{{ $item['email'] }}" />
-                                                                    </div>
-                                                                    <div class=" mb-3">
-                                                                        <label>Contraseña</label>
-                                                                        <div class="input-group input-group-merge">
-                                                                            <input type="password" name="txtContrasena"
-                                                                                class="form-control">
-                                                                            <div class="input-group-text show-password"
-                                                                                data-password="true">
-                                                                                <span class="password-eye"></span>
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-primary">
+                                                                    <i class="ri-delete-bin-2-fill"></i>
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                    <!--modal editar usuarios-->
+                                                    <div id="modalEditarUsuario{{ $item['id'] }}" class="modal fade"
+                                                        tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title"> Editar Usuario </h4>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <form method="POST"
+                                                                    action="{{ route('catalogo_usuarios.update', $item['id']) }}">
+                                                                    @csrf
+                                                                    @method('PUT')
+                                                                    <div class="modal-body">
+                                                                        <div class=" mb-3">
+                                                                            <label>Nombre</label>
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                name="txtNombre"
+                                                                                placeholder="{{ $item['name'] }}" />
+                                                                        </div>
+                                                                        <div class=" mb-3">
+                                                                            <label>Correo Electronico </label>
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                name="txtEmail"
+                                                                                placeholder="{{ $item['email'] }}" />
+                                                                        </div>
+                                                                        <div class=" mb-3">
+                                                                            <label>Contraseña</label>
+                                                                            <div class="input-group input-group-merge">
+                                                                                <input type="password" name="txtContrasena"
+                                                                                    class="form-control">
+                                                                                <div class="input-group-text show-password"
+                                                                                    data-password="true">
+                                                                                    <span class="password-eye"></span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
+                                                                        <div class=" mb-3">
+                                                                            <label>Rol administrativo</label>
+                                                                            <select class="form-control form-control-sm"
+                                                                                name="txtRol">
+                                                                                <option value="{{ $item['rol'] }}">
+                                                                                    {{ $item['rol'] }}</option>
+                                                                                @if (Auth::user()->super())
+                                                                                    <option value="super">Superusuario
+                                                                                    </option>
+                                                                                    <option value="administrador">
+                                                                                        Administrador
+                                                                                    </option>
+                                                                                @else
+                                                                                    <option value="enlace">Enlace</option>
+                                                                                @endif
+                                                                            </select>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class=" mb-3">
-                                                                        <label>Rol administrativo</label>
-                                                                        <select class="form-control form-control-sm"
-                                                                            name="txtRol">
-                                                                            <option value="{{ $item['rol'] }}">
-                                                                                {{ $item['rol'] }}</option>
-                                                                            @if (Auth::user()->super())
-                                                                                <option value="super">Superusuario</option>
-                                                                                <option value="administrador">Administrador
-                                                                                </option>
-                                                                            @else
-                                                                                <option value="enlace">Enlace</option>
-                                                                            @endif
-                                                                        </select>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-light"
+                                                                            data-bs-dismiss="modal">Cerrar</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary">Guardar</button>
                                                                     </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-light"
-                                                                        data-bs-dismiss="modal">Cerrar</button>
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary">Guardar</button>
-                                                                </div>
-                                                            </form>
+                                                                </form>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <!--modal editar usuarios-->
+                                                    <!--modal editar usuarios-->
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -186,6 +194,20 @@
                                                             @endif
                                                         </select>
                                                     </div>
+                                                    @if (Auth::user()->super())
+                                                        <div class=" mb-3">
+                                                            <label>Departamento</label>
+                                                            <select class="form-control form-control-sm"
+                                                                name="txtAgregarDepartamento">
+                                                                <option value="0">Unidad de Informatica y Estadistica
+                                                                </option>
+                                                                <option value="1">Departamento de Capacitación a
+                                                                    Municipios</option>
+                                                                <option value="2">Departamento de Atención Ciudadana
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-light"

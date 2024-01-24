@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         if (Auth::user()->administrador()) {
-            $catalogo = User::UsuariosParaAdmin()->get();
+            $catalogo = User::UsuariosParaAdmin(Auth::user()->departamento)->get();
         } elseif (Auth::user()->super()) {
             $catalogo = User::all();
         }
@@ -51,7 +51,12 @@ class UserController extends Controller
             $catalogo->email = $request->input('txtAgregarEmail');
             $catalogo->password = bcrypt($request->input('txtAgregarContrasena'));
             $catalogo->rol = $request->input('txtAgregarRol');
-            $catalogo->deprecated = 0;
+            if(Auth::user()->departamento == 0)
+            {
+                $catalogo->departamento = $request->input('txtAgregarDepartamento');
+            }else {
+                $catalogo->departamento = Auth::user()->departamento;
+            }
             $catalogo->save();
 
             Alert::success('Usuario Agregado', 'El usuario se agrego correctamente');
@@ -117,16 +122,12 @@ class UserController extends Controller
     {
         try {
             $dato = User::find($id);
-            $dato->deprecated = '1';
-            $dato->save();
-            Alert::success('Usuario Eliminado', 'Los datos fueron marcados como obsoletos correctamente.');
+            $dato->delete();
+            Alert::success('Usuario Eliminado', null);
             return back();
 
-            /*Alert::info('Confirmar eliminación', '¿Estás seguro de querer eliminar?')
-        ->showConfirmButton('Sí, eliminar', '#3085d6')
-        ->showCancelButton('No, cancelar', '#aaa'); */
         } catch (\Exception $e) {
-            Alert::error('Ha ocurrido un error al marcar los datos como obsoletos.', null);
+            Alert::error('Ha ocurrido un error al eliminar el usuario.', null);
             return back();
         }
     }
