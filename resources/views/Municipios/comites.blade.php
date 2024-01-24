@@ -23,7 +23,7 @@
                                     <thead class="table-dark">
                                         <tr>
                                             <th>Folio</th>
-                                            <th>Region</th>
+                                            <th>Región</th>
                                             <th>Distrito</th>
                                             <th>Municipio</th>
                                             <th>Atendido por</th>
@@ -67,7 +67,7 @@
                                                     @break
 
                                                     @case(5)
-                                                        <td style="color: red">Revisar informacion</td>
+                                                        <td style="color: red">Revisar información</td>
                                                     @break
 
                                                     @default
@@ -265,7 +265,7 @@
                                                                 @endif
                                                                  @if ($mun->estatus != 5)
                                                                 <a type="button" class="btn btn-primary"
-                                                            title="Revisar Informacion"
+                                                            title="Revisar Información"
                                                             href="{{ route('revisarComite', $mun->id_acreditacion) }}"><i
                                                                 class="ri-thumb-down-fill"></i></a>
                                                                 @endif

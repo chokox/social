@@ -28,13 +28,11 @@ class UserController extends Controller
                 [
                     'txtNombre' => ['nullable', 'regex:/^[A-Za-z\s]+$/'],
                     'txtEmail' => ['nullable', 'email'],
-                    'txtContrasena' => ['nullable', 'string', 'regex:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/'],
                     'txtRol' => ['nullable', 'regex:/^[A-Za-z\s]+$/'],
                 ],
                 [
                     'txtNombre.regex' => 'El campo nombre debe contener solo letras y espacios.',
                     'txtEmail.email' => 'El campo email debe ser una dirección de correo electrónico válida.',
-                    'txtContrasena.regex' => 'La contraseña debe contener al menos una letra, un número y un caracter especial, y tener una longitud mínima de 8 caracteres.',
                     'txtRol.regex' => 'El campo rol debe contener solo letras y espacios.',
                 ],
             );
@@ -76,13 +74,11 @@ class UserController extends Controller
                 [
                     'txtNombre' => ['nullable', 'regex:/^[A-Za-z\s]+$/'],
                     'txtEmail' => ['nullable', 'email'],
-                    'txtContrasena' => ['nullable', 'string', 'regex:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/'],
                     'txtRol' => ['nullable', 'regex:/^[A-Za-z\s]+$/'],
                 ],
                 [
                     'txtNombre.regex' => 'El campo nombre debe contener solo letras y espacios.',
                     'txtEmail.email' => 'El campo email debe ser una dirección de correo electrónico válida.',
-                    'txtContrasena.regex' => 'La contraseña debe contener al menos una letra, un número y un caracter especial, y tener una longitud mínima de 8 caracteres.',
                     'txtRol.regex' => 'El campo rol debe contener solo letras y espacios.',
                 ],
             );

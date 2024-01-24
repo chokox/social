@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Iniciar Sesion|Honestidad</title>
+    <title>Iniciar Sesión|Honestidad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -45,7 +45,7 @@
                         <div class="card-body p-4">
 
                             <div class="text-center w-75 m-auto">
-                                <h4 class="text-dark-50 text-center pb-0 fw-bold">Iniciar sesion</h4>
+                                <h4 class="text-dark-50 text-center pb-0 fw-bold">Iniciar Sesión</h4>
                                 <p class="text-muted mb-4">Ingrese su dirección de correo electrónico y contraseña para
                                     acceder al panel de administración.</p>
                             </div>
@@ -124,13 +124,6 @@
         <!-- end container -->
     </div>
     <!-- end page -->
-
-    <footer class="footer footer-alt">
-        2018 -
-        <script>
-            document.write(new Date().getFullYear())
-        </script> © Hyper - Coderthemes.com
-    </footer>
     <!-- Vendor js -->
     <script src="{{ asset('js/vendor.min.js') }}"></script>
 

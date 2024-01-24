@@ -25,7 +25,7 @@
                                             <tr>
                                                 <th>Folio</th>
                                                 <th>Municipo</th>
-                                                <th>Region</th>
+                                                <th>Región</th>
                                                 <th>Distrito</th>
                                                 <th>Acciones</th>
                                             </tr>
@@ -60,19 +60,19 @@
                                                                 <div class="modal-body">
                                                                     <div class=" mb-3">
                                                                         <label >Folio</label>
-                                                                        <input type="text" class="form-control form-control-sm" name="txtFolio" placeholder="{{ $item['folio'] }}" />
+                                                                        <input type="text" class="form-control form-control-sm" name="txtFolio" placeholder="{{ $item['folio'] }}" maxlength="255" />
                                                                     </div>
                                                                     <div class=" mb-3">
                                                                         <label >Municipio</label>
-                                                                        <input type="text" class="form-control form-control-sm" name="txtMunicipio" placeholder="{{ $item['nombre'] }}"   />
+                                                                        <input type="text" class="form-control form-control-sm" name="txtMunicipio" placeholder="{{ $item['nombre'] }}" maxlength="255"   />
                                                                     </div>
                                                                     <div class=" mb-3">
-                                                                        <label >Region</label>
-                                                                        <input type="text" class="form-control form-control-sm" name="txtRegion" placeholder="{{ $item['region'] }}"  />
+                                                                        <label >Región</label>
+                                                                        <input type="text" class="form-control form-control-sm" name="txtRegion" placeholder="{{ $item['region'] }}" maxlength="255"  />
                                                                     </div>
                                                                     <div class=" mb-3">
                                                                         <label >Distrito</label>
-                                                                        <input type="text" class="form-control form-control-sm" name="txtDistrito" placeholder="{{ $item['distrito'] }}" />
+                                                                        <input type="text" class="form-control form-control-sm" name="txtDistrito" placeholder="{{ $item['distrito'] }}" maxlength="255" />
                                                                     </div>   
                                                                 </div>
                                                                 <div class="modal-footer">

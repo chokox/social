@@ -13,18 +13,7 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-3">
-                    <div class="card widget-flat">
-                        <div class="card-body">
-                            <div class="float-end">
-                                <i class="mdi mdi-account-group widget-icon"></i>
-                            </div>
-                            <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Comites</h5>
-                            <h3 class="mt-3 mb-3">{{ $comitesTotal->total }}</h3>
-                        </div> 
-                    </div> 
-                </div> 
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="card widget-flat">
                         <div class="card-body">
                             <div class="float-end">
@@ -35,24 +24,24 @@
                         </div> 
                     </div> 
                 </div> 
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="card widget-flat">
                         <div class="card-body">
                             <div class="float-end">
                                 <i class="mdi mdi-account-multiple-check widget-icon bg-success-lighten text-success"></i>
                             </div>
-                            <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Comites Acreditados</h5>
+                            <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Comités Acreditados</h5>
                             <h3 class="mt-3 mb-3">{{ $comitesAcreditados->total }}</h3>
                         </div> 
                     </div> 
                 </div> 
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="card widget-flat">
                         <div class="card-body">
                             <div class="float-end">
                                 <i class="mdi mdi-account-multiple widget-icon"></i>
                             </div>
-                            <h5 class="text-muted fw-normal mt-0" title="Growth">Comites No Acreditados</h5>
+                            <h5 class="text-muted fw-normal mt-0" title="Growth">Comités No Acreditados</h5>
                             <h3 class="mt-3 mb-3">{{ $comitesNoAcreditados->total }}</h3>
                         </div> 
                     </div> 
