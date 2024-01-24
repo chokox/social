@@ -18,11 +18,46 @@
                 </div>
             </div>
 
+            <table id="basic-datatable-primeroCopia"  class="table table-bordered table-centered mb-0">
+                <thead class="table-dark ">
+                    <tr>
+                        <th>Región</th>
+                        <th>Total de Comités</th>
+                        <th>Total de Integrantes</th>
+                        <th>Integrantes Mujeres</th>
+                        <th>Integrantes Hombres</th>
+                        <th>Hablan lengua indígena</th>
+                        <th>Municipios con solo mujeres</th>
+                        <th>Municipios con solo hombres</th>
+                        <th>Municipios con al menos una mujer</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($totComites as $itemA)
+                        <tr>
+                            <td>{{ $itemA['region'] }}</td>
+                            <td>{{ $itemA['total'] }}</td>
+                            @foreach ($totintegrantes as $itemB)
+                                @if ($itemA['region'] == $itemB['region'])          
+                                    <td>{{ $itemB['totalIntegrantes'] }}</td>                                                         
+                                    <td>{{ $itemB['total_mujeres'] }}</td>
+                                    <td>{{ $itemB['total_hombres'] }}</td>
+                                    <td>{{ $itemB['total_hablan_lengua_indigena'] }}</td>                             
+                                    <td>{{ $itemB['municipios_solo_mujeres'] }}</td>
+                                    <td>{{ $itemB['municipios_solo_hombres'] }} </td>
+                                    <td>{{ $itemB['municipios_al_menos_una_mujer'] }}</td>
+                                @endif
+                            @endforeach
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>  
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="ejercicioAño-select" class="form-label">Año</label>
                                 <select class="form-select selectpicker" id="ejercicioAño-select" data-width="auto" style="max-width: 150px;">
                                     <option value="2024">Ejercicio 2024</option>
@@ -31,10 +66,9 @@
                                     <option value="2021">Ejercicio 2021</option>
                                     <option value="2020">Ejercicio 2020</option>
                                 </select>
-                            </div>
-                            <div class="tab-content">
-                                <div class="tab-pane show active" >
-                                    <table  class="table table-bordered table-centered mb-0">
+                            </div> --}}
+                    
+                                    <table id="basic-datatable-primero"  class="table table-bordered table-centered mb-0">
                                         <thead class="table-dark ">
                                             <tr>
                                                 <th>Región</th>
@@ -92,10 +126,12 @@
                                                             } elseif ($aux == 8) {
                                                                  $region='VALLES CENTRALES';
                                                             } 
-                                                            $modalIntegrantes =  App\Models\IntegrantesComite::ModalIntegrantes(2023,$region)->get();
-                                                            $modalMunicipiosMujeres =  App\Models\IntegrantesComite::ModalMunicipiosMujer(2023,$region)->get();
-                                                            $modalMunicipiosHombres =  App\Models\IntegrantesComite::ModalMunicipiosHombre(2023,$region)->get();
-                                                            $modalMunicipiosAlMenosMujer =  App\Models\IntegrantesComite::ModalMunicipioAlMenosMujer(2023,$region)->get();
+                                                            //$defaultYear = 2023; 
+                                                            $defaultYear = date('Y');
+                                                            $modalIntegrantes =  App\Models\IntegrantesComite::ModalIntegrantes($defaultYear,$region)->get();
+                                                            $modalMunicipiosMujeres =  App\Models\IntegrantesComite::ModalMunicipiosMujer($defaultYear,$region)->get();
+                                                            $modalMunicipiosHombres =  App\Models\IntegrantesComite::ModalMunicipiosHombre($defaultYear,$region)->get();
+                                                            $modalMunicipiosAlMenosMujer =  App\Models\IntegrantesComite::ModalMunicipioAlMenosMujer($defaultYear,$region)->get();
                                                             
                                                         @endphp 
 
@@ -106,7 +142,7 @@
                                                             </a>
                                                             
                                                         <!-- Modal integrantes -->
-                                                        <div class="modal fade" id="modalVerIntegrantes-{{ $aux }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                        <div class=" no-print modal fade" id="modalVerIntegrantes-{{ $aux }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog modal-lg">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
@@ -115,7 +151,7 @@
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <div class="table-responsive">
-                                                                            <table id="basic-datatable-{{ $aux }}" class="table dt-responsive nowrap w-100">
+                                                                            <table id="basic-datatable-Integrantes{{ $aux }}" class="table dt-responsive nowrap w-100">
                                                                                 <thead class="table-dark">
                                                                                     <tr>
                                                                                         <th class="text-center">Region</th>
@@ -175,7 +211,7 @@
                                                                             </div>
                                                                             <div class="modal-body">
                                                                                 <div  class="table-responsive">
-                                                                                    <table class="table table-bordered table-centered mb-0">
+                                                                                    <table id="basic-datatable-municipioM{{ $aux }}" class="table dt-responsive nowrap w-100">
                                                                                         <thead class="table-dark">
                                                                                             <tr>
                                                                                                 <th class="text-center">Region</th>
@@ -215,7 +251,7 @@
                                                                             </div>
                                                                             <div class="modal-body">
                                                                                 <div  class="table-responsive">
-                                                                                    <table class="table table-bordered table-centered mb-0">
+                                                                                    <table id="basic-datatable-municipioH{{ $aux }}" class="table dt-responsive nowrap w-100">
                                                                                         <thead class="table-dark">
                                                                                             <tr>
                                                                                                 <th class="text-center">Region</th>
@@ -255,7 +291,7 @@
                                                                             </div>
                                                                             <div class="modal-body">
                                                                                 <div  class="table-responsive">
-                                                                                    <table class="table table-bordered table-centered mb-0">
+                                                                                    <table id="basic-datatable-municipioAlMenosM{{ $aux }}" class="table dt-responsive nowrap w-100">
                                                                                         <thead class="table-dark">
                                                                                             <tr>
                                                                                                 <th class="text-center">Region</th>
@@ -307,21 +343,16 @@
                                             <td>{{ $totalMunipiosAlmenosMujer }}</td>
                                         </tr>
                                     </table>
-                                    
-                                </div> 
-                            </div>
-                            
                         </div> 
                     </div> 
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <table id="scroll-horizontal-datatable" class="table table-bordered table-centered mb-0">
+                            <table id="basic-datatable-segundo"  class="table table-bordered table-centered mb-0">
                                 <thead class="table-dark">
                                     <tr>
                                         <th rowspan="2" class="align-middle">Region</th>
@@ -408,15 +439,114 @@
         </div>
     </div>
 </div>
+
+
+ <!-- Agrega las bibliotecas para exportar a Excel y PDF -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+ <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.flash.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+
 <script>
-    $(document).ready(function () {
-        for (let i = 1; i <= 8; i++) {
-            $("#basic-datatable-" + i).DataTable();
-        }
+$(document).ready(function () {
+    
+    var table = $('#basic-datatable-primeroCopia').DataTable({
+            dom: 'Bfrtip', // Agrega los elementos necesarios para los botones
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    text: 'Excel',
+                }
+            ],searching: false,
+                paging: false,
+                info:     false
+        });
+
+        // Oculta la tabla por defecto
+        $('#basic-datatable-primeroCopia').hide();
+
+        // Muestra la tabla cuando se haga clic en el botón de exportar
+        $('.dt-buttons').on('click', function () {
+            //$('#basic-datatable-primeroCopia').show();
+        });
+
+    $('#basic-datatable-primero').DataTable({
+    searching: false,
+    paging: false,
     });
-</script>
+
+    $('#basic-datatable-segundo').DataTable({
+        scrollY: "550px",
+        scrollX: true,
+        searching: false,
+        paging: false,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }
+        ]
+    });
+
+    for (let i = 1; i <= 8; i++) {
+            $("#basic-datatable-Integrantes" + i).DataTable({
+                
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: ':visible'
+                        }
+                    }]
+            });
+            $("#basic-datatable-municipioM" + i).DataTable({
+                
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: ':visible'
+                        }
+                    }]
+            });
+            $("#basic-datatable-municipioH" + i).DataTable({
+                
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: ':visible'
+                        }
+                    }]
+            });
+            $("#basic-datatable-municipioAlMenosM" + i).DataTable({
+                
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: ':visible'
+                        }
+                    }]
+            });
+        }
+});
+
+
+
+
+</script> 
 
 @endsection
  
+
+
 
 
