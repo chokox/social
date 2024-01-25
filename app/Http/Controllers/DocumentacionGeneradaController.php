@@ -147,7 +147,6 @@ Directora de Contraloría Social</strong><br><br></div>
         $ano = now()->year;
         $arrayDatos = $dat->toArray();
         $grupos = array_chunk($arrayDatos, 3);
-        
 
         PDF::SetAuthor('Contraloria Social');
         PDF::SetTitle('Credenciales');

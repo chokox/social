@@ -37,10 +37,8 @@ class ComitesController extends Controller
     {
         $municipio = CatalogoMunicipio::where('id_municipio', $id)->first();
         $municipio = $municipio->nombre;
-        $user = User::find(Auth::id());
-        $user= $user->name;
         $edicion='--';
-        return view('Municipios/registroComite', compact('municipio', 'id', 'edicion','user'));
+        return view('Municipios/registroComite', compact('municipio', 'id', 'edicion'));
     }
 
     public function subirDocumentacion(Request $request, $id)
@@ -174,7 +172,9 @@ class ComitesController extends Controller
         $dato->folio_comite = $folioMunicipio . ' ' . $numeroConsecutivoFormateado;
         $dato->id_user_autorizo_fk = Auth::id();
         $dato->estatus='4';
-        $dato->fecha_validado = now();
+        if (is_null($dato->fecha_validado)) {
+            $dato->fecha_validado = now();
+        }
         $dato->save();
 
         Alert::success('Comite Validado', null);
@@ -208,8 +208,8 @@ class ComitesController extends Controller
         } else {
             $atendio = $atendio->name;
         }
-        $autorizo = User::find($dato->id_user_autorizo_fk);
-        if (empty($atendio)) {
+        $autorizo = User::find($dato->id_user_valido_fk);
+        if (empty($autorizo)) {
             $autorizo='Sin autorizar';
         } else {
             $autorizo = $autorizo->name;

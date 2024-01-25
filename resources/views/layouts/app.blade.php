@@ -130,6 +130,7 @@
                         <div class="collapse navbar-collapse" id="topnav-menu-content">
                             <ul class="navbar-nav">
                                 <!-- menu catalogo COMITES -->
+                                 @if (Auth::user()->departamento == 1 or Auth::user()->super())
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboards" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="uil-dashboard"></i>Comites <div class="arrow-down"></div>
@@ -140,7 +141,8 @@
                                          <a href="{{ route('resumenAcreditaciones') }}" class="dropdown-item">Resumen de Acreditaciones</a>
                                     </div>
                                 </li>
-                                
+                                @endif
+                                     @if (Auth::user()->departamento == 2 or Auth::user()->super())        
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboards" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="uil-dashboard"></i>Buzon Digital <div class="arrow-down"></div>
@@ -150,6 +152,8 @@
                                          <a href="{{ route('resumenAcreditaciones') }}" class="dropdown-item">Informes</a>
                                     </div>
                                 </li>
+                                @endif
+
                                  
                                 @if (Auth::user()->super() or Auth::user()->administrador())
                                 <!-- menu catalogo usuarios -->

@@ -74,13 +74,9 @@
                                         <option>Oficina Regional</option>
                                     </select>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Personal que registra el comite </label>
-                                    <input type="text" class="form-control" value="{{$user}}" readonly>
-                                </div>
                                 @if ($edicion == 'edicion')
                                  <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Reviso Documentacion</label>
+                                    <label for="simpleinput" class="form-label">Registro Comite</label>
                                     <input type="text" class="form-control" name="reviso"
                                         @if ($edicion == 'edicion') value="{{ $atendio }}" readonly  @endif>
                                 </div>
