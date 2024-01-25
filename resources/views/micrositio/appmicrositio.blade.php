@@ -33,8 +33,7 @@
 
             <!-- logo -->
             <a  class="navbar-brand me-lg-1">
-                <img src="imagenes/ConSocial1.svg" alt="logo" class="logo-dark" height="80" />
-            </a>
+                <img src="imagenes/ConSocial1.svg" alt="logo" class="logo-dark" height="80" />            </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,10 +74,10 @@
                             <strong>Capacitaciones</strong><div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
-                            <a target="_blank" href="{{ asset('files/PROMOCION DE CONTRALORIA SOCIAL.pdf') }}"
+                            <a target="_blank" href="{{ asset('files/CAPACITACIONES A COMITES DE CONTRALORIA SOCIAL.pdf') }}"
                                 class="dropdown-item">Promoción de Contraloría Social</a>
                             <a target="_blank"
-                                href="{{ asset('files/CAPACITACIONES A COMITES DE CONTRALORIA SOCIAL.pdf') }}"
+                                href="{{ asset('files/PROMOCION DE CONTRALORIA SOCIAL.pdf') }}"
                                 class="dropdown-item">Capacitación a Comités de Contraloría Social</a>
                         </div>
                     </li>
@@ -88,38 +87,9 @@
                                 aria-expanded="false" href="{{ route('formatos') }}"><strong>Formatos</strong></a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <strong>Marco Legal</strong><div class="arrow-down"></div>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
-                                <a target="_blank" href="{{ asset('files/CONSTITUCION POLITICA DE LOS ESTADOS UNIDOS MEXICANOS.pdf')}}"
-                                    class="dropdown-item">CONSTITUCIÓN POLITICA DE LOS ESTADOS UNIDOS MEXICANOS</a>
-                                <a target="_blank" href="{{ asset('files/CONSTITUCION POLITICA DEL ESTADO LIBRE Y SOBERANO DE OAXACA.pdf') }}" class="dropdown-item">CONSTITUCIÓN POLÍTICA DEL ESTADO LIBRE Y
-                                    SOBERANO
-                                    DE OAXACA</a>
-                                <a target="_blank" href="{{ asset('files/LEY ORGANICA MUNICIPAL DEL ESTADO DE OAXACA.pdf') }}" class="dropdown-item">LEY ORGANICA MUNICIPAL DEL
-                                    ESTADO DE
-                                    OAXACA</a>
-                                <a target="_blank" href="{{ asset('files/LEY ORGANICA DEL PODER EJECUTIVO DEL ESTADO DE OAXACA.pdf') }}" class="dropdown-item">LEY ORGANICA DEL PODER EJECUTIVO
-                                    DEL
-                                    ESTADO DE OAXACA</a>
-                                <a target="_blank" href="{{ asset('files/LEY DE TRANSPARENCIA, ACCESO A LA INFORMACION PUBLICA Y BUEN GOBIERNO DEL ESTADO DE OAXACA.pdf') }}" class="dropdown-item">LEY DE TRANSPARENCIA, ACCESO A
-                                    LA
-                                    INFORMACION PUBLICA <br> Y BUEN GOBIERNO DEL ESTADO DE OAXACA</a>
-                                <a target="_blank" href="{{ asset('files/LINEAMIENTOS PARA LA INTEGRACION, FUNCIONAMIENTO Y PROMOCION DE LA CONTRALORIA SOCIAL EN EL ESTADO DE OAXACA.pdf') }}" class="dropdown-item">LINEAMIENTOS PARA LA
-                                    INTEGRACIÓN,
-                                    FUNCIONAMIENTO Y <br>PROMOCIÓN DE LA CONTRALORÍA SOCIAL EN EL ESTADO DE OAXACA</a>
-                                <a target="_blank" href="{{ asset('files/REGLAMENTO INTERNO DE LA SECRETARIA DE HONESTIDAD, TRANSPARENCIA Y FUNCION PUBLICA.pdf') }}" class="dropdown-item">REGLAMENTO INTERNO DE LA
-                                    SECRETARÍA
-                                    DE HONESTIDAD, <br>TRANSPARENCIA Y FUNCIÓN PÚBLICA</a>
-                                <a target="_blank" href="{{ asset('files/CONVENIO DE COLABORACION COPLADE-SCTG.pdf') }}" class="dropdown-item">CONVENIO DE COLABORACIÓN
-                                    COPLADE-SCTG</a>
-                                <a target="_blank" href="{{ asset('files/CIRCULAR PARA LA FORMALIZACION DE LA ACREDITACION.pdf') }}" class="dropdown-item">CIRCULAR PARA LA FORMALIZACIÓN
-                                    DE LA
-                                    ACREDITACIÓN Y <br>ENTREGA DE RESPORTES EN MATERIA DE CONTRALORÍA SOCIAL</a>
-                            </div>
-                        </li>
+                        <a class="nav-link dropdown-toggle arrow-none" purple role="button" aria-haspopup="true"
+                            aria-expanded="false" target="_blank" href="https://sig.oaxaca.gob.mx/prontuario/"><strong>Marco Juridico</strong></a>
+                    </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

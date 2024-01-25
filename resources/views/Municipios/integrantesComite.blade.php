@@ -527,10 +527,10 @@
                     <form method="POST" action="{{ route('integrantes.store') }}">
                         @csrf
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="id_comite" value="{{ $id }}"
+                            <input type="text" class="form-control" name="id_comite" value="{{ $id }} "
                                 hidden>
                             <label for="simpleinput" class="form-label">Nombre Completo</label>
-                            <input type="text" class="form-control" name="nombre">
+                            <input type="text" class="form-control" name="nombre" maxlength="255">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Sexo</label>
