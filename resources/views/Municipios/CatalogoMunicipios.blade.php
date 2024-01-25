@@ -38,11 +38,12 @@
                                                     <td>{{ $item['region'] }}</td>
                                                     <td>{{ $item['distrito'] }}</td>
                                                     <td>
+                                                    @if(Auth::user()->super() or Auth::user()->administrador())
                                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
                                                         data-bs-target="#modalEditarMunicipio{{ $item['id_municipio'] }}">
                                                             <i class="ri-file-edit-line"></i>
                                                         </button>
-                                                        
+                                                    @endif    
                                                     </td>   
                                                 </tr>
                                                 <!--modal editar municipios-->
@@ -53,6 +54,7 @@
                                                                 <h4 class="modal-title" > Editar Municipio </h4>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
+                                                            
                                                             <form method="POST"
                                                             action="{{ route('catalogo_municipios.update', $item['id_municipio']) }}">
                                                             @csrf
@@ -80,6 +82,7 @@
                                                                     <button type="submit"  class="btn btn-primary">Guardar</button>
                                                                 </div>
                                                             </form>
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>

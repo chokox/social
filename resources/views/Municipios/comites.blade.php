@@ -257,13 +257,13 @@
                                                             href="{{ route('comites.edit', $mun->id_acreditacion) }}"><i
                                                                 class="ri-eye-fill"></i></a>
 
-                                                            @if ($mun->estatus == 3)
+                                                            @if ($mun->estatus == 3 and Auth::user()->administrador())
                                                         <a type="button" class="btn btn-primary"
                                                             title="Validar"
                                                             href="{{ route('validarComite', $mun->id_acreditacion) }}"><i
                                                                 class="ri-thumb-up-fill"></i></a>
                                                                 @endif
-                                                                 @if ($mun->estatus != 5)
+                                                                 @if ($mun->estatus != 5 and Auth::user()->administrador())
                                                                 <a type="button" class="btn btn-primary"
                                                             title="Revisar Información"
                                                             href="{{ route('revisarComite', $mun->id_acreditacion) }}"><i

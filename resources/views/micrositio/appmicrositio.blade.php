@@ -32,7 +32,7 @@
         <div class="container">
 
             <!-- logo -->
-            <a href="index.html" class="navbar-brand me-lg-1">
+            <a  class="navbar-brand me-lg-1">
                 <img src="imagenes/ConSocial1.svg" alt="logo" class="logo-dark" height="80" />
             </a>
 

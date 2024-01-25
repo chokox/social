@@ -52,6 +52,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($integrantes as $integrantes)
+                                        
                                             <tr>
                                                 <td>{{ $integrantes->nombre_completo }}</td>
                                                 <td>{{ $integrantes->sexo }}</td>
@@ -59,6 +60,7 @@
                                                 @php
                                                     $fechaNacimiento = $integrantes->fecha_nacimiento;
                                                     $edad = \Carbon\Carbon::parse($fechaNacimiento)->age;
+
                                                 @endphp
                                                 <td>{{ $edad }} años</td>
                                                 <td>{{ $integrantes->ocupacion }}</td>
@@ -88,6 +90,9 @@
                                                             href="{{ route('constancia_integrante', $integrantes->id_integrante_comite) }}"><i
                                                                 class="ri-profile-line"></i></a>
                                                                 @endif
+                                                    @if($estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
+                                                      
+                                                    
                                                     <form
                                                         action="{{ route('integrantes.destroy', $integrantes->id_integrante_comite) }}"
                                                         method="post" style="display: inline-block; vertical-align: middle;">
@@ -98,7 +103,9 @@
                                                             onclick="confirmarEliminar()">
                                                             <i class="ri-delete-bin-6-line"></i>
                                                         </button>
-                                                    </form> 
+                                                    </form>
+                                                   
+                                                    @endif
 
                                                     <!-- modal documentacion integrantes-->
                                                     <div class="modal fade"
@@ -150,12 +157,13 @@
                                                                                             href="{{ asset('storage/' . $integrantes->archivo_ine) }}"><i
                                                                                                 class="ri-file-download-line"></i>
                                                                                             Descargar</a>&nbsp;
-                                                                                        <form
+                                                                                            @if($estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
+                                                                                            <form
                                                                                             action="{{ route('CEliminarDocInt', ['id' => '1' . $integrantes->id_integrante_comite]) }}"
                                                                                             method="post" style="display: inline-block; vertical-align: middle;">
                                                                                             @csrf
                                                                                             @method('delete')
-
+                                                                                            
                                                                                             <button type="submit"
                                                                                                 class="btn btn-danger"
                                                                                                 onclick="confirmarEliminar()">
@@ -164,7 +172,7 @@
                                                                                                 Eliminar
                                                                                             </button>
                                                                                         </form>
-
+                                                                                        @endif
                                                                                     </td>
                                                                                 @endif
                                                                             </tr>
@@ -194,6 +202,7 @@
                                                                                             href="{{ asset('storage/' . $integrantes->archivo_protesta) }}"><i
                                                                                                 class="ri-file-download-line"></i>
                                                                                             Descargar</a>&nbsp;
+                                                                                            @if($estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
                                                                                         <form
                                                                                             action="{{ route('CEliminarDocInt', ['id' => '2' . $integrantes->id_integrante_comite]) }}"
                                                                                             method="post" style="display: inline-block; vertical-align: middle;">
@@ -208,7 +217,7 @@
                                                                                                 Eliminar
                                                                                             </button>
                                                                                         </form>
-
+                                                                                        @endif
                                                                                     </td>
                                                                                 @endif
                                                                             </tr>
@@ -239,6 +248,7 @@
                                                                                             href="{{ asset('storage/' . $integrantes->archivo_constancia) }}"><i
                                                                                                 class="ri-file-download-line"></i>
                                                                                             Descargar</a>&nbsp;
+                                                                                            @if($estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
                                                                                         <form
                                                                                             action="{{ route('CEliminarDocInt', ['id' => '3' . $integrantes->id_integrante_comite]) }}"
                                                                                             method="post" style="display: inline-block; vertical-align: middle;">
@@ -253,7 +263,7 @@
                                                                                                 Eliminar
                                                                                             </button>
                                                                                         </form>
-
+                                                                                        @endif
                                                                                     </td>
                                                                                 @endif
                                                                             </tr>
@@ -272,7 +282,7 @@
                                                                                                 value="fotografia" hidden>
                                                                                             <input type="file"
                                                                                                 name="archivo_fotografia"
-                                                                                                accept=".doc, .docx, .pdf">&nbsp;&nbsp;
+                                                                                                accept=".jpeg, .jpg, .png">&nbsp;&nbsp;
                                                                                             <button type="submit"
                                                                                                 class="btn btn-info">Cargar</button>
                                                                                         </form>
@@ -283,6 +293,7 @@
                                                                                             href="{{ asset('storage/' . $integrantes->archivo_fotografia) }}"><i
                                                                                                 class="ri-file-download-line"></i>
                                                                                             Descargar</a>&nbsp;
+                                                                                            @if($estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
                                                                                         <form
                                                                                             action="{{ route('CEliminarDocInt', ['id' => '4' . $integrantes->id_integrante_comite]) }}"
                                                                                             method="post" style="display: inline-block; vertical-align: middle;">
@@ -297,7 +308,7 @@
                                                                                                 Eliminar
                                                                                             </button>
                                                                                         </form>
-
+                                                                                        @endif                                                                    
                                                                                     </td>
                                                                                     @endif
                                                                                 </tr>
