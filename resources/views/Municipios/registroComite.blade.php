@@ -63,9 +63,9 @@
                                         <option>Oficina Regional</option>
                                     </select>
                                 </div><br>
-                                <h4>PERSONA QUE CAPACITO AL COMITÉ</h4> <br>
+                                <h4>REGISTRO DEL COMITÉ</h4> <br>
                                 <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Persona que</label>
+                                    <label for="simpleinput" class="form-label">Se registro en:</label>
                                     <select class="form-control" name="capacito_comite">
                                         @if ($edicion == 'edicion')
                                             <option>{{ $dato->capacito_comite }}</option>
@@ -73,6 +73,10 @@
                                         <option>Departamento de Capacitación a Municipios</option>
                                         <option>Oficina Regional</option>
                                     </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="simpleinput" class="form-label">Personal que registra el comite </label>
+                                    <input type="text" class="form-control" value="{{$user}}" readonly>
                                 </div>
                                 @if ($edicion == 'edicion')
                                  <div class="mb-3">

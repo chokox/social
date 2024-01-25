@@ -37,9 +37,10 @@ class ComitesController extends Controller
     {
         $municipio = CatalogoMunicipio::where('id_municipio', $id)->first();
         $municipio = $municipio->nombre;
-        //$user = User::where('rol', 'administrador')->get();
+        $user = User::find(Auth::id());
+        $user= $user->name;
         $edicion='--';
-        return view('Municipios/registroComite', compact('municipio', 'id', 'edicion'));
+        return view('Municipios/registroComite', compact('municipio', 'id', 'edicion','user'));
     }
 
     public function subirDocumentacion(Request $request, $id)
@@ -139,7 +140,7 @@ class ComitesController extends Controller
             $registro->elaboracion_acreditacion = $request->input('elaboracion');
             $registro->acredito_en = $request->input('se_acredito');
             $registro->capacito_comite = $request->input('capacito_comite');
-            $registro->id_user_atendio_fk = Auth::id();
+            $registro->id_user_registro_fk = Auth::id();
             $registro->acta_asamblea = $request->input('acta_asamblea');
             $registro->lista_asistencia = $request->input('lista_asamblea');
             $registro->datos_municipio = $request->input('datos_municipio');
@@ -201,7 +202,7 @@ class ComitesController extends Controller
         $dato = AcreditacionComite::find($id);
         $municipio = CatalogoMunicipio::where('id_municipio', $dato->id_catalogo_municipio_fk)->first();
         $municipio = $municipio->nombre;
-        $atendio = User::find($dato->id_user_atendio_fk);
+        $atendio = User::find($dato->id_user_registro_fk);
         if (empty($atendio)) {
             $atendio='No atendido';
         } else {

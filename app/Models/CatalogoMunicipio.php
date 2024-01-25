@@ -35,7 +35,7 @@ class CatalogoMunicipio extends Model
             $join->on('catalogo_municipios.id_municipio', '=', 'acreditacion_comites.id_catalogo_municipio_fk')
             ->where('acreditacion_comites.ejercicio', $year);
         })
-        ->leftJoin('users', 'acreditacion_comites.id_user_atendio_fk', '=', 'users.id');
+        ->leftJoin('users', 'acreditacion_comites.id_user_registro_fk', '=', 'users.id');
 
     }
 
