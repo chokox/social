@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Buzone;
 use App\Models\TipoBuzone;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Response;
 
 class BuzonesController extends Controller
 {
@@ -108,18 +110,37 @@ class BuzonesController extends Controller
     }
 
     public function descargarQR($id)
-{
-    $datos = Buzone::find($id);
-    $textoQR = $datos->numero_buzon;
-    $codigoQR = QrCode::size(300)->generate($textoQR);
+    {
+        $datos = Buzone::find($id);
+        $textoQR = $datos->numero_buzon;
+        $codigoQR = QrCode::size(300)->generate($textoQR);
 
-    $imagen = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $codigoQR));
+        // Decodifica el código base64 de manera más segura
+        $decodedQR = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $codigoQR), true);
 
-    return Response::make($imagen, 200, [
-        'Content-Type' => 'image/png',
-        'Content-Disposition' => 'attachment; filename="codigo_qr.png"',
-    ]);
-}
+        // Verifica si la decodificación fue exitosa
+        if ($decodedQR === false) {
+            abort(500, 'Error al decodificar el código QR.');
+        }
+
+        // Convierte el código base64 decodificado en un recurso de imagen
+        $imagen = imagecreatefromstring($decodedQR);
+
+        // Verifica si la creación del recurso de imagen fue exitosa
+        if ($imagen === false) {
+            abort(500, 'Error al crear el recurso de imagen.');
+        }
+
+        // Crea una respuesta con el tipo de contenido correcto y el encabezado de descarga
+        $response = Response::make($decodedQR, 200);
+        $response->header('Content-Type', 'image/png');
+        $response->header('Content-Disposition', 'attachment; filename="codigo_qr.png"');
+
+        // Libera la memoria del recurso de imagen
+        imagedestroy($imagen);
+
+        return $response;
+    }
 
     /**
      * Remove the specified resource from storage.

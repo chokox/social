@@ -61,7 +61,7 @@
                                                                 <i class="ri-file-edit-line"></i>
                                                             </a>
                                                             <a title="QR" type="button"
-                                                            href="{{ url('descargar-qr/' . $item['id_buzon']) }}" download="codigo_qr.png"
+                                                            href="{{ url('descargar-qr/' . $item['id_buzon']) }}" 
                                                               class="btn btn-primary" >
                                                                 <i class="ri-qr-code-line"></i>
                                                             </a>

@@ -239,4 +239,9 @@
             </div>
         </div>
     </section>
+     <!-- Contador de visitas -->
+                <div class="text-center">
+                     Eres la visita numero: {{$contador}}
+                </div>
+                <!-- Fin Contador de visitas -->
 @endsection

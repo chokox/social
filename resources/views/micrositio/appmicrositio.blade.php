@@ -47,7 +47,7 @@
                 <ul class="navbar-nav me-auto align-items-center">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" purple role="button" aria-haspopup="true"
-                            aria-expanded="false" href="{{ route('inicio') }}"><strong>Inicio</strong></a>
+                            aria-expanded="false" href="/"><strong>Inicio</strong></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" role="button" aria-haspopup="true"
@@ -171,11 +171,7 @@
                             <br> Ciudad Administrativa (Edificio 2 “Rufino Tamayo”, Planta Baja)
                             <br> Carretera Internacional Oaxaca-Istmo, km. 11.5
                             <br> Tlalixtac de Cabrera, Oaxaca C.P. 68270
-                                                 <!-- Contador de visitas -->
-                <div class="text-center">
-                     Eres la visita numero: {{$contador}}
-                </div>
-                <!-- Fin Contador de visitas -->
+                                                
                             
                         </p>
                                             
