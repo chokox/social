@@ -112,10 +112,12 @@
                                     </select>
                                 </div> --}}
                                 <br>
+                                @if(Auth::user()->super() or Auth::user()->administrador())
                                 @if ($edicion == 'edicion')
                                     <button type="submit" class="btn btn-primary">Actualizar</button>
                                 @else
                                     <button type="submit" class="btn btn-primary">Registrar</button>
+                                @endif
                                 @endif
                                 </form>
                             </div>

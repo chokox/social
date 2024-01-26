@@ -21,7 +21,9 @@
                             <div class="card-body">
                                 <div class="text-xl-end mt-xl-0 mt-2">
                                     <a type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    @if($estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))
                                         data-bs-target="#bs-example-modal-lg"><i class=" ri-user-add-fill"></i>Agregar integrante</a>
+                                        @endif
                                          @if($estatus == 4)
                                                     <a type="button" class="btn btn-secondary"
                                                             title="Credencial"
@@ -80,6 +82,7 @@
                                                         href="" class="btn btn-info" data-bs-toggle="modal"
                                                         data-bs-target="#bs-example-modal-lg-{{ $integrantes->id_integrante_comite }}"><i
                                                             class="ri-folder-open-fill"></i></a>
+                                                            
                                                     <a type="button" class="btn btn-primary" title="Documentacion"
                                                         href="" class="btn btn-info" data-bs-toggle="modal"
                                                         data-bs-target="#bs-example-modal-editar-{{ $integrantes->id_integrante_comite }}"><i
@@ -492,9 +495,12 @@
                                                                                 name="obs_constancia"
                                                                                 placeholder="{{ $integrantes->observacion_constancia }}">
                                                                         </div>
-                                                                        <br>
+                                                                        <br> 
+                                                                        @if($estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))                                                                    
                                                                         <button type="submit"
+                                                                        
                                                                             class="btn btn-primary">Actualizar</button>
+                                                                        @endif
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -613,19 +619,19 @@
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Observaciones identificación</label>
-                            <input type="text" class="form-control" name="obs_identificacion" required  maxlength="80">
+                            <input type="text" class="form-control" name="obs_identificacion" maxlength="80">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Observaciones fotografía</label>
-                            <input type="text" class="form-control" name="obs_fotografia" required maxlength="80">
+                            <input type="text" class="form-control" name="obs_fotografia" maxlength="80">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Observaciones carta bajo protesta</label>
-                            <input type="text" class="form-control" name="obs_carta" required maxlength="80">
+                            <input type="text" class="form-control" name="obs_carta" maxlength="80">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">observaciones constancia</label>
-                            <input type="text" class="form-control" name="obs_constancia" required maxlength="80">
+                            <input type="text" class="form-control" name="obs_constancia"maxlength="80">
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Registrar</button>
