@@ -21,7 +21,9 @@
                             <div class="card-body">
                                 <div class="text-xl-end mt-xl-0 mt-2">
                                     <a type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    @if($estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))
                                         data-bs-target="#bs-example-modal-lg"><i class=" ri-user-add-fill"></i>Agregar integrante</a>
+                                        @endif
                                          @if($estatus == 4)
                                                     <a type="button" class="btn btn-secondary"
                                                             title="Credencial"
@@ -39,10 +41,10 @@
                                             <th>Edad</th>
                                             <th>Trabajo</th>
                                             <th>Estudios</th>
-                                            <th>Lengua Indigena</th>
-                                            <th>uso de computadora</th>
+                                            <th>Lengua Indígena</th>
+                                            <th>Uso de computadora</th>
                                             <th>Domicilio</th>
-                                            <th>Telefono fijo</th>
+                                            <th>Teléfono fijo</th>
                                             <th>Celular</th>
                                             <th>Correo</th>
                                             <th>Acceso a internet</th>
@@ -80,6 +82,7 @@
                                                         href="" class="btn btn-info" data-bs-toggle="modal"
                                                         data-bs-target="#bs-example-modal-lg-{{ $integrantes->id_integrante_comite }}"><i
                                                             class="ri-folder-open-fill"></i></a>
+                                                            
                                                     <a type="button" class="btn btn-primary" title="Documentacion"
                                                         href="" class="btn btn-info" data-bs-toggle="modal"
                                                         data-bs-target="#bs-example-modal-editar-{{ $integrantes->id_integrante_comite }}"><i
@@ -116,7 +119,7 @@
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h4 class="modal-title" id="myLargeModalLabel">
-                                                                            Documentacion de integrante</h4>
+                                                                            Documentación de integrante</h4>
                                                                         <button type="button" class="btn-close"
                                                                             data-bs-dismiss="modal"
                                                                             aria-hidden="true"></button>
@@ -492,9 +495,12 @@
                                                                                 name="obs_constancia"
                                                                                 placeholder="{{ $integrantes->observacion_constancia }}">
                                                                         </div>
-                                                                        <br>
+                                                                        <br> 
+                                                                        @if($estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))                                                                    
                                                                         <button type="submit"
+                                                                        
                                                                             class="btn btn-primary">Actualizar</button>
+                                                                        @endif
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -562,7 +568,7 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="simpleinput" class="form-label">¿Habla lengua indigena?</label>
+                            <label for="simpleinput" class="form-label">¿Habla lengua indígena?</label>
                             <select class="form-control" name="lengua_indigena">
                                 <option>NINGUNO</option>
                                 <option>AMUZGO</option>
@@ -595,15 +601,15 @@
                             <input type="text" class="form-control" name="domicilio" requerid  maxlength="120">
                         </div>
                         <div class="mb-3">
-                            <label for="simpleinput" class="form-label">telefono fijo</label>
+                            <label for="simpleinput" class="form-label">Teléfono fijo</label>
                             <input type="number" class="form-control" name="telefono_fijo" required >
                         </div>
                         <div class="mb-3">
-                            <label for="simpleinput" class="form-label">telefono celular</label>
+                            <label for="simpleinput" class="form-label">Teléfono celular</label>
                             <input type="number" class="form-control" name="telefono_celular" required>
                         </div>
                         <div class="mb-3">
-                            <label for="simpleinput" class="form-label">correo electronico</label>
+                            <label for="simpleinput" class="form-label">Correo electrónico</label>
                             <input type="email" class="form-control" name="correo" required  maxlength="60">
                         </div>
                         <div class="mb-3">
@@ -612,20 +618,20 @@
                             <input type="text" class="form-control" name="acceso_internet" required  maxlength="100">
                         </div>
                         <div class="mb-3">
-                            <label for="simpleinput" class="form-label">Observaciones identificacion</label>
-                            <input type="text" class="form-control" name="obs_identificacion" required  maxlength="80">
+                            <label for="simpleinput" class="form-label">Observaciones identificación</label>
+                            <input type="text" class="form-control" name="obs_identificacion" maxlength="80">
                         </div>
                         <div class="mb-3">
-                            <label for="simpleinput" class="form-label">Observaciones fotografia</label>
-                            <input type="text" class="form-control" name="obs_fotografia" required maxlength="80">
+                            <label for="simpleinput" class="form-label">Observaciones fotografía</label>
+                            <input type="text" class="form-control" name="obs_fotografia" maxlength="80">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Observaciones carta bajo protesta</label>
-                            <input type="text" class="form-control" name="obs_carta" required maxlength="80">
+                            <input type="text" class="form-control" name="obs_carta" maxlength="80">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">observaciones constancia</label>
-                            <input type="text" class="form-control" name="obs_constancia" required maxlength="80">
+                            <input type="text" class="form-control" name="obs_constancia"maxlength="80">
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Registrar</button>
