@@ -182,7 +182,7 @@ class ComitesController extends Controller
         $numeroConsecutivoFormateado = str_pad($numeroConsecutivo, 3, '0', STR_PAD_LEFT);
 
         $dato->folio_comite = $folioMunicipio . ' ' . $numeroConsecutivoFormateado;
-        $dato->id_user_autorizo_fk = Auth::id();
+        $dato->id_user_valido_fk = Auth::id();
         $dato->estatus='4';
         if (is_null($dato->fecha_validado)) {
             $dato->fecha_validado = now();

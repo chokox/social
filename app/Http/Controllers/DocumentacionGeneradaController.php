@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\CatalogoMunicipio;
+use App\Models\Buzone;
 use PDF;
 use App\Models\IntegrantesComite;
+use QrCode;
 
 class DocumentacionGeneradaController extends Controller
 {
@@ -247,4 +249,6 @@ Directora de Contraloría Social</strong><br><br></div>
         //PDF::AddPage();
         PDF::Output('Credenciales.pdf', 'I');
     }
+
+
 }

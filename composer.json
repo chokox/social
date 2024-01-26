@@ -14,7 +14,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "laraveles/spanish": "^1.5",
-        "realrashid/sweet-alert": "^7.1"
+        "realrashid/sweet-alert": "^7.1",
+        "simplesoftwareio/simple-qrcode": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

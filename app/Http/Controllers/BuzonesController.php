@@ -16,8 +16,8 @@ class BuzonesController extends Controller
      */
     public function index()
     {
-        $buzones = Buzone::all();
-        //$consulta=TipoBuzone::TipoBuzon($tipo)->get();
+       // $buzones = Buzone::all();
+        $buzones=Buzone::BuzonTipo()->get();
         return view('AtencionC/buzones')->with('buzones', $buzones);
     }
 
@@ -57,7 +57,14 @@ class BuzonesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $registro = new Buzone();
+        $registro->numero_buzon = strtoupper($request->input('txtBuzon'));
+        $registro->id_catalogo_buzon_fk = $request->input('txtTipoBuzon');
+        $registro->ubicacion = $request->input('txtUbicacion');
+        $registro->save();
+
+        Alert::success('Buzon Registrado', 'El buzon digital fue registrado de manera satisfactoria');
+        return back();
     }
 
     /**
@@ -79,7 +86,7 @@ class BuzonesController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -91,8 +98,28 @@ class BuzonesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $registro = Buzone::find($id);
+        $registro->numero_buzon = strtoupper($request->input('txtFolio'));
+        $registro->ubicacion = $request->input('txtubicacion');
+        $registro->save();
+
+        Alert::success('Buzon Registrado', 'El buzon digital fue registrado de manera satisfactoria');
+        return back();
     }
+
+    public function descargarQR($id)
+{
+    $datos = Buzone::find($id);
+    $textoQR = $datos->numero_buzon;
+    $codigoQR = QrCode::size(300)->generate($textoQR);
+
+    $imagen = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $codigoQR));
+
+    return Response::make($imagen, 200, [
+        'Content-Type' => 'image/png',
+        'Content-Disposition' => 'attachment; filename="codigo_qr.png"',
+    ]);
+}
 
     /**
      * Remove the specified resource from storage.

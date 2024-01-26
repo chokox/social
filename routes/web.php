@@ -51,6 +51,7 @@ Route::middleware(['auth', 'departamento:2'])->group(function () {
     Route::resource('/buzon', 'App\Http\Controllers\BuzonesController');
     Route::post('/registrar_tipo_buzon', 'App\Http\Controllers\BuzonesController@registrarTiposBuzon')->name('registrar_tipo_buzon');
     Route::get('/obtener-tipos-buzon/{tipo}', 'App\Http\Controllers\BuzonesController@obtenerTiposBuzon');
+    Route::get('descargar-qr/{id}', 'App\Http\Controllers\BuzonesController@descargarQR')->name('qr_buzon');
 });
 
 // RUTAS GENERALES PARA USUARIOS AUTENTICADOS

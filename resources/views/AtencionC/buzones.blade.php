@@ -52,15 +52,22 @@
                                                 @foreach ($buzones as $item)
                                                     <tr>
                                                         <td>{{ $item['id_buzon'] }}</td>
-                                                        <td>{{ $item['nombre'] }}</td>
-                                                        <td></td>
+                                                        <td>{{ $item['nombre_dependecia_programa'] }}</td>
+                                                        <td>{{ $item['numero_buzon'] }}</td>
                                                         <td>{{ $item['ubicacion'] }}</td>
                                                         <td>
-                                                            <a type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                            <a title="Editar" type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                                 data-bs-target="#modalEditarBuzon{{ $item['id_buzon'] }}">
                                                                 <i class="ri-file-edit-line"></i>
                                                             </a>
-
+                                                            <a title="QR" type="button"
+                                                            href="{{ url('descargar-qr/' . $item['id_buzon']) }}" download="codigo_qr.png"
+                                                              class="btn btn-primary" >
+                                                                <i class="ri-qr-code-line"></i>
+                                                            </a>
+                                                            <a title="Ver buzon" type="button" class="btn btn-primary" >
+                                                                <i class="ri-inbox-line"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                     <!--modal editar municipios-->
@@ -74,7 +81,7 @@
                                                                         data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <form method="POST"
-                                                                    action="{{ route('catalogo_municipios.update', $item['id_buzon']) }}">
+                                                                    action="{{ route('buzon.update', $item['id_buzon']) }}">
                                                                     @csrf
                                                                     @method('PUT')
                                                                     <div class="modal-body">
@@ -83,14 +90,14 @@
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
                                                                                 name="txtFolio"
-                                                                                placeholder="{{ $item['folio'] }}" />
+                                                                                value="{{ $item['numero_buzon'] }}" />
                                                                         </div>
                                                                         <div class=" mb-3">
                                                                             <label>Ubicacion</label>
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                name="txtRegion"
-                                                                                placeholder="{{ $item['region'] }}" />
+                                                                                name="txtubicacion"
+                                                                                value="{{ $item['ubicacion'] }}" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="modal-footer">
@@ -125,7 +132,7 @@
                                                         <div class=" mb-3">
                                                             <label>Numero de Buzon</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="txtAgregarNombre" />
+                                                                name="txtBuzon" />
                                                         </div>
                                                         <div class=" mb-3">
                                                             <label>Dependencia/Programa </label>
@@ -147,7 +154,7 @@
 
                                                         <div class=" mb-3">
                                                             <label>Ubicacion</label>
-                                                            <textarea class="form-control form-control-sm"></textarea>
+                                                            <textarea name="txtUbicacion" class="form-control form-control-sm"></textarea>
                                                         </div>
 
                                                     </div>
