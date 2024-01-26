@@ -62,7 +62,7 @@
                                                                 <div class="modal-body">
                                                                     <div class=" mb-3">
                                                                         <label >Folio</label>
-                                                                        <input type="text" class="form-control form-control-sm" name="txtFolio" placeholder="{{ $item['folio'] }}" maxlength="255" />
+                                                                        <input type="text" class="form-control form-control-sm" name="txtFolio" placeholder="{{ $item['folio'] }}" maxlength="255" size="10" />
                                                                     </div>
                                                                     <div class=" mb-3">
                                                                         <label >Municipio</label>

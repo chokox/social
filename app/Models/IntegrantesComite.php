@@ -11,7 +11,24 @@ class IntegrantesComite extends Model
     use HasFactory;
     protected $primaryKey = 'id_integrante_comite';
 
-    
+    protected $fillable = ['nombre_completo', 'ocupacion', 'acceso_internet', 'domicilio', 'observacion_identificacion', 'aobservacion_fotografia', 'archivo_constancia', 'archivo_fotografia',];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        //agrega automaticamente a mayusculas en la tabla
+        static::saving(function ($model) {
+            $model->nombre_completo = ucwords(strtolower($model->nombre_completo));
+            $model->ocupacion = ucfirst(strtolower($model->ocupacion));
+            $model->acceso_internet = ucfirst(strtolower($model->acceso_internet));
+            $model->domicilio = ucfirst(strtolower($model->domicilio));
+            $model->observacion_identificacion = ucfirst(strtolower($model->observacion_identificacion));
+            $model->observacion_fotografia = ucfirst(strtolower($model->observacion_fotografia));
+            $model->observacion_carta = ucfirst(strtolower($model->observacion_carta));
+            $model->observacion_constancia = ucfirst(strtolower($model->observacion_constancia));
+        });
+    }
 
     public function scopeContarPorComite($query, $ejercicio, $id)
     {

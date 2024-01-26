@@ -530,7 +530,7 @@
                             <input type="text" class="form-control" name="id_comite" value="{{ $id }} "
                                 hidden>
                             <label for="simpleinput" class="form-label">Nombre Completo</label>
-                            <input type="text" class="form-control" name="nombre" maxlength="255">
+                            <input type="text" class="form-control" name="nombre" required maxlength="100">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Sexo</label>
@@ -545,7 +545,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Ocupacion</label>
-                            <input type="text" class="form-control" name="ocupacion">
+                            <input type="text" class="form-control" name="ocupacion" required  maxlength="70">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Escolaridad</label>
@@ -592,40 +592,40 @@
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Domicilio</label>
-                            <input type="text" class="form-control" name="domicilio">
+                            <input type="text" class="form-control" name="domicilio" requerid  maxlength="120">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">telefono fijo</label>
-                            <input type="number" class="form-control" name="telefono_fijo">
+                            <input type="number" class="form-control" name="telefono_fijo" required >
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">telefono celular</label>
-                            <input type="number" class="form-control" name="telefono_celular">
+                            <input type="number" class="form-control" name="telefono_celular" required>
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">correo electronico</label>
-                            <input type="email" class="form-control" name="correo">
+                            <input type="email" class="form-control" name="correo" required  maxlength="60">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">¿En su Municipio donde se puede tener acceso a
                                 Internet?</label>
-                            <input type="text" class="form-control" name="acceso_internet">
+                            <input type="text" class="form-control" name="acceso_internet" required  maxlength="100">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Observaciones identificacion</label>
-                            <input type="text" class="form-control" name="obs_identificacion">
+                            <input type="text" class="form-control" name="obs_identificacion" required  maxlength="80">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Observaciones fotografia</label>
-                            <input type="text" class="form-control" name="obs_fotografia">
+                            <input type="text" class="form-control" name="obs_fotografia" required maxlength="80">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Observaciones carta bajo protesta</label>
-                            <input type="text" class="form-control" name="obs_carta">
+                            <input type="text" class="form-control" name="obs_carta" required maxlength="80">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">observaciones constancia</label>
-                            <input type="text" class="form-control" name="obs_constancia">
+                            <input type="text" class="form-control" name="obs_constancia" required maxlength="80">
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Registrar</button>

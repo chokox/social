@@ -50,7 +50,7 @@ class IntegrantesComiteController extends Controller
         $registro->telefono = $request->input('telefono_fijo');
         $registro->celular = $request->input('telefono_celular');
         $registro->correo = $request->input('correo');
-        $registro->acceso_internet = $request->input('acceso internet');
+        $registro->acceso_internet = $request->input('acceso_internet');
         $registro->observacion_identificacion = $request->input('obs_identificacion');
         $registro->observacion_fotografia = $request->input('obs_fotografia');
         $registro->observacion_carta = $request->input('obs_carta');
