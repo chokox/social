@@ -66,14 +66,23 @@ class ComitesController extends Controller
 
             //VERIFICA SI ESTAN LOS ARCHIVOS DE LOS INTEGRANTES COMPLETOS
             $resultado = IntegrantesComite::ContarPorComite(now()->year, $id)->get();
-            $todosRellenados = $resultado->every(function ($item) {
-                return $item->archivo_ine !== null &&
-                $item->archivo_protesta !== null &&
-                $item->archivo_constancia !== null &&
-                $item->archivo_fotografia !== null;
-            });
+            //;$sqlQuery = $totComites->toSql();
+            // dd ($sqlQuery); 
 
+            if  ( !empty($resultado->id_integrante_comite) or !empty($resultado->archivo_acta) ) {
+                $todosRellenados = $resultado->every(function ($item) {
+                    return $item->archivo_ine !== null &&
+                    $item->archivo_protesta !== null &&
+                    $item->archivo_constancia !== null &&
+                    $item->archivo_fotografia !== null;
+                });
+            
+    
             $variable = $todosRellenados ? 1 : 0;
+
+        }else{
+            $variable = 0;
+        }
             //FIN DE LA VERIFICACION
         
             if (!empty($dato->archivo_acta) && !empty($dato->archivo_lista) && !empty($dato->archivo_acuse)) {
@@ -115,7 +124,10 @@ class ComitesController extends Controller
             Storage::disk('public')->delete($documento->archivo_acuse);
             $documento->archivo_acuse = null;
         }
+        $documento->estatus = 5 ;
+
         $documento->save();
+
 
         Alert::success('Documentacion eliminada', null);
         return back();
