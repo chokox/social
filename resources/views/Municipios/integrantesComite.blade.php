@@ -39,10 +39,10 @@
                                             <th>Edad</th>
                                             <th>Trabajo</th>
                                             <th>Estudios</th>
-                                            <th>Lengua Indigena</th>
-                                            <th>uso de computadora</th>
+                                            <th>Lengua Indígena</th>
+                                            <th>Uso de computadora</th>
                                             <th>Domicilio</th>
-                                            <th>Telefono fijo</th>
+                                            <th>Teléfono fijo</th>
                                             <th>Celular</th>
                                             <th>Correo</th>
                                             <th>Acceso a internet</th>
@@ -116,7 +116,7 @@
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h4 class="modal-title" id="myLargeModalLabel">
-                                                                            Documentacion de integrante</h4>
+                                                                            Documentación de integrante</h4>
                                                                         <button type="button" class="btn-close"
                                                                             data-bs-dismiss="modal"
                                                                             aria-hidden="true"></button>
@@ -562,7 +562,7 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="simpleinput" class="form-label">¿Habla lengua indigena?</label>
+                            <label for="simpleinput" class="form-label">¿Habla lengua indígena?</label>
                             <select class="form-control" name="lengua_indigena">
                                 <option>NINGUNO</option>
                                 <option>AMUZGO</option>
@@ -595,15 +595,15 @@
                             <input type="text" class="form-control" name="domicilio" requerid  maxlength="120">
                         </div>
                         <div class="mb-3">
-                            <label for="simpleinput" class="form-label">telefono fijo</label>
+                            <label for="simpleinput" class="form-label">Teléfono fijo</label>
                             <input type="number" class="form-control" name="telefono_fijo" required >
                         </div>
                         <div class="mb-3">
-                            <label for="simpleinput" class="form-label">telefono celular</label>
+                            <label for="simpleinput" class="form-label">Teléfono celular</label>
                             <input type="number" class="form-control" name="telefono_celular" required>
                         </div>
                         <div class="mb-3">
-                            <label for="simpleinput" class="form-label">correo electronico</label>
+                            <label for="simpleinput" class="form-label">Correo electrónico</label>
                             <input type="email" class="form-control" name="correo" required  maxlength="60">
                         </div>
                         <div class="mb-3">
@@ -612,11 +612,11 @@
                             <input type="text" class="form-control" name="acceso_internet" required  maxlength="100">
                         </div>
                         <div class="mb-3">
-                            <label for="simpleinput" class="form-label">Observaciones identificacion</label>
+                            <label for="simpleinput" class="form-label">Observaciones identificación</label>
                             <input type="text" class="form-control" name="obs_identificacion" required  maxlength="80">
                         </div>
                         <div class="mb-3">
-                            <label for="simpleinput" class="form-label">Observaciones fotografia</label>
+                            <label for="simpleinput" class="form-label">Observaciones fotografía</label>
                             <input type="text" class="form-control" name="obs_fotografia" required maxlength="80">
                         </div>
                         <div class="mb-3">
