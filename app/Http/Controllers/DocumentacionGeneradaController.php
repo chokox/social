@@ -68,7 +68,7 @@ Directora de Contraloría Social</strong><br><br><br><br></div>
         PDF::SetFont('times', '', '13');
         PDF::writeHTML($tbl, true, false, true, false, '');
         //PDF::AddPage();
-        PDF::Output('Constancia de municipio.pdf', 'D');
+        PDF::Output('Constancia de municipio.pdf', 'I');
     }
 
     public function constanciaIntegrante($id)
@@ -140,7 +140,7 @@ Directora de Contraloría Social</strong><br><br></div>
         PDF::SetFont('times', '', '13');
         PDF::writeHTML($tbl, true, false, true, false, '');
         //PDF::AddPage();
-        PDF::Output('Constancia de integrante.pdf', 'D');
+        PDF::Output('Constancia de integrante.pdf', 'I');
     }
 
     public function credencialIntegrante($id)
