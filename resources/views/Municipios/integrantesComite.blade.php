@@ -26,8 +26,8 @@
                                         @endif
                                          @if($estatus == 4)
                                                     <a type="button" class="btn btn-secondary"
-                                                            title="Credencial"
-                                                            href="{{ route('credencial_integrante', $id) }}"><i
+                                                            title="Credencial" 
+                                                            href="{{ route('credencial_integrante', $id) }}" target="_blank"><i
                                                                 class="ri-contacts-book-2-line"></i>Credenciales</a>
                                                                 @endif
                                 </div>
@@ -90,7 +90,7 @@
                                                             @if($estatus == 4)
                                                    <a type="button" class="btn btn-primary"
                                                             title="Constancia"
-                                                            href="{{ route('constancia_integrante', $integrantes->id_integrante_comite) }}"><i
+                                                            href="{{ route('constancia_integrante', $integrantes->id_integrante_comite) }} " target="_blank"><i
                                                                 class="ri-profile-line"></i></a>
                                                                 @endif
                                                     @if($estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))

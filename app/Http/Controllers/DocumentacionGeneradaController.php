@@ -102,11 +102,10 @@ ACREDITACIÓN</font><br><br>';
             '</font><br><font style="color:#616161;">Folio comite: ' .
             $datos[0]->folio_comite .
             ' <br><br><br>
-            Quien se desempeñará por el período de gestión de enero a diciembre
-de 2023. Lo anterior, para realizar actividades de vigilancia, verificación,
-seguimiento, evaluación de las obras programadas, proyectos y
-acciones que se ejecuten con recursos públicos federales, estatales y
-municipales.</font><br><br><br><br><br><br><br>
+            Quien se desempeñará por el período de gestión de enero a diciembre del 2024.
+Lo anterior, para realizar actividades y funciones de vigilancia, verificación, seguimiento, 
+y evaluación de las obras y programas sociales que se ejecuten con 
+recursos públicos federales, estatales y municipales.</font><br><br><br><br><br><br><br>
 <strong>
 Lic. María Teresa Jiménez Martínez<br>
 Directora de Contraloría Social</strong><br><br></div>
