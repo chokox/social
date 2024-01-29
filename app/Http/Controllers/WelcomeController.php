@@ -25,6 +25,6 @@ class WelcomeController extends Controller
 
         $contador = Visita::count();
 
-        return view('appmicrositio', compact('contador'));
+        return view('welcome', compact('contador'));
     }
 }
