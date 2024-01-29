@@ -157,7 +157,7 @@
                                                                                 @else
                                                                                     <td><a type="button"
                                                                                             class="btn btn-primary"
-                                                                                            href="{{ asset('storage/' . $integrantes->archivo_ine) }}"><i
+                                                                                            href="{{ asset('storage/' . $integrantes->archivo_ine) }}" target="_blank"><i
                                                                                                 class="ri-file-download-line"></i>
                                                                                             Descargar</a>&nbsp;
                                                                                             @if($estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
@@ -202,7 +202,7 @@
                                                                                 @else
                                                                                     <td><a type="button"
                                                                                             class="btn btn-primary"
-                                                                                            href="{{ asset('storage/' . $integrantes->archivo_protesta) }}"><i
+                                                                                            href="{{ asset('storage/' . $integrantes->archivo_protesta) }}" target="_blank"><i
                                                                                                 class="ri-file-download-line"></i>
                                                                                             Descargar</a>&nbsp;
                                                                                             @if($estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
@@ -248,7 +248,7 @@
                                                                                 @else
                                                                                     <td><a type="button"
                                                                                             class="btn btn-primary"
-                                                                                            href="{{ asset('storage/' . $integrantes->archivo_constancia) }}"><i
+                                                                                            href="{{ asset('storage/' . $integrantes->archivo_constancia) }}" target="_blank"><i
                                                                                                 class="ri-file-download-line"></i>
                                                                                             Descargar</a>&nbsp;
                                                                                             @if($estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
@@ -293,7 +293,7 @@
                                                                                 @else
                                                                                     <td><a type="button"
                                                                                             class="btn btn-primary"
-                                                                                            href="{{ asset('storage/' . $integrantes->archivo_fotografia) }}"><i
+                                                                                            href="{{ asset('storage/' . $integrantes->archivo_fotografia) }}" target="_blank"><i
                                                                                                 class="ri-file-download-line"></i>
                                                                                             Descargar</a>&nbsp;
                                                                                             @if($estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))

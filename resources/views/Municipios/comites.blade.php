@@ -134,7 +134,7 @@
                                                                                     @else
                                                                                         <td><a type="button"
                                                                                                 class="btn btn-primary"
-                                                                                                href="{{ asset('storage/' . $mun->archivo_acta) }}"><i
+                                                                                                href="{{ asset('storage/' . $mun->archivo_acta) }}" target="_blank"><i
                                                                                                     class="ri-file-download-line"></i>
                                                                                                 Descargar</a>&nbsp;
                                                                                                 @if($mun->estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))
@@ -179,7 +179,7 @@
                                                                                     @else
                                                                                         <td><a type="button"
                                                                                                 class="btn btn-primary"
-                                                                                                href="{{ asset('storage/' . $mun->archivo_lista) }}"><i
+                                                                                                href="{{ asset('storage/' . $mun->archivo_lista) }}" target="_blank"><i
                                                                                                     class="ri-file-download-line"></i>
                                                                                                 Descargar</a>&nbsp;
                                                                                                   @if($mun->estatus !=4 or (Auth::user()->super() or Auth::user()->administrador()))
@@ -224,7 +224,7 @@
                                                                                     @else
                                                                                         <td><a type="button"
                                                                                                 class="btn btn-primary"
-                                                                                                href="{{ asset('storage/' . $mun->archivo_acuse) }}"><i
+                                                                                                href="{{ asset('storage/' . $mun->archivo_acuse) }}" target="_blank"><i
                                                                                                     class="ri-file-download-line"></i>
                                                                                                 Descargar</a>&nbsp;
                                                                                                  @if($mun->estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))
