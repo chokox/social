@@ -19,7 +19,7 @@ class AcreditacionComite extends Model
 
     public function scopeBuscaEjercicio($query, $ejercicio)
     {
-        return $query->where('ejercicio', $ejercicio);
+        return $query->where('ejercicio', $ejercicio)->where('estatus', 4);
     }
 
 

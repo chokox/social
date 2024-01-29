@@ -93,7 +93,7 @@
                                                             href="{{ route('constancia_integrante', $integrantes->id_integrante_comite) }}"><i
                                                                 class="ri-profile-line"></i></a>
                                                                 @endif
-                                                    @if($estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
+                                                    @if($estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))
                                                       
                                                     
                                                     <form

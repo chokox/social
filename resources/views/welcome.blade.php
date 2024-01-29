@@ -45,7 +45,7 @@
                             <h2> <span class="text-success">Directorio</span></h2>
                         </div>
                         <div class="mt-4">
-                            <h3 class="fw-normal"><i class="mdi mdi-circle-medium text-primary"></i>Departamento de Seguimiento a Municipios</h3>
+                            <h3 class="fw-normal"><i class="mdi mdi-circle-medium text-primary"></i>Departamento de Capacitación Municipios</h3>
                             <h4 class="fw-normal">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;951 501 50 00 ext. 10192, 11704, 10472</h4>
                             <h3 class="fw-normal"><i class="mdi mdi-circle-medium text-primary"></i>Departamento de Seguimiento a Programas Sociales</h3>
                             <h4 class="fw-normal">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;951 501 50 00 ext. 11702, 10493, 11706, 11703</h4>
