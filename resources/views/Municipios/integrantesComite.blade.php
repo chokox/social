@@ -160,7 +160,7 @@
                                                                                             href="{{ asset('storage/' . $integrantes->archivo_ine) }}" target="_blank"><i
                                                                                                 class="ri-file-download-line"></i>
                                                                                             Descargar</a>&nbsp;
-                                                                                            @if($estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
+                                                                                            @if($estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))
                                                                                             <form
                                                                                             action="{{ route('CEliminarDocInt', ['id' => '1' . $integrantes->id_integrante_comite]) }}"
                                                                                             method="post" style="display: inline-block; vertical-align: middle;">
@@ -205,7 +205,7 @@
                                                                                             href="{{ asset('storage/' . $integrantes->archivo_protesta) }}" target="_blank"><i
                                                                                                 class="ri-file-download-line"></i>
                                                                                             Descargar</a>&nbsp;
-                                                                                            @if($estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
+                                                                                            @if($estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))
                                                                                         <form
                                                                                             action="{{ route('CEliminarDocInt', ['id' => '2' . $integrantes->id_integrante_comite]) }}"
                                                                                             method="post" style="display: inline-block; vertical-align: middle;">
@@ -251,7 +251,7 @@
                                                                                             href="{{ asset('storage/' . $integrantes->archivo_constancia) }}" target="_blank"><i
                                                                                                 class="ri-file-download-line"></i>
                                                                                             Descargar</a>&nbsp;
-                                                                                            @if($estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
+                                                                                            @if($estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))
                                                                                         <form
                                                                                             action="{{ route('CEliminarDocInt', ['id' => '3' . $integrantes->id_integrante_comite]) }}"
                                                                                             method="post" style="display: inline-block; vertical-align: middle;">
@@ -296,7 +296,7 @@
                                                                                             href="{{ asset('storage/' . $integrantes->archivo_fotografia) }}" target="_blank"><i
                                                                                                 class="ri-file-download-line"></i>
                                                                                             Descargar</a>&nbsp;
-                                                                                            @if($estatus != 4 and (Auth::user()->super() or Auth::user()->administrador()))
+                                                                                            @if($estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))
                                                                                         <form
                                                                                             action="{{ route('CEliminarDocInt', ['id' => '4' . $integrantes->id_integrante_comite]) }}"
                                                                                             method="post" style="display: inline-block; vertical-align: middle;">
