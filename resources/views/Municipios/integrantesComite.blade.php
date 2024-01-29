@@ -615,7 +615,7 @@
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">¿En su Municipio donde se puede tener acceso a
                                 Internet?</label>
-                            <input type="text" class="form-control" name="acceso_internet" required maxlength="100">
+                            <input type="text" class="form-control" name="acceso_internet" maxlength="100">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Observaciones identificación</label>
