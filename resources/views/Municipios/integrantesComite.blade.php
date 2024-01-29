@@ -348,7 +348,7 @@
                                                                             <label for="simpleinput"
                                                                                 class="form-label">Nombre Completo</label>
                                                                             <input type="text" class="form-control"
-                                                                                name="nombre"
+                                                                                name="nombre" maxlength="100"
                                                                                 placeholder="{{ $integrantes->nombre_completo }}">
                                                                         </div>
                                                                         <div class="mb-3">
@@ -429,7 +429,7 @@
                                                                             <label for="simpleinput"
                                                                                 class="form-label">Domicilio</label>
                                                                             <input type="text" class="form-control"
-                                                                                name="domicilio"
+                                                                                name="domicilio" maxlength="120"
                                                                                 placeholder="{{ $integrantes->domicilio }}">
                                                                         </div>
                                                                         <div class="mb-3">
@@ -451,7 +451,7 @@
                                                                                 class="form-label">correo
                                                                                 electronico</label>
                                                                             <input type="email" class="form-control"
-                                                                                name="correo"
+                                                                                name="correo" maxlength="60"
                                                                                 placeholder="{{ $integrantes->correo }}">
                                                                         </div>
                                                                         <div class="mb-3">
@@ -460,7 +460,7 @@
                                                                                 se puede tener acceso a
                                                                                 Internet?</label>
                                                                             <input type="text" class="form-control"
-                                                                                name="acceso_internet"
+                                                                                name="acceso_internet" maxlength="200"
                                                                                 placeholder="{{ $integrantes->acceso_internet }}">
                                                                         </div>
                                                                         <div class="mb-3">
@@ -468,7 +468,7 @@
                                                                                 class="form-label">Observaciones
                                                                                 identificacion</label>
                                                                             <input type="text" class="form-control"
-                                                                                name="obs_identificacion"
+                                                                                name="obs_identificacion" maxlength="200"
                                                                                 placeholder="{{ $integrantes->observacion_identificacion }}">
                                                                         </div>
                                                                         <div class="mb-3">
@@ -476,7 +476,7 @@
                                                                                 class="form-label">Observaciones
                                                                                 fotografia</label>
                                                                             <input type="text" class="form-control"
-                                                                                name="obs_fotografia"
+                                                                                name="obs_fotografia" maxlength="200"
                                                                                 placeholder="{{ $integrantes->observacion_fotografia }}">
                                                                         </div>
                                                                         <div class="mb-3">
@@ -484,7 +484,7 @@
                                                                                 class="form-label">Observaciones carta bajo
                                                                                 protesta</label>
                                                                             <input type="text" class="form-control"
-                                                                                name="obs_carta"
+                                                                                name="obs_carta" maxlength="200"
                                                                                 placeholder="{{ $integrantes->observacion_carta }}">
                                                                         </div>
                                                                         <div class="mb-3">
@@ -492,7 +492,7 @@
                                                                                 class="form-label">observaciones
                                                                                 constancia</label>
                                                                             <input type="text" class="form-control"
-                                                                                name="obs_constancia"
+                                                                                name="obs_constancia" maxlength="200"
                                                                                 placeholder="{{ $integrantes->observacion_constancia }}">
                                                                         </div>
                                                                         <br> 
@@ -536,7 +536,7 @@
                             <input type="text" class="form-control" name="id_comite" value="{{ $id }} "
                                 hidden>
                             <label for="simpleinput" class="form-label">Nombre Completo</label>
-                            <input type="text" class="form-control" name="nombre" required maxlength="100">
+                            <input type="text" class="form-control" name="nombre" maxlength="100">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Sexo</label>
@@ -551,7 +551,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Ocupacion</label>
-                            <input type="text" class="form-control" name="ocupacion" required  maxlength="70">
+                            <input type="text" class="form-control" name="ocupacion" maxlength="70">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Escolaridad</label>
@@ -602,36 +602,36 @@
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Teléfono fijo</label>
-                            <input type="number" class="form-control" name="telefono_fijo" required >
+                            <input type="number" class="form-control" name="telefono_fijo">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Teléfono celular</label>
-                            <input type="number" class="form-control" name="telefono_celular" required>
+                            <input type="number" class="form-control" name="telefono_celular">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" name="correo" required  maxlength="60">
+                            <input type="email" class="form-control" name="correo" maxlength="60">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">¿En su Municipio donde se puede tener acceso a
                                 Internet?</label>
-                            <input type="text" class="form-control" name="acceso_internet" required  maxlength="100">
+                            <input type="text" class="form-control" name="acceso_internet" required maxlength="100">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Observaciones identificación</label>
-                            <input type="text" class="form-control" name="obs_identificacion" maxlength="80">
+                            <input type="text" class="form-control" name="obs_identificacion" maxlength="200">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Observaciones fotografía</label>
-                            <input type="text" class="form-control" name="obs_fotografia" maxlength="80">
+                            <input type="text" class="form-control" name="obs_fotografia" maxlength="200">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Observaciones carta bajo protesta</label>
-                            <input type="text" class="form-control" name="obs_carta" maxlength="80">
+                            <input type="text" class="form-control" name="obs_carta" maxlength="200">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">observaciones constancia</label>
-                            <input type="text" class="form-control" name="obs_constancia"maxlength="80">
+                            <input type="text" class="form-control" name="obs_constancia" maxlength="200">
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Registrar</button>
