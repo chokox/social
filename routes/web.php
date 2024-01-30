@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::get('/', function () {return view('welcome');});
-Route::get('/', 'App\Http\Controllers\WelcomeController@incrementarContador');
+Route::get('/', 'App\Http\Controllers\WelcomeController@incrementarContador')->name('inicio');
+
+//RUTA DE BUZON CIUDADANO SIN AUTENTIFICACION
+Route::resource('/buzones_ciudadanos', 'App\Http\Controllers\ComentariosBuzonesController');
 
 //RUTAS MICROSITIO
 Route::view('contraloriasocial', '/micrositio/contraloriasocial')->name('contraloriasocial');

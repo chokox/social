@@ -48,7 +48,7 @@ class BuzonesController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -69,6 +69,18 @@ class BuzonesController extends Controller
         return back();
     }
 
+    public function RegistrarComentarioBuzon(Request $request)
+    {
+        $registro = new Buzone();
+        $registro->numero_buzon = strtoupper($request->input('txtBuzon'));
+        $registro->id_catalogo_buzon_fk = $request->input('txtTipoBuzon');
+        $registro->ubicacion = $request->input('txtUbicacion');
+        $registro->save();
+
+        Alert::success('Buzon Registrado', 'El buzon digital fue registrado de manera satisfactoria');
+        return back();
+    }
+
     /**
      * Display the specified resource.
      *
@@ -77,7 +89,7 @@ class BuzonesController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -88,7 +100,7 @@ class BuzonesController extends Controller
      */
     public function edit($id)
     {
-
+        
     }
 
     /**
@@ -111,35 +123,17 @@ class BuzonesController extends Controller
 
     public function descargarQR($id)
     {
-        $datos = Buzone::find($id);
-        $textoQR = $datos->numero_buzon;
-        $codigoQR = QrCode::size(300)->generate($textoQR);
+        $textoQR = route('buzones_ciudadanos.edit', $id);
 
-        // Decodifica el código base64 de manera más segura
-        $decodedQR = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $codigoQR), true);
+        $codigoQR = QrCode::format('png')->margin(0)->size(500)->color(157, 36, 73)->generate($textoQR);
 
-        // Verifica si la decodificación fue exitosa
-        if ($decodedQR === false) {
-            abort(500, 'Error al decodificar el código QR.');
-        }
+        $headers = [
+            'Content-Type' => 'image/png',
+            'Content-Disposition' => 'attachment; filename="codigo_qr.png"',
+        ];
 
-        // Convierte el código base64 decodificado en un recurso de imagen
-        $imagen = imagecreatefromstring($decodedQR);
-
-        // Verifica si la creación del recurso de imagen fue exitosa
-        if ($imagen === false) {
-            abort(500, 'Error al crear el recurso de imagen.');
-        }
-
-        // Crea una respuesta con el tipo de contenido correcto y el encabezado de descarga
-        $response = Response::make($decodedQR, 200);
-        $response->header('Content-Type', 'image/png');
-        $response->header('Content-Disposition', 'attachment; filename="codigo_qr.png"');
-
-        // Libera la memoria del recurso de imagen
-        imagedestroy($imagen);
-
-        return $response;
+        // Devolver la respuesta con la imagen del código QR
+        return response($codigoQR, 200, $headers);
     }
 
     /**

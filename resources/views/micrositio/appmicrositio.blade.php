@@ -2,7 +2,7 @@
 <html lang="en" data-layout-mode="detached" data-topbar-color="dark" data-menu-color="light" data-sidenav-user="true">
 <head>
     <meta charset="utf-8" />
-    <title> Contraloría Social| Honestidad</title>
+    <title> Contraloría Social | Honestidad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -33,7 +33,7 @@
 
             <!-- logo -->
             <a  class="navbar-brand me-lg-1">
-                <img src="imagenes/ConSocial1.svg" alt="logo" class="logo-dark" height="80" />            </a>
+                <img src="{{ asset('imagenes/ConSocial1.svg')}}" alt="logo" class="logo-dark" height="80" />            </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,7 @@
                 <ul class="navbar-nav me-auto align-items-center">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" purple role="button" aria-haspopup="true"
-                            aria-expanded="false" href="/"><strong>Inicio</strong></a>
+                            aria-expanded="false" href="{{ route('inicio') }}"><strong>Inicio</strong></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" role="button" aria-haspopup="true"
@@ -148,7 +148,7 @@
             <div class="row">
             <div class="col-1"></div>
                 <div class="col-2">
-                    <img src="imagenes/escudooax.png" alt="logo" class="logo-dark" height="40" />
+                    <img src="{{ asset('imagenes/escudooax.png')}}" alt="logo" class="logo-dark" height="40" />
                     <br class="text-muted mt-4" >Direccion de Contraloria Social
 
                     <ul class="social-list list-inline mt-3" >
@@ -190,6 +190,7 @@
 
     <!-- Remixicons Icons Demo js -->
     <script src="{{ asset('js/pages/demo.remixicons.js') }}"></script>
+        @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 </body>
 
 </html>

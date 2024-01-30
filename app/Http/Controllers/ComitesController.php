@@ -50,18 +50,14 @@ class ComitesController extends Controller
             $nombreArchivo = $request->file('archivo_acta')->store($ruta, 'public');
         } elseif ($request->input('tipo') == 'lista' && ($request->hasFile('archivo_lista') && $request->file('archivo_lista')->isValid())) {
             $nombreArchivo = $request->file('archivo_lista')->store($ruta, 'public');
-        } elseif ($request->input('tipo') == 'acuse' && ($request->hasFile('archivo_acuse') && $request->file('archivo_acuse')->isValid())) {
-            $nombreArchivo = $request->file('archivo_acuse')->store($ruta, 'public');
-        }
+        } 
 
         if (Storage::disk('public')->exists($nombreArchivo)) {
             if ($request->input('tipo') == 'acta') {
                 $dato->archivo_acta = $nombreArchivo;
             } elseif ($request->input('tipo') == 'lista') {
                 $dato->archivo_lista = $nombreArchivo;
-            } elseif ($request->input('tipo') == 'acuse') {
-                $dato->archivo_acuse = $nombreArchivo;
-            }
+            } 
             $dato->save();
 
             //VERIFICA SI ESTAN LOS ARCHIVOS DE LOS INTEGRANTES COMPLETOS
@@ -85,12 +81,12 @@ class ComitesController extends Controller
         }
             //FIN DE LA VERIFICACION
         
-            if (!empty($dato->archivo_acta) && !empty($dato->archivo_lista) && !empty($dato->archivo_acuse)) {
+            if (!empty($dato->archivo_acta) && !empty($dato->archivo_lista)) {
                 $dato->estatus = '2';
                 $dato->save();
             } 
             
-            if ((!empty($dato->archivo_acta) && !empty($dato->archivo_lista) && !empty($dato->archivo_acuse)) and $variable==1) {
+            if ((!empty($dato->archivo_acta) && !empty($dato->archivo_lista)) and $variable==1) {
                 $dato->estatus = '3';
                 $dato->save();
             }
@@ -120,9 +116,6 @@ class ComitesController extends Controller
         } elseif ($tipo == 2) {
             Storage::disk('public')->delete($documento->archivo_lista);
             $documento->archivo_lista = null;
-        } elseif ($tipo == 3) {
-            Storage::disk('public')->delete($documento->archivo_acuse);
-            $documento->archivo_acuse = null;
         }
         $documento->estatus = 5 ;
 

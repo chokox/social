@@ -201,51 +201,6 @@
                                                                                         </td>
                                                                                     @endif
                                                                                 </tr>
-                                                                                <tr>
-                                                                                    <td>Acuse</td>
-                                                                                    @if (empty($mun->archivo_acuse))
-                                                                                        <td>
-                                                                                            <form
-                                                                                                action="{{ route('CSubirDoc', $mun->id_acreditacion) }}"
-                                                                                                method="POST"
-                                                                                                enctype="multipart/form-data" style="display: inline-block; vertical-align: middle;">
-                                                                                                @csrf
-                                                                                                @method('PUT')
-                                                                                                <input type="text"
-                                                                                                    name="tipo"
-                                                                                                    value="acuse" hidden>
-                                                                                                <input type="file"
-                                                                                                    name="archivo_acuse"
-                                                                                                    accept=".doc, .docx, .pdf">&nbsp;&nbsp;
-                                                                                                <button type="submit"
-                                                                                                    class="btn btn-info">Cargar</button>
-                                                                                            </form>
-                                                                                        </td>
-                                                                                    @else
-                                                                                        <td><a type="button"
-                                                                                                class="btn btn-primary"
-                                                                                                href="{{ asset('storage/' . $mun->archivo_acuse) }}" target="_blank"><i
-                                                                                                    class="ri-file-download-line"></i>
-                                                                                                Descargar</a>&nbsp;
-                                                                                                 @if($mun->estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))
-                                                                                            <form
-                                                                                                action="{{ route('CEliminarDoc', ['id' => '3' . $mun->id_acreditacion]) }}"
-                                                                                                method="post" style="display: inline-block; vertical-align: middle;">
-                                                                                                @csrf
-                                                                                                @method('delete')
-
-                                                                                                <button type="submit"
-                                                                                                    class="btn btn-danger"
-                                                                                                    onclick="confirmarEliminar()">
-                                                                                                    <i
-                                                                                                        class="ri-delete-bin-6-line"></i>
-                                                                                                    Eliminar
-                                                                                                </button>
-                                                                                            </form>
-                                                                                            @endif
-                                                                                        </td>
-                                                                                    @endif
-                                                                                </tr>
                                                                             </tbody>
                                                                         </table>
                                                                     </div>

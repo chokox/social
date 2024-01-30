@@ -558,6 +558,7 @@
                             <select class="form-control" name="escolaridad">
                                 <option>PRIMARIA</option>
                                 <option>SECUNDARIA</option>
+                                <option>BACHILLERATO</option>
                                 <option>CARRERA TECNICA O COMERCIAL</option>
                                 <option>LICENCIATURA</option>
                                 <option>DIPLOMADO</option>

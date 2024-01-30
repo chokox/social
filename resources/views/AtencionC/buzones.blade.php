@@ -65,7 +65,8 @@
                                                               class="btn btn-primary" >
                                                                 <i class="ri-qr-code-line"></i>
                                                             </a>
-                                                            <a title="Ver buzon" type="button" class="btn btn-primary" >
+                                                          
+                                                            <a title="Ver buzon" href="{{ route('buzones_ciudadanos.show', $item['id_buzon']) }}" type="button" class="btn btn-primary" >
                                                                 <i class="ri-inbox-line"></i>
                                                             </a>
                                                         </td>

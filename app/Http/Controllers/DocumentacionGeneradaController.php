@@ -124,7 +124,7 @@ Directora de Contraloría Social</strong><br><br></div>
             $pdf->Image('grecas.jpg', 185, 0, 50, null, '', '', '', false, 500, '', false, false, 0);
             $pdf->Image('grecas.jpg', 185, 240, 50, null, '', '', '', false, 300, '', false, false, 0);
             $pdf->Image('grecas.jpg', 185, 240, 50, null, '', '', '', false, 300, '', false, false, 0);
-            $pdf->Image('lcs.png', 15, 10, 180, 28, '', '', '', false, 300, '', false, false, 0);
+            $pdf->Image('cs.png', 15, 10, 180, 28, '', '', '', false, 300, '', false, false, 0);
             $pdf->Image('abajo.jpg', -8, 270, 0, 8, '', '', '', false, 300, '', false, false, 0);
         });
 

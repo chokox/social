@@ -149,6 +149,7 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
                                         <a href="{{ route('buzon.index') }}" class="dropdown-item">Buzones</a>
+                                        <a href="{{ route('buzones_ciudadanos.edit', 1) }}" class="dropdown-item">prueba buzon</a>
                                          <a href="{{ route('resumenAcreditaciones') }}" class="dropdown-item">Informes</a>
                                     </div>
                                 </li>

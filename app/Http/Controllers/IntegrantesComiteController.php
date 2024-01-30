@@ -109,7 +109,7 @@ class IntegrantesComiteController extends Controller
             
             //FIN DE LA VERIFICACION
 
-            if ((!empty($doc->archivo_acta) && !empty($doc->archivo_lista) && !empty($doc->archivo_acuse)) and $variable == 1) {
+            if ((!empty($doc->archivo_acta) && !empty($doc->archivo_lista)) and $variable == 1) {
                 $doc->estatus = '3';
                 $doc->save();
             }
