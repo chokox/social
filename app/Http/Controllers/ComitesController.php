@@ -44,6 +44,7 @@ class ComitesController extends Controller
     public function subirDocumentacion(Request $request, $id)
     {
         $dato = AcreditacionComite::find($id);
+      //  dd($dato->archivo_acta);
         $ruta = 'comites/' . now()->year . '/' . $id;
 
         if ($request->input('tipo') == 'acta' && ($request->hasFile('archivo_acta') && $request->file('archivo_acta')->isValid())) {
@@ -64,8 +65,7 @@ class ComitesController extends Controller
             $resultado = IntegrantesComite::ContarPorComite(now()->year, $id)->get();
             //;$sqlQuery = $totComites->toSql();
             // dd ($sqlQuery); 
-
-            if  ( !empty($resultado->id_integrante_comite) or !empty($resultado->archivo_acta) ) {
+            if  ( !empty($resultado->id_integrante_comite) ) {
                 $todosRellenados = $resultado->every(function ($item) {
                     return $item->archivo_ine !== null &&
                     $item->archivo_protesta !== null &&
@@ -79,18 +79,19 @@ class ComitesController extends Controller
         }else{
             $variable = 0;
         }
+
             //FIN DE LA VERIFICACION
         
-            if (!empty($dato->archivo_acta) && !empty($dato->archivo_lista)) {
-                $dato->estatus = '2';
-                $dato->save();
-            } 
-            
-            if ((!empty($dato->archivo_acta) && !empty($dato->archivo_lista)) and $variable==1) {
+            if ((!empty($dato->archivo_acta) && !empty($dato->archivo_lista)) || $variable == 1) {
                 $dato->estatus = '3';
                 $dato->save();
+            } elseif (!empty($dato->archivo_acta) && !empty($dato->archivo_lista)) {
+                $dato->estatus = '2';
+                $dato->save();
             }
-
+            
+            
+           
             Alert::success('Documentacion cargada', null);
             return back();
         } else {
