@@ -38,18 +38,18 @@ class AcreditacionComite extends Model
     public function scopeComites ($query, $ejercicio){
 
         return $query->selectRaw('
-        SUM(CASE WHEN MONTH(ac.created_at) = 1 THEN 1 ELSE 0 END) AS eneroComites,
-        SUM(CASE WHEN MONTH(ac.created_at) = 2 THEN 1 ELSE 0 END) AS febreroComites,
-        SUM(CASE WHEN MONTH(ac.created_at) = 3 THEN 1 ELSE 0 END) AS marzoComites,
-        SUM(CASE WHEN MONTH(ac.created_at) = 4 THEN 1 ELSE 0 END) AS abrilComites,
-        SUM(CASE WHEN MONTH(ac.created_at) = 5 THEN 1 ELSE 0 END) AS mayoComites,
-        SUM(CASE WHEN MONTH(ac.created_at) = 6 THEN 1 ELSE 0 END) AS junioComites,
-        SUM(CASE WHEN MONTH(ac.created_at) = 7 THEN 1 ELSE 0 END) AS julioComites,
-        SUM(CASE WHEN MONTH(ac.created_at) = 8 THEN 1 ELSE 0 END) AS agostoComites,
-        SUM(CASE WHEN MONTH(ac.created_at) = 9 THEN 1 ELSE 0 END) AS septiembreComites,
-        SUM(CASE WHEN MONTH(ac.created_at) = 10 THEN 1 ELSE 0 END) AS octubreComites,
-        SUM(CASE WHEN MONTH(ac.created_at) = 11 THEN 1 ELSE 0 END) AS noviembreComites,
-        SUM(CASE WHEN MONTH(ac.created_at) = 12 THEN 1 ELSE 0 END) AS diciembreComites
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 1 THEN 1 ELSE 0 END) AS eneroComites,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 2 THEN 1 ELSE 0 END) AS febreroComites,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 3 THEN 1 ELSE 0 END) AS marzoComites,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 4 THEN 1 ELSE 0 END) AS abrilComites,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 5 THEN 1 ELSE 0 END) AS mayoComites,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 6 THEN 1 ELSE 0 END) AS junioComites,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 7 THEN 1 ELSE 0 END) AS julioComites,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 8 THEN 1 ELSE 0 END) AS agostoComites,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 9 THEN 1 ELSE 0 END) AS septiembreComites,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 10 THEN 1 ELSE 0 END) AS octubreComites,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 11 THEN 1 ELSE 0 END) AS noviembreComites,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 12 THEN 1 ELSE 0 END) AS diciembreComites
     ')
     ->from('acreditacion_comites as ac')
     ->join('catalogo_municipios as cm', 'ac.id_catalogo_municipio_fk', '=', 'cm.id_municipio')

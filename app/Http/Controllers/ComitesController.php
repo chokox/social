@@ -46,6 +46,7 @@ class ComitesController extends Controller
         $dato = AcreditacionComite::find($id);
       //  dd($dato->archivo_acta);
         $ruta = 'comites/' . now()->year . '/' . $id;
+        $nombreArchivo = null;
 
         if ($request->input('tipo') == 'acta' && ($request->hasFile('archivo_acta') && $request->file('archivo_acta')->isValid())) {
             $nombreArchivo = $request->file('archivo_acta')->store($ruta, 'public');

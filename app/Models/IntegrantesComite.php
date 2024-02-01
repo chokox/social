@@ -49,18 +49,18 @@ class IntegrantesComite extends Model
     public function scopeContralores($query, $ejercicio){
         
         return $query->selectRaw('
-        SUM(CASE WHEN MONTH(ic.created_at) = 1 THEN 1 ELSE 0 END) AS eneroContralores,
-        SUM(CASE WHEN MONTH(ic.created_at) = 2 THEN 1 ELSE 0 END) AS febreroContralores,
-        SUM(CASE WHEN MONTH(ic.created_at) = 3 THEN 1 ELSE 0 END) AS marzoContralores,
-        SUM(CASE WHEN MONTH(ic.created_at) = 4 THEN 1 ELSE 0 END) AS abrilContralores,
-        SUM(CASE WHEN MONTH(ic.created_at) = 5 THEN 1 ELSE 0 END) AS mayoContralores,
-        SUM(CASE WHEN MONTH(ic.created_at) = 6 THEN 1 ELSE 0 END) AS junioContralores,
-        SUM(CASE WHEN MONTH(ic.created_at) = 7 THEN 1 ELSE 0 END) AS julioContralores,
-        SUM(CASE WHEN MONTH(ic.created_at) = 8 THEN 1 ELSE 0 END) AS agostoContralores,
-        SUM(CASE WHEN MONTH(ic.created_at) = 9 THEN 1 ELSE 0 END) AS septiembreContralores,
-        SUM(CASE WHEN MONTH(ic.created_at) = 10 THEN 1 ELSE 0 END) AS octubreContralores,
-        SUM(CASE WHEN MONTH(ic.created_at) = 11 THEN 1 ELSE 0 END) AS noviembreContralores,
-        SUM(CASE WHEN MONTH(ic.created_at) = 12 THEN 1 ELSE 0 END) AS diciembreContralores
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 1 THEN 1 ELSE 0 END) AS eneroContralores,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 2 THEN 1 ELSE 0 END) AS febreroContralores,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 3 THEN 1 ELSE 0 END) AS marzoContralores,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 4 THEN 1 ELSE 0 END) AS abrilContralores,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 5 THEN 1 ELSE 0 END) AS mayoContralores,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 6 THEN 1 ELSE 0 END) AS junioContralores,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 7 THEN 1 ELSE 0 END) AS julioContralores,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 8 THEN 1 ELSE 0 END) AS agostoContralores,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 9 THEN 1 ELSE 0 END) AS septiembreContralores,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 10 THEN 1 ELSE 0 END) AS octubreContralores,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 11 THEN 1 ELSE 0 END) AS noviembreContralores,
+        SUM(CASE WHEN MONTH(ac.fecha_validado) = 12 THEN 1 ELSE 0 END) AS diciembreContralores
     ')
     ->from('integrantes_comites AS ic')
     ->join('acreditacion_comites as ac', 'ac.id_acreditacion', '=', 'ic.id_acreditacion_comite_fk')
