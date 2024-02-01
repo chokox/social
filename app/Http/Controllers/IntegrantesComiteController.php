@@ -128,6 +128,7 @@ class IntegrantesComiteController extends Controller
         $tipo = substr($id, 0, 1);
         $idd = substr($id, 1);
         $documento = IntegrantesComite::find($idd);
+        $id_comite = $documento->id_acreditacion_comite_fk;
 
         if (!$documento) {
             Alert::error('Error', 'Archivo no encontrado');
@@ -148,6 +149,21 @@ class IntegrantesComiteController extends Controller
             $documento->archivo_fotografia = null;
         }
         $documento->save();
+
+        $resultado = IntegrantesComite::ContarPorComite(now()->year, $id_comite)->get();
+            $todosRellenados = $resultado->every(function ($item) {
+                return $item->archivo_ine !== null &&
+                    $item->archivo_protesta !== null &&
+                    $item->archivo_constancia !== null &&
+                    $item->archivo_fotografia !== null;
+            });
+            $variable = $todosRellenados ? 1 : 0;
+            $doc=AcreditacionComite::where('id_acreditacion', $id_comite)->first();
+            
+            if (!empty($doc->archivo_acta) && !empty($doc->archivo_lista)) {
+                $doc->estatus = '5';
+                $doc->save();
+            }
 
         Alert::success('Documentacion eliminada', null);
         return back();
