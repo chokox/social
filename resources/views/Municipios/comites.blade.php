@@ -19,7 +19,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
+                                <table id="basic-datatable-comites" class="table w-100 nowrap"> 
                                     <thead class="table-dark">
                                         <tr>
                                             <th>Folio</th>
@@ -244,11 +244,39 @@
         </div>
     </div>
 
+         <!-- Agrega las bibliotecas para exportar a Excel y PDF -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+ <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.flash.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+
     <script>
+
         function confirmarEliminar() {
             if (confirm('¿Estás seguro de que deseas eliminar este documento?')) {
                 document.getElementById('eliminarForm').submit();
             }
         }
-    </script>
+
+        $(document).ready(function () {
+            $('#basic-datatable-comites').DataTable({
+                scrollX: true,
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                searching: true,
+                paging: true,
+                info:    true,
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    }
+                ],
+               
+            });
+        
+        });
+        </script> 
 @endsection

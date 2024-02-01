@@ -335,19 +335,49 @@
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <label for="simpleinput"
-                                                                                class="form-label">Sexo</label>
-                                                                            <select class="form-control" name="sexo">
-                                                                                <option value="HOMBRE">Hombre</option>
-                                                                                <option value="MUJER">Mujer</option>
-                                                                            </select>
+                                                                                class="form-label">Domicilio</label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="domicilio" maxlength="120"
+                                                                                placeholder="{{ $integrantes->domicilio }}">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="simpleinput"
+                                                                                class="form-label">telefono fijo</label>
+                                                                            <input type="number" class="form-control"
+                                                                                name="telefono_fijo"
+                                                                                placeholder="{{ $integrantes->telefono }}">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="simpleinput"
+                                                                                class="form-label">telefono celular</label>
+                                                                            <input type="number" class="form-control"
+                                                                                name="telefono_celular"
+                                                                                placeholder="{{ $integrantes->celular }}">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="simpleinput"
+                                                                                class="form-label">correo
+                                                                                electronico</label>
+                                                                            <input type="email" class="form-control"
+                                                                                name="correo" maxlength="60"
+                                                                                placeholder="{{ $integrantes->correo }}">
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <label for="simpleinput"
                                                                                 class="form-label">Fecha de
                                                                                 nacimiento</label>
-                                                                            <input type="date" class="form-control"
-                                                                                name="fecha_nacimiento"
-                                                                                placeholder="{{ $integrantes->fecha_nacimiento }}">
+                                                                                @php
+                                                                                $fechaNacimiento = ($integrantes->fecha_nacimiento && $integrantes->fecha_nacimiento != '1970-01-01') ? date('d/m/Y', strtotime($integrantes->fecha_nacimiento)) : '';
+                                                                            @endphp
+                                                                            <input value="{{ $fechaNacimiento }}" type="text" class="form-control" name="fecha_nacimiento" >
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="simpleinput"
+                                                                                class="form-label">Sexo</label>
+                                                                            <select class="form-control" name="sexo">
+                                                                                <option value="HOMBRE">Hombre</option>
+                                                                                <option value="MUJER">Mujer</option>
+                                                                            </select>
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <label for="simpleinput"
@@ -409,35 +439,6 @@
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <label for="simpleinput"
-                                                                                class="form-label">Domicilio</label>
-                                                                            <input type="text" class="form-control"
-                                                                                name="domicilio" maxlength="120"
-                                                                                placeholder="{{ $integrantes->domicilio }}">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="simpleinput"
-                                                                                class="form-label">telefono fijo</label>
-                                                                            <input type="number" class="form-control"
-                                                                                name="telefono_fijo"
-                                                                                placeholder="{{ $integrantes->telefono }}">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="simpleinput"
-                                                                                class="form-label">telefono celular</label>
-                                                                            <input type="number" class="form-control"
-                                                                                name="telefono_celular"
-                                                                                placeholder="{{ $integrantes->celular }}">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="simpleinput"
-                                                                                class="form-label">correo
-                                                                                electronico</label>
-                                                                            <input type="email" class="form-control"
-                                                                                name="correo" maxlength="60"
-                                                                                placeholder="{{ $integrantes->correo }}">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="simpleinput"
                                                                                 class="form-label">¿En su Municipio donde
                                                                                 se puede tener acceso a
                                                                                 Internet?</label>
@@ -490,6 +491,29 @@
                                                     </div>
                                                     <!-- fin de modal edicion integrantes -->
                                                 </td>
+                                                <td>{{ $integrantes->nombre_completo }}</td>
+                                                <td>{{ $integrantes->sexo }}</td>
+                                                <td>{{ $integrantes->fecha_nacimiento }}</td>
+                                                @php
+                                                    $fechaNacimiento = $integrantes->fecha_nacimiento;
+                                                    $edad = \Carbon\Carbon::parse($fechaNacimiento)->age;
+
+                                                @endphp
+                                                <td>{{ $edad }} años</td>
+                                                <td>{{ $integrantes->ocupacion }}</td>
+                                                <td>{{ $integrantes->escolaridad }}</td>
+                                                <td>{{ $integrantes->lengua_indigena }}</td>
+                                                <td>{{ $integrantes->usa_computadora }}</td>
+                                                <td>{{ $integrantes->domicilio }}</td>
+                                                <td>{{ $integrantes->telefono }}</td>
+                                                <td>{{ $integrantes->celular }}</td>
+                                                <td>{{ $integrantes->correo }}</td>
+                                                <td>{{ $integrantes->acceso_internet }}</td>
+                                                <td>{{ $integrantes->observacion_identificacion }}
+                                                    {{ $integrantes->observacion_fotografia }}
+                                                    {{ $integrantes->observacion_carta }}
+                                                    {{ $integrantes->observacion_constancia }}</td>
+                                                <td style="display: none;">{{ $integrantes->created_at }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -634,7 +658,12 @@
     <script>
         $(document).ready(function () {
             $('#basic-datatable-integrantesComite').DataTable({
+
                 scrollX: true,
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                searching: true,
+                paging: true,
+                info:    true,
                 dom: 'Bfrtip',
                 buttons: [
                     {
