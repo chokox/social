@@ -25,6 +25,8 @@ Route::view('contraloriasocial', '/micrositio/contraloriasocial')->name('contral
 Route::view('formatos', '/micrositio/formatos')->name('formatos');
 Route::view('presupuesto2023', '/micrositio/presupuesto2023')->name('presupuesto2023');
 Route::view('presupuesto2022', '/micrositio/presupuesto2022')->name('presupuesto2022');
+Route::view('buzones', '/micrositio/buzones')->name('buzones');
+//Route::view('buzon','/micrositio/buzon')->name('buzones');
 Auth::routes();
 
 //RUTAS DEL MODULO DEL DEPARTAMENTO DE CAPACITACION A MUNICIPIOS
