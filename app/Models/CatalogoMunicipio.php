@@ -71,18 +71,18 @@ class CatalogoMunicipio extends Model
 
         return $query->selectRaw('
         cm.region, 
-        COALESCE(SUM(CASE WHEN MONTH(ac.created_at) = 1 THEN 1 ELSE 0 END), 0) AS eneroComites,
-        COALESCE(SUM(CASE WHEN MONTH(ac.created_at) = 2 THEN 1 ELSE 0 END), 0) AS febreroComites,
-        COALESCE(SUM(CASE WHEN MONTH(ac.created_at) = 3 THEN 1 ELSE 0 END), 0) AS marzoComites,
-        COALESCE(SUM(CASE WHEN MONTH(ac.created_at) = 4 THEN 1 ELSE 0 END), 0) AS abrilComites,
-        COALESCE(SUM(CASE WHEN MONTH(ac.created_at) = 5 THEN 1 ELSE 0 END), 0) AS mayoComites,
-        COALESCE(SUM(CASE WHEN MONTH(ac.created_at) = 6 THEN 1 ELSE 0 END), 0) AS junioComites,
-        COALESCE(SUM(CASE WHEN MONTH(ac.created_at) = 7 THEN 1 ELSE 0 END), 0) AS julioComites,
-        COALESCE(SUM(CASE WHEN MONTH(ac.created_at) = 8 THEN 1 ELSE 0 END), 0) AS agostoComites,
-        COALESCE(SUM(CASE WHEN MONTH(ac.created_at) = 9 THEN 1 ELSE 0 END), 0) AS septiembreComites,
-        COALESCE(SUM(CASE WHEN MONTH(ac.created_at) = 10 THEN 1 ELSE 0 END), 0) AS octubreComites,
-        COALESCE(SUM(CASE WHEN MONTH(ac.created_at) = 11 THEN 1 ELSE 0 END), 0) AS noviembreComites,
-        COALESCE(SUM(CASE WHEN MONTH(ac.created_at) = 12 THEN 1 ELSE 0 END), 0) AS diciembreComites,
+        COALESCE(SUM(CASE WHEN MONTH(ac.fecha_validado) = 1 THEN 1 ELSE 0 END), 0) AS eneroComites,
+        COALESCE(SUM(CASE WHEN MONTH(ac.fecha_validado) = 2 THEN 1 ELSE 0 END), 0) AS febreroComites,
+        COALESCE(SUM(CASE WHEN MONTH(ac.fecha_validado) = 3 THEN 1 ELSE 0 END), 0) AS marzoComites,
+        COALESCE(SUM(CASE WHEN MONTH(ac.fecha_validado) = 4 THEN 1 ELSE 0 END), 0) AS abrilComites,
+        COALESCE(SUM(CASE WHEN MONTH(ac.fecha_validado) = 5 THEN 1 ELSE 0 END), 0) AS mayoComites,
+        COALESCE(SUM(CASE WHEN MONTH(ac.fecha_validado) = 6 THEN 1 ELSE 0 END), 0) AS junioComites,
+        COALESCE(SUM(CASE WHEN MONTH(ac.fecha_validado) = 7 THEN 1 ELSE 0 END), 0) AS julioComites,
+        COALESCE(SUM(CASE WHEN MONTH(ac.fecha_validado) = 8 THEN 1 ELSE 0 END), 0) AS agostoComites,
+        COALESCE(SUM(CASE WHEN MONTH(ac.fecha_validado) = 9 THEN 1 ELSE 0 END), 0) AS septiembreComites,
+        COALESCE(SUM(CASE WHEN MONTH(ac.fecha_validado) = 10 THEN 1 ELSE 0 END), 0) AS octubreComites,
+        COALESCE(SUM(CASE WHEN MONTH(ac.fecha_validado) = 11 THEN 1 ELSE 0 END), 0) AS noviembreComites,
+        COALESCE(SUM(CASE WHEN MONTH(ac.fecha_validado) = 12 THEN 1 ELSE 0 END), 0) AS diciembreComites,
         COUNT(DISTINCT ac.id_acreditacion) as total_comites
     ')
     ->from('catalogo_municipios as cm')
