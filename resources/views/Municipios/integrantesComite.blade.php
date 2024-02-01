@@ -353,11 +353,32 @@
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <label for="simpleinput"
-                                                                                class="form-label">Sexo</label>
-                                                                            <select class="form-control" name="sexo">
-                                                                                <option value="HOMBRE">Hombre</option>
-                                                                                <option value="MUJER">Mujer</option>
-                                                                            </select>
+                                                                                class="form-label">Domicilio</label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="domicilio" maxlength="120"
+                                                                                placeholder="{{ $integrantes->domicilio }}">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="simpleinput"
+                                                                                class="form-label">telefono fijo</label>
+                                                                            <input type="number" class="form-control"
+                                                                                name="telefono_fijo"
+                                                                                placeholder="{{ $integrantes->telefono }}">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="simpleinput"
+                                                                                class="form-label">telefono celular</label>
+                                                                            <input type="number" class="form-control"
+                                                                                name="telefono_celular"
+                                                                                placeholder="{{ $integrantes->celular }}">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="simpleinput"
+                                                                                class="form-label">correo
+                                                                                electronico</label>
+                                                                            <input type="email" class="form-control"
+                                                                                name="correo" maxlength="60"
+                                                                                placeholder="{{ $integrantes->correo }}">
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <label for="simpleinput"
@@ -366,6 +387,14 @@
                                                                             <input type="date" class="form-control"
                                                                                 name="fecha_nacimiento"
                                                                                 placeholder="{{ $integrantes->fecha_nacimiento }}">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="simpleinput"
+                                                                                class="form-label">Sexo</label>
+                                                                            <select class="form-control" name="sexo">
+                                                                                <option value="HOMBRE">Hombre</option>
+                                                                                <option value="MUJER">Mujer</option>
+                                                                            </select>
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <label for="simpleinput"
@@ -424,35 +453,6 @@
                                                                                 <option value="SI">Si</option>
                                                                                 <option value="NO">No</option>
                                                                             </select>
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="simpleinput"
-                                                                                class="form-label">Domicilio</label>
-                                                                            <input type="text" class="form-control"
-                                                                                name="domicilio" maxlength="120"
-                                                                                placeholder="{{ $integrantes->domicilio }}">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="simpleinput"
-                                                                                class="form-label">telefono fijo</label>
-                                                                            <input type="number" class="form-control"
-                                                                                name="telefono_fijo"
-                                                                                placeholder="{{ $integrantes->telefono }}">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="simpleinput"
-                                                                                class="form-label">telefono celular</label>
-                                                                            <input type="number" class="form-control"
-                                                                                name="telefono_celular"
-                                                                                placeholder="{{ $integrantes->celular }}">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="simpleinput"
-                                                                                class="form-label">correo
-                                                                                electronico</label>
-                                                                            <input type="email" class="form-control"
-                                                                                name="correo" maxlength="60"
-                                                                                placeholder="{{ $integrantes->correo }}">
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <label for="simpleinput"
@@ -539,15 +539,31 @@
                             <input type="text" class="form-control" name="nombre" maxlength="100">
                         </div>
                         <div class="mb-3">
+                            <label for="simpleinput" class="form-label">Domicilio</label>
+                            <input type="text" class="form-control" name="domicilio" requerid  maxlength="120">
+                        </div>
+                        <div class="mb-3">
+                            <label for="simpleinput" class="form-label">Teléfono fijo</label>
+                            <input type="number" class="form-control" name="telefono_fijo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="simpleinput" class="form-label">Teléfono celular</label>
+                            <input type="number" class="form-control" name="telefono_celular">
+                        </div>
+                        <div class="mb-3">
+                            <label for="simpleinput" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" name="correo" maxlength="60">
+                        </div>
+                        <div class="mb-3">
+                            <label for="simpleinput" class="form-label">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" name="fecha_nacimiento">
+                        </div>
+                        <div class="mb-3">
                             <label for="simpleinput" class="form-label">Sexo</label>
                             <select class="form-control" name="sexo">
                                 <option value="HOMBRE">Hombre</option>
                                 <option value="MUJER">Mujer</option>
                             </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="simpleinput" class="form-label">Fecha de nacimiento</label>
-                            <input type="date" class="form-control" name="fecha_nacimiento">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Ocupacion</label>
@@ -596,22 +612,6 @@
                                 <option value="SI">Si</option>
                                 <option value="NO">No</option>
                             </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="simpleinput" class="form-label">Domicilio</label>
-                            <input type="text" class="form-control" name="domicilio" requerid  maxlength="120">
-                        </div>
-                        <div class="mb-3">
-                            <label for="simpleinput" class="form-label">Teléfono fijo</label>
-                            <input type="number" class="form-control" name="telefono_fijo">
-                        </div>
-                        <div class="mb-3">
-                            <label for="simpleinput" class="form-label">Teléfono celular</label>
-                            <input type="number" class="form-control" name="telefono_celular">
-                        </div>
-                        <div class="mb-3">
-                            <label for="simpleinput" class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" name="correo" maxlength="60">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">¿En su Municipio donde se puede tener acceso a
