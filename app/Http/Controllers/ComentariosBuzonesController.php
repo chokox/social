@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ComentariosBuzone;
 use App\Models\Buzone;
 use RealRashid\SweetAlert\Facades\Alert;
+use Auth;
 
 class ComentariosBuzonesController extends Controller
 {
@@ -67,7 +68,7 @@ class ComentariosBuzonesController extends Controller
     {
         $buzon= Buzone::find($id);
         $buzon=$buzon->numero_buzon;
-        $todo= ComentariosBuzone::where('id_buzon_fk',$id)->get();
+        $todo = ComentariosBuzone::BuzonAbierto($id)->get();
         return view('AtencionC/verBuzon', compact('buzon'))->with('todo', $todo);;
     }
 
@@ -82,6 +83,36 @@ class ComentariosBuzonesController extends Controller
         return view('AtencionC/buzonPublico', compact('nbuzon'));
     }
 
+    public function abrir($id)
+    {
+        $actualizar = ComentariosBuzone::find($id);
+        if (is_null($actualizar->abierto_por)) {
+            $actualizar->estatus = 1;
+            $actualizar->abierto_por = Auth::id();
+            $actualizar->save();
+        }
+        return response()->json(['success' => true]);
+    }
+
+    public function enProceso($id)
+    {
+        $actualizar = ComentariosBuzone::find($id);
+            $actualizar->estatus = 3;
+            $actualizar->abierto_por = Auth::id();
+            $actualizar->save();
+        Alert::success('Estatus actualizado', null);
+        return back();
+    }
+
+    public function turnada($id)
+    {
+        $actualizar = ComentariosBuzone::find($id);
+            $actualizar->estatus = 2;
+            $actualizar->abierto_por = Auth::id();
+            $actualizar->save();
+        Alert::success('Estatus actualizado', null);
+        return back();
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -91,7 +122,7 @@ class ComentariosBuzonesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

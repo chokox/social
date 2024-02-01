@@ -18,6 +18,7 @@ Route::get('/', 'App\Http\Controllers\WelcomeController@incrementarContador')->n
 
 //RUTA DE BUZON CIUDADANO SIN AUTENTIFICACION
 Route::resource('/buzones_ciudadanos', 'App\Http\Controllers\ComentariosBuzonesController');
+Route::get('/abrir_mensaje/{id}', 'App\Http\Controllers\ComentariosBuzonesController@abrir')->name('abrirMensaje');
 
 //RUTAS MICROSITIO
 Route::view('contraloriasocial', '/micrositio/contraloriasocial')->name('contraloriasocial');
@@ -54,10 +55,13 @@ Route::middleware(['auth', 'departamento:2'])->group(function () {
     Route::post('/registrar_tipo_buzon', 'App\Http\Controllers\BuzonesController@registrarTiposBuzon')->name('registrar_tipo_buzon');
     Route::get('/obtener-tipos-buzon/{tipo}', 'App\Http\Controllers\BuzonesController@obtenerTiposBuzon');
     Route::get('descargar-qr/{id}', 'App\Http\Controllers\BuzonesController@descargarQR')->name('qr_buzon');
+    Route::get('en_proceso/{id}', 'App\Http\Controllers\ComentariosBuzonesController@enProceso')->name('enProceso');
+    Route::get('turnado/{id}', 'App\Http\Controllers\ComentariosBuzonesController@turnada')->name('turnada');
 });
 
 // RUTAS GENERALES PARA USUARIOS AUTENTICADOS
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('/catalogo_usuarios', 'App\Http\Controllers\UserController');
+    Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 });

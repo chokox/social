@@ -845,6 +845,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'rap2hpoutre/laravel-log-viewer' => array(
+            'pretty_version' => 'v2.3.0',
+            'version' => '2.3.0.0',
+            'reference' => 'c4148ec364d78be13eb2ab81ce860946bfd91c4c',
+            'type' => 'laravel-package',
+            'install_path' => __DIR__ . '/../rap2hpoutre/laravel-log-viewer',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'realrashid/sweet-alert' => array(
             'pretty_version' => 'v7.1.0',
             'version' => '7.1.0.0',

@@ -149,7 +149,6 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
                                         <a href="{{ route('buzon.index') }}" class="dropdown-item">Buzones</a>
-                                        <a href="{{ route('buzones_ciudadanos.edit', 1) }}" class="dropdown-item">prueba buzon</a>
                                          <a href="{{ route('resumenAcreditaciones') }}" class="dropdown-item">Informes</a>
                                     </div>
                                 </li>
@@ -161,6 +160,15 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle arrow-none" href="{{ route('catalogo_usuarios.index') }}" >
                                         <i class=" ri-contacts-line"></i>Usuarios 
+                                    </a>
+                                </li>
+                                @endif
+
+                                @if (Auth::user()->super())
+                                <!-- menu catalogo usuarios -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle arrow-none" href="/logs" >
+                                        <i class="ri-bug-line"></i>Log 
                                     </a>
                                 </li>
                                 @endif

@@ -165,6 +165,7 @@ return [
         Laraveles\Spanish\SpanishServiceProvider::class,
         Elibyy\TCPDF\ServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
 
         /*

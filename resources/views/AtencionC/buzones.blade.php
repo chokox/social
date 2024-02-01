@@ -17,6 +17,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
+                                 @if(Auth::user()->administrador() or Auth::user()->super())
                                 <div align="right">
                                     <a type="button" class="btn btn-success" data-bs-toggle="modal"
                                         data-bs-target="#modalAgregarBuzon">
@@ -35,7 +36,7 @@
                                         data-bs-target="#modalRegistrarTipo">
                                         <i class="ri-pantone-line"></i> <span> Registrar Dependencia/Programa</span>
                                     </a>
-                                </div><br>
+                                </div><br>@endif
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="datatable-municipios-preview">
                                         <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
@@ -56,10 +57,12 @@
                                                         <td>{{ $item['numero_buzon'] }}</td>
                                                         <td>{{ $item['ubicacion'] }}</td>
                                                         <td>
+                                                            @if(Auth::user()->administrador() or Auth::user()->super())
                                                             <a title="Editar" type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                                 data-bs-target="#modalEditarBuzon{{ $item['id_buzon'] }}">
                                                                 <i class="ri-file-edit-line"></i>
                                                             </a>
+                                                             @endif
                                                             <a title="QR" type="button"
                                                             href="{{ url('descargar-qr/' . $item['id_buzon']) }}" 
                                                               class="btn btn-primary" >

@@ -540,6 +540,13 @@ class ComposerStaticInitf17c6fa804e26aca8029fb81bcf07a31
                 0 => __DIR__ . '/..' . '/simplesoftwareio/simple-qrcode/src',
             ),
         ),
+        'R' => 
+        array (
+            'Rap2hpoutre\\LaravelLogViewer\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/rap2hpoutre/laravel-log-viewer/src',
+            ),
+        ),
         'B' => 
         array (
             'BaconQrCode' => 
@@ -559,6 +566,7 @@ class ComposerStaticInitf17c6fa804e26aca8029fb81bcf07a31
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\BuzonesController' => __DIR__ . '/../..' . '/app/Http/Controllers/BuzonesController.php',
+        'App\\Http\\Controllers\\ComentariosBuzonesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ComentariosBuzonesController.php',
         'App\\Http\\Controllers\\ComitesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ComitesController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DocumentacionGeneradaController' => __DIR__ . '/../..' . '/app/Http/Controllers/DocumentacionGeneradaController.php',
@@ -581,6 +589,7 @@ class ComposerStaticInitf17c6fa804e26aca8029fb81bcf07a31
         'App\\Models\\AcreditacionComite' => __DIR__ . '/../..' . '/app/Models/AcreditacionComite.php',
         'App\\Models\\Buzone' => __DIR__ . '/../..' . '/app/Models/Buzone.php',
         'App\\Models\\CatalogoMunicipio' => __DIR__ . '/../..' . '/app/Models/CatalogoMunicipio.php',
+        'App\\Models\\ComentariosBuzone' => __DIR__ . '/../..' . '/app/Models/ComentariosBuzone.php',
         'App\\Models\\IntegrantesComite' => __DIR__ . '/../..' . '/app/Models/IntegrantesComite.php',
         'App\\Models\\TipoBuzone' => __DIR__ . '/../..' . '/app/Models/TipoBuzone.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
@@ -4561,6 +4570,12 @@ class ComposerStaticInitf17c6fa804e26aca8029fb81bcf07a31
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
         'Ramsey\\Uuid\\Validator\\GenericValidator' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/GenericValidator.php',
         'Ramsey\\Uuid\\Validator\\ValidatorInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/ValidatorInterface.php',
+        'Rap2hpoutre\\LaravelLogViewer\\BaseController' => __DIR__ . '/..' . '/rap2hpoutre/laravel-log-viewer/src/controllers/LogViewerController.php',
+        'Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewer' => __DIR__ . '/..' . '/rap2hpoutre/laravel-log-viewer/src/Rap2hpoutre/LaravelLogViewer/LaravelLogViewer.php',
+        'Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewerServiceProvider' => __DIR__ . '/..' . '/rap2hpoutre/laravel-log-viewer/src/Rap2hpoutre/LaravelLogViewer/LaravelLogViewerServiceProvider.php',
+        'Rap2hpoutre\\LaravelLogViewer\\Level' => __DIR__ . '/..' . '/rap2hpoutre/laravel-log-viewer/src/Rap2hpoutre/LaravelLogViewer/Level.php',
+        'Rap2hpoutre\\LaravelLogViewer\\LogViewerController' => __DIR__ . '/..' . '/rap2hpoutre/laravel-log-viewer/src/controllers/LogViewerController.php',
+        'Rap2hpoutre\\LaravelLogViewer\\Pattern' => __DIR__ . '/..' . '/rap2hpoutre/laravel-log-viewer/src/Rap2hpoutre/LaravelLogViewer/Pattern.php',
         'RealRashid\\SweetAlert\\Console\\PublishCommand' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Console/PublishCommand.php',
         'RealRashid\\SweetAlert\\Facades\\Alert' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Facades/Alert.php',
         'RealRashid\\SweetAlert\\Storage\\AlertSessionStore' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Storage/AlertSessionStore.php',
