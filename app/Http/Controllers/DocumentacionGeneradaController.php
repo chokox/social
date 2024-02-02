@@ -29,9 +29,9 @@ honorífico la presente:</font><br><br><br>
 al municipio de:</strong><br><br><br><font size="35" style="color:#9D2449;">
 ' .
             $datos[0]->nombre .
-            '</font><br><font style="color:#B38E5D;">REGIÓN DE ' .
+            '</font><br><font style="color:#B38E5D;">REGIÓN ' .
             $datos[0]->region .
-            ' / DISTRITO DE ' .
+            ' / DISTRITO ' .
             $datos[0]->distrito .
             '</font><br><br><br>
             Por su participación y contribución en el Taller de<br>
