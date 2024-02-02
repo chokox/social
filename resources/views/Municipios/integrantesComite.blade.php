@@ -375,6 +375,7 @@
                                                                             <label for="simpleinput"
                                                                                 class="form-label">Sexo</label>
                                                                             <select class="form-control" name="sexo">
+                                                                                    <option value="{{ $integrantes->sexo }}">{{ $integrantes->sexo }}</option>
                                                                                 <option value="HOMBRE">Hombre</option>
                                                                                 <option value="MUJER">Mujer</option>
                                                                             </select>
@@ -391,6 +392,7 @@
                                                                                 class="form-label">Escolaridad</label>
                                                                             <select class="form-control"
                                                                                 name="escolaridad">
+                                                                                <option value="{{ $integrantes->escolaridad }}">{{ $integrantes->escolaridad}}</option>
                                                                                 <option>PRIMARIA</option>
                                                                                 <option>SECUNDARIA</option>
                                                                                 <option>CARRERA TECNICA O COMERCIAL</option>
@@ -408,6 +410,7 @@
                                                                                 indigena?</label>
                                                                             <select class="form-control"
                                                                                 name="lengua_indigena">
+                                                                                <option value="{{ $integrantes->lengua_indigena }}">{{ $integrantes->lengua_indigena }}</option>
                                                                                 <option>NINGUNO</option>
                                                                                 <option>AMUZGO</option>
                                                                                 <option>CHATINO</option>

@@ -191,7 +191,7 @@ Directora de Contraloría Social</strong><br><br></div>
             <td width="198">
                 <div align="center"><strong>
                 <br><br>
-                        <font style="color:#285C4D;" size="12"> ' .
+                        <font style="color:#285C4D;" size="11"> ' .
                     $datos['nombre_completo'] .
                     '</font><br><br>';
                 $imageUrl = 'storage/' . $datos['archivo_fotografia'];
@@ -208,11 +208,11 @@ Directora de Contraloría Social</strong><br><br></div>
                 }
                 if ($datos['sexo'] == 'HOMBRE') {
                     $tbl .=
-                        '<font style="color:#B38E5D;">CONTRALOR SOCIAL</font><br>
-                        <font style="color:#9D2449;">' .
+                        '<font style="color:#B38E5D;" size="11">CONTRALOR SOCIAL</font><br>
+                        <font style="color:#9D2449;" size="11">' .
                         $datos['nombre'] .
                         '</font><br>
-                         <font style="color:#9D2449;" ><strong>' .
+                         <font style="color:#9D2449;" size="11"><strong>' .
                         $datos['folio_comite'] .
                         '</strong>
                     </font>';

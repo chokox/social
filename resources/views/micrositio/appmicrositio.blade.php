@@ -96,8 +96,10 @@
                                 <strong>Buzones</strong><div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
-                                <a target="_blank" href="{{ asset('files/BUZONES DE ATENCION CIUDADANA.pdf') }}"
+                            <a target="_blank" href="{{ route('buzones') }}"
                                     class="dropdown-item">¿Qué es?</a>
+                                <a target="_blank" href="{{ asset('files/BUZONES DE ATENCION CIUDADANA.pdf') }}"
+                                    class="dropdown-item">información</a>
                                 <a target="_blank" href="{{ asset('files/RESULTADOS BUZONES DE ATENCION CIUDADANA.pdf') }}" class="dropdown-item">Resultados buzones de atención ciudadana
                                     2023</a>
                         </li>
