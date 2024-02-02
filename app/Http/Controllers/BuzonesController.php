@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Buzone;
+use App\Models\ComentariosBuzone;
 use App\Models\TipoBuzone;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -51,6 +52,14 @@ class BuzonesController extends Controller
         
     }
 
+    public function informes()
+    {
+        $buzones = ComentariosBuzone::ContarComentariosPorDependencia()->get();
+        $conteoPorTipo = ComentariosBuzone::contarPorTipoComentario()->get();
+        $conteoPorRegion=Buzone::ContarPorRegion()->get();
+        return view('AtencionC/informes')->with('buzones', $buzones)->with('conteoPorTipo', $conteoPorTipo)->with('conteoPorRegion', $conteoPorRegion);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -63,6 +72,7 @@ class BuzonesController extends Controller
         $registro->numero_buzon = strtoupper($request->input('txtBuzon'));
         $registro->id_catalogo_buzon_fk = $request->input('txtTipoBuzon');
         $registro->ubicacion = $request->input('txtUbicacion');
+        $registro->region = $request->input('region');
         $registro->save();
 
         Alert::success('Buzon Registrado', 'El buzon digital fue registrado de manera satisfactoria');

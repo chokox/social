@@ -52,7 +52,7 @@
                                             <tbody>
                                                 @foreach ($buzones as $item)
                                                     <tr>
-                                                        <td>{{ $item['id_buzon'] }}</td>
+                                                        <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $item['nombre_dependecia_programa'] }}</td>
                                                         <td>{{ $item['numero_buzon'] }}</td>
                                                         <td>{{ $item['ubicacion'] }}</td>
@@ -149,13 +149,25 @@
                                                             </select>
                                                         </div>
                                                         <div class=" mb-3">
-
                                                             <select class="form-control form-control-sm"
                                                                 name="txtTipoBuzon" id="txtTipoBuzon">
                                                                 <!-- Opciones serán agregadas dinámicamente -->
                                                             </select>
                                                         </div>
-
+                                                        <div class=" mb-3">
+                                                            <label>Region </label>
+                                                            <select class="form-control form-control-sm"
+                                                                name="region" id="region">
+                                                                <option value="Costa">Costa</option>
+                                                                <option value="Cuenca del Papaloapan">Papaloapan</option>
+                                                                <option value="Istmo">Istmo</option>
+                                                                <option value="Sierra de Flores Magon">Sierra de Flores Magon</option>
+                                                                <option value="Mixteca">Mixteca</option>
+                                                                <option value="Sierra de Juarez">Sierra de Juarez</option>
+                                                                <option value="Sierra Sur">Sierra Sur</option>
+                                                                <option value="Valles Centrales">Valles Centrales</option>
+                                                            </select>
+                                                        </div>
                                                         <div class=" mb-3">
                                                             <label>Ubicacion</label>
                                                             <textarea name="txtUbicacion" class="form-control form-control-sm"></textarea>

@@ -42,6 +42,7 @@
                         <option value="Inconformidad">Inconformidad</option>
                         <option value="Felicitacion">Felicitacion</option>
                         <option value="Sugerencia">Sugerencia</option>
+                        <option value="Peticion">Peticion</option>
                     </select>
                     <label for="floatingPassword">Tipo de comentario</label>
                 </div>

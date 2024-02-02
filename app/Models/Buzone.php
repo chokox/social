@@ -15,4 +15,12 @@ class Buzone extends Model
         return $query->join('tipo_buzones', 'tipo_buzones.id_tipo_buzon', '=', 'buzones.id_catalogo_buzon_fk');
     }
 
+    public function scopeContarPorRegion($query)
+    {
+        return $query->select('region', \DB::raw('count(*) as total'))
+        ->groupBy('region');
+    }
+
+    
+
 }

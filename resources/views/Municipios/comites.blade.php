@@ -19,7 +19,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="basic-datatable-comites" class="table w-100 nowrap"> 
+                                <table id="basic-datatable-comites" class="table w-100 nowrap">
                                     <thead class="table-dark">
                                         <tr>
                                             <th>Folio</th>
@@ -35,7 +35,7 @@
                                         @foreach ($municipios as $mun)
                                             <tr>
                                                 @if (empty($mun->folio_comite))
-                                                    <td > S/F</td>
+                                                    <td> S/F</td>
                                                 @else
                                                     <td>{{ $mun->folio_comite }}</td>
                                                 @endif
@@ -118,7 +118,8 @@
                                                                                             <form
                                                                                                 action="{{ route('CSubirDoc', $mun->id_acreditacion) }}"
                                                                                                 method="POST"
-                                                                                                enctype="multipart/form-data" style="display: inline-block; vertical-align: middle;"> 
+                                                                                                enctype="multipart/form-data"
+                                                                                                style="display: inline-block; vertical-align: middle;">
                                                                                                 @csrf
                                                                                                 @method('PUT')
                                                                                                 <input type="text"
@@ -134,24 +135,26 @@
                                                                                     @else
                                                                                         <td><a type="button"
                                                                                                 class="btn btn-primary"
-                                                                                                href="{{ asset('storage/' . $mun->archivo_acta) }}" target="_blank"><i
+                                                                                                href="{{ asset('storage/' . $mun->archivo_acta) }}"
+                                                                                                target="_blank"><i
                                                                                                     class="ri-file-download-line"></i>
                                                                                                 Descargar</a>&nbsp;
-                                                                                                @if($mun->estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))
-                                                                                            <form
-                                                                                                action="{{ route('CEliminarDoc', ['id' => '1' . $mun->id_acreditacion]) }}"
-                                                                                                method="post" style="display: inline-block; vertical-align: middle;">
-                                                                                                @csrf
-                                                                                                @method('delete')
+                                                                                            @if ($mun->estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))
+                                                                                                <form
+                                                                                                    action="{{ route('CEliminarDoc', ['id' => '1' . $mun->id_acreditacion]) }}"
+                                                                                                    method="post"
+                                                                                                    style="display: inline-block; vertical-align: middle;">
+                                                                                                    @csrf
+                                                                                                    @method('delete')
 
-                                                                                                <button type="submit"
-                                                                                                    class="btn btn-danger"
-                                                                                                    onclick="confirmarEliminar()">
-                                                                                                    <i
-                                                                                                        class="ri-delete-bin-6-line"></i>
-                                                                                                    Eliminar
-                                                                                                </button>
-                                                                                            </form>
+                                                                                                    <button type="submit"
+                                                                                                        class="btn btn-danger"
+                                                                                                        onclick="confirmarEliminar()">
+                                                                                                        <i
+                                                                                                            class="ri-delete-bin-6-line"></i>
+                                                                                                        Eliminar
+                                                                                                    </button>
+                                                                                                </form>
                                                                                             @endif
                                                                                         </td>
                                                                                     @endif
@@ -163,7 +166,8 @@
                                                                                             <form
                                                                                                 action="{{ route('CSubirDoc', $mun->id_acreditacion) }}"
                                                                                                 method="POST"
-                                                                                                enctype="multipart/form-data" style="display: inline-block; vertical-align: middle;">
+                                                                                                enctype="multipart/form-data"
+                                                                                                style="display: inline-block; vertical-align: middle;">
                                                                                                 @csrf
                                                                                                 @method('PUT')
                                                                                                 <input type="text"
@@ -179,25 +183,27 @@
                                                                                     @else
                                                                                         <td><a type="button"
                                                                                                 class="btn btn-primary"
-                                                                                                href="{{ asset('storage/' . $mun->archivo_lista) }}" target="_blank"><i
+                                                                                                href="{{ asset('storage/' . $mun->archivo_lista) }}"
+                                                                                                target="_blank"><i
                                                                                                     class="ri-file-download-line"></i>
                                                                                                 Descargar</a>&nbsp;
-                                                                                                  @if($mun->estatus !=4 or (Auth::user()->super() or Auth::user()->administrador()))
-                                                                                            <form
-                                                                                                action="{{ route('CEliminarDoc', ['id' => '2' . $mun->id_acreditacion]) }}"
-                                                                                                method="post" style="display: inline-block; vertical-align: middle;">
-                                                                                                @csrf
-                                                                                                @method('delete')
+                                                                                            @if ($mun->estatus != 4 or (Auth::user()->super() or Auth::user()->administrador()))
+                                                                                                <form
+                                                                                                    action="{{ route('CEliminarDoc', ['id' => '2' . $mun->id_acreditacion]) }}"
+                                                                                                    method="post"
+                                                                                                    style="display: inline-block; vertical-align: middle;">
+                                                                                                    @csrf
+                                                                                                    @method('delete')
 
-                                                                                                <button type="submit"
-                                                                                                    class="btn btn-danger"
-                                                                                                    onclick="confirmarEliminar()">
-                                                                                                    <i
-                                                                                                        class="ri-delete-bin-6-line"></i>
-                                                                                                    Eliminar
-                                                                                                </button>
-                                                                                            </form>
-                                                                                                @endif
+                                                                                                    <button type="submit"
+                                                                                                        class="btn btn-danger"
+                                                                                                        onclick="confirmarEliminar()">
+                                                                                                        <i
+                                                                                                            class="ri-delete-bin-6-line"></i>
+                                                                                                        Eliminar
+                                                                                                    </button>
+                                                                                                </form>
+                                                                                            @endif
                                                                                         </td>
                                                                                     @endif
                                                                                 </tr>
@@ -212,24 +218,57 @@
                                                             href="{{ route('comites.edit', $mun->id_acreditacion) }}"><i
                                                                 class="ri-eye-fill"></i></a>
 
-                                                            @if ($mun->estatus == 3 and Auth::user()->administrador())
-                                                        <a type="button" class="btn btn-primary"
-                                                            title="Validar"
-                                                            href="{{ route('validarComite', $mun->id_acreditacion) }}"><i
-                                                                class="ri-thumb-up-fill"></i></a>
-                                                                @endif
-                                                                 @if ($mun->estatus != 5 and Auth::user()->administrador())
-                                                                <a type="button" class="btn btn-primary"
-                                                            title="Revisar Información"
-                                                            href="{{ route('revisarComite', $mun->id_acreditacion) }}"><i
-                                                                class="ri-thumb-down-fill"></i></a>
-                                                                @endif
-                                                         @if ($mun->estatus == 4) 
-                                                                <a type="button" class="btn btn-primary"
-                                                            title="Constancia" target="_blank"
-                                                            href="{{ route('constancia_municipio', $mun->id_acreditacion) }}" target="_blank"><i
-                                                                class="ri-profile-line"></i></a>
-                                                            @endif 
+                                                        @if (Auth::user()->administrador())
+                                                            <a type="button" class="btn btn-primary" title="Validar" data-bs-toggle="modal" data-bs-target="#exampleModal-{{$mun->id_acreditacion}}"><i
+                                                                    class="ri-thumb-up-fill"></i></a>
+
+                                                            <!-- INICIO DEL MODAL DE FECHA DE VALIDACION -->
+                                                            <div class="modal fade" id="exampleModal-{{$mun->id_acreditacion}}" tabindex="-1"
+                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="exampleModalLabel">Validacion de comite</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form method="POST" action="{{ route('validarComite', $mun->id_acreditacion) }}">
+                                                                                @method('PUT')
+                                                                                @csrf
+                                                                                <div class="mb-3">
+                                                                                    <label for="recipient-name"
+                                                                                        class="col-form-label">Fecha de validacion:</label>
+                                                                                    <input type="date"
+                                                                                        class="form-control"
+                                                                                        name="fecha_validacion">
+                                                                                </div>
+                                                                            
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="submit"
+                                                                                class="btn btn-primary"> Validar</button>
+                                                                        </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- FIN DEL MODAL DE FECHA DE VALIDACION -->
+                                                        @endif
+                                                        @if ($mun->estatus != 5 and Auth::user()->administrador())
+                                                            <a type="button" class="btn btn-primary"
+                                                                title="Revisar Información"
+                                                                href="{{ route('revisarComite', $mun->id_acreditacion) }}"><i
+                                                                    class="ri-thumb-down-fill"></i></a>
+                                                        @endif
+                                                        @if ($mun->estatus == 4)
+                                                            <a type="button" class="btn btn-primary" title="Constancia"
+                                                                target="_blank"
+                                                                href="{{ route('constancia_municipio', $mun->id_acreditacion) }}"
+                                                                target="_blank"><i class="ri-profile-line"></i></a>
+                                                        @endif
                                                     @endif
                                                 </td>
                                             </tr>
@@ -244,39 +283,39 @@
         </div>
     </div>
 
-         <!-- Agrega las bibliotecas para exportar a Excel y PDF -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
- <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.flash.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <!-- Agrega las bibliotecas para exportar a Excel y PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 
     <script>
-
         function confirmarEliminar() {
             if (confirm('¿Estás seguro de que deseas eliminar este documento?')) {
                 document.getElementById('eliminarForm').submit();
             }
         }
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#basic-datatable-comites').DataTable({
                 scrollX: true,
-                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
                 searching: true,
                 paging: true,
-                info:    true,
+                info: true,
                 dom: 'Bfrtip',
-                buttons: [
-                    {
-                        extend: 'excelHtml5',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
+                buttons: [{
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: ':visible'
                     }
-                ],
-               
+                }],
+
             });
-        
+
         });
-        </script> 
+    </script>
 @endsection

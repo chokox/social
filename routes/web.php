@@ -33,7 +33,7 @@ Auth::routes();
 Route::middleware(['auth', 'departamento:1'])->group(function () {
     Route::resource('/comites', 'App\Http\Controllers\ComitesController');
     Route::get('/registrar_comite/{id}', 'App\Http\Controllers\ComitesController@crearComite')->name('crearComite');
-    Route::get('/validar_comite/{id}', 'App\Http\Controllers\ComitesController@validarComite')->name('validarComite');
+    Route::put('/validar-comite/{id}', 'App\Http\Controllers\ComitesController@validarComite')->name('validarComite');
     Route::get('/revisar_comite/{id}', 'App\Http\Controllers\ComitesController@RevisarInformacion')->name('revisarComite');
     Route::put('/subir_documentacion/{id}', 'App\Http\Controllers\ComitesController@subirDocumentacion')->name('CSubirDoc');
     Route::delete('/eliminar_documentacion/{id}', 'App\Http\Controllers\ComitesController@eliminarDocumentacion')->name('CEliminarDoc');
@@ -54,6 +54,7 @@ Route::middleware(['auth', 'departamento:1'])->group(function () {
 //RUTAS DEL MODULO DEL DEPARTAMENTO DE ATENCION CIUDADANA
 Route::middleware(['auth', 'departamento:2'])->group(function () {
     Route::resource('/buzon', 'App\Http\Controllers\BuzonesController');
+    Route::get('/informes', 'App\Http\Controllers\BuzonesController@informes')->name('informe_buzones');
     Route::post('/registrar_tipo_buzon', 'App\Http\Controllers\BuzonesController@registrarTiposBuzon')->name('registrar_tipo_buzon');
     Route::get('/obtener-tipos-buzon/{tipo}', 'App\Http\Controllers\BuzonesController@obtenerTiposBuzon');
     Route::get('descargar-qr/{id}', 'App\Http\Controllers\BuzonesController@descargarQR')->name('qr_buzon');

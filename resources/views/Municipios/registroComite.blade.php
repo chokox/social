@@ -82,6 +82,18 @@
                                 </div>
 
                                 <div class="mb-3">
+                                    <label for="simpleinput" class="form-label">Capacito Comite</label>
+                                     <select class="form-control" name="capacito">
+                                         @if ($edicion == 'edicion')
+                                            <option value="{{$idCapacito}}">{{ $capacito }}</option>
+                                        @endif
+                                        @foreach($userAtendio as $user )
+                                            <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="simpleinput" class="form-label">Autorizo acreditacion</label>
                                     <input type="text" class="form-control" name="autorizo"
                                         @if ($edicion == 'edicion') value="{{ $autorizo }}" readonly @endif>
@@ -103,14 +115,6 @@
                                     <input type="text" class="form-control" name="datos_municipio"
                                         @if ($edicion == 'edicion') value="{{ $dato->datos_municipio }}" @endif>
                                 </div>
-                                {{-- <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Estatus de la informacion</label>
-                                    <select class="form-control" name="estatus">
-                                        @if ($edicion != 'edicion')
-                                            <option value="0">Información completa (solo faltan integrantes)</option>
-                                        @endif
-                                    </select>
-                                </div> --}}
                                 <br>
                                 @if ($edicion == 'edicion')
                                     <button type="submit" class="btn btn-primary">Actualizar</button>

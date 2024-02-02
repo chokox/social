@@ -149,7 +149,16 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
                                         <a href="{{ route('buzon.index') }}" class="dropdown-item">Buzones</a>
-                                         <a href="{{ route('resumenAcreditaciones') }}" class="dropdown-item">Informes</a>
+                                         <a href="{{ route('informe_buzones') }}" class="dropdown-item">Informes</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboards" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="uil-dashboard"></i>Evaluaciones <div class="arrow-down"></div>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
+                                        <a href="" class="dropdown-item">Evaluar P/Mejorar</a>
+                                         <a href="" class="dropdown-item">Verificacion Fisica</a>
                                     </div>
                                 </li>
                                 @endif

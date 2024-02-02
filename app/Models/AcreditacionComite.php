@@ -19,8 +19,9 @@ class AcreditacionComite extends Model
 
     public function scopeBuscaEjercicio($query, $ejercicio)
     {
-        return $query->where('ejercicio', $ejercicio)->where('estatus', 4);
+        return $query->where('ejercicio', $ejercicio)->whereNotNull('folio_comite');
     }
+
 
 
     public function scopeComitesAcreditados($query, $ejercicio, $flag = 1){

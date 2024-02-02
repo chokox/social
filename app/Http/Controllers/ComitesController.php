@@ -167,7 +167,7 @@ class ComitesController extends Controller
     {
     }
 
-    public function validarComite($id)
+    public function validarComite(Request $request, $id)
     {
         $dato = AcreditacionComite::find($id);
 
@@ -179,9 +179,7 @@ class ComitesController extends Controller
         $dato->folio_comite = $folioMunicipio . ' ' . $numeroConsecutivoFormateado;
         $dato->id_user_valido_fk = Auth::id();
         $dato->estatus='4';
-        if (is_null($dato->fecha_validado)) {
-            $dato->fecha_validado = now();
-        }
+        $dato->fecha_validado = $request->input('fecha_validacion');
         $dato->save();
 
         Alert::success('Comite Validado', null);
@@ -209,6 +207,7 @@ class ComitesController extends Controller
         $dato = AcreditacionComite::find($id);
         $municipio = CatalogoMunicipio::where('id_municipio', $dato->id_catalogo_municipio_fk)->first();
         $municipio = $municipio->nombre;
+        $userAtendio=User::where('departamento',1)->get();
         $atendio = User::find($dato->id_user_registro_fk);
         if (empty($atendio)) {
             $atendio='No atendido';
@@ -221,9 +220,17 @@ class ComitesController extends Controller
         } else {
             $autorizo = $autorizo->name;
         }
+        $capacito = User::find($dato->id_user_capacito_fk);
+        if (empty($capacito)) {
+            $capacito = 'Sin capacitar';
+            $idCapacito = 0;
+        } else {
+            $capacito = $capacito->name;
+            $idCapacito= $dato->id_user_capacito_fk;
+        }
         $edicion = 'edicion';
-        return view('Municipios/registroComite', compact('municipio', 'id', 'edicion','atendio','autorizo'))
-            ->with('dato', $dato);
+        return view('Municipios/registroComite', compact('municipio', 'id', 'edicion','atendio','autorizo','capacito', 'idCapacito'))
+            ->with('dato', $dato)->with('userAtendio', $userAtendio);
     }
 
     /**
@@ -261,8 +268,10 @@ class ComitesController extends Controller
         if ($request->filled('datos_municipio')) {
             $dato->datos_municipio = $request->input('datos_municipio');
         }
+        if ($request->filled('capacito')) {
+            $dato->id_user_capacito_fk = $request->input('capacito');
+        }
 
-        $dato->id_user_reviso_fk = Auth::id();
         $dato->save();
 
         Alert::success('Comite actualizado', null);
