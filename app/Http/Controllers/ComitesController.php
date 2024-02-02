@@ -176,7 +176,10 @@ class ComitesController extends Controller
         $numeroConsecutivo = AcreditacionComite::BuscaEjercicio(now()->year)->count() + 1;
         $numeroConsecutivoFormateado = str_pad($numeroConsecutivo, 3, '0', STR_PAD_LEFT);
 
-        $dato->folio_comite = $folioMunicipio . ' ' . $numeroConsecutivoFormateado;
+        if(is_null($dato->folio_comite))
+        {
+            $dato->folio_comite = $folioMunicipio . ' ' . $numeroConsecutivoFormateado;
+        }
         $dato->id_user_valido_fk = Auth::id();
         $dato->estatus='4';
         $dato->fecha_validado = $request->input('fecha_validacion');

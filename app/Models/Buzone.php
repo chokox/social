@@ -12,7 +12,7 @@ class Buzone extends Model
 
     public function scopeBuzonTipo($query)
     {
-        return $query->join('tipo_buzones', 'tipo_buzones.id_tipo_buzon', '=', 'buzones.id_catalogo_buzon_fk');
+        return $query->join('catalogo_dependencias', 'catalogo_dependencias.id_catalogo_dependencias', '=', 'buzones.id_catalogo_buzon_fk');
     }
 
     public function scopeContarPorRegion($query)

@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TipoBuzone extends Model
+class CatalogoDependencia extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'id_tipo_buzon';
+    protected $primaryKey = 'id_catalogo_dependencias ';
 
 }

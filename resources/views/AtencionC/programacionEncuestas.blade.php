@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Buzones de Atencion Ciudadana</h4>
+                            <h4 class="page-title">Fechas de intervención en Dependencias y Entidades</h4>
                         </div>
                     </div>
                 </div>
@@ -29,12 +29,12 @@
                                                 <path d="M10 21v-6.5a3.5 3.5 0 0 0 -7 0v6.5h18v-6a4 4 0 0 0 -4 -4h-10.5" />
                                                 <path d="M12 11v-8h4l2 2l-2 2h-4" />
                                                 <path d="M6 15h1" />
-                                            </svg></i> <span> Agregar Buzon</span>
+                                            </svg></i> <span> Agregar Fecha</span>
                                     </a>
 
                                     <a type="button" class="btn btn-secondary" data-bs-toggle="modal"
                                         data-bs-target="#modalRegistrarTipo">
-                                        <i class="ri-pantone-line"></i> <span> Registrar Dependencia/Programa</span>
+                                        <i class="ri-pantone-line"></i> <span> Registrar Dependencia y Entidad</span>
                                     </a>
                                 </div><br>@endif
                                 <div class="tab-content">
@@ -43,9 +43,10 @@
                                             <thead class="table-dark">
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Dependencia/Programa</th>
-                                                    <th>Numero de buzon</th>
-                                                    <th>Ubicacion</th>
+                                                    <th>Dependencia/Entidad</th>
+                                                    <th>Etapa</th>
+                                                    <th>Fecha inicio</th>
+                                                    <th>Fecha Finalizacion</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
@@ -80,7 +81,7 @@
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h4 class="modal-title"> Editar Buzon </h4>
+                                                                    <h4 class="modal-title"> Editar Municipio </h4>
                                                                     <button type="button" class="btn-close"
                                                                         data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
@@ -232,34 +233,5 @@
     </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#txtAgregarRol').on('change', function() {
-                var tipo = $(this).val();
-
-                $.ajax({
-                    url: '/obtener-tipos-buzon/' + tipo,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(data) {
-                        $('#txtTipoBuzon').empty();
-
-                        $.each(data, function(key, value) {
-                            $('#txtTipoBuzon').append($('<option>', {
-                                value: value.id_catalogo_dependencias ,
-                                text: value.nombre_dependecia_programa
-                            }));
-                        });
-
-                        $('#txtTipoBuzon').selectpicker('refresh');
-                    },
-                    error: function(error) {
-                        console.log(error);
-                    }
-                });
-            });
-            $('#txtAgregarRol, #txtTipoBuzon').selectpicker();
-        });
-    </script>
+   
 @endsection
