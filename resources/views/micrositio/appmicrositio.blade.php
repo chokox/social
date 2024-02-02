@@ -32,7 +32,7 @@
             text-align: justify;
         }
 
-        
+
 
         .desplazamiento {
 
@@ -120,60 +120,57 @@
                                 class="dropdown-item">Capacitación a Comités de Contraloría Social</a>
                         </div>
                     </li>
-                    <ul class="navbar-nav me-auto align-items-center">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle arrow-none" role="button" aria-haspopup="true"
-                                aria-expanded="false" href="{{ route('formatos') }}"><strong>Formatos</strong></a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle arrow-none" purple role="button" aria-haspopup="true"
-                                aria-expanded="false" target="_blank"
-                                href="https://sig.oaxaca.gob.mx/prontuario/"><strong>Marco Juridico</strong></a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <strong>Buzones</strong>
-                                <div class="arrow-down"></div>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
-                                <a target="_blank" href="{{ route('buzones') }}" class="dropdown-item">¿Qué es?</a>
-                                <a target="_blank" href="{{ asset('files/BUZONES DE ATENCION CIUDADANA.pdf') }}"
-                                    class="dropdown-item">información</a>
-                                <a target="_blank"
-                                    href="{{ asset('files/RESULTADOS BUZONES DE ATENCION CIUDADANA.pdf') }}"
-                                    class="dropdown-item">Resultados buzones de atención ciudadana
-                                    2023</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle arrow-none" target="_blank"
-                                href="{{ asset('files/RESULTADOS EVALUAR PARA MEJORAR.pdf') }}" role="button"
-                                aria-haspopup="true" aria-expanded="false">
-                                <strong>Resultados 2023</strong>
-                                <div class="arrow-down"></div>
-                            </a>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <strong>Presupuesto ciudadano</strong>
-                                <div class="arrow-down"></div>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
-                                <a target="_blank"
-                                    href="{{ route('presupuesto2023') }}"class="dropdown-item">2023</a>
-                                <a href="{{ route('presupuesto2022') }}" class="dropdown-item">2022</a>
-                            </div>
-                        </li>
-                    </ul>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" role="button" aria-haspopup="true"
+                            aria-expanded="false" href="{{ route('formatos') }}"><strong>Formatos</strong></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" purple role="button" aria-haspopup="true"
+                            aria-expanded="false" target="_blank"
+                            href="https://sig.oaxaca.gob.mx/prontuario/"><strong>Marco Juridico</strong></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <strong>Buzones</strong>
+                            <div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
+                            <a target="_blank" href="{{ route('buzones') }}" class="dropdown-item">¿Qué es?</a>
+                            <a target="_blank" href="{{ asset('files/BUZONES DE ATENCION CIUDADANA.pdf') }}"
+                                class="dropdown-item">información</a>
+                            <a target="_blank"
+                                href="{{ asset('files/RESULTADOS BUZONES DE ATENCION CIUDADANA.pdf') }}"
+                                class="dropdown-item">Resultados buzones de atención ciudadana
+                                2023</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" target="_blank"
+                            href="{{ asset('files/RESULTADOS EVALUAR PARA MEJORAR.pdf') }}" role="button"
+                            aria-haspopup="true" aria-expanded="false">
+                            <strong>Resultados 2023</strong>
+                            <div class="arrow-down"></div>
+                        </a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <strong>Presupuesto ciudadano</strong>
+                            <div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
+                            <a target="_blank" href="{{ route('presupuesto2023') }}"class="dropdown-item">2023</a>
+                            <a href="{{ route('presupuesto2022') }}" class="dropdown-item">2022</a>
+                        </div>
+                    </li>
+                
 
-                    <!-- right menu -->
-                    <ul class="navbar-nav ms-auto align-items-center">
-                        <li class="nav-item me-0">
-                            <a type="button" class="btn btn-info rounded-pill" href="{{ route('login') }}">
-                                <i class="ri-key-fill"></i> Iniciar Sesión
-                            </a>
-                        </li>
-                    </ul>
+                <!-- right menu -->
+                    <li class="nav-item me-0">
+                        <a type="button" class="btn btn-info rounded-pill" href="{{ route('login') }}">
+                            <i class="ri-key-fill"></i> Iniciar Sesión
+                        </a>
+                    </li>
+</ul>
 
             </div>
         </div>
