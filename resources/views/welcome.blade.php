@@ -196,7 +196,7 @@
                             <img class="mx-auto d-block" style="width: 30%;"
                                 src="{{ asset('imagenes/eje-buzones.png') }}" alt="">
                         </div>
-                        <h4 class="mt-3">BUZONES DE ATENCIÓN CIUDADANA</h4>
+                        <a target="_blank" href="{{ route('buzones') }}"> <h4 class="mt-3">BUZONES DE ATENCIÓN CIUDADANA</h4></a>
                         <a target="_blank" class="text-center" href="{{ asset('files/RESULTADOS 2023.pdf') }}">
                             <span class="text-muted mt-2 mb-0">RESULTADOS 2023</span>
                         </a>

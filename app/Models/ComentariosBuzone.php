@@ -21,11 +21,11 @@ class ComentariosBuzone extends Model
     {
         return $query
             ->rightJoin('buzones', 'comentarios_buzones.id_buzon_fk', '=', 'buzones.id_buzon')
-            ->rightJoin('catalogo_dependencias', 'buzones.id_catalogo_buzon_fk', '=', 'catalogo_dependencias.id_catalogo_dependencias ')
-            ->select('catalogo_dependencias.id_catalogo_dependencias ', 'catalogo_dependencias.nombre_dependecia_programa', 'catalogo_dependencias.tipo')
+            ->rightJoin('catalogo_dependencias', 'buzones.id_catalogo_buzon_fk', '=', 'catalogo_dependencias.id_catalogo_dependencias')
+            ->select('catalogo_dependencias.id_catalogo_dependencias', 'catalogo_dependencias.nombre_dependecia_programa', 'catalogo_dependencias.tipo')
             ->selectRaw('COUNT(DISTINCT comentarios_buzones.id_comentario_buzon) as total_comentarios')
             ->selectRaw('COUNT(DISTINCT buzones.numero_buzon) as total_buzones')
-            ->groupBy('catalogo_dependencias.nombre_dependecia_programa', 'catalogo_dependencias.tipo', 'catalogo_dependencias.id_catalogo_dependencias ');
+            ->groupBy('catalogo_dependencias.nombre_dependecia_programa', 'catalogo_dependencias.tipo', 'catalogo_dependencias.id_catalogo_dependencias');
     }
 
     public function scopeContarPorTipoComentario($query)

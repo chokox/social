@@ -68,7 +68,7 @@
 
             <!-- logo -->
             <a class="navbar-brand me-lg-1">
-                <img src="{{ asset('imagenes/ConSocial1.svg') }}" alt="logo" class="logo-dark" height="80" />
+                <img src="{{ asset('imagenes/ConSocial1.svg') }}" style="filter: grayscale(100%) brightness(500%); padding: 5px;" alt="logo" class="logo-dark" height="80" />
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"

@@ -124,7 +124,7 @@
                 </div>
                 <div class="">
                     <div class="text p-2 p-sm-3">
-                        <p class="jutificado text-muted"><i class="mdi mdi-card-text "></i>Cunando un servidor público da o recibe una
+                        <p class="jutificado text-muted"><i class="mdi mdi-card-text "></i>Cuando un servidor público da o recibe una
                         remuneración monetaria, regalos o favor, para hacer su trabajo o dejarlo de hacer.</p>
                         <p class="jutificado text-muted"><i class="mdi mdi-card-text"></i>Realizar actos para
                             beneficio propio o para terceros con los que se tenga una relación personal.</p>
