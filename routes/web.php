@@ -60,6 +60,8 @@ Route::middleware(['auth', 'departamento:2'])->group(function () {
     Route::get('descargar-qr/{id}', 'App\Http\Controllers\BuzonesController@descargarQR')->name('qr_buzon');
     Route::get('en_proceso/{id}', 'App\Http\Controllers\ComentariosBuzonesController@enProceso')->name('enProceso');
     Route::get('turnado/{id}', 'App\Http\Controllers\ComentariosBuzonesController@turnada')->name('turnada');
+    Route::get('/verificacionFisica', 'App\Http\Controllers\VerificacionFisicaController@viewDireccionFisica')->name('evaluacionDireccionFisica');
+    Route::post('/guardar-respuestas', 'App\Http\Controllers\VerificacionFisicaController@guardarRespuestas')->name('guardarDireccionFisica');
 });
 
 // RUTAS GENERALES PARA USUARIOS AUTENTICADOS
@@ -68,3 +70,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('/catalogo_usuarios', 'App\Http\Controllers\UserController');
     Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 });
+
+
+
