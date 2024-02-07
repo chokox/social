@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Buzone;
 use App\Models\ComentariosBuzone;
-use App\Models\TipoBuzone;
+use App\Models\CatalogoDependencia;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Response;
@@ -27,13 +27,13 @@ class BuzonesController extends Controller
     // En tu controlador, crea un método para manejar la solicitud AJAX
     public function obtenerTiposBuzon(Request $request, $tipo)
     {
-        $resultados = TipoBuzone::where('tipo', $tipo)->get();
+        $resultados = CatalogoDependencia::where('tipo', $tipo)->get();
         return response()->json($resultados);
     }
 
     public function registrarTiposBuzon(Request $request)
     {
-        $registro = new TipoBuzone();
+        $registro = new CatalogoDependencia();
         $registro->tipo = $request->input('txtAgregarTipo');
         $registro->nombre_dependecia_programa = $request->input('nombre_dpm');
         $registro->save();

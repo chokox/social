@@ -157,12 +157,12 @@
                                         <i class="uil-dashboard"></i>Evaluaciones <div class="arrow-down"></div>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
+                                        <a href="" class="dropdown-item">Programacion</a>
                                         <a href="" class="dropdown-item">Evaluar P/Mejorar</a>
                                          <a href="{{route('evaluacionDireccionFisica')}}" class="dropdown-item">Verificacion Fisica</a>
                                     </div>
                                 </li>
                                 @endif
-
                                  
                                 @if (Auth::user()->super() or Auth::user()->administrador())
                                 <!-- menu catalogo usuarios -->

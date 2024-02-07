@@ -143,7 +143,7 @@ html[data-theme=dark][data-topbar-color=light] {
     --ct-primary: #9D2449;
     --ct-secondary: #B38E5D;
     --ct-success: #285C4D;
-    --ct-info: #0098D4;
+    --ct-info: #8E418D;
     --ct-warning: #F6C54;
     --ct-danger: #F98927;
     --ct-light: #eef2f7;
@@ -181,7 +181,7 @@ html[data-theme=dark][data-topbar-color=light] {
     --ct-border-radius-pill: 50rem;
     --ct-link-color: #9D2449;
     --ct-link-hover-color: #8E418D;
-    --ct-code-color: #0098D4;
+    --ct-code-color: #8E418D;
     --ct-highlight-bg: #fcf8e3
 }
 
@@ -19377,8 +19377,8 @@ html[data-theme=dark] .text-secondary {
 
 .hero-section:after {
     content: " ";
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#0098D4), to(#0098D4));
-    background-image: linear-gradient(to bottom, #0098D4, #0098D4);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#8E418D), to(#8E418D));
+    background-image: linear-gradient(to bottom, ##8E418D, #8E418D);
     position: absolute;
     top: -400px;
     right: 0;
