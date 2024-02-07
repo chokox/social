@@ -118,7 +118,7 @@
                                                             } elseif ($aux == 4) {
                                                                  $region='MIXTECA';
                                                             } elseif ($aux == 5) {
-                                                                 $region='SIERRA DE FLORES MAGÓ';
+                                                                 $region='SIERRA DE FLORES MAGÓN';
                                                             } elseif ($aux == 6) {
                                                                  $region='SIERRA DE JUÁREZ';
                                                             } elseif ($aux == 7) {
