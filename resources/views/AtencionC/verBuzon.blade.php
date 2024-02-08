@@ -58,8 +58,8 @@
                                                         <td>{{ $item['created_at'] }}</td>
                                                         <td>
                                                             @if($item['tipo_comentario'] == 'Queja y/o denuncia')
-                                                                <a title="Ver" type="button" class="btn btn-primary"
-                                                                href="{{ route('formato_queja', $item['id_comentario_buzon']) }})">
+                                                                <a title="Formato Queja" type="button" class="btn btn-primary"
+                                                                href="{{ route('formato_queja', $item['id_comentario_buzon']) }})" target="_blank">
                                                                 <i class="ri-article-line"></i>
                                                             </a>
                                                             @else

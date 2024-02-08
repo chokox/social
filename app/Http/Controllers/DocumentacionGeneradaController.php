@@ -5,11 +5,10 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\CatalogoMunicipio;
 use App\Models\Buzone;
-use App\Models\CatalogoDependencia;
+use Auth;
 use App\Models\ComentariosBuzone;
 use PDF;
 use App\Models\IntegrantesComite;
-use QrCode;
 
 class DocumentacionGeneradaController extends Controller
 {
@@ -105,8 +104,8 @@ ACREDITACIÓN</font><br><br>';
             $datos->folio_comite .
             ' <br><br><br>
             Quien se desempeñará por el período de gestión de enero a diciembre del 2024.
-Lo anterior, para realizar actividades y funciones de vigilancia, verificación, seguimiento, 
-y evaluación de las obras y programas sociales que se ejecuten con 
+Lo anterior, para realizar actividades y funciones de vigilancia, verificación, seguimiento,
+y evaluación de las obras y programas sociales que se ejecuten con
 recursos públicos federales, estatales y municipales.</font><br><br><br><br><br><br><br>
 <strong>
 Lic. María Teresa Jiménez Martínez<br>
@@ -253,57 +252,84 @@ Directora de Contraloría Social</strong><br><br></div>
 
     public function formatoQueja($id)
     {
-        $datos= ComentariosBuzone::find($id);
-        $buzon=Buzone::BuzonDependencia($datos->id_buzon_fk)->first();
+        $datos = ComentariosBuzone::find($id);
+        $buzon = Buzone::BuzonDependencia($datos->id_buzon_fk)->first();
+
+        if (is_null($datos->abierto_por)) {
+            $datos->estatus = 1;
+            $datos->abierto_por = Auth::id();
+            $datos->save();
+        }
+
         $tbl =
-        '<br><br><table border="1">
+            '<br><br><table border="1">
   <tr>
     <td align="center" colspan="2" style="background-color: silver;"><strong>FORMATO DE QUEJA Y/O DENUNCIA</strong></td>
   </tr>
   <tr style="background-color: silver;">
     <td>1.-Datos del promovente (denunciante o quejoso):</td>
-    <td> Fecha: ' . $datos->created_at->format('d / m / Y') . '</td>
+    <td> Fecha: ' .
+            $datos->created_at->format('d / m / Y') .
+            '</td>
   </tr>
   <tr>
-    <td colspan="2">1.1 Nombre completo:<br> ' . $datos->nombre . '</td>
+    <td colspan="2">1.1 Nombre completo:<br> ' .
+            $datos->nombre .
+            '</td>
   </tr>
   <tr>
-    <td colspan="2">1.2. Domicilio correcto para oír y recibir todo tipo de notificaciones:<br>' . $datos->domicilio_promovente . '</td>
+    <td colspan="2">1.2. Domicilio correcto para oír y recibir todo tipo de notificaciones:<br>' .
+            $datos->domicilio_promovente .
+            '</td>
   </tr>
   <tr>
-    <td colspan="2">1.3. Teléfono de contacto:<br>' . $datos->telefono_promovente . '</td>
+    <td colspan="2">1.3. Teléfono de contacto:<br>' .
+            $datos->telefono_promovente .
+            '</td>
   </tr>
   <tr>
-    <td colspan="2">1.4. Correo electrónico:<br>' . $datos->correo_promovente . '</td>
+    <td colspan="2">1.4. Correo electrónico:<br>' .
+            $datos->correo_promovente .
+            '</td>
   </tr>
   <tr>
     <td colspan="2" align="center" style="background-color: silver;">2.- Datos del servidor público que cometió la presunta irregularidad:</td>
   </tr>
   <tr>
-    <td colspan="2">2.1. Nombre completo y cargo: (en caso de no contar describe sus rasgos físicos):<br>' . $datos->nombre_servidor . '</td>
+    <td colspan="2">2.1. Nombre completo y cargo: (en caso de no contar describe sus rasgos físicos):<br>' .
+            $datos->nombre_servidor .
+            '</td>
   </tr>
   <tr>
-    <td colspan="2">2.2. Nombre de la dependencia o entidad de Gobierno a la que pertenece.<br>' . $buzon->nombre_dependecia_programa . '</td>
+    <td colspan="2">2.2. Nombre de la dependencia o entidad de Gobierno a la que pertenece.<br>' .
+            $buzon->nombre_dependecia_programa .
+            '</td>
   </tr>
   <tr>
-    <td colspan="2">2.3. Datos del municipio o región en donde se cometió la presunta irregularidad.<br> ' . $buzon->region . '</td>
+    <td colspan="2">2.3. Datos del municipio o región en donde se cometió la presunta irregularidad.<br> ' .
+            $buzon->region .
+            '</td>
   </tr>
   <tr>
-    <td colspan="2">2.4. Fecha de los hechos ocurridos.<br>' . $datos->fecha_hechos . '</td>
+    <td colspan="2">2.4. Fecha de los hechos ocurridos.<br>' .
+            $datos->fecha_hechos .
+            '</td>
   </tr>
   <tr>
-    <td colspan="2">2.5. Narración de los hechos, realizar la mayor descripción posible de los mismos.<br>' . $datos->comentario . '</td>
+    <td colspan="2">2.5. Narración de los hechos, realizar la mayor descripción posible de los mismos.<br>' .
+            $datos->comentario .
+            '</td>
   </tr>
    <tr>
     <td colspan="2" align="center" style="background-color: silver;">3. Constancias o documentos que pudieran corroborar su dicho.</td>
   </tr>
 </table>
 <small><div align="center"> AVISO DE PRIVACIDAD </div>
-Se le hace saber que el trato que se le dará a la información que se le solicita, tendrá el carácter de confidencial y reservada, por 
-lo tanto, deberá ser tratada con las reservas que ameritan, de conformidad con lo dispuesto en los artículos 1, 7 fracción I, 10 
-fracción III, 54 fracciones XI, XII, XIII, XIV, 61 y 62 fracciones I y IV y 63 de la Ley de Transparencia, Acceso a la Información Pública y 
-Buen Gobierno del Estado de Oaxaca publicada el día cuatro de septiembre de dos mil veintiuno en el Periódico Oficial del 
-Estado de Oaxaca y en los artículos 1, 2 fracción I y 3 fracción II de la Ley de Protección de Datos Personales en Posesión de Sujetos 
+Se le hace saber que el trato que se le dará a la información que se le solicita, tendrá el carácter de confidencial y reservada, por
+lo tanto, deberá ser tratada con las reservas que ameritan, de conformidad con lo dispuesto en los artículos 1, 7 fracción I, 10
+fracción III, 54 fracciones XI, XII, XIII, XIV, 61 y 62 fracciones I y IV y 63 de la Ley de Transparencia, Acceso a la Información Pública y
+Buen Gobierno del Estado de Oaxaca publicada el día cuatro de septiembre de dos mil veintiuno en el Periódico Oficial del
+Estado de Oaxaca y en los artículos 1, 2 fracción I y 3 fracción II de la Ley de Protección de Datos Personales en Posesión de Sujetos
 Obligados del Estado de Oaxaca. </small>
 
 ';
@@ -341,6 +367,4 @@ Obligados del Estado de Oaxaca. </small>
         //PDF::AddPage();
         PDF::Output('Formato de queja', 'I');
     }
-
-
 }
