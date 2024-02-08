@@ -239,7 +239,7 @@
                 var tipo = $(this).val();
 
                 $.ajax({
-                    url: '/obtener-tipos-buzon/' + tipo,
+                    url: '/social/obtener-tipos-buzon/' + tipo,
                     type: 'GET',
                     dataType: 'json',
                     success: function(data) {
@@ -248,7 +248,7 @@
                         $.each(data, function(key, value) {
                             $('#txtTipoBuzon').append($('<option>', {
                                 value: value.id_catalogo_dependencias ,
-                                text: value.nombre_dependecia_programa
+                                text: value.nombre_dependecia_programa,
                             }));
                         });
 

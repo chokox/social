@@ -57,12 +57,19 @@
 
                                                         <td>{{ $item['created_at'] }}</td>
                                                         <td>
-                                                            <a title="Ver" type="button" class="btn btn-primary"
+                                                            @if($item['tipo_comentario'] == 'Queja y/o denuncia')
+                                                                <a title="Ver" type="button" class="btn btn-primary"
+                                                                href="{{ route('formato_queja', $item['id_comentario_buzon']) }})">
+                                                                <i class="ri-article-line"></i>
+                                                            </a>
+                                                            @else
+                                                                <a title="Ver" type="button" class="btn btn-primary"
                                                                 data-bs-toggle="modal"
                                                                 data-bs-target="#modalVer{{ $item['id_comentario_buzon'] }}"
                                                                 onclick="abrirMensaje('{{ route('abrirMensaje', $item['id_comentario_buzon']) }}')">
                                                                 <i class="ri-eye-line"></i>
                                                             </a>
+                                                            @endif 
                                                             @if ($item['estatus'] != 2 and $item['estatus'] != 0)
                                                                 <a title="Turnada" type="button" class="btn btn-primary"
                                                                     href="{{ route('turnada', $item['id_comentario_buzon']) }}">
@@ -91,6 +98,21 @@
                                                                 </div>
 
                                                                 <div class="modal-body">
+                                                                    <div class="mb-3">
+                                                                        <label for="tramite"
+                                                                            class="form-label">Tramite realizado</label>
+                                                                        <input class="form-control" value="{{ $item['tramite_realizado'] }}"  readonly>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="nombre"
+                                                                            class="form-label">Nombre del promovente</label>
+                                                                             <input class="form-control" value="{{ $item['nombre'] }}"  readonly>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="nombre_sp"
+                                                                            class="form-label">Nombre del servidor publico que atendio</label>
+                                                                             <input class="form-control" value="{{ $item['nombre_servidor'] }}"  readonly>
+                                                                    </div>
                                                                     <div class="mb-3">
                                                                         <label for="comentario"
                                                                             class="form-label">Comentario</label>

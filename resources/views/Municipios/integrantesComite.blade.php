@@ -415,7 +415,7 @@
                                                                                 <option>AMUZGO</option>
                                                                                 <option>CHATINO</option>
                                                                                 <option>CHINANTECO</option>
-                                                                                <option>CHOCHOTECO</option>
+                                                                                <option>CHOCHOLTECO</option>
                                                                                 <option>CHONTAL</option>
                                                                                 <option>CUICATECO</option>
                                                                                 <option>HUAVE</option>
@@ -600,7 +600,7 @@
                                 <option>AMUZGO</option>
                                 <option>CHATINO</option>
                                 <option>CHINANTECO</option>
-                                <option>CHOCHOTECO</option>
+                                <option>CHOCHOLTECO</option>
                                 <option>CHONTAL</option>
                                 <option>CUICATECO</option>
                                 <option>HUAVE</option>
