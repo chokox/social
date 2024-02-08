@@ -63,8 +63,8 @@ Route::middleware(['auth', 'departamento:2'])->group(function () {
     Route::get('/verificacionFisica', 'App\Http\Controllers\VerificacionFisicaController@viewDireccionFisica')->name('evaluacionDireccionFisica');
     Route::post('/guardar-respuestas', 'App\Http\Controllers\VerificacionFisicaController@guardarRespuestas')->name('guardarDireccionFisica');
     Route::get('/abrir_mensaje/{id}', 'App\Http\Controllers\ComentariosBuzonesController@abrir')->name('abrirMensaje');
-
     Route::get('/formato_queja/{id}', 'App\Http\Controllers\DocumentacionGeneradaController@formatoQueja')->name('formato_queja');
+    Route::post('/guardar-respuestas', 'App\Http\Controllers\VerificacionFisicaController@guardarRespuestasDireccionFisica')->name('guardarDireccionFisica');
 });
 
 // RUTAS GENERALES PARA USUARIOS AUTENTICADOS

@@ -28,36 +28,36 @@
                         <div class="accordion-body">
                             <?php
                                 $preguntas = [
-                                    "¿Existe módulo de información o personal que oriente al usuario para realizar su trámite?",
-                                    "¿La información que se proporciona es amplia y suficiente respecto al trámite y/o servicio a realizar?",
-                                    "¿Se encuentran publicados a la vista del usuario, los trámites y/o servicios que ofrece la Dependencia?",
-                                    "¿Se proporcionan al usuario los diferentes medios de difusión donde puede consultar información publicada por la Dependencia?",
-                                    "¿Se encuentran señalizadas las diferentes áreas de adscripción de la Dependencia?",
-                                    "¿Las señalizaciones son claras y visibles para los usuarios en general?",
-                                    "¿Se encuentra visible el directorio de la Dependencia?",
-                                    "¿El personal de la Dependencia porta distintivos o gafete para identificarlos?",
-                                    "¿Menciono el aviso de privacidad para el resguardo de los datos personales?",
-                                    "¿Ofreció o mencionó los trámites que puede realizar en la Dependencia?",
-                                    "¿Se desempeña y desarrolla el tema con fluidez y conocimiento?",
-                                    "¿Al recibir al usuario fue cordial, amable y respetuoso la persona en el servicio público?",
-                                    "¿Lo hizo esperar mucho tiempo o lo canalizó con otra persona para recibir el servicio y/o trámite requerido?",
-                                    "¿Atendió el teléfono personal o se distrajo en otra actividad durante el desarrollo de la atención brindada al usuario?",
-                                    "¿Da algún tipo de trato preferencial al usuario?",
-                                    "¿Solicitó algún requisito adicional a los establecidos oficialmente?"
+                                    "1.¿Existe módulo de información o personal que oriente al usuario para realizar su trámite?",
+                                    "2.¿La información que se proporciona es amplia y suficiente respecto al trámite y/o servicio a realizar?",
+                                    "3.¿Se encuentran publicados a la vista del usuario, los trámites y/o servicios que ofrece la Dependencia?",
+                                    "4.¿Se proporcionan al usuario los diferentes medios de difusión donde puede consultar información publicada por la Dependencia?",
+                                    "5.¿Se encuentran señalizadas las diferentes áreas de adscripción de la Dependencia?",
+                                    "6.¿Las señalizaciones son claras y visibles para los usuarios en general?",
+                                    "7.¿Se encuentra visible el directorio de la Dependencia?",
+                                    "8.¿El personal de la Dependencia porta distintivos o gafete para identificarlos?",
+                                    "9.¿Menciono el aviso de privacidad para el resguardo de los datos personales?",
+                                    "10.¿Ofreció o mencionó los trámites que puede realizar en la Dependencia?",
+                                    "11.¿Se desempeña y desarrolla el tema con fluidez y conocimiento?",
+                                    "12.¿Al recibir al usuario fue cordial, amable y respetuoso la persona en el servicio público?",
+                                    "13.¿Lo hizo esperar mucho tiempo o lo canalizó con otra persona para recibir el servicio y/o trámite requerido?",
+                                    "14.¿Atendió el teléfono personal o se distrajo en otra actividad durante el desarrollo de la atención brindada al usuario?",
+                                    "15.¿Da algún tipo de trato preferencial al usuario?",
+                                    "16.¿Solicitó algún requisito adicional a los establecidos oficialmente?"
                                 ];
                             ?>
-                            @foreach ($preguntas as $index => $pregunta)
-                                <a class="text-primary fw-bold mb-1 d-block">{{ $pregunta }}</a>
-                                <div class="mt-2 ms-3">
-                                    @foreach (['SI', 'NO'] as $respuesta)
-                                        <div class="form-check form-check-inline">
-                                            <input type="radio" id="informacion{{ $index }}{{ $respuesta }}" name="informacion{{ $index }}" class="form-check-input">
-                                            <label class="form-check-label" for="informacion{{ $index }}{{ $respuesta }}">{{ $respuesta }}</label>
-                                        </div>
-                                    @endforeach
+                        @foreach ($preguntas as $index => $pregunta)
+                        <a class="text-primary fw-bold mb-1 d-block">{{ $pregunta }}</a>
+                        <div class="mt-2 ms-3">
+                            @foreach (['SI', 'NO'] as $respuesta)
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" id="informacion{{ $index }}{{ $respuesta }}" name="informacion{{ $index }}" class="form-check-input" value="{{ $respuesta }}">
+                                    <label class="form-check-label" for="informacion{{ $index }}{{ $respuesta }}">{{ $respuesta }}</label>
                                 </div>
-                                <br>
                             @endforeach
+                        </div>
+                        <br>
+                        @endforeach                        
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                         <div class="accordion-body">
                             <?php
                             $preguntas = [
-                                "¿Se encuentra a la vista o se mencionan mecanismos de Contraloría Social para presentar quejas, denuncias o sugerencias?"
+                                "1.¿Se encuentra a la vista o se mencionan mecanismos de Contraloría Social para presentar quejas, denuncias o sugerencias?"
                             ];
                             ?>
                             @foreach ($preguntas as $index => $pregunta)
@@ -82,14 +82,13 @@
                             <div class="mt-2 ms-3">
                                 @foreach (['SI', 'NO'] as $respuesta)
                                     <div class="form-check form-check-inline">
-                                        <input type="radio" id="mecanismos{{ $index }}{{ $respuesta }}" name="mecanismos{{ $index }}" class="form-check-input">
+                                        <input type="radio" id="mecanismos{{ $index }}{{ $respuesta }}" name="mecanismos{{ $index }}" class="form-check-input" value="{{ $respuesta }}">
                                         <label class="form-check-label" for="mecanismos{{ $index }}{{ $respuesta }}">{{ $respuesta }}</label>
                                     </div>
                                 @endforeach
                             </div>
                             <br>
-                        @endforeach
-
+                            @endforeach        
                         </div>
                     </div>
                 </div>
@@ -107,26 +106,25 @@
                            
                             <?php
                             $preguntas = [
-                                "¿Existen mecanismos e instalaciones para el acceso fácil y rápido de los usuarios con capacidades especiales?",
-                                "¿Las áreas de espera de uso común y servicios están habilitados para brindar condiciones necesarias al usuario?",
-                                "¿Están proporcionalmente distribuidos los espacios para la atención al usuario?",
-                                "¿Las instalaciones de la Dependencia se ubican en un lugar accesible y de fácil ubicación?",
-                                "¿Cuenta con áreas comunes para facilitar la atención al público?"
+                                "1.¿Existen mecanismos e instalaciones para el acceso fácil y rápido de los usuarios con capacidades especiales?",
+                                "2.¿Las áreas de espera de uso común y servicios están habilitados para brindar condiciones necesarias al usuario?",
+                                "3.¿Están proporcionalmente distribuidos los espacios para la atención al usuario?",
+                                "4.¿Las instalaciones de la Dependencia se ubican en un lugar accesible y de fácil ubicación?",
+                                "5.¿Cuenta con áreas comunes para facilitar la atención al público?"
                             ];
                             ?>
                         @foreach ($preguntas as $index => $pregunta)
-                            <a class="text-primary fw-bold mb-1 d-block">{{ $pregunta }}</a>
-                            <div class="mt-2 ms-3">
-                                @foreach (['SI', 'NO'] as $respuesta)
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" id="accesibilidad{{ $index }}{{ $respuesta }}" name="accesibilidad{{ $index }}" class="form-check-input">
-                                        <label class="form-check-label" for="accesibilidad{{ $index }}{{ $respuesta }}">{{ $respuesta }}</label>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <br>
-                        @endforeach
-
+                        <a class="text-primary fw-bold mb-1 d-block">{{ $pregunta }}</a>
+                        <div class="mt-2 ms-3">
+                            @foreach (['SI', 'NO'] as $respuesta)
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" id="accesibilidad{{ $index }}{{ $respuesta }}" name="accesibilidad{{ $index }}" class="form-check-input" value="{{ $respuesta }}">
+                                    <label class="form-check-label" for="accesibilidad{{ $index }}{{ $respuesta }}">{{ $respuesta }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                        <br>
+                        @endforeach     
                         </div>
                     </div>
                 </div>
@@ -143,22 +141,22 @@
                         <div class="accordion-body">
                             <?php
                             $preguntas = [
-                                "¿Las instalaciones se encuentran limpias, con insumos para el aseo de manos y gel antibacterial para uso del público en general?",
-                                "¿Cuenta con salidas de emergencia señalizadas?"
+                                "1.¿Las instalaciones se encuentran limpias, con insumos para el aseo de manos y gel antibacterial para uso del público en general?",
+                                "2.¿Cuenta con salidas de emergencia señalizadas?"
                             ];
                             ?>
                         @foreach ($preguntas as $index => $pregunta)
-                            <a class="text-primary fw-bold mb-1 d-block">{{ $pregunta }}</a>
-                            <div class="mt-2 ms-3">
-                                @foreach (['SI', 'NO'] as $respuesta)
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" id="infraestructura{{ $index }}{{ $respuesta }}" name="infraestructura{{ $index }}" class="form-check-input">
-                                        <label class="form-check-label" for="infraestructura{{ $index }}{{ $respuesta }}">{{ $respuesta }}</label>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <br>
-                        @endforeach
+                        <a class="text-primary fw-bold mb-1 d-block">{{ $pregunta }}</a>
+                        <div class="mt-2 ms-3">
+                            @foreach (['SI', 'NO'] as $respuesta)
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" id="infraestructura{{ $index }}{{ $respuesta }}" name="infraestructura{{ $index }}" class="form-check-input" value="{{ $respuesta }}">
+                                    <label class="form-check-label" for="infraestructura{{ $index }}{{ $respuesta }}">{{ $respuesta }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                        <br>
+                        @endforeach     
                         </div>
                     </div>
                 </div>
