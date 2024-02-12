@@ -42,8 +42,15 @@ class ComentariosBuzonesController extends Controller
         $registro->id_buzon_fk = $request->input('nBuzon');
         $registro->tramite_realizado = $request->input('tramite_realizado');
         $registro->nombre = $request->input('nombre');
+
+        $registro->domicilio_promovente = $request->input('domicilio');
+        $registro->telefono_promovente = $request->input('telefono');
+        $registro->correo_promovente = $request->input('correo');
+        $registro->fecha_hechos = $request->input('fecha');
+
         $registro->tipo_comentario = $request->input('tipo_comentario');
         $registro->comentario = $request->input('comentario');
+        
         if (!is_null($request->file('multimedia'))) {
             $ruta = 'buzon digital';
             if ($request->hasFile('multimedia') && $request->file('multimedia')->isValid()) {

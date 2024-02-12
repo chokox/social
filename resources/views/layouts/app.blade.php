@@ -159,7 +159,7 @@
                                     <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
                                         <a href="" class="dropdown-item">Programacion</a>
                                         <a href="" class="dropdown-item">Evaluar P/Mejorar</a>
-                                         <a href="" class="dropdown-item">Verificacion Fisica</a>
+                                         <a href="{{route('evaluacionDireccionFisica')}}" class="dropdown-item">Verificacion Fisica</a>
                                     </div>
                                 </li>
                                 @endif

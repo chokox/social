@@ -21,6 +21,13 @@ class Buzone extends Model
         ->groupBy('region');
     }
 
+    public function scopeBuzonDependencia($query,$id)
+    {
+        return $query->join('catalogo_dependencias', 'catalogo_dependencias.id_catalogo_dependencias', '=', 'buzones.id_catalogo_buzon_fk')
+        ->where('buzones.id_buzon', $id);
+
+    }
+
     
 
 }

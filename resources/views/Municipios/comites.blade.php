@@ -26,6 +26,7 @@
                                             <th>Región</th>
                                             <th>Distrito</th>
                                             <th>Municipio</th>
+                                            <th>Fecha Acreditación</th>
                                             <th>Atendido por</th>
                                             <th>Estatus</th>
                                             <th>Acciones</th>
@@ -42,6 +43,8 @@
                                                 <td>{{ $mun->region }}</td>
                                                 <td>{{ $mun->distrito }}</td>
                                                 <td>{{ $mun->nombre }}</td>
+                                                <td>{{ date('Y-m-d', strtotime($mun->fecha_validado)) }}</td>
+
                                                 <td>{{ $mun->name }}</td>
 
                                                 @switch($mun->estatus ?? -1)

@@ -1,0 +1,107 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\VerificacionFisica;
+
+
+
+class VerificacionFisicaController extends Controller
+{
+ 
+
+    public function viewDireccionFisica()
+    {
+       
+        return view('AtencionC/verificacionFisica');
+    }
+
+
+    public function guardarRespuestasDireccionFisica(Request $request)
+    {
+
+    try{
+        
+        $respuestas = $request->input();
+
+       
+        $reglas = [
+            'informacion0' => 'required',
+            'informacion1' => 'required',
+            'informacion2' => 'required',
+            'informacion3' => 'required',
+            'informacion4' => 'required',
+            'informacion5' => 'required',
+            'informacion6' => 'required',
+            'informacion7' => 'required',
+            'informacion8' => 'required',
+            'informacion9' => 'required',
+            'informacion10' => 'required',
+            'informacion11' => 'required',
+            'informacion12' => 'required',
+            'informacion13' => 'required',
+            'informacion14' => 'required',
+            'informacion15' => 'required',
+            'mecanismos0' => 'required',
+            'accesibilidad0' => 'required',
+            'accesibilidad1' => 'required',
+            'accesibilidad2' => 'required',
+            'accesibilidad3' => 'required',
+            'accesibilidad4' => 'required',
+            'infraestructura0' => 'required',
+            'infraestructura1' => 'required',
+        ];
+
+        $mensajes = [
+            'required' => 'El campo :attribute es obligatorio.',
+        ];
+        $validator = Validator::make($respuestas, $reglas, $mensajes);
+
+        if ($validator->fails()) {
+            Alert::error('Faltan respuestas', 'Por favor, complete todas las respuestas antes de enviar la evaluación.');
+            return back()->withErrors($validator)->withInput();
+        }
+        
+        $verificacionFisica = new VerificacionFisica;
+        $verificacionFisica->info1 = $respuestas['informacion0'];
+        $verificacionFisica->info2 = $respuestas['informacion1'];
+        $verificacionFisica->info3 = $respuestas['informacion2'];
+        $verificacionFisica->info4 = $respuestas['informacion3'];
+        $verificacionFisica->info5 = $respuestas['informacion4'];
+        $verificacionFisica->info6 = $respuestas['informacion5'];
+        $verificacionFisica->info7 = $respuestas['informacion6'];
+        $verificacionFisica->info8 = $respuestas['informacion7'];
+        $verificacionFisica->info9 = $respuestas['informacion8'];
+        $verificacionFisica->info10 = $respuestas['informacion9'];
+        $verificacionFisica->info11 = $respuestas['informacion10'];
+        $verificacionFisica->info12 = $respuestas['informacion11'];
+        $verificacionFisica->info13 = $respuestas['informacion12'];
+        $verificacionFisica->info14 = $respuestas['informacion13'];
+        $verificacionFisica->info15 = $respuestas['informacion14'];
+        $verificacionFisica->info16 = $respuestas['informacion15'];
+        $verificacionFisica->meca1 = $respuestas['mecanismos0'];
+        $verificacionFisica->access1 = $respuestas['accesibilidad0'];
+        $verificacionFisica->access2 = $respuestas['accesibilidad1'];
+        $verificacionFisica->access3 = $respuestas['accesibilidad2'];
+        $verificacionFisica->access4 = $respuestas['accesibilidad3'];
+        $verificacionFisica->access5 = $respuestas['accesibilidad4'];
+        $verificacionFisica->infra1 = $respuestas['infraestructura0'];
+        $verificacionFisica->infra2 = $respuestas['infraestructura1'];
+       
+        $verificacionFisica->save();
+
+        Alert::success('Evaluación Terminada', 'El usuario realizo correctamente la evaluación');
+        return back();
+    } catch (\Exception $e) {
+        dd($e->getMessage());
+        Alert::error('Ha ocurrido un error al enviar las respuestas de la evaluación.', null);
+        return back();
+    }
+
+      
+    }
+}

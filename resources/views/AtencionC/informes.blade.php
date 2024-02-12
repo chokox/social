@@ -117,7 +117,6 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Region', 'N° Buzones'],
-          ['Costa',  5.85],
           @foreach($conteoPorRegion as $region)
                 ['{{ $region->region }}', {{ $region->total }}],
             @endforeach
