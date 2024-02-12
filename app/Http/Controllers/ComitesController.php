@@ -42,64 +42,54 @@ class ComitesController extends Controller
     }
 
     public function subirDocumentacion(Request $request, $id)
-    {
-        $dato = AcreditacionComite::find($id);
-      //  dd($dato->archivo_acta);
-        $ruta = 'comites/' . now()->year . '/' . $id;
-        $nombreArchivo = null;
+{
+    $dato = AcreditacionComite::find($id);
+    $ruta = 'comites/' . now()->year . '/' . $id;
+    $nombreArchivo = null;
 
-        if ($request->input('tipo') == 'acta' && ($request->hasFile('archivo_acta') && $request->file('archivo_acta')->isValid())) {
-            $nombreArchivo = $request->file('archivo_acta')->store($ruta, 'public');
-        } elseif ($request->input('tipo') == 'lista' && ($request->hasFile('archivo_lista') && $request->file('archivo_lista')->isValid())) {
-            $nombreArchivo = $request->file('archivo_lista')->store($ruta, 'public');
+    if ($request->input('tipo') == 'acta' && ($request->hasFile('archivo_acta') && $request->file('archivo_acta')->isValid())) {
+        $nombreArchivo = $request->file('archivo_acta')->store($ruta, 'public');
+    } elseif ($request->input('tipo') == 'lista' && ($request->hasFile('archivo_lista') && $request->file('archivo_lista')->isValid())) {
+        $nombreArchivo = $request->file('archivo_lista')->store($ruta, 'public');
+    } 
+
+    if (Storage::disk('public')->exists($nombreArchivo)) {
+        if ($request->input('tipo') == 'acta') {
+            $dato->archivo_acta = $nombreArchivo;
+        } elseif ($request->input('tipo') == 'lista') {
+            $dato->archivo_lista = $nombreArchivo;
         } 
+        $dato->save();
 
-        if (Storage::disk('public')->exists($nombreArchivo)) {
-            if ($request->input('tipo') == 'acta') {
-                $dato->archivo_acta = $nombreArchivo;
-            } elseif ($request->input('tipo') == 'lista') {
-                $dato->archivo_lista = $nombreArchivo;
-            } 
-            $dato->save();
+        //VERIFICA SI ESTAN LOS ARCHIVOS DE LOS INTEGRANTES COMPLETOS
+        $resultado = IntegrantesComite::ContarPorComite(now()->year, $id)->get();
+        $variable = 0;
 
-            //VERIFICA SI ESTAN LOS ARCHIVOS DE LOS INTEGRANTES COMPLETOS
-            $resultado = IntegrantesComite::ContarPorComite(now()->year, $id)->get();
-            //;$sqlQuery = $totComites->toSql();
-            // dd ($sqlQuery); 
-            if  ( !empty($resultado->id_integrante_comite) ) {
-                $todosRellenados = $resultado->every(function ($item) {
-                    return $item->archivo_ine !== null &&
+        if (!empty($resultado->id_integrante_comite)) {
+            $todosRellenados = $resultado->every(function ($item) {
+                return $item->archivo_ine !== null &&
                     $item->archivo_protesta !== null &&
                     $item->archivo_constancia !== null &&
                     $item->archivo_fotografia !== null;
-                });
-            
-    
+            });
+
             $variable = $todosRellenados ? 1 : 0;
-
-        }else{
-            $variable = 0;
         }
 
-            //FIN DE LA VERIFICACION
-        
-            if ((!empty($dato->archivo_acta) && !empty($dato->archivo_lista)) || $variable == 1) {
-                $dato->estatus = '3';
-                $dato->save();
-            } elseif (!empty($dato->archivo_acta) && !empty($dato->archivo_lista)) {
-                $dato->estatus = '2';
-                $dato->save();
-            }
-            
-            
-           
-            Alert::success('Documentacion cargada', null);
-            return back();
-        } else {
-            Alert::error('Error', 'No se pudo subir el archivo, porfavor intente mas tarde');
-            return back();
+        //FIN DE LA VERIFICACION
+        if ((!empty($dato->archivo_acta) && !empty($dato->archivo_lista)) || $variable == 1) {
+            $dato->estatus = '3';
+            $dato->save();
+        } elseif (!empty($dato->archivo_acta) && !empty($dato->archivo_lista)) {
+            $dato->estatus = '2';
+            $dato->save();
         }
+
+        return response()->json(['success' => true, 'message' => 'Documentacion cargada']);
+    } else {
+        return response()->json(['success' => false, 'message' => 'No se pudo subir el archivo, por favor intente mas tarde']);
     }
+}
 
     public function eliminarDocumentacion($id)
     {

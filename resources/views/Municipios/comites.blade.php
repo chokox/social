@@ -116,6 +116,7 @@
                                                                                     @if (empty($mun->archivo_acta))
                                                                                         <td>
                                                                                             <form
+                                                                                                id="form_acta_{{ $mun->id_acreditacion }}"
                                                                                                 action="{{ route('CSubirDoc', $mun->id_acreditacion) }}"
                                                                                                 method="POST"
                                                                                                 enctype="multipart/form-data"
@@ -128,12 +129,13 @@
                                                                                                 <input type="file"
                                                                                                     name="archivo_acta"
                                                                                                     accept=".doc, .docx, .pdf">&nbsp;&nbsp;
-                                                                                                <button type="submit"
-                                                                                                    class="btn btn-info">Cargar</button>
+                                                                                                <button type="button"
+                                                                                                    class="btn btn-info cargar-doc">Cargar</button>
                                                                                             </form>
+
                                                                                         </td>
                                                                                     @else
-                                                                                        <td><a type="button"
+                                                                                        <td id="botones_lista_{{ $mun->id_acreditacion }}"><a type="button"
                                                                                                 class="btn btn-primary"
                                                                                                 href="{{ asset('storage/' . $mun->archivo_acta) }}"
                                                                                                 target="_blank"><i
@@ -163,7 +165,7 @@
                                                                                     <td>Lista de asistencia</td>
                                                                                     @if (empty($mun->archivo_lista))
                                                                                         <td>
-                                                                                            <form
+                                                                                            <form id="form_acta_{{ $mun->id_acreditacion }}"
                                                                                                 action="{{ route('CSubirDoc', $mun->id_acreditacion) }}"
                                                                                                 method="POST"
                                                                                                 enctype="multipart/form-data"
@@ -177,7 +179,7 @@
                                                                                                     name="archivo_lista"
                                                                                                     accept=".doc, .docx, .pdf">&nbsp;&nbsp;
                                                                                                 <button type="submit"
-                                                                                                    class="btn btn-info">Cargar</button>
+                                                                                                    class="btn btn-info cargar-doc">Cargar</button>
                                                                                             </form>
                                                                                         </td>
                                                                                     @else
@@ -219,33 +221,40 @@
                                                                 class="ri-eye-fill"></i></a>
 
                                                         @if (Auth::user()->administrador())
-                                                            <a type="button" class="btn btn-primary" title="Validar" data-bs-toggle="modal" data-bs-target="#exampleModal-{{$mun->id_acreditacion}}"><i
+                                                            <a type="button" class="btn btn-primary" title="Validar"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal-{{ $mun->id_acreditacion }}"><i
                                                                     class="ri-thumb-up-fill"></i></a>
 
                                                             <!-- INICIO DEL MODAL DE FECHA DE VALIDACION -->
-                                                            <div class="modal fade" id="exampleModal-{{$mun->id_acreditacion}}" tabindex="-1"
-                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal fade"
+                                                                id="exampleModal-{{ $mun->id_acreditacion }}"
+                                                                tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                                aria-hidden="true">
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title"
-                                                                                id="exampleModalLabel">Validacion de comite</h5>
+                                                                                id="exampleModalLabel">Validacion de comite
+                                                                            </h5>
                                                                             <button type="button" class="btn-close"
                                                                                 data-bs-dismiss="modal"
                                                                                 aria-label="Close"></button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <form method="POST" action="{{ route('validarComite', $mun->id_acreditacion) }}">
+                                                                            <form method="POST"
+                                                                                action="{{ route('validarComite', $mun->id_acreditacion) }}">
                                                                                 @method('PUT')
                                                                                 @csrf
                                                                                 <div class="mb-3">
                                                                                     <label for="recipient-name"
-                                                                                        class="col-form-label">Fecha de validacion:</label>
+                                                                                        class="col-form-label">Fecha de
+                                                                                        validacion:</label>
                                                                                     <input type="date"
                                                                                         class="form-control"
                                                                                         name="fecha_validacion">
                                                                                 </div>
-                                                                            
+
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="submit"
@@ -317,5 +326,35 @@
             });
 
         });
+
+        $(document).ready(function() {
+    $('.cargar-doc').click(function(e) {
+        e.preventDefault();
+
+        var form = $(this).closest('form');
+        var formData = new FormData(form[0]);
+
+        $.ajax({
+            url: form.attr('action'),
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.success) {
+                    // Muestra una alerta de éxito o cualquier otra acción que desees realizar
+                    alert('Documentacion cargada');
+                } else {
+                    alert('Error: ' + response.message);
+                }
+                 $('#botones_lista_' + response.id_acreditacion).html(response.botones_html);
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+                alert('Error: ' + error);
+            }
+        });
+    });
+});
     </script>
 @endsection

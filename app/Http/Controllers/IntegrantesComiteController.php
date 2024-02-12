@@ -37,6 +37,10 @@ class IntegrantesComiteController extends Controller
      */
     public function store(Request $request)
     {
+        if (empty($request->all())) {
+            Alert::error('Error', 'No puedes enviar el formulario vacío');
+            return back();
+        }
         $registro = new IntegrantesComite();
         $registro->id_acreditacion_comite_fk = $request->input('id_comite');
         $registro->nombre_completo = $request->input('nombre');
@@ -63,9 +67,9 @@ class IntegrantesComiteController extends Controller
             $dato->estatus = '1';
             $dato->save();
         }
-
         Alert::success('Integrante agregado', null);
         return back();
+
     }
 
     public function subirDocumentacionIntegrantes(Request $request, $id)

@@ -545,11 +545,11 @@
                             <input type="text" class="form-control" name="id_comite" value="{{ $id }} "
                                 hidden>
                             <label for="simpleinput" class="form-label">Nombre Completo</label>
-                            <input type="text" class="form-control" name="nombre" maxlength="100">
+                            <input type="text" class="form-control" name="nombre" required maxlength="100">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Domicilio</label>
-                            <input type="text" class="form-control" name="domicilio" requerid  maxlength="120">
+                            <input type="text" class="form-control" name="domicilio" required  maxlength="120">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Teléfono fijo</label>
@@ -565,7 +565,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Fecha de nacimiento</label>
-                            <input type="date" class="form-control" name="fecha_nacimiento">
+                            <input type="date" class="form-control" name="fecha_nacimiento" required>
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Sexo</label>
@@ -576,7 +576,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Ocupacion</label>
-                            <input type="text" class="form-control" name="ocupacion" maxlength="70">
+                            <input type="text" class="form-control" name="ocupacion" required maxlength="70">
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Escolaridad</label>
@@ -625,7 +625,7 @@
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">¿En su Municipio donde se puede tener acceso a
                                 Internet?</label>
-                            <input type="text" class="form-control" name="acceso_internet" maxlength="100">
+                            <input type="text" class="form-control" name="acceso_internet" required maxlength="100" >
                         </div>
                         <div class="mb-3">
                             <label for="simpleinput" class="form-label">Observaciones identificación</label>

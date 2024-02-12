@@ -229,4 +229,31 @@
         @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
     </body>
+    <script>
+    $(document).ready(function() {
+        $('.cargar-doc').click(function(e) {
+            e.preventDefault(); // Evita el comportamiento predeterminado del botón (enviar el formulario)
+
+            var formId = $(this).closest('form').attr('id'); // Obtén el ID del formulario
+            var formData = new FormData($('#' + formId)[0]); // Crea un objeto FormData con los datos del formulario
+
+            $.ajax({
+                url: $('#' + formId).attr('action'), // Obtiene la URL del formulario
+                type: 'POST', // Método de envío
+                data: formData, // Datos del formulario
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // Maneja la respuesta exitosa si es necesario
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                    // Maneja el error si es necesario
+                    console.error(error);
+                }
+            });
+        });
+    });
+</script>
+
 </html>
