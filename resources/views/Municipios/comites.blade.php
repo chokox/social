@@ -223,6 +223,12 @@
                                                             href="{{ route('comites.edit', $mun->id_acreditacion) }}"><i
                                                                 class="ri-eye-fill"></i></a>
 
+                                                                 @if($mun->estatus == 4)
+                                                        <a type="button" class="btn btn-primary" title="Credenciales Integrantes" target="_blank"
+                                                            href="{{ route('credencial_integrante', $mun->id_acreditacion) }}"><i
+                                                                class="ri-contacts-book-2-line"></i></a>
+                                                                @endif
+
                                                         @if (Auth::user()->administrador())
                                                             <a type="button" class="btn btn-primary" title="Validar"
                                                                 data-bs-toggle="modal"

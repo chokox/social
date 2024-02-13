@@ -19,14 +19,12 @@ Route::get('/', 'App\Http\Controllers\WelcomeController@incrementarContador')->n
 //RUTA DE BUZON CIUDADANO SIN AUTENTIFICACION
 Route::resource('/buzones_ciudadanos', 'App\Http\Controllers\ComentariosBuzonesController');
 
-
 //RUTAS MICROSITIO
 Route::view('contraloriasocial', '/micrositio/contraloriasocial')->name('contraloriasocial');
 Route::view('formatos', '/micrositio/formatos')->name('formatos');
 Route::view('presupuesto2023', '/micrositio/presupuesto2023')->name('presupuesto2023');
 Route::view('presupuesto2022', '/micrositio/presupuesto2022')->name('presupuesto2022');
 Route::view('buzones', '/micrositio/buzones')->name('buzones');
-//Route::view('buzon','/micrositio/buzon')->name('buzones');
 Auth::routes();
 
 //RUTAS DEL MODULO DEL DEPARTAMENTO DE CAPACITACION A MUNICIPIOS
@@ -42,11 +40,9 @@ Route::middleware(['auth', 'departamento:1'])->group(function () {
     Route::put('/subir_documentacion_integrantes/{id}', 'App\Http\Controllers\IntegrantesComiteController@subirDocumentacionIntegrantes')->name('CSubirDocInt');
     Route::delete('/eliminar_documentacion_integrantes/{id}', 'App\Http\Controllers\IntegrantesComiteController@eliminarDocumentacionIntegrantes')->name('CEliminarDocInt');
     Route::resource('/catalogo_municipios', 'App\Http\Controllers\MunicipioController');
-
     Route::get('/constancia_municipio/{id}', 'App\Http\Controllers\DocumentacionGeneradaController@constanciaMunicipio')->name('constancia_municipio');
     Route::get('/constancia_integrante/{id}', 'App\Http\Controllers\DocumentacionGeneradaController@constanciaIntegrante')->name('constancia_integrante');
     Route::get('/credencial_integrante/{id}', 'App\Http\Controllers\DocumentacionGeneradaController@credencialIntegrante')->name('credencial_integrante');
-
     Route::get('/resumen_acreditaciones', 'App\Http\Controllers\InformesController@resumenAcreditaciones')->name('resumenAcreditaciones');
     Route::get('/modalIntegrantes', 'App\Http\Controllers\InformesController@modalIntegrantesResumen')->name('modalIntegrantes');
 });
@@ -65,6 +61,7 @@ Route::middleware(['auth', 'departamento:2'])->group(function () {
     Route::get('/abrir_mensaje/{id}', 'App\Http\Controllers\ComentariosBuzonesController@abrir')->name('abrirMensaje');
     Route::get('/formato_queja/{id}', 'App\Http\Controllers\DocumentacionGeneradaController@formatoQueja')->name('formato_queja');
     Route::post('/guardar-respuestas', 'App\Http\Controllers\VerificacionFisicaController@guardarRespuestasDireccionFisica')->name('guardarDireccionFisica');
+    Route::resource('/programacion_evaluaciones', 'App\Http\Controllers\ProgramacionEvaluacionesController');
 });
 
 // RUTAS GENERALES PARA USUARIOS AUTENTICADOS
