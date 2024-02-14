@@ -54,7 +54,8 @@
                                                         <td>{{ $item['fecha_fin'] }}</td>
                                                         <td>{{ $item['observaciones'] }}</td>
                                                         <td>
-                                                            <a title="Editar" type="button" class="btn btn-primary"
+                                                            @if($item['fecha_fin'] && now()->lt($item['fecha_fin']))
+                                                                <a title="Editar" type="button" class="btn btn-primary"
                                                                 data-bs-toggle="modal"
                                                                 data-bs-target="#modalEditarProgramacion{{ $item['id_programacion'] }}">
                                                                 <i class="ri-file-edit-line"></i>
@@ -68,6 +69,15 @@
                                                                     <i class="ri-delete-bin-2-fill"></i>
                                                                 </button>
                                                             </form>
+                                                            @endif
+                                                            @if($item['fecha_fin'] && now()->gt($item['fecha_fin']))
+                                                             <a title="Resultados EPM" type="button" class="btn btn-primary">
+                                                                <i class=" ri-bar-chart-2-fill"></i>
+                                                            </a>
+                                                            <a title="Resultados VF" href="{{ route('resultados_verificacion', $item['id_programacion']) }}" type="button" class="btn btn-primary">
+                                                                <i class="ri-pie-chart-fill"></i>
+                                                            </a>
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                     <!--modal editar -->

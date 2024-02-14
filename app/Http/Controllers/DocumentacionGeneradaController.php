@@ -14,7 +14,7 @@ class DocumentacionGeneradaController extends Controller
 {
     public function constanciaMunicipio($id)
     {
-        $datos = CatalogoMunicipio::MunicipioYAcreditacion($id)->get();
+        $datos = CatalogoMunicipio::MunicipioYAcreditacion($id)->first();
         $meses3 = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
         $fecha3 = Carbon::parse($datos->fecha_validado);
         $mes3 = $meses3[$fecha3->format('n') - 1];
@@ -74,7 +74,7 @@ Directora de Contraloría Social</strong><br><br><br><br></div>
 
     public function constanciaIntegrante($id)
     {
-        $datos = IntegrantesComite::IntegranteComiteMunicipio($id)->get();
+        $datos = IntegrantesComite::IntegranteComiteMunicipio($id)->first();
 
         $meses3 = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
         $fecha3 = Carbon::parse($datos->fecha_validado);

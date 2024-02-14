@@ -61,6 +61,7 @@ Route::middleware(['auth', 'departamento:2'])->group(function () {
     Route::get('/abrir_mensaje/{id}', 'App\Http\Controllers\ComentariosBuzonesController@abrir')->name('abrirMensaje');
     Route::get('/formato_queja/{id}', 'App\Http\Controllers\DocumentacionGeneradaController@formatoQueja')->name('formato_queja');
     Route::post('/guardar-respuestas', 'App\Http\Controllers\VerificacionFisicaController@guardarRespuestasDireccionFisica')->name('guardarDireccionFisica');
+    Route::get('resultados/{id}', 'App\Http\Controllers\VerificacionFisicaController@ResultadosEncuesta')->name('resultados_verificacion');
     Route::resource('/programacion_evaluaciones', 'App\Http\Controllers\ProgramacionEvaluacionesController');
 });
 

@@ -111,4 +111,16 @@ class VerificacionFisicaController extends Controller
             return back();
         }
     }
+
+    public function ResultadosEncuesta($id)
+    {
+        $total = VerificacionFisica::where('id_programacion_fk', $id)->count();
+
+        if ($total > 0) {
+            return view('AtencionC/informesEncuestas', compact('id', 'total'));
+        } else {
+            Alert::error('No se tiene registrada ninguna encuesta aun.', null);
+            return back();
+        }
+    }
 }

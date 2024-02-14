@@ -117,7 +117,7 @@ class ProgramacionEvaluacionesController extends Controller
             Alert::success('Programacion eliminada', null);
             return back();
         } catch (\Exception $e) {
-            Alert::error('Ha ocurrido un error al eliminar la programacion.', null);
+            Alert::error('No se puede eliminar la programacion.', null);
             return back();
         }
     }
