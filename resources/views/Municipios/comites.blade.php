@@ -1,5 +1,42 @@
 @extends('layouts.app')
 @section('content')
+    <style>
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            display: none;
+        }
+    </style>
     <div class="content-page">
         <div class="content">
 
@@ -19,7 +56,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="basic-datatable-comites" class="table w-100 nowrap">
+                                <table id="basic-datatable-comites" class="table w-100">
                                     <thead class="table-dark">
                                         <tr>
                                             <th>Folio</th>
@@ -82,13 +119,72 @@
                                                             href="{{ route('crearComite', $mun->id_municipio) }}"><i
                                                                 class="ri-quill-pen-line"></i></a>
                                                     @else
-                                                        <a type="button" class="btn btn-primary" title="Integrantes"
-                                                            href="{{ route('integrantes.show', $mun->id_acreditacion) }}"><i
-                                                                class="ri-team-fill"></i></a>
-                                                        <a type="button" class="btn btn-primary" title="Documentacion"
-                                                            href="" class="btn btn-info" data-bs-toggle="modal"
-                                                            data-bs-target="#bs-example-modal-lg-{{ $mun->id_acreditacion }}"><i
-                                                                class="ri-folder-open-fill"></i></a>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="btn-group d-flex justify-content-center"
+                                                                    role="group" aria-label="Grupo de botones 1">
+                                                                    <a style="border-color: white;" type="button"
+                                                                        class="btn btn-primary" title="Integrantes"
+                                                                        href="{{ route('integrantes.show', $mun->id_acreditacion) }}">
+                                                                        <i class="ri-team-fill"></i>
+                                                                    </a>
+                                                                    <a style="border-color: white;" type="button"
+                                                                        class="btn btn-primary" title="Documentacion"
+                                                                        href="" class="btn btn-info"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#bs-example-modal-lg-{{ $mun->id_acreditacion }}">
+                                                                        <i class="ri-folder-open-fill"></i>
+                                                                    </a>
+                                                                    <a style="border-color: white;" type="button"
+                                                                        class="btn btn-primary" title="Ver/Editar"
+                                                                        href="{{ route('comites.edit', $mun->id_acreditacion) }}">
+                                                                        <i class="ri-eye-fill"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <br><br>
+                                                            <div class="col">
+                                                                <div class="btn-group d-flex justify-content-center"
+                                                                    role="group" aria-label="Grupo de botones 2">
+                                                                    @if ($mun->estatus == 4)
+                                                                        <a style="border-color: white;" type="button"
+                                                                            class="btn btn-primary"
+                                                                            title="Credenciales Integrantes" target="_blank"
+                                                                            href="{{ route('credencial_integrante', $mun->id_acreditacion) }}">
+                                                                            <i class="ri-contacts-book-2-line"></i>
+                                                                        </a>
+                                                                    @endif
+
+                                                                    @if (Auth::user()->administrador())
+                                                                        <a style="border-color: white;" type="button"
+                                                                            class="btn btn-primary" title="Validar"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#exampleModal-{{ $mun->id_acreditacion }}">
+                                                                            <i class="ri-thumb-up-fill"></i>
+                                                                        </a>
+                                                                    @endif
+
+                                                                    @if ($mun->estatus != 5 and Auth::user()->administrador())
+                                                                        <a style="border-color: white;" type="button"
+                                                                            class="btn btn-primary"
+                                                                            title="Revisar Información"
+                                                                            href="{{ route('revisarComite', $mun->id_acreditacion) }}">
+                                                                            <i class="ri-thumb-down-fill"></i>
+                                                                        </a>
+                                                                    @endif
+
+                                                                    @if ($mun->estatus == 4)
+                                                                        <a style="border-color: white;" type="button"
+                                                                            class="btn btn-primary" title="Constancia"
+                                                                            target="_blank"
+                                                                            href="{{ route('constancia_municipio', $mun->id_acreditacion) }}">
+                                                                            <i class="ri-profile-line"></i>
+                                                                        </a>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
 
                                                         <!-- modal documentacion comite-->
                                                         <div class="modal fade"
@@ -115,11 +211,23 @@
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr>
+                                                                                    <div class="modal-body">
+                                                                                        <div id='bonito' role="alert"
+                                                                                            style="display: none;">
+                                                                                            <p id="flash-message"
+                                                                                                class="alert alert-info">
+                                                                                                {{ session('mensaje') }}
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="overlay" id="overlay">
+                                                                                    </div>
+                                                                                    <div class="loader" id="loader">
+                                                                                    </div>
                                                                                     <td>Acta de asamblea</td>
                                                                                     @if (empty($mun->archivo_acta))
                                                                                         <td>
-                                                                                            <form
-                                                                                                id="form_acta_{{ $mun->id_acreditacion }}"
+                                                                                            <form id="form_acta"
                                                                                                 action="{{ route('CSubirDoc', $mun->id_acreditacion) }}"
                                                                                                 method="POST"
                                                                                                 enctype="multipart/form-data"
@@ -130,15 +238,15 @@
                                                                                                     name="tipo"
                                                                                                     value="acta" hidden>
                                                                                                 <input type="file"
+                                                                                                    id="archivo_acta"
                                                                                                     name="archivo_acta"
-                                                                                                    accept=".doc, .docx, .pdf">&nbsp;&nbsp;
-                                                                                                <button type="button"
-                                                                                                    class="btn btn-info cargar-doc">Cargar</button>
+                                                                                                    accept=".doc, .docx, .pdf">
                                                                                             </form>
-
                                                                                         </td>
                                                                                     @else
-                                                                                        <td id="botones_lista_{{ $mun->id_acreditacion }}"><a type="button"
+                                                                                        <td
+                                                                                            id="botones_lista_{{ $mun->id_acreditacion }}">
+                                                                                            <a type="button"
                                                                                                 class="btn btn-primary"
                                                                                                 href="{{ asset('storage/' . $mun->archivo_acta) }}"
                                                                                                 target="_blank"><i
@@ -168,7 +276,7 @@
                                                                                     <td>Lista de asistencia</td>
                                                                                     @if (empty($mun->archivo_lista))
                                                                                         <td>
-                                                                                            <form id="form_acta_{{ $mun->id_acreditacion }}"
+                                                                                            <form id="form_lista"
                                                                                                 action="{{ route('CSubirDoc', $mun->id_acreditacion) }}"
                                                                                                 method="POST"
                                                                                                 enctype="multipart/form-data"
@@ -179,10 +287,9 @@
                                                                                                     name="tipo"
                                                                                                     value="lista" hidden>
                                                                                                 <input type="file"
+                                                                                                    id="archivo_lista"
                                                                                                     name="archivo_lista"
-                                                                                                    accept=".doc, .docx, .pdf">&nbsp;&nbsp;
-                                                                                                <button type="submit"
-                                                                                                    class="btn btn-info cargar-doc">Cargar</button>
+                                                                                                    accept=".doc, .docx, .pdf">
                                                                                             </form>
                                                                                         </td>
                                                                                     @else
@@ -219,22 +326,9 @@
                                                             </div>
                                                         </div>
                                                         <!-- fin de modal documentacion comite -->
-                                                        <a type="button" class="btn btn-primary" title="Ver/Editar"
-                                                            href="{{ route('comites.edit', $mun->id_acreditacion) }}"><i
-                                                                class="ri-eye-fill"></i></a>
 
-                                                                 @if($mun->estatus == 4)
-                                                        <a type="button" class="btn btn-primary" title="Credenciales Integrantes" target="_blank"
-                                                            href="{{ route('credencial_integrante', $mun->id_acreditacion) }}"><i
-                                                                class="ri-contacts-book-2-line"></i></a>
-                                                                @endif
 
                                                         @if (Auth::user()->administrador())
-                                                            <a type="button" class="btn btn-primary" title="Validar"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal-{{ $mun->id_acreditacion }}"><i
-                                                                    class="ri-thumb-up-fill"></i></a>
-
                                                             <!-- INICIO DEL MODAL DE FECHA DE VALIDACION -->
                                                             <div class="modal fade"
                                                                 id="exampleModal-{{ $mun->id_acreditacion }}"
@@ -275,18 +369,6 @@
                                                             </div>
                                                             <!-- FIN DEL MODAL DE FECHA DE VALIDACION -->
                                                         @endif
-                                                        @if ($mun->estatus != 5 and Auth::user()->administrador())
-                                                            <a type="button" class="btn btn-primary"
-                                                                title="Revisar Información"
-                                                                href="{{ route('revisarComite', $mun->id_acreditacion) }}"><i
-                                                                    class="ri-thumb-down-fill"></i></a>
-                                                        @endif
-                                                        @if ($mun->estatus == 4)
-                                                            <a type="button" class="btn btn-primary" title="Constancia"
-                                                                target="_blank"
-                                                                href="{{ route('constancia_municipio', $mun->id_acreditacion) }}"
-                                                                target="_blank"><i class="ri-profile-line"></i></a>
-                                                        @endif
                                                     @endif
                                                 </td>
                                             </tr>
@@ -302,10 +384,12 @@
     </div>
 
     <!-- Agrega las bibliotecas para exportar a Excel y PDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.flash.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    {{-- <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.flash.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script> 
+
+
 
     <script>
         function confirmarEliminar() {
@@ -335,35 +419,71 @@
             });
 
         });
-
-        $(document).ready(function() {
-    $('.cargar-doc').click(function(e) {
-        e.preventDefault();
-
-        var form = $(this).closest('form');
-        var formData = new FormData(form[0]);
-
-        $.ajax({
-            url: form.attr('action'),
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                if (response.success) {
-                    // Muestra una alerta de éxito o cualquier otra acción que desees realizar
-                    alert('Documentacion cargada');
-                } else {
-                    alert('Error: ' + response.message);
-                }
-                 $('#botones_lista_' + response.id_acreditacion).html(response.botones_html);
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-                alert('Error: ' + error);
-            }
-        });
-    });
-});
     </script>
+
+    
+    <script>
+        $(document).ready(function() {
+            // Función para manejar el envío del formulario
+            function handleFormSubmission(formSelector) {
+                var formData = new FormData($(formSelector)[0]);
+
+                // Mostrar pantalla de carga
+                $('#overlay').fadeIn();
+                $('#loader').fadeIn();
+
+                // Enviar el formulario mediante AJAX
+                $.ajax({
+                    url: $(formSelector).attr('action'),
+                    type: $(formSelector).attr('method'),
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json',
+                    success: function(response) {
+                        // Manejar la respuesta JSON aquí
+                        if (response.success) {
+                            // Mostrar el mensaje en el modal
+                            $('#flash-message').text(
+                                '¡El archivo se cargó correctamente! Recarga la página para visualizar los cambios.'
+                            );
+                            $('#bonito').show();
+                            $('#bs-example-modal-lg').modal('show');
+                        } else {
+                            $('#flash-message').text(
+                                'Ocurrió un error al tratar de cargar el archivo, por favor intente más tarde.'
+                            );
+                            $('#bonito').show();
+                            $('#bs-example-modal-lg').modal('show');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+
+                    },
+                    complete: function() {
+                        $('#overlay').fadeOut();
+                        $('#loader').fadeOut();
+                        // Ocultar el mensaje flash después de 3 segundos
+                        setTimeout(function() {
+                            $('#flash-message').empty();
+                            $('#bonito').hide();
+                        }, 3000);
+                    }
+                });
+            }
+
+            // Al seleccionar un archivo para el formulario acta, enviar el formulario
+            $('#archivo_acta').change(function() {
+                handleFormSubmission('#form_acta');
+            });
+
+            // Al seleccionar un archivo para el formulario lista, enviar el formulario
+            $('#archivo_lista').change(function() {
+                handleFormSubmission('#form_lista');
+            });
+        });
+    </script>
+
+
+
 @endsection

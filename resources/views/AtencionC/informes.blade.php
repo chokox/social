@@ -19,8 +19,7 @@
                             <div class="card-body">
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="datatable-municipios-preview">
-                                        <table id="datatable-buttons"
-                                            class="table table-striped dt-responsive nowrap w-100">
+                                        <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
                                             <thead class="table-dark">
                                                 <tr>
                                                     <th>#</th>

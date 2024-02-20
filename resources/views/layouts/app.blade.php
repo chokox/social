@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="imagenes/favicon.ico">
 
     <!-- Theme Config Js -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="{{ asset('js/hyper-config.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
@@ -251,7 +251,7 @@
     <script src="{{ asset('vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
 
     <!-- Datatable Demo Aapp js -->
-    <script src="{{ asset('js/pages/demo.datatable-init.js') }}"></script>
+    <script src="{{ asset('js/pages/demo.datatable-init.js') }}"></script> 
 
     <!-- App js -->
     <script src="{{ asset('js/app.min.js') }}"></script>
@@ -260,33 +260,5 @@
     @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
 
 </body>
-<script>
-    $(document).ready(function() {
-        $('.cargar-doc').click(function(e) {
-            e
-                .preventDefault(); // Evita el comportamiento predeterminado del botón (enviar el formulario)
-
-            var formId = $(this).closest('form').attr('id'); // Obtén el ID del formulario
-            var formData = new FormData($('#' + formId)[
-                0]); // Crea un objeto FormData con los datos del formulario
-
-            $.ajax({
-                url: $('#' + formId).attr('action'), // Obtiene la URL del formulario
-                type: 'POST', // Método de envío
-                data: formData, // Datos del formulario
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    // Maneja la respuesta exitosa si es necesario
-                    console.log(response);
-                },
-                error: function(xhr, status, error) {
-                    // Maneja el error si es necesario
-                    console.error(error);
-                }
-            });
-        });
-    });
-</script>
 
 </html>

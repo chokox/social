@@ -117,13 +117,11 @@ class IntegrantesComiteController extends Controller
              if ((!empty($doc->archivo_acta) && !empty($doc->archivo_lista)) and $variable == 1) {
                 $doc->estatus = '3';
                 $doc->save();
-            } 
-           
-            Alert::success('Documentacion cargada', null);
-            return back();
+            }
+
+            return response()->json(['success' => true]);
         } else {
-            Alert::error('Error', 'No se pudo subir el archivo, porfavor intente mas tarde');
-            return back();
+            return response()->json(['success' => false]);
         }
     }
 

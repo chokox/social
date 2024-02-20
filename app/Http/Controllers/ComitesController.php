@@ -10,6 +10,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\IntegrantesComite;
+use Illuminate\Support\Facades\Session;
 
 class ComitesController extends Controller
 {
@@ -37,59 +38,56 @@ class ComitesController extends Controller
     {
         $municipio = CatalogoMunicipio::where('id_municipio', $id)->first();
         $municipio = $municipio->nombre;
-        $edicion='--';
+        $edicion = '--';
         return view('Municipios/registroComite', compact('municipio', 'id', 'edicion'));
     }
 
     public function subirDocumentacion(Request $request, $id)
-{
-    $dato = AcreditacionComite::find($id);
-    $ruta = 'comites/' . now()->year . '/' . $id;
-    $nombreArchivo = null;
+    {
+        $dato = AcreditacionComite::find($id);
+        $ruta = 'comites/' . now()->year . '/' . $id;
+        $nombreArchivo = null;
 
-    if ($request->input('tipo') == 'acta' && ($request->hasFile('archivo_acta') && $request->file('archivo_acta')->isValid())) {
-        $nombreArchivo = $request->file('archivo_acta')->store($ruta, 'public');
-    } elseif ($request->input('tipo') == 'lista' && ($request->hasFile('archivo_lista') && $request->file('archivo_lista')->isValid())) {
-        $nombreArchivo = $request->file('archivo_lista')->store($ruta, 'public');
-    } 
-
-    if (Storage::disk('public')->exists($nombreArchivo)) {
-        if ($request->input('tipo') == 'acta') {
-            $dato->archivo_acta = $nombreArchivo;
-        } elseif ($request->input('tipo') == 'lista') {
-            $dato->archivo_lista = $nombreArchivo;
-        } 
-        $dato->save();
-
-        //VERIFICA SI ESTAN LOS ARCHIVOS DE LOS INTEGRANTES COMPLETOS
-        $resultado = IntegrantesComite::ContarPorComite(now()->year, $id)->get();
-        $variable = 0;
-
-        if (!empty($resultado->id_integrante_comite)) {
-            $todosRellenados = $resultado->every(function ($item) {
-                return $item->archivo_ine !== null &&
-                    $item->archivo_protesta !== null &&
-                    $item->archivo_constancia !== null &&
-                    $item->archivo_fotografia !== null;
-            });
-
-            $variable = $todosRellenados ? 1 : 0;
+        if ($request->input('tipo') == 'acta' && ($request->hasFile('archivo_acta') && $request->file('archivo_acta')->isValid())) {
+            $nombreArchivo = $request->file('archivo_acta')->store($ruta, 'public');
+        } elseif ($request->input('tipo') == 'lista' && ($request->hasFile('archivo_lista') && $request->file('archivo_lista')->isValid())) {
+            $nombreArchivo = $request->file('archivo_lista')->store($ruta, 'public');
         }
 
-        //FIN DE LA VERIFICACION
-        if ((!empty($dato->archivo_acta) && !empty($dato->archivo_lista)) || $variable == 1) {
-            $dato->estatus = '3';
+        if (Storage::disk('public')->exists($nombreArchivo)) {
+            if ($request->input('tipo') == 'acta') {
+                $dato->archivo_acta = $nombreArchivo;
+            } elseif ($request->input('tipo') == 'lista') {
+                $dato->archivo_lista = $nombreArchivo;
+            }
             $dato->save();
-        } elseif (!empty($dato->archivo_acta) && !empty($dato->archivo_lista)) {
-            $dato->estatus = '2';
-            $dato->save();
-        }
 
-        return response()->json(['success' => true, 'message' => 'Documentacion cargada']);
-    } else {
-        return response()->json(['success' => false, 'message' => 'No se pudo subir el archivo, por favor intente mas tarde']);
+            //VERIFICA SI ESTAN LOS ARCHIVOS DE LOS INTEGRANTES COMPLETOS
+            $resultado = IntegrantesComite::ContarPorComite(now()->year, $id)->get();
+            $variable = 0;
+
+            if (!empty($resultado->id_integrante_comite)) {
+                $todosRellenados = $resultado->every(function ($item) {
+                    return $item->archivo_ine !== null && $item->archivo_protesta !== null && $item->archivo_constancia !== null && $item->archivo_fotografia !== null;
+                });
+
+                $variable = $todosRellenados ? 1 : 0;
+            }
+
+            //FIN DE LA VERIFICACION
+            if ((!empty($dato->archivo_acta) && !empty($dato->archivo_lista)) || $variable == 1) {
+                $dato->estatus = '3';
+                $dato->save();
+            } elseif (!empty($dato->archivo_acta) && !empty($dato->archivo_lista)) {
+                $dato->estatus = '2';
+                $dato->save();
+            }
+
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false]);
+        }
     }
-}
 
     public function eliminarDocumentacion($id)
     {
@@ -109,10 +107,9 @@ class ComitesController extends Controller
             Storage::disk('public')->delete($documento->archivo_lista);
             $documento->archivo_lista = null;
         }
-        $documento->estatus = 5 ;
+        $documento->estatus = 5;
 
         $documento->save();
-
 
         Alert::success('Documentacion eliminada', null);
         return back();
@@ -128,23 +125,22 @@ class ComitesController extends Controller
     {
         $registro = new AcreditacionComite();
 
-            $registro->id_catalogo_municipio_fk = $request->input('municipio');
-            $registro->ejercicio = now()->year;
-            $registro->nombramiento = $request->input('nombramiento');
-            $registro->acreditacion = $request->input('acreditacion');
-            $registro->elaboracion_acreditacion = $request->input('elaboracion');
-            $registro->acredito_en = $request->input('se_acredito');
-            $registro->capacito_comite = $request->input('capacito_comite');
-            $registro->id_user_registro_fk = Auth::id();
-            $registro->acta_asamblea = $request->input('acta_asamblea');
-            $registro->lista_asistencia = $request->input('lista_asamblea');
-            $registro->datos_municipio = $request->input('datos_municipio');
-            $registro->estatus = 0;
-            $registro->save();
+        $registro->id_catalogo_municipio_fk = $request->input('municipio');
+        $registro->ejercicio = now()->year;
+        $registro->nombramiento = $request->input('nombramiento');
+        $registro->acreditacion = $request->input('acreditacion');
+        $registro->elaboracion_acreditacion = $request->input('elaboracion');
+        $registro->acredito_en = $request->input('se_acredito');
+        $registro->capacito_comite = $request->input('capacito_comite');
+        $registro->id_user_registro_fk = Auth::id();
+        $registro->acta_asamblea = $request->input('acta_asamblea');
+        $registro->lista_asistencia = $request->input('lista_asamblea');
+        $registro->datos_municipio = $request->input('datos_municipio');
+        $registro->estatus = 0;
+        $registro->save();
 
-            Alert::success('Comite guardado', null);
-            return redirect()->route('comites.index');
-        
+        Alert::success('Comite guardado', null);
+        return redirect()->route('comites.index');
     }
 
     /**
@@ -166,12 +162,11 @@ class ComitesController extends Controller
         $numeroConsecutivo = AcreditacionComite::BuscaEjercicio(now()->year)->count() + 1;
         $numeroConsecutivoFormateado = str_pad($numeroConsecutivo, 3, '0', STR_PAD_LEFT);
 
-        if(is_null($dato->folio_comite))
-        {
+        if (is_null($dato->folio_comite)) {
             $dato->folio_comite = $folioMunicipio . ' ' . $numeroConsecutivoFormateado;
         }
         $dato->id_user_valido_fk = Auth::id();
-        $dato->estatus='4';
+        $dato->estatus = '4';
         $dato->fecha_validado = $request->input('fecha_validacion');
         $dato->save();
 
@@ -200,16 +195,16 @@ class ComitesController extends Controller
         $dato = AcreditacionComite::find($id);
         $municipio = CatalogoMunicipio::where('id_municipio', $dato->id_catalogo_municipio_fk)->first();
         $municipio = $municipio->nombre;
-        $userAtendio=User::where('departamento',1)->get();
+        $userAtendio = User::where('departamento', 1)->get();
         $atendio = User::find($dato->id_user_registro_fk);
         if (empty($atendio)) {
-            $atendio='No atendido';
+            $atendio = 'No atendido';
         } else {
             $atendio = $atendio->name;
         }
         $autorizo = User::find($dato->id_user_valido_fk);
         if (empty($autorizo)) {
-            $autorizo='Sin autorizar';
+            $autorizo = 'Sin autorizar';
         } else {
             $autorizo = $autorizo->name;
         }
@@ -219,11 +214,10 @@ class ComitesController extends Controller
             $idCapacito = 0;
         } else {
             $capacito = $capacito->name;
-            $idCapacito= $dato->id_user_capacito_fk;
+            $idCapacito = $dato->id_user_capacito_fk;
         }
         $edicion = 'edicion';
-        return view('Municipios/registroComite', compact('municipio', 'id', 'edicion','atendio','autorizo','capacito', 'idCapacito'))
-            ->with('dato', $dato)->with('userAtendio', $userAtendio);
+        return view('Municipios/registroComite', compact('municipio', 'id', 'edicion', 'atendio', 'autorizo', 'capacito', 'idCapacito'))->with('dato', $dato)->with('userAtendio', $userAtendio);
     }
 
     /**
