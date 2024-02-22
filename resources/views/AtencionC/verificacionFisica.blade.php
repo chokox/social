@@ -11,18 +11,18 @@
                         </div>
                     </div>
                 </div>
-                
+
 
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                     <form action="{{ route('guardarDireccionFisica') }}" method="post">
                         @csrf
                         <div class=" mb-3">
-                    <label>Oficina</label>
-                    <input type="text" class="form-control form-control-sm" name="oficina" required />
-<br>
-                    <label>No. de módulo o ventanilla</label>
-                    <input type="text" class="form-control form-control-sm" name="num_modulo" required/>
-                </div>
+                            <label>Oficina</label>
+                            <input type="text" class="form-control form-control-sm" name="oficina" required />
+                            <br>
+                            <label>No. de módulo o ventanilla</label>
+                            <input type="text" class="form-control form-control-sm" name="num_modulo" required />
+                        </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"

@@ -40,5 +40,9 @@ class VerificacionFisica extends Model
         // ...
     ];
 
+    public function scopeTraeEncuestas($query,$idp)
+    {
+        return $query->join('users', 'users.id', '=', 'verificacion_fisica.id_user_fk')->where('id_programacion_fk',$idp);
+    }
 
 }

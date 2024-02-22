@@ -804,65 +804,66 @@
         </script>
 
         <script>
-            $(document).ready(function() {
-                // Manejar el evento de cambio para cualquier campo de archivo dentro de un formulario
-                $('form').on('change', 'input[type="file"]', function() {
-                    // Obtener el formulario al que pertenece el campo de archivo
-                    var form = $(this).closest('form');
+    $(document).ready(function() {
+        // Delegación de eventos para manejar el cambio en los campos de archivo dentro de cualquier formulario
+        $(document).on('change', 'form input[type="file"]', function() {
+            // Obtener el formulario al que pertenece el campo de archivo
+            var form = $(this).closest('form');
 
-                    // Obtener el ID del modal asociado al formulario
-                    var modalId = form.data('modal-id');
+            // Obtener el ID del modal asociado al formulario
+            var modalId = form.data('modal-id');
 
-                    // Manejar la subida del archivo utilizando la función handleFormSubmission, pasando el ID del modal
-                    handleFormSubmission(form, modalId);
-                });
-            });
+            // Manejar la subida del archivo utilizando la función handleFormSubmission, pasando el ID del modal
+            handleFormSubmission(form, modalId);
+        });
+    });
 
-            // Función para manejar el envío del formulario a través de AJAX
-            function handleFormSubmission(form, modalId) {
-                var formData = new FormData(form[0]);
+    // Función para manejar el envío del formulario a través de AJAX
+    function handleFormSubmission(form, modalId) {
+        var formData = new FormData(form[0]);
 
-                // Mostrar pantalla de carga
-                $('#' + modalId + ' #overlay').fadeIn();
-                $('#' + modalId + ' #loader').fadeIn();
+        // Mostrar pantalla de carga
+        $('#' + modalId + ' #overlay').fadeIn();
+        $('#' + modalId + ' #loader').fadeIn();
 
-                // Enviar el formulario mediante AJAX
-                $.ajax({
-                    url: form.attr('action'),
-                    type: form.attr('method'),
-
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    dataType: 'json',
-                    success: function(response) {
-                        // Manejar la respuesta JSON aquí
-                        if (response.success) {
-                            // Mostrar el mensaje en el modal correspondiente
-                            $('#' + modalId + ' #flash-message').text(
-                                '¡El archivo se cargó correctamente! Recarga la página para visualizar los cambios.'
-                                );
-                            $('#' + modalId + ' #bonito').show();
-                        } else {
-                            $('#' + modalId + ' #flash-message').text(
-                                'Ocurrió un error al tratar de cargar el archivo, por favor intente más tarde.');
-                            $('#' + modalId + ' #bonito').show();
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        // Manejar errores de AJAX si es necesario
-                    },
-                    complete: function() {
-                        // Ocultar la pantalla de carga
-                        $('#' + modalId + ' #overlay').fadeOut();
-                        $('#' + modalId + ' #loader').fadeOut();
-                        // Ocultar el mensaje flash después de 3 segundos
-                        setTimeout(function() {
-                            $('#' + modalId + ' #flash-message').empty();
-                            $('#' + modalId + ' #bonito').hide();
-                        }, 3000);
-                    }
-                });
+        // Enviar el formulario mediante AJAX
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(response) {
+                // Manejar la respuesta JSON aquí
+                if (response.success) {
+                    // Mostrar el mensaje en el modal correspondiente
+                    $('#' + modalId + ' #flash-message').text(
+                        '¡El archivo se cargó correctamente! Recarga la página para visualizar los cambios.'
+                    );
+                    $('#' + modalId + ' #bonito').show();
+                } else {
+                    $('#' + modalId + ' #flash-message').text(
+                        'Ocurrió un error al tratar de cargar el archivo, por favor intente más tarde.'
+                    );
+                    $('#' + modalId + ' #bonito').show();
+                }
+            },
+            error: function(xhr, status, error) {
+                // Manejar errores de AJAX si es necesario
+            },
+            complete: function() {
+                // Ocultar la pantalla de carga
+                $('#' + modalId + ' #overlay').fadeOut();
+                $('#' + modalId + ' #loader').fadeOut();
+                // Ocultar el mensaje flash después de 3 segundos
+                setTimeout(function() {
+                    $('#' + modalId + ' #flash-message').empty();
+                    $('#' + modalId + ' #bonito').hide();
+                }, 3000);
             }
-        </script>
+        });
+    }
+</script>
+
     @endsection

@@ -58,7 +58,7 @@
                                                                 <a title="Editar" type="button" class="btn btn-primary"
                                                                 data-bs-toggle="modal"
                                                                 data-bs-target="#modalEditarProgramacion{{ $item['id_programacion'] }}">
-                                                                <i class="ri-file-edit-line"></i>
+                                                                <i class="ri-file-edit-fill"></i>
                                                             </a>
                                                             <form
                                                                 action="{{ route('programacion_evaluaciones.destroy', $item['id_programacion']) }}"
@@ -71,11 +71,18 @@
                                                             </form>
                                                             @endif
                                                             @if($item['fecha_fin'] && now()->gt($item['fecha_fin']))
+                                                            <a title="Encuestas EPM" href="{{ route('programacion_evaluaciones.show', '1' . $item['id_programacion']) }}" type="button" class="btn btn-primary">
+                                                                <i class="ri-survey-line"></i>
+                                                            </a>
                                                              <a title="Resultados EPM" type="button" class="btn btn-primary">
-                                                                <i class=" ri-bar-chart-2-fill"></i>
+                                                                <i class=" ri-bar-chart-2-line"></i>
                                                             </a>
                                                             <a title="Resultados VF" href="{{ route('resultados_verificacion', $item['id_programacion']) }}" type="button" class="btn btn-primary">
                                                                 <i class="ri-pie-chart-fill"></i>
+                                                            </a>
+                                                            
+                                                            <a title="Encuestas VF" href="{{ route('programacion_evaluaciones.show', '2' .$item['id_programacion']) }}" type="button" class="btn btn-primary">
+                                                                <i class="ri-survey-fill"></i>
                                                             </a>
                                                             @endif
                                                         </td>

@@ -227,9 +227,9 @@
                                                                                     <td>Acta de asamblea</td>
                                                                                     @if (empty($mun->archivo_acta))
                                                                                         <td>
-                                                                                            <form id="form_acta"
+                                                                                            <form id="form_acta_{{ $mun->id_acreditacion }}"
                                                                                                 action="{{ route('CSubirDoc', $mun->id_acreditacion) }}"
-                                                                                                method="POST"
+                                                                                                method="POST" data-modal-id="bs-example-modal-lg-{{ $mun->id_acreditacion }}"
                                                                                                 enctype="multipart/form-data"
                                                                                                 style="display: inline-block; vertical-align: middle;">
                                                                                                 @csrf
@@ -276,9 +276,9 @@
                                                                                     <td>Lista de asistencia</td>
                                                                                     @if (empty($mun->archivo_lista))
                                                                                         <td>
-                                                                                            <form id="form_lista"
+                                                                                            <form id="form_lista_{{ $mun->id_acreditacion }}"
                                                                                                 action="{{ route('CSubirDoc', $mun->id_acreditacion) }}"
-                                                                                                method="POST"
+                                                                                                method="POST" data-modal-id="bs-example-modal-lg-{{ $mun->id_acreditacion }}"
                                                                                                 enctype="multipart/form-data"
                                                                                                 style="display: inline-block; vertical-align: middle;">
                                                                                                 @csrf
@@ -385,7 +385,7 @@
 
     <!-- Agrega las bibliotecas para exportar a Excel y PDF -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    {{-- <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.flash.min.js"></script> --}}
+  <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.flash.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script> 
 
@@ -423,67 +423,67 @@
 
     
     <script>
-        $(document).ready(function() {
-            // Función para manejar el envío del formulario
-            function handleFormSubmission(formSelector) {
-                var formData = new FormData($(formSelector)[0]);
+    $(document).ready(function() {
+        // Delegación de eventos para manejar el cambio en los campos de archivo dentro de cualquier formulario
+        $(document).on('change', 'form[id^="form_"] input[type="file"]', function() {
+            // Obtener el formulario al que pertenece el campo de archivo
+            var form = $(this).closest('form');
 
-                // Mostrar pantalla de carga
-                $('#overlay').fadeIn();
-                $('#loader').fadeIn();
+            // Obtener el ID del modal asociado al formulario
+            var modalId = form.data('modal-id');
 
-                // Enviar el formulario mediante AJAX
-                $.ajax({
-                    url: $(formSelector).attr('action'),
-                    type: $(formSelector).attr('method'),
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    dataType: 'json',
-                    success: function(response) {
-                        // Manejar la respuesta JSON aquí
-                        if (response.success) {
-                            // Mostrar el mensaje en el modal
-                            $('#flash-message').text(
-                                '¡El archivo se cargó correctamente! Recarga la página para visualizar los cambios.'
-                            );
-                            $('#bonito').show();
-                            $('#bs-example-modal-lg').modal('show');
-                        } else {
-                            $('#flash-message').text(
-                                'Ocurrió un error al tratar de cargar el archivo, por favor intente más tarde.'
-                            );
-                            $('#bonito').show();
-                            $('#bs-example-modal-lg').modal('show');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-
-                    },
-                    complete: function() {
-                        $('#overlay').fadeOut();
-                        $('#loader').fadeOut();
-                        // Ocultar el mensaje flash después de 3 segundos
-                        setTimeout(function() {
-                            $('#flash-message').empty();
-                            $('#bonito').hide();
-                        }, 3000);
-                    }
-                });
-            }
-
-            // Al seleccionar un archivo para el formulario acta, enviar el formulario
-            $('#archivo_acta').change(function() {
-                handleFormSubmission('#form_acta');
-            });
-
-            // Al seleccionar un archivo para el formulario lista, enviar el formulario
-            $('#archivo_lista').change(function() {
-                handleFormSubmission('#form_lista');
-            });
+            // Manejar la subida del archivo utilizando la función handleFormSubmission, pasando el ID del modal
+            handleFormSubmission(form, modalId);
         });
-    </script>
+    });
 
+    // Función para manejar el envío del formulario a través de AJAX
+    function handleFormSubmission(form, modalId) {
+        var formData = new FormData(form[0]);
+
+        // Mostrar pantalla de carga
+        $('#' + modalId + ' #overlay').fadeIn();
+        $('#' + modalId + ' #loader').fadeIn();
+
+        // Enviar el formulario mediante AJAX
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(response) {
+                // Manejar la respuesta JSON aquí
+                if (response.success) {
+                    // Mostrar el mensaje en el modal correspondiente
+                    $('#' + modalId + ' #flash-message').text(
+                        '¡El archivo se cargó correctamente! Recarga la página para visualizar los cambios.'
+                    );
+                    $('#' + modalId + ' #bonito').show();
+                } else {
+                    $('#' + modalId + ' #flash-message').text(
+                        'Ocurrió un error al tratar de cargar el archivo, por favor intente más tarde.'
+                    );
+                    $('#' + modalId + ' #bonito').show();
+                }
+            },
+            error: function(xhr, status, error) {
+                // Manejar errores de AJAX si es necesario
+            },
+            complete: function() {
+                // Ocultar la pantalla de carga
+                $('#' + modalId + ' #overlay').fadeOut();
+                $('#' + modalId + ' #loader').fadeOut();
+                // Ocultar el mensaje flash después de 3 segundos
+                setTimeout(function() {
+                    $('#' + modalId + ' #flash-message').empty();
+                    $('#' + modalId + ' #bonito').hide();
+                }, 3000);
+            }
+        });
+    }
+</script>
 
 
 @endsection

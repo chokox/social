@@ -18,16 +18,16 @@
     <!-- Datatables css -->
     <link href="{{ asset('vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet"
         type="text/css" />
-    <link href="{{ asset('vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet"
+    {{-- <link href="{{ asset('vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet"
         type="text/css" />
-    <link href="{{ asset('vendor/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css') }}"
+     <link href="{{ asset('vendor/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css') }}"
         rel="stylesheet" type="text/css" />
     <link href="{{ asset('vendor/datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5.min.css') }}"
         rel="stylesheet" type="text/css" />
     <link href="{{ asset('vendor/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css') }}" rel="stylesheet"
         type="text/css" />
     <link href="{{ asset('vendor/datatables.net-select-bs5/css/select.bootstrap5.min.css') }}" rel="stylesheet"
-        type="text/css" />
+        type="text/css" /> --}}
 
     <!-- App css -->
     <link href="{{ asset('css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
@@ -53,8 +53,7 @@
                                 <img src="{{ asset('imagenes/logoCSNEW.png') }}" style="height: 65px;" alt="logo">
                             </span>
                             <span class="logo-sm">
-                                <img src="{{ asset('imagenes/logoCSNEW.png') }}" style="height: 65px;"
-                                    alt="small logo">
+                                <img src="{{ asset('imagenes/logoCSNEW.png') }}" style="height: 65px;" alt="small logo">
                             </span>
                         </a>
 
@@ -231,30 +230,30 @@
     <script src="{{ asset('js/vendor.min.js') }}"></script>
 
     <!-- Code Highlight js -->
-    <script src="{{ asset('vendor/highlightjs/highlight.pack.min.js') }}"></script>
+    {{-- <script src="{{ asset('vendor/highlightjs/highlight.pack.min.js') }}"></script>
     <script src="{{ asset('vendor/clipboard/clipboard.min.js') }}"></script>
-    <script src="{{ asset('js/hyper-syntax.js') }}"></script>
+    <script src="{{ asset('js/hyper-syntax.js') }}"></script> --}}
 
     <!-- Datatables js -->
     <script src="{{ asset('vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables.net-fixedcolumns-bs5/js/fixedColumns.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script>
     <script src="{{ asset('vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('vendor/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    {{-- <script src="{{ asset('vendor/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('vendor/datatables.net-fixedcolumns-bs5/js/fixedColumns.bootstrap5.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('vendor/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('vendor/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>  --}}
 
     <!-- Datatable Demo Aapp js -->
-    <script src="{{ asset('js/pages/demo.datatable-init.js') }}"></script> 
+    {{-- <script src="{{ asset('js/pages/demo.datatable-init.js') }}"></script> --}}
 
     <!-- App js -->
-    <script src="{{ asset('js/app.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/app.min.js') }}"></script> --}}
 
 
     @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
