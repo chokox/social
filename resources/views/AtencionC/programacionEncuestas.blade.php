@@ -74,7 +74,7 @@
                                                             <a title="Encuestas EPM" href="{{ route('programacion_evaluaciones.show', '1' . $item['id_programacion']) }}" type="button" class="btn btn-primary">
                                                                 <i class="ri-survey-line"></i>
                                                             </a>
-                                                             <a title="Resultados EPM" type="button" class="btn btn-primary">
+                                                             <a title="Resultados EPM" href="{{route('programacion_evaluaciones.show', '1' .$item['id_programacion']) }}" type="button" class="btn btn-primary">
                                                                 <i class=" ri-bar-chart-2-line"></i>
                                                             </a>
                                                             <a title="Resultados VF" href="{{ route('resultados_verificacion', $item['id_programacion']) }}" type="button" class="btn btn-primary">

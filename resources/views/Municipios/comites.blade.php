@@ -420,8 +420,6 @@
 
         });
     </script>
-
-    
     <script>
     $(document).ready(function() {
         // Delegación de eventos para manejar el cambio en los campos de archivo dentro de cualquier formulario

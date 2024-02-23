@@ -12,7 +12,6 @@
                     </div>
                 </div>
 
-
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                     <form action="{{ route('guardarDireccionFisica') }}" method="post">
                         @csrf
