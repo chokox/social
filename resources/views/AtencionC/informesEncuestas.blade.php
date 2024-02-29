@@ -32,7 +32,7 @@
                                     </div><br>
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="datatable-municipios-preview">
-                                        <table class="table mb-0">
+                                        <table id="basic-datatable-comites" class="table w-100">
                                             <thead class="table-dark">
                                                 <tr>
                                                     <th>Pregunta</th>

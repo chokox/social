@@ -8,7 +8,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Fechas de intervención en Dependencias y Entidades {{ \Carbon\Carbon::now()->year }}</h4>
+                            <h4 class="page-title">Fechas de intervención en Dependencias y Entidades
+                                {{ \Carbon\Carbon::now()->year }}</h4>
                         </div>
                     </div>
                 </div>
@@ -52,22 +53,23 @@
                                                         <td>{{ $item['fecha_inicio'] }}</td>
                                                         <td>{{ $item['fecha_fin'] }}</td>
                                                         <td>
-                                                            @if($item['fecha_fin'] && now()->lt($item['fecha_fin']))
+                                                            @if ($item['fecha_fin'] && now()->lt($item['fecha_fin']))
                                                                 <a title="Editar" type="button" class="btn btn-primary"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#modalEditarProgramacion{{ $item['id_programacion'] }}">
-                                                                <i class="ri-file-edit-fill"></i>
-                                                            </a>
-                                                            <form
-                                                                action="{{ route('programacion_evaluaciones.destroy', $item['id_programacion']) }}"
-                                                                method="POST" style="display: inline;">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="btn btn-primary">
-                                                                    <i class="ri-delete-bin-2-fill"></i>
-                                                                </button>
-                                                            </form>
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#modalEditarProgramacion{{ $item['id_programacion'] }}">
+                                                                    <i class="ri-file-edit-fill"></i>
+                                                                </a>
+                                                                <form
+                                                                    action="{{ route('programacion_evaluaciones.destroy', $item['id_programacion']) }}"
+                                                                    method="POST" style="display: inline;">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-primary">
+                                                                        <i class="ri-delete-bin-2-fill"></i>
+                                                                    </button>
+                                                                </form>
                                                             @endif
+<<<<<<< Updated upstream
                                                             @if($item['fecha_fin'] && now()->gt($item['fecha_fin']))
 <<<<<<< Updated upstream
                                                              <a title="Resultados EPM" type="button" class="btn btn-primary">
@@ -82,15 +84,33 @@
                                                             <a title="Resultados VF" href="{{ route('resultados_verificacion', $item['id_programacion']) }}" type="button" class="btn btn-primary">
                                                                 <i class="ri-pie-chart-fill"></i>
                                                             </a>
+=======
+                                                            @if ($item['fecha_fin'] && now()->gt($item['fecha_fin']))
+                                                                <a title="Resultados EPM" type="button"
+                                                                    class="btn btn-primary">
+                                                                    <i class=" ri-bar-chart-2-line"></i>
+                                                                </a>
+                                                                <a title="Resultados VF"
+                                                                    href="{{ route('resultados_verificacion', $item['id_programacion']) }}"
+                                                                    type="button" class="btn btn-primary">
+                                                                    <i class="ri-pie-chart-fill"></i>
+                                                                </a>
+>>>>>>> Stashed changes
 
-                                                            @if($condition)
-                                                                
-                                                            @else
-                                                                <a title="Informe" data-bs-toggle="modal"
-                                                                data-bs-target="#modalEditarProgramacion{{ $item['id_programacion'] }}" type="button" class="btn btn-primary">
-                                                                <i class="ri-task-line"></i>
-                                                            </a>
-                                                            @endif
+                                                                @if (is_null($item['informe']))
+                                                                    <a title="Subir Informe" data-bs-toggle="modal"
+                                                                        data-bs-target="#modalEditarProgramacion{{ $item['id_programacion'] }}"
+                                                                        type="button" class="btn btn-primary">
+                                                                        <i class="ri-task-line"></i>
+                                                                    </a>
+                                                                @else
+                                                                    <a title="Descargar Informe"
+                                                                        href="{{ asset('storage/' . $item['informe']) }}"
+                                                                        target="_blank" type="button"
+                                                                        class="btn btn-primary">
+                                                                        <i class="ri-task-line"></i>
+                                                                    </a>
+                                                                @endif
                                                             @endif
                                                         </td>
                                                     </tr>
@@ -106,7 +126,8 @@
                                                                         data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <form method="POST"
-                                                                    action="{{ route('subirInforme', $item['id_programacion']) }}" enctype="multipart/form-data">
+                                                                    action="{{ route('subirInforme', $item['id_programacion']) }}"
+                                                                    enctype="multipart/form-data">
                                                                     @csrf
                                                                     @method('PUT')
                                                                     <div class="modal-body">
@@ -137,7 +158,8 @@
                                                                     <h4 class="modal-title"> Editar Programacion de encuesta
                                                                         a {{ $item['nombre_dependecia_programa'] }} </h4>
                                                                     <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
                                                                 </div>
                                                                 <form method="POST"
                                                                     action="{{ route('programacion_evaluaciones.update', $item['id_programacion']) }}">
