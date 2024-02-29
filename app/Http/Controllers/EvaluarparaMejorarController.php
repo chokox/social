@@ -72,7 +72,7 @@ class EvaluarparaMejorarController extends Controller
         $total = EvaluarparaMejorar::where('id_programacion_fk', $id)->count();
 
         if ($total > 0) {
-            return view('AtencionC/informeEncuestasEpM', compact('id', 'total'));
+            return view('AtencionC/informesEncuestasEpM', compact('id', 'total'));
         } else {
             Alert::error('No se tiene registrada ninguna encuesta aun.', null);
             return back();

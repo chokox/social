@@ -19430,10 +19430,15 @@ html[data-theme=dark] .text-secondary {
 
 .hero-section:after {
     content: " ";
+<<<<<<< Updated upstream
    /*  background-image: -webkit-gradient(linear, left top, left bottom, from(#818181), to(#818181));
     background-image: linear-gradient(to bottom, #818181, #818181); */
     background-image: -webkit-gradient(linear, left top, left bottom, from(#818181), to(#818181));
         background-image: linear-gradient(to bottom, #818181, #818181);
+=======
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#8E418D), to(#8E418D));
+    background-image: linear-gradient(to bottom, #8E418D, #8E418D);
+>>>>>>> Stashed changes
     position: absolute;
     top: -400px;
     right: 0;
