@@ -71,11 +71,12 @@ class ProgramacionEvaluacionesController extends Controller
         $primerDigito = substr($id, 0, 1);
         $restoCadena = substr($id, 1);
         if ($primerDigito == 1) {
-            //pendiente
+            $datos= EvaluarparaMejorar::TraeEncuestas($restoCadena)->get();
         } else {
             $datos = VerificacionFisica::TraeEncuestas($restoCadena)->get();
             return view('AtencionC/verEncuestas')->with('datos', $datos);
         }
+        return view('AtencionC/verEncuestas')->with('datos', $datos);
     }
 
     /**
