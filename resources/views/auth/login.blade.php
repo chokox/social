@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" data-layout-mode="detached" data-topbar-color="dark" data-menu-color="light" data-sidenav-user="true">
 <style>
-    img {
+    /* img {
         filter: grayscale(100%) brightness(500%);
+        padding: 5px;
+    } */
+
+    img {
+        filter:  brightness(500%);
         padding: 5px;
     }
 </style>
@@ -27,7 +32,7 @@
     <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
-<body class="authentication-bg" style="background-image: url('img/escudo-greca.png');">
+<body class="authentication-bg" style="background-image: url('imagenes/bg-pattern.png');">
     <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5" >
         <div class="container" >
             <div class="row justify-content-center">

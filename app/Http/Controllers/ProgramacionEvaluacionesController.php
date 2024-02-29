@@ -7,6 +7,7 @@ use App\Models\ProgramacionEvaluacione;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
 use App\Models\VerificacionFisica;
+use Illuminate\Support\Facades\Storage;
 
 class ProgramacionEvaluacionesController extends Controller
 {
@@ -72,7 +73,7 @@ class ProgramacionEvaluacionesController extends Controller
         if ($primerDigito == 1) {
             //pendiente
         } else {
-            $datos= VerificacionFisica::TraeEncuestas($restoCadena)->get();
+            $datos = VerificacionFisica::TraeEncuestas($restoCadena)->get();
             return view('AtencionC/verEncuestas')->with('datos', $datos);
         }
     }
@@ -88,6 +89,28 @@ class ProgramacionEvaluacionesController extends Controller
         //
     }
 
+    public function subirInforme(Request $request, $id)
+    {
+        $registro = ProgramacionEvaluacione::find($id);
+
+        if ($request->hasFile('archivo_informe') && $request->file('archivo_informe')->isValid()) {
+            $ruta = $request->file('archivo_informe')->store('Informes evaluaciones/' . now()->year, 'public');
+
+            if (Storage::disk('public')->exists($ruta)) {
+                $registro->informe = $ruta;
+                $registro->save();
+                Alert::success('Informe cargado correctamente', null);
+                return back();
+            } else {
+                Alert::error('Tuvimos un error al cargar el informe, porfavor intenta nuevamente', null);
+                return back();
+            }
+        } else {
+            Alert::error('error', 'No se ha seleccionado ningún archivo válido.');
+            return back();
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -101,7 +124,6 @@ class ProgramacionEvaluacionesController extends Controller
         $registro->fecha_inicio = $request->input('fecha_inicio');
         $registro->fecha_fin = $request->input('fecha_fin');
         $registro->tipo_intervencion = $request->input('etapa');
-        $registro->observaciones = $request->input('observaciones');
         $registro->save();
 
         Alert::success('Programacion de evaluación editada correctamente', null);

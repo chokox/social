@@ -21,10 +21,16 @@ class WelcomeController extends Controller
                 'visita' => 1, // Inicializa el contador en 1
             ]);
             Session::put('visita_registrada', true);
+            
         }
-
         $contador = Visita::count();
-
         return view('welcome', compact('contador'));
+    }
+
+
+    public function veda()
+    {
+        alert()->html('Contenido no disponible', "<img src='/imagenes/veda.svg' width='100%'' height='100%''>", null)->persistent('Aceptar');
+        return back();
     }
 }

@@ -253,7 +253,7 @@
     {{-- <script src="{{ asset('js/pages/demo.datatable-init.js') }}"></script> --}}
 
     <!-- App js -->
-    {{-- <script src="{{ asset('js/app.min.js') }}"></script> --}}
+     <script src="{{ asset('js/app.min.js') }}"></script> 
 
 
     @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])

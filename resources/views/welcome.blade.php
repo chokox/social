@@ -1,22 +1,35 @@
 @extends('micrositio.appmicrositio')
 @section('content')
+
+<!-- Modal veda -->
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="{{ asset('/imagenes/veda.svg') }}" alt="Veda" style="width: 100%; height: 100%;">
+            </div>
+        </div>
+    </div>
+</div>
+
+     <!-- fin de modal -->
     <section class="row mt-3 mb-3">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img class="d-block img-fluid" src="{{ asset('imagenes/slide1.png') }}" alt="First slide">
+                        <img class="d-block img-fluid" src="{{ asset('imagenes/slide1.png') }}" style="filter: grayscale(100%) " alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="{{ asset('imagenes/slide2.png') }}" alt="Second slide">
+                        <img class="d-block img-fluid" src="{{ asset('imagenes/slide2.png') }}" style="filter: grayscale(100%) " alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="{{ asset('imagenes/slide3.png') }}" alt="Third slide">
+                        <img class="d-block img-fluid" src="{{ asset('imagenes/slide3.png') }}" style="filter: grayscale(100%) " alt="Third slide">
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block img-fluid" src="{{ asset('imagenes/slide4.jpg') }}" alt="fourth slide">
-                    </div>
+                   {{--  <div class="carousel-item">
+                        <img class="d-block img-fluid" src="{{ asset('imagenes/slide4.jpg') }}" style="filter: grayscale(100%) " alt="fourth slide">
+                    </div> --}}
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -37,7 +50,7 @@
             <div class="container">
                 <div class="row mt-2 py-5 align-items-center">
                     <div class="col-lg-5 col-md-6">
-                        <img src="{{asset('imagenes/logo_social.png')}}" class="img-fluid" alt="">
+                        <img src="{{asset('imagenes/logo_social.png')}}" style="filter: grayscale(100%)" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 offset-md-1 col-md-5">
                     <div class="text-center">
@@ -231,17 +244,33 @@
                         <p></p>
                         <p></p>
                         <p></p>
-                        <embed src="files/GUIA2023.pdf#toolbar=1&navpanes=0&scrollbar=1" type="application/pdf"
-                            width="100%" height="500px" />
+                        <div style="position: relative;">
+    <embed src="files/GUIA2023.pdf#toolbar=1&navpanes=0&scrollbar=1" type="application/pdf" width="100%" height="500px" style="filter: blur(5px);" />
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 255, 255, 0.5); padding: 20px;">
+        <img src="{{ asset('/imagenes/veda.svg') }}" alt="Veda" style="width: 70%; height: 70%;">
+    </div>
+</div>
+
 
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    
      <!-- Contador de visitas -->
                 <div class="text-center">
                      Eres la visita numero: {{$contador}}
                 </div>
                 <!-- Fin Contador de visitas -->
+
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                  <script>
+        // Script para mostrar el modal automáticamente al cargar la página
+        $(document).ready(function(){
+            $('#myModal').modal('show');
+        });
+    </script>
 @endsection

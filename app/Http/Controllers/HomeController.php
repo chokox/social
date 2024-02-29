@@ -24,16 +24,12 @@ class HomeController extends Controller
     public function index()
     {
         $defaultYear = date('Y');
-        //$defaultYear = '2023';
         $comitesAcreditados = AcreditacionComite::comitesAcreditados($defaultYear, 1)->first(); 
         $comitesNoAcreditados = AcreditacionComite::comitesAcreditados($defaultYear, 2)->first(); 
         $integrantesTotal = IntegrantesComite::IntegrantesTotal($defaultYear)->first();
         $comites = AcreditacionComite::Comites($defaultYear)->get();
         $contralores = IntegrantesComite::Contralores($defaultYear)->get();
 
-       
-        //$sqlQuery = $comites->toSql();
-        //dd ($sqlQuery); 
         return view('home', compact('comitesAcreditados','comitesNoAcreditados','integrantesTotal','comites','contralores'));
     }
 }

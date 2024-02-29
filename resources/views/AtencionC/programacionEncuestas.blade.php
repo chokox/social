@@ -40,7 +40,6 @@
                                                     <th>Etapa</th>
                                                     <th>Fecha inicio</th>
                                                     <th>Fecha Finalizacion</th>
-                                                    <th>Observaciones</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
@@ -52,7 +51,6 @@
                                                         <td>{{ $item['tipo_intervencion'] }}° etapa</td>
                                                         <td>{{ $item['fecha_inicio'] }}</td>
                                                         <td>{{ $item['fecha_fin'] }}</td>
-                                                        <td>{{ $item['observaciones'] }}</td>
                                                         <td>
                                                             @if($item['fecha_fin'] && now()->lt($item['fecha_fin']))
                                                                 <a title="Editar" type="button" class="btn btn-primary"
@@ -71,22 +69,58 @@
                                                             </form>
                                                             @endif
                                                             @if($item['fecha_fin'] && now()->gt($item['fecha_fin']))
-                                                            <a title="Encuestas EPM" href="{{ route('programacion_evaluaciones.show', '1' . $item['id_programacion']) }}" type="button" class="btn btn-primary">
-                                                                <i class="ri-survey-line"></i>
-                                                            </a>
                                                              <a title="Resultados EPM" type="button" class="btn btn-primary">
                                                                 <i class=" ri-bar-chart-2-line"></i>
                                                             </a>
                                                             <a title="Resultados VF" href="{{ route('resultados_verificacion', $item['id_programacion']) }}" type="button" class="btn btn-primary">
                                                                 <i class="ri-pie-chart-fill"></i>
                                                             </a>
-                                                            
-                                                            <a title="Encuestas VF" href="{{ route('programacion_evaluaciones.show', '2' .$item['id_programacion']) }}" type="button" class="btn btn-primary">
-                                                                <i class="ri-survey-fill"></i>
+
+                                                            @if($condition)
+                                                                
+                                                            @else
+                                                                <a title="Informe" data-bs-toggle="modal"
+                                                                data-bs-target="#modalEditarProgramacion{{ $item['id_programacion'] }}" type="button" class="btn btn-primary">
+                                                                <i class="ri-task-line"></i>
                                                             </a>
+                                                            @endif
                                                             @endif
                                                         </td>
                                                     </tr>
+                                                    <!--modal informe -->
+                                                    <div id="modalEditarProgramacion{{ $item['id_programacion'] }}"
+                                                        class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title"> Informe
+                                                                        de resultados </h4>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <form method="POST"
+                                                                    action="{{ route('subirInforme', $item['id_programacion']) }}" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    @method('PUT')
+                                                                    <div class="modal-body">
+                                                                        <div class=" mb-3">
+                                                                            <label>Informe</label>
+                                                                            <input type="file"
+                                                                                class="form-control form-control-sm"
+                                                                                name="archivo_informe" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-light"
+                                                                            data-bs-dismiss="modal">Cerrar</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary">Guardar</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--fin modal informe -->
                                                     <!--modal editar -->
                                                     <div id="modalEditarProgramacion{{ $item['id_programacion'] }}"
                                                         class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -196,10 +230,6 @@
                                                                 <option value="1">Primera etapa</option>
                                                                 <option value="2">Segunda etapa</option>
                                                             </select>
-                                                        </div>
-                                                        <div class=" mb-3">
-                                                            <label>Observaciones</label>
-                                                            <textarea name="observaciones" class="form-control form-control-sm"></textarea>
                                                         </div>
 
                                                     </div>

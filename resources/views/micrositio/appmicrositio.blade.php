@@ -139,19 +139,32 @@
                             <a target="_blank" href="{{ route('buzones') }}" class="dropdown-item">¿Qué es?</a>
                             <a target="_blank" href="{{ asset('files/BUZONES DE ATENCION CIUDADANA.pdf') }}"
                                 class="dropdown-item">información</a>
-                            <a target="_blank"
+                            {{-- <a target="_blank"
                                 href="{{ asset('files/RESULTADOS BUZONES DE ATENCION CIUDADANA.pdf') }}"
+                                class="dropdown-item">Resultados buzones de atención ciudadana
+                                2023</a> --}}
+                                <a 
+                                href="{{ route('veda') }}"
                                 class="dropdown-item">Resultados buzones de atención ciudadana
                                 2023</a>
                     </li>
-                    <li class="nav-item dropdown">
+                   {{--  <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" target="_blank"
                             href="{{ asset('files/RESULTADOS EVALUAR PARA MEJORAR.pdf') }}" role="button"
                             aria-haspopup="true" aria-expanded="false">
                             <strong>Resultados 2023</strong>
                             <div class="arrow-down"></div>
                         </a>
+                    </li> --}}
                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" 
+                            href="{{ route('veda') }}" role="button"
+                            aria-haspopup="true" aria-expanded="false">
+                            <strong>Resultados 2023</strong>
+                            <div class="arrow-down"></div>
+                        </a>
+                    </li>
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <strong>Presupuesto ciudadano</strong>
@@ -160,6 +173,18 @@
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
                             <a target="_blank" href="{{ route('presupuesto2023') }}"class="dropdown-item">2023</a>
                             <a href="{{ route('presupuesto2022') }}" class="dropdown-item">2022</a>
+                        </div>
+                    </li> --}}
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <strong>Presupuesto ciudadano</strong>
+                            <div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
+                            <a  href="{{ route('veda') }}"class="dropdown-item">2023</a>
+                            <a href="{{route('veda') }}" class="dropdown-item">2022</a>
                         </div>
                     </li>
                 
@@ -193,7 +218,7 @@
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col-2">
-                    <img src="{{ asset('imagenes/escudooax.png') }}" alt="logo" class="logo-dark"
+                    <img src="{{ asset('imagenes/escudooax.png') }}" style="filter:  brightness(200%); "  alt="logo" class="logo-dark"
                         height="40" />
                     <br class="text-muted mt-4">Direccion de Contraloria Social
 

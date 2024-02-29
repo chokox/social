@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {return view('welcome');});
 Route::get('/', 'App\Http\Controllers\WelcomeController@incrementarContador')->name('inicio');
+Route::get('/veda', 'App\Http\Controllers\WelcomeController@veda')->name('veda');
 
 //RUTA DE BUZON CIUDADANO SIN AUTENTIFICACION
 Route::resource('/buzones_ciudadanos', 'App\Http\Controllers\ComentariosBuzonesController');
@@ -64,6 +65,7 @@ Route::middleware(['auth', 'departamento:2'])->group(function () {
     Route::get('resultados/{id}', 'App\Http\Controllers\VerificacionFisicaController@ResultadosEncuesta')->name('resultados_verificacion');
     Route::resource('/programacion_evaluaciones', 'App\Http\Controllers\ProgramacionEvaluacionesController');
     Route::get('/evaluarparamejorar', 'App\Http\Controllers\EvaluarparaMejorarController@viewEvaluarparaMejorar')->name('guardarEvaluarparaMejorar');
+    Route::put('/subir_informe/{id}', 'App\Http\Controllers\ProgramacionEvaluacionesController@subirInforme')->name('subirInforme');
 });
 
 // RUTAS GENERALES PARA USUARIOS AUTENTICADOS

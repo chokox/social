@@ -114,10 +114,92 @@ class VerificacionFisicaController extends Controller
 
     public function ResultadosEncuesta($id)
     {
-        $total = VerificacionFisica::where('id_programacion_fk', $id)->count();
+        $encuestas = VerificacionFisica::where('id_programacion_fk', $id)->get();
+        $total = $encuestas->count();
+        $si = 0;
+        foreach ($encuestas as $cc) {
+            if ($cc->info1 == 'SI') {
+                $si++;
+            }
+            if ($cc->info2 == 'SI') {
+                $si++;
+            }
+            if ($cc->info3 == 'SI') {
+                $si++;
+            }
+            if ($cc->info4 == 'SI') {
+                $si++;
+            }
+            if ($cc->info5 == 'SI') {
+                $si++;
+            }
+            if ($cc->info6 == 'SI') {
+                $si++;
+            }
+            if ($cc->info7 == 'SI') {
+                $si++;
+            }
+            if ($cc->info8 == 'SI') {
+                $si++;
+            }
+            if ($cc->info9 == 'SI') {
+                $si++;
+            }
+            if ($cc->info10 == 'SI') {
+                $si++;
+            }
+            if ($cc->info11 == 'SI') {
+                $si++;
+            }
+            if ($cc->info12 == 'SI') {
+                $si++;
+            }
+            if ($cc->info13 == 'NO') {
+                $si++;
+            }
+            if ($cc->info14 == 'NO') {
+                $si++;
+            }
+            if ($cc->info15 == 'NO') {
+                $si++;
+            }
+            if ($cc->info16 == 'NO') {
+                $si++;
+            }
+            if ($cc->meca1 == 'SI') {
+                $si++;
+            }
+            if ($cc->access1 == 'SI') {
+                $si++;
+            }
+            if ($cc->access2 == 'SI') {
+                $si++;
+            }
+            if ($cc->access3 == 'SI') {
+                $si++;
+            }
+            if ($cc->access4 == 'SI') {
+                $si++;
+            }
+            if ($cc->access5 == 'SI') {
+                $si++;
+            }
+            if ($cc->infra1 == 'SI') {
+                $si++;
+            }
+            if ($cc->infra2 == 'SI') {
+                $si++;
+            }
+        }
 
+        $totaciertos = $total * 24; 
+        $promedio = intval(round(($si*10)/ $totaciertos));
+        //0-4 no satisfactorio
+        //5-7 regular
+        //8-10 satisfactorio
+        
         if ($total > 0) {
-            return view('AtencionC/informesEncuestas', compact('id', 'total'));
+            return view('AtencionC/informesEncuestas', compact('id', 'total', 'promedio'));
         } else {
             Alert::error('No se tiene registrada ninguna encuesta aun.', null);
             return back();
