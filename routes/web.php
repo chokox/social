@@ -65,6 +65,8 @@ Route::middleware(['auth', 'departamento:2'])->group(function () {
     Route::get('resultados/{id}', 'App\Http\Controllers\VerificacionFisicaController@ResultadosEncuesta')->name('resultados_verificacion');
     Route::resource('/programacion_evaluaciones', 'App\Http\Controllers\ProgramacionEvaluacionesController');
     Route::get('/evaluarparamejorar', 'App\Http\Controllers\EvaluarparaMejorarController@viewEvaluarparaMejorar')->name('guardarEvaluarparaMejorar');
+    Route::get('/evaluarparamejorar', 'App\Http\Controllers\EvaluarparaMejorarController@viewEvaluarparaMejorar')->name('EvaluarparaMejorar');
+    Route::get('resultados-evaluacion/{id}', 'App\Http\Controllers\EvaluarparaMejorarController@ResultadosEncuesta')->name('resultados_evaluarparaMejorar');    
     Route::put('/subir_informe/{id}', 'App\Http\Controllers\ProgramacionEvaluacionesController@subirInforme')->name('subirInforme');
 });
 

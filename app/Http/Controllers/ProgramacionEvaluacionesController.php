@@ -7,11 +7,8 @@ use App\Models\ProgramacionEvaluacione;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
 use App\Models\VerificacionFisica;
-<<<<<<< Updated upstream
 use Illuminate\Support\Facades\Storage;
-=======
 use App\Models\EvaluarparaMejorar;
->>>>>>> Stashed changes
 
 class ProgramacionEvaluacionesController extends Controller
 {
@@ -78,11 +75,7 @@ class ProgramacionEvaluacionesController extends Controller
             $datos= EvaluarparaMejorar::TraeEncuestas($restoCadena)->get();
             return view('AtencionC/verEncuestasEpM')->with('datos', $datos);
         } else {
-<<<<<<< Updated upstream
             $datos = VerificacionFisica::TraeEncuestas($restoCadena)->get();
-=======
-            $datos= VerificacionFisica::TraeEncuestas($restoCadena)->get();
->>>>>>> Stashed changes
             return view('AtencionC/verEncuestas')->with('datos', $datos);
         }
         
