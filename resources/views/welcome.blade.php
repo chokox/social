@@ -283,17 +283,8 @@
                         <p></p>
                         <p></p>
                         <p></p>
-                        <div style="position: relative;">
-                            <embed src="files/GUIA2023.pdf#toolbar=1&navpanes=0&scrollbar=1" type="application/pdf"
-                                width="100%" height="500px" style="filter: blur(5px);" />
-                            <div
-                                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 255, 255, 0.5); padding: 20px;">
-                                <img src="{{ asset('/imagenes/veda.svg') }}" alt="Veda"
-                                    style="width: 70%; height: 70%;">
-                            </div>
-                        </div>
-
-
+                            <embed src="files/GUIA2023.pdf" type="application/pdf"
+                                width="100%" height="500px"  />
                     </div>
                 </div>
             </div>
