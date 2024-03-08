@@ -45,20 +45,20 @@ class EvaluarparaMejorarController extends Controller
             $evaluarparaMejorar->oficina = $request->input('oficina');
             $evaluarparaMejorar->sexo = $request->input('sexo');
             $evaluarparaMejorar->tramite_servicio = $request->input('tipo');
-            $evaluarparaMejorar->pregunta1 = $request->input('informacion1');
+            $evaluarparaMejorar->pregunta1 = $request->input('informacion1').$request->input('otroInput');
             $evaluarparaMejorar->pregunta2 = $request->input('informacion2');
             $evaluarparaMejorar->pregunta3 = $request->input('informacion3');
             $evaluarparaMejorar->pregunta4 = $request->input('informacion4');
             $evaluarparaMejorar->pregunta5 = $request->input('informacion5');
             $evaluarparaMejorar->pregunta6 = $request->input('informacion6');
-            $evaluarparaMejorar->pregunta7 = $request->input('informacion7');
+            $evaluarparaMejorar->pregunta7 = $request->input('informacion7').$request->input('otroInputDos');
             $evaluarparaMejorar->pregunta8 = $request->input('informacion8');
             $evaluarparaMejorar->pregunta9 = $request->input('informacion9');
             $evaluarparaMejorar->pregunta10 = $request->input('informacion10');
             $evaluarparaMejorar->pregunta11 = $request->input('informacion11');
             $evaluarparaMejorar->pregunta12 = $request->input('informacion12');
             $evaluarparaMejorar->pregunta13 = $request->input('informacion13');
-            $evaluarparaMejorar->pregunta14 = $request->input('informacion14');
+            $evaluarparaMejorar->pregunta14 = $request->input('informacion14').$request->input('otroInputTres');
 
             $evaluarparaMejorar->save();
 
@@ -69,10 +69,58 @@ class EvaluarparaMejorarController extends Controller
 
     public function ResultadosEncuesta($id)
     {
-        $total = EvaluarparaMejorar::where('id_programacion_fk', $id)->count();
+        $encuestas = EvaluarparaMejorar::where('id_programacion_fk', $id)->get();
+        $total = $encuestas->count();
+        $si = 0;
+        foreach ($encuestas as $cc) {
+            
+            if ($cc->pregunta2 == 'SI') {
+                $si++;
+            }
+            if ($cc->pregunta3 == 'NO') {
+                $si++;
+            }
+            if ($cc->pregunta4 == 'SI') {
+                $si++;
+            }
+            if ($cc->pregunta5 == 'SI') {
+                $si++;
+            }
+            if ($cc->pregunta6 == 'SATISFECHO') {
+                $si++;
+            }
+            if ($cc->pregunta7 == 'NO') {
+                $si++;
+            }
+            if ($cc->pregunta8 == 'SI') {
+                $si++;
+            }
+            if ($cc->pregunta9 == 'NO') {
+                $si++;
+            }
+            if ($cc->pregunta10 == 'NO') {
+                $si++;
+            }
+            if ($cc->pregunta11 == 'NO') {
+                $si++;
+            }
+            if ($cc->pregunta12 == 'SI') {
+                $si++;
+            }
+            if ($cc->pregunta13 == 'SI') {
+                $si++;
+            }
+        }
+
+        $totaciertos = $total * 12; 
+        $promedio = intval(round(($si *10)/ $totaciertos));
+        //dd($promedio);
+        //0-4 no satisfactorio
+        //5-7 regular
+        //8-10 satisfactorio
 
         if ($total > 0) {
-            return view('AtencionC/informesEncuestasEpM', compact('id', 'total'));
+            return view('AtencionC/informesEncuestasEpM', compact('id', 'total','promedio'));
         } else {
             Alert::error('No se tiene registrada ninguna encuesta aun.', null);
             return back();

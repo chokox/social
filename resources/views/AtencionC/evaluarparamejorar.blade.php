@@ -23,14 +23,14 @@
                             <br>
                             <label for="simpleinputSexo" class="form-label">Sexo</label>
                             <select class="form-control" name="sexo">
-                                <option value="HOMBRE">Hombre</option>
-                                <option value="MUJER">Mujer</option>
+                                <option value="HOMBRE">HOMBRE</option>
+                                <option value="MUJER">MUJER</option>
                             </select>
                             <br>
                             <label for="simpleinputTipo" class="form-label">Tipo</label>
                             <select class="form-control" name="tipo">
-                                <option value="Tramite">Tramite</option>
-                                <option value="Servicio">Servicio</option>
+                                <option value="TRAMITE">TRAMITE</option>
+                                <option value="SERVICIO">SERVICIO</option>
                             </select>
                             <br>
                             <div class="accordion-item">
@@ -49,25 +49,29 @@
                                         <div class="mt-2 ms-3">
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" id="informacion1Medios" name="informacion1"
-                                                    class="form-check-input" value="Medios de difusión" required>
-                                                <label class="form-check-label"  for="informacion1Medios">Medios de
-                                                    difusión</label>
+                                                    class="form-check-input" value="MEDIOS DE DIFUSIÓN" required
+                                                    onclick="toggleOtroInput(this)">
+                                                <label class="form-check-label" for="informacion1Medios">MEDIOS DE
+                                                    DIFUSIÓN</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" id="informacion1Modulo" name="informacion1"
-                                                    class="form-check-input" value="En el módulo de información" required>
-                                                <label class="form-check-label" for="informacion1Modulo">En el módulo de
-                                                    información</label>
+                                                    class="form-check-input" value="EN EL MÓDULO DE INFORMACIÓN" required
+                                                    onclick="toggleOtroInput(this)">
+                                                <label class="form-check-label" for="informacion1Modulo">EN EL MÓDULO DE
+                                                    INFORMACIÓN</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" id="informacion1Otro" name="informacion1"
-                                                    class="form-check-input" value="otro" required>
-                                                <label class="form-check-label" for="informacion1Otro">Otro ¿Cuál?</label>
+                                                    class="form-check-input" value="OTRO: " required
+                                                    onclick="toggleOtroInput(this)">
+                                                <label class="form-check-label" for="informacion1Otro">OTRO ¿CUÁL?</label>
                                             </div>
                                             <br>
                                             <br>
                                             <div id="otroInput" style="display: none;">
-                                                <input type="text" id="otroInputText"  name="informacion1" class="form-control">
+                                                <input type="text" id="otroInputText" name="otroInput"
+                                                    class="form-control">
                                             </div>
                                         </div>
                                         <br>
@@ -177,12 +181,14 @@
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" id="informacion6Satisfecho" name="informacion6"
                                                     class="form-check-input" value="SATISFECHO" required>
-                                                <label class="form-check-label" for="informacion6Satisfecho">SATISFECHO</label>
+                                                <label class="form-check-label"
+                                                    for="informacion6Satisfecho">SATISFECHO</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" id="informacion6Insatisfecho" name="informacion6"
                                                     class="form-check-input" value="INSATISFECHO" required>
-                                                <label class="form-check-label" for="informacion6Insatisfecho">INSATISFECHO</label>
+                                                <label class="form-check-label"
+                                                    for="informacion6Insatisfecho">INSATISFECHO</label>
                                             </div>
                                         </div>
                                         <br>
@@ -191,18 +197,21 @@
                                         <div class="mt-2 ms-3">
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" id="informacion7Si" name="informacion7"
-                                                    class="form-check-input" value="SI" required>
+                                                    class="form-check-input" value="SI:" required
+                                                    onclick="toggleOtroInputDos(this)">
                                                 <label class="form-check-label" for="informacion7Si">SI</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" id="informacion7No" name="informacion7"
-                                                    class="form-check-input" value="NO" required>
+                                                    class="form-check-input" value="NO" required
+                                                    onclick="toggleOtroInputDos(this)">
                                                 <label class="form-check-label" for="informacion7No">NO</label>
                                             </div>
                                             <br>
                                             <br>
-                                            <div id="otroInput1" style="display: none;">
-                                                <input type="text" id="otroInputText1" name="informacion7" class="form-control">
+                                            <div id="otroInputDos" style="display: none;">
+                                                <input type="text" id="otroInputText" name="otroInputDos"
+                                                    class="form-control">
                                             </div>
                                         </div>
                                         <br>
@@ -344,24 +353,25 @@
                                         <div class="mt-2 ms-3">
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" id="informacionQuejas" name="informacion14"
-                                                    class="form-check-input" value="Quejas" required>
-                                                <label class="form-check-label" for="informacionQuejas">Quejas</label>
+                                                    class="form-check-input" value="QUEJA: " required>
+                                                <label class="form-check-label" for="informacionQuejas">QUEJA</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" id="informacionDenuncias" name="informacion14"
-                                                    class="form-check-input" value="Denuncias" required>
+                                                    class="form-check-input" value="DENUNCIA: " required>
                                                 <label class="form-check-label"
-                                                    for="informacionDenuncias">Denuncias</label>
+                                                    for="informacionDenuncias">DENUNCIA</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" id="informacionNinguna" name="informacion14"
-                                                    class="form-check-input" value="otro" required>
-                                                <label class="form-check-label" for="informacionNinguna">Ninguna</label>
+                                                    class="form-check-input" value="NINGUNA" required>
+                                                <label class="form-check-label" for="informacionNinguna">NINGUNA</label>
                                             </div>
                                             <br>
                                             <br>
-                                            <div id="otroInput2" style="display: none;">
-                                                <input type="text" id="otroInputText2" name="informacion14" class="form-control">
+                                            <div id="otroInputTres" style="display: none;">
+                                                <input type="text" id="otroInputTextTres" name="otroInputTres"
+                                                    class="form-control">
                                             </div>
                                         </div>
                                         <br>
@@ -377,58 +387,37 @@
     </div>
 
     <script>
-        var radioButtons = document.querySelectorAll('input[name="informacion1"]');
-        var otroInputDiv = document.getElementById("otroInput");
-        radioButtons.forEach(function(radioButton) {
-            radioButton.addEventListener("change", function() {
-                if (document.getElementById("informacion1Otro").checked) {
-                    otroInputDiv.style.display = "block";
-                } else {
-                    otroInputDiv.style.display = "none";
-                }
-            });
-        });
-
-        function obtenerValorSeleccionado() {
-    var valorSeleccionado = "";
-
-    radioButtons.forEach(function(radioButton) {
-        if (radioButton.checked) {
-            valorSeleccionado = radioButton.value;
+        function toggleOtroInput(radio) {
+            var otroInput = document.getElementById('otroInput');
+            if (radio.id === 'informacion1Otro') {
+                otroInput.style.display = 'block';
+            } else {
+                otroInput.style.display = 'none';
+            }
         }
-    });
-    if (valorSeleccionado === "otro") {
-        valorSeleccionado = document.getElementById("otroInputText").value;
-    }
-    console.log("El valor seleccionado es: ", valorSeleccionado);
-}
 
-
-        $(document).ready(function() {
-            $('input[name="informacion7"]').change(function() {
-                if ($(this).val() === "SI") {
-                    $('#otroInput1').show();
-                } else {
-                    $('#otroInput1').hide();
-                }
-            });
-        });
-
+        function toggleOtroInputDos(radio) {
+            var otroInputDos = document.getElementById('otroInputDos');
+            if (radio.id === 'informacion7Si') {
+                otroInputDos.style.display = 'block';
+            } else {
+                otroInputDos.style.display = 'none';
+            }
+        }
         const quejasRadio = document.getElementById('informacionQuejas');
         const denunciasRadio = document.getElementById('informacionDenuncias');
         const ningunaRadio = document.getElementById('informacionNinguna');
-        const otroInput2 = document.getElementById('otroInput2');
+        const otroInputTres = document.getElementById('otroInputTres');
 
-        // Agrega event listeners para los radio buttons
         quejasRadio.addEventListener('click', toggleInput);
         denunciasRadio.addEventListener('click', toggleInput);
         ningunaRadio.addEventListener('click', toggleInput);
 
         function toggleInput() {
             if (quejasRadio.checked || denunciasRadio.checked) {
-                otroInput2.style.display = 'block';
+                otroInputTres.style.display = 'block';
             } else {
-                otroInput2.style.display = 'none';
+                otroInputTres.style.display = 'none';
             }
         }
     </script>
