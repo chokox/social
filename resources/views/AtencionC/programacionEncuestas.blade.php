@@ -53,7 +53,7 @@
                                                         <td>{{ $item['fecha_inicio'] }}</td>
                                                         <td>{{ $item['fecha_fin'] }}</td>
                                                         <td>
-                                                            @if ($item['fecha_fin'] && now()->lt($item['fecha_fin']))
+                                                            @if ($item['fecha_fin'] && now()->lt($item['fecha_fin']) and Auth::user()->administrador())
                                                                 <a title="Editar" type="button" class="btn btn-primary"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#modalEditarProgramacion{{ $item['id_programacion'] }}">
@@ -70,24 +70,25 @@
                                                                 </form>
                                                             @endif
 
-                                                            @if($item['fecha_fin'] && now()->gt($item['fecha_fin']))
-
-                                                            
-                                                             <a title="Resultados EPM" href="{{route('resultados_evaluarparaMejorar', $item['id_programacion']) }}" type="button" class="btn btn-primary">
-
-                                                                <i class=" ri-bar-chart-2-line"></i>
-                                                            </a>
-                                                            <a title="Resultados VF" href="{{ route('resultados_verificacion', $item['id_programacion']) }}" type="button" class="btn btn-primary">
-                                                                <i class="ri-pie-chart-fill"></i>
-                                                            </a>
-
-
+                                                            @if ($item['fecha_fin'] && now()->gt($item['fecha_fin']))
+                                                                <a title="Resultados EPM"
+                                                                    href="{{ route('resultados_evaluarparaMejorar', $item['id_programacion']) }}"
+                                                                    type="button" class="btn btn-primary">
+                                                                    <i class=" ri-bar-chart-2-line"></i>
+                                                                </a>
+                                                                <a title="Resultados VF"
+                                                                    href="{{ route('resultados_verificacion', $item['id_programacion']) }}"
+                                                                    type="button" class="btn btn-primary">
+                                                                    <i class="ri-pie-chart-fill"></i>
+                                                                </a>
                                                                 @if (is_null($item['informe']))
-                                                                    <a title="Subir Informe" data-bs-toggle="modal"
-                                                                        data-bs-target="#modalEditarProgramacion{{ $item['id_programacion'] }}"
-                                                                        type="button" class="btn btn-primary">
-                                                                        <i class="ri-task-line"></i>
-                                                                    </a>
+                                                                    @if (Auth::user()->administrador())
+                                                                        <a title="Subir Informe" data-bs-toggle="modal"
+                                                                            data-bs-target="#modalEditarProgramacion{{ $item['id_programacion'] }}"
+                                                                            type="button" class="btn btn-primary">
+                                                                            <i class="ri-task-line"></i>
+                                                                        </a>
+                                                                    @endif
                                                                 @else
                                                                     <a title="Descargar Informe"
                                                                         href="{{ asset('storage/' . $item['informe']) }}"
@@ -332,8 +333,10 @@
 
                                                     @php
                                                         $currentYear = \Carbon\Carbon::parse($a->fecha_inicio)->year;
-                                                        $currentWeek = \Carbon\Carbon::parse($a->fecha_inicio)->weekOfYear;
-                                                        $endOfWeek = \Carbon\Carbon::parse($a->fecha_fin)->endOfWeek()->weekOfYear;
+                                                        $currentWeek = \Carbon\Carbon::parse($a->fecha_inicio)
+                                                            ->weekOfYear;
+                                                        $endOfWeek = \Carbon\Carbon::parse($a->fecha_fin)->endOfWeek()
+                                                            ->weekOfYear;
                                                     @endphp
                                                     @for ($i = 1; $i <= 52; $i++)
                                                         @if ($i >= $currentWeek && $i <= $endOfWeek && $currentYear == \Carbon\Carbon::parse($a->fecha_fin)->year)

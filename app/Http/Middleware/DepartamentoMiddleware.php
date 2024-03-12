@@ -24,7 +24,7 @@ class DepartamentoMiddleware
             $usuario = Auth::user();
 
             // Verificar si el usuario pertenece al departamento especificado
-            if ($usuario->departamento == $departamento or $usuario->rol == 'super') {
+            if ($usuario->departamento == $departamento or ($usuario->rol == 'super'or $usuario->rol == 'director')) {
                 return $next($request);
             }
         }

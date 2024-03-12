@@ -48,7 +48,11 @@
                     <!-- Topbar Brand Logo -->
                     <div class="logo-topbar">
                         <!-- Logo light -->
-                        <a href="{{ asset('/home') }}" class="logo-light">
+                         @if (Auth::user()->departamento == 1)
+                            <a href="{{ asset('/home') }}" class="logo-light">
+                         @elseif(Auth::user()->departamento == 2)
+                            <a href="{{ asset('/home') }}" class="logo-light">    
+                         @endif
                             <span class="logo-lg">
                                 <img src="{{ asset('imagenes/logoCSNEW.png') }}" style="height: 65px;" alt="logo">
                             </span>
@@ -148,7 +152,7 @@
                     <div class="collapse navbar-collapse" id="topnav-menu-content">
                         <ul class="navbar-nav">
                             <!-- menu catalogo COMITES -->
-                            @if (Auth::user()->departamento == 1 or Auth::user()->super())
+                            @if (Auth::user()->departamento == 1 or (Auth::user()->super() or Auth::user()->director()))
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle arrow-none" href="#"
                                         id="topnav-dashboards" role="button" data-bs-toggle="dropdown"
@@ -164,7 +168,7 @@
                                     </div>
                                 </li>
                             @endif
-                            @if (Auth::user()->departamento == 2 or Auth::user()->super())
+                            @if (Auth::user()->departamento == 2 or (Auth::user()->super() or Auth::user()->director()))
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle arrow-none" href="#"
                                         id="topnav-dashboards" role="button" data-bs-toggle="dropdown"
@@ -183,10 +187,9 @@
                                         <i class="uil-dashboard"></i>Evaluaciones <div class="arrow-down"></div>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
-                                        @if (Auth::user()->administrador() or Auth::user()->super())
+                                       
                                             <a href="{{ route('programacion_evaluaciones.index') }}"
                                                 class="dropdown-item">Programación</a>
-                                        @endif
                                         <a href="{{ route('EvaluarparaMejorar') }}" class="dropdown-item">Evaluar P/Mejorar</a>
                                         <a href="{{ route('evaluacionDireccionFisica') }}"  class="dropdown-item">Verificacion Fisica</a>
                                     </div>

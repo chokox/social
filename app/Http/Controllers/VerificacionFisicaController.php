@@ -192,12 +192,14 @@ class VerificacionFisicaController extends Controller
             }
         }
 
-        $totaciertos = $total * 24; 
-        $promedio = intval(round(($si*10)/ $totaciertos));
-        //0-4 no satisfactorio
-        //5-7 regular
-        //8-10 satisfactorio
-        
+        $totaciertos = $total * 24;
+
+        if ($totaciertos != 0) {
+            $promedio = intval(round(($si * 10) / $totaciertos));
+        } else {
+            $promedio = 0;
+        }
+
         if ($total > 0) {
             return view('AtencionC/informesEncuestas', compact('id', 'total', 'promedio'));
         } else {

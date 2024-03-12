@@ -31,6 +31,11 @@ class User extends Authenticatable
         return $this->rol === 'super';
     }
 
+    public function director()
+    {
+        return $this->rol === 'director';
+    }
+
     public function administrador()
     {
         return $this->rol === 'administrador';

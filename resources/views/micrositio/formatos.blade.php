@@ -64,7 +64,7 @@
                                     <i class="ri-article-line text-primary font-24"></i>
                                 </span>
                             </div>
-                            <h4><a target="_blank" class="mt-3" href="{{asset('files/FORMATO DE DATOS PERSONALES DEL CONTRALOR-A.pdf')}}">Formato de datos personales del C. Conralor(a)</a></h4>
+                            <h4><a target="_blank" class="mt-3" href="{{asset('files/FORMATO DE DATOS PERSONALES DEL CONTRALOR-A.pdf')}}">Formato de datos personales del C. Contralor(a)</a></h4>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">

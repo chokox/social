@@ -41,6 +41,7 @@
                                                                 data-bs-target="#modalVer{{ $dato->idVerificacionFisica }}">
                                                                 <i class="ri-task-fill"></i>
                                                             </a>
+                                                            @if (Auth::user()->administrador())
                                                             <form
                                                                 action="{{ route('programacion_evaluaciones.destroy', $dato->idVerificacionFisica) }}"
                                                                 method="POST" style="display: inline;">
@@ -50,6 +51,7 @@
                                                                     <i class="ri-delete-bin-2-fill"></i>
                                                                 </button>
                                                             </form>
+                                                            @endif
                                                         </td>
                                                     </tr>
 

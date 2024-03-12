@@ -57,7 +57,7 @@
                                                         <td>{{ $item['numero_buzon'] }}</td>
                                                         <td>{{ $item['ubicacion'] }}</td>
                                                         <td>
-                                                            @if(Auth::user()->administrador() or Auth::user()->super())
+                                                            @if(Auth::user()->administrador())
                                                             <a title="Editar" type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                                 data-bs-target="#modalEditarBuzon{{ $item['id_buzon'] }}">
                                                                 <i class="ri-file-edit-line"></i>
