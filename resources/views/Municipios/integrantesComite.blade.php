@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Integrantes del Comite</h4>
+                            <h4 class="page-title">Integrantes del Comité</h4>
                         </div>
                     </div>
                 </div>
@@ -451,7 +451,17 @@
                                                                                         class="form-label">Fecha de
                                                                                         nacimiento</label>
                                                                                     @php
-                                                                                        $fechaNacimiento = $integrantes->fecha_nacimiento && $integrantes->fecha_nacimiento != '1970-01-01' ? date('d/m/Y', strtotime($integrantes->fecha_nacimiento)) : '';
+                                                                                        $fechaNacimiento =
+                                                                                            $integrantes->fecha_nacimiento &&
+                                                                                            $integrantes->fecha_nacimiento !=
+                                                                                                '1970-01-01'
+                                                                                                ? date(
+                                                                                                    'd/m/Y',
+                                                                                                    strtotime(
+                                                                                                        $integrantes->fecha_nacimiento,
+                                                                                                    ),
+                                                                                                )
+                                                                                                : '';
                                                                                     @endphp
                                                                                     <input value="{{ $fechaNacimiento }}"
                                                                                         type="text"
@@ -475,7 +485,7 @@
                                                                                 </div>
                                                                                 <div class="mb-3">
                                                                                     <label for="simpleinput"
-                                                                                        class="form-label">Ocupacion</label>
+                                                                                        class="form-label">Ocupación</label>
                                                                                     <input type="text"
                                                                                         class="form-control"
                                                                                         name="ocupacion"
@@ -492,11 +502,11 @@
                                                                                         </option>
                                                                                         <option>PRIMARIA</option>
                                                                                         <option>SECUNDARIA</option>
-                                                                                        <option>CARRERA TECNICA O COMERCIAL
+                                                                                        <option>CARRERA TÉCNICA O COMERCIAL
                                                                                         </option>
                                                                                         <option>LICENCIATURA</option>
                                                                                         <option>DIPLOMADO</option>
-                                                                                        <option>MAESTRIA</option>
+                                                                                        <option>MAESTRÍA</option>
                                                                                         <option>DOCTORADO</option>
                                                                                         <option>POSGRADO</option>
                                                                                         <option>SIN ESCOLARIDAD</option>
@@ -556,7 +566,7 @@
                                                                                 <div class="mb-3">
                                                                                     <label for="simpleinput"
                                                                                         class="form-label">Observaciones
-                                                                                        identificacion</label>
+                                                                                        identificación</label>
                                                                                     <input type="text"
                                                                                         class="form-control"
                                                                                         name="obs_identificacion"
@@ -646,7 +656,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myLargeModalLabel">Registro de integrante de comite</h4>
+                        <h4 class="modal-title" id="myLargeModalLabel">Registro de integrante de comité</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                     </div>
                     <div class="modal-body">
@@ -686,7 +696,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="simpleinput" class="form-label">Ocupacion</label>
+                                <label for="simpleinput" class="form-label">Ocupación</label>
                                 <input type="text" class="form-control" name="ocupacion" required maxlength="70">
                             </div>
                             <div class="mb-3">
@@ -694,11 +704,11 @@
                                 <select class="form-control" name="escolaridad">
                                     <option>PRIMARIA</option>
                                     <option>SECUNDARIA</option>
-                                    <option>BACHILLERATO</option>
-                                    <option>CARRERA TECNICA O COMERCIAL</option>
+                                    <option>CARRERA TÉCNICA O COMERCIAL
+                                    </option>
                                     <option>LICENCIATURA</option>
                                     <option>DIPLOMADO</option>
-                                    <option>MAESTRIA</option>
+                                    <option>MAESTRÍA</option>
                                     <option>DOCTORADO</option>
                                     <option>POSGRADO</option>
                                     <option>SIN ESCOLARIDAD</option>
@@ -804,66 +814,54 @@
         </script>
 
         <script>
-    $(document).ready(function() {
-        // Delegación de eventos para manejar el cambio en los campos de archivo dentro de cualquier formulario
-        $(document).on('change', 'form input[type="file"]', function() {
-            // Obtener el formulario al que pertenece el campo de archivo
-            var form = $(this).closest('form');
+            $(document).ready(function() {
+                $(document).on('change', 'form input[type="file"]', function() {
+                    var form = $(this).closest('form');
+                    var modalId = form.data('modal-id');
+                    handleFormSubmission(form, modalId);
+                });
+            });
 
-            // Obtener el ID del modal asociado al formulario
-            var modalId = form.data('modal-id');
+            function handleFormSubmission(form, modalId) {
+                var formData = new FormData(form[0]);
 
-            // Manejar la subida del archivo utilizando la función handleFormSubmission, pasando el ID del modal
-            handleFormSubmission(form, modalId);
-        });
-    });
+                $('#' + modalId + ' #overlay').fadeIn();
+                $('#' + modalId + ' #loader').fadeIn();
 
-    // Función para manejar el envío del formulario a través de AJAX
-    function handleFormSubmission(form, modalId) {
-        var formData = new FormData(form[0]);
+                $.ajax({
+                    url: form.attr('action'),
+                    type: form.attr('method'),
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            $('#' + modalId + ' #flash-message').text(
+                                '¡El archivo se cargó correctamente! Recarga la página para visualizar los cambios.'
+                            );
+                            $('#' + modalId + ' #bonito').show();
+                        } else {
+                            $('#' + modalId + ' #flash-message').text(
+                                'Ocurrió un error al tratar de cargar el archivo, por favor intente más tarde.'
+                            );
+                            $('#' + modalId + ' #bonito').show();
+                        }
+                    },
+                    error: function(xhr, status, error) {
 
-        // Mostrar pantalla de carga
-        $('#' + modalId + ' #overlay').fadeIn();
-        $('#' + modalId + ' #loader').fadeIn();
-
-        // Enviar el formulario mediante AJAX
-        $.ajax({
-            url: form.attr('action'),
-            type: form.attr('method'),
-            data: formData,
-            processData: false,
-            contentType: false,
-            dataType: 'json',
-            success: function(response) {
-                // Manejar la respuesta JSON aquí
-                if (response.success) {
-                    // Mostrar el mensaje en el modal correspondiente
-                    $('#' + modalId + ' #flash-message').text(
-                        '¡El archivo se cargó correctamente! Recarga la página para visualizar los cambios.'
-                    );
-                    $('#' + modalId + ' #bonito').show();
-                } else {
-                    $('#' + modalId + ' #flash-message').text(
-                        'Ocurrió un error al tratar de cargar el archivo, por favor intente más tarde.'
-                    );
-                    $('#' + modalId + ' #bonito').show();
-                }
-            },
-            error: function(xhr, status, error) {
-                // Manejar errores de AJAX si es necesario
-            },
-            complete: function() {
-                // Ocultar la pantalla de carga
-                $('#' + modalId + ' #overlay').fadeOut();
-                $('#' + modalId + ' #loader').fadeOut();
-                // Ocultar el mensaje flash después de 3 segundos
-                setTimeout(function() {
-                    $('#' + modalId + ' #flash-message').empty();
-                    $('#' + modalId + ' #bonito').hide();
-                }, 3000);
+                    },
+                    complete: function() {
+                        // Ocultar la pantalla de carga
+                        $('#' + modalId + ' #overlay').fadeOut();
+                        $('#' + modalId + ' #loader').fadeOut();
+                        // Ocultar el mensaje flash después de 3 segundos
+                        setTimeout(function() {
+                            $('#' + modalId + ' #flash-message').empty();
+                            $('#' + modalId + ' #bonito').hide();
+                        }, 3000);
+                    }
+                });
             }
-        });
-    }
-</script>
-
+        </script>
     @endsection

@@ -57,11 +57,11 @@ class UserController extends Controller
             }
             $catalogo->save();
 
-            Alert::success('Usuario Agregado', 'El usuario se agrego correctamente');
+            Alert::success('Usuario Agregado', 'El usuario se agregó correctamente');
             return back();
         } catch (\Exception $e) {
             dd($e->getMessage());
-            Alert::error('Ha ocurrido un error al insertar el usuario.', null);
+            Alert::error('Ha ocurrido un error al agregar el usuario.', null);
             return back();
         }
     }

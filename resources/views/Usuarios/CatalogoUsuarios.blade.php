@@ -32,7 +32,7 @@
                                                 <tr>
                                                     <th>Id</th>
                                                     <th>Nombre</th>
-                                                    <th>Correo Electronico</th>
+                                                    <th>Correo Electrónico</th>
                                                     <th>Rol</th>
                                                     <th>Departamento</th>
                                                     <th>Acciones</th>
@@ -46,7 +46,7 @@
                                                         <td>{{ $item['email'] }}</td>
                                                         <td>{{ $item['rol'] }}</td>
                                                         @switch($item['departamento'])
-                                                                @case(0)
+                                                            @case(0)
                                                                 <td>Unidad de Informática y Estadistica</td>
                                                             @break
 
@@ -95,14 +95,16 @@
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
                                                                                 name="txtNombre"
-                                                                                placeholder="{{ $item['name'] }}" maxlength="255" />
+                                                                                placeholder="{{ $item['name'] }}"
+                                                                                maxlength="255" />
                                                                         </div>
                                                                         <div class=" mb-3">
-                                                                            <label>Correo Electronico </label>
+                                                                            <label>Correo Electrónico </label>
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
                                                                                 name="txtEmail"
-                                                                                placeholder="{{ $item['email'] }}" maxlength="255" />
+                                                                                placeholder="{{ $item['email'] }}"
+                                                                                maxlength="255" />
                                                                         </div>
                                                                         <div class=" mb-3">
                                                                             <label>Contraseña</label>
@@ -168,7 +170,7 @@
                                                             name="txtAgregarNombre" />
                                                     </div>
                                                     <div class=" mb-3">
-                                                        <label>Correo Electronico </label>
+                                                        <label>Correo Electrónico </label>
                                                         <input type="text" class="form-control form-control-sm"
                                                             name="txtAgregarEmail" />
                                                     </div>
@@ -199,7 +201,7 @@
                                                             <label>Departamento</label>
                                                             <select class="form-control form-control-sm"
                                                                 name="txtAgregarDepartamento">
-                                                                <option value="0">Unidad de Informatica y Estadistica
+                                                                <option value="0">Unidad de Informática y Estadística
                                                                 </option>
                                                                 <option value="1">Departamento de Capacitación a
                                                                     Municipios</option>

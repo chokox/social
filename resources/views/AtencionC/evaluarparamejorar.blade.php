@@ -19,7 +19,7 @@
                         @csrf
                         <div class=" mb-3">
                             <label>Oficina</label>
-                            <input type="text" class="form-control form-control-sm" name="oficina" required />
+                            <input type="text" class="form-control form-control-sm" maxlength="200" name="oficina" required />
                             <br>
                             <label for="simpleinputSexo" class="form-label">Sexo</label>
                             <select class="form-control" name="sexo">

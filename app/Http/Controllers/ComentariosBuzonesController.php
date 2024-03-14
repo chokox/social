@@ -50,7 +50,7 @@ class ComentariosBuzonesController extends Controller
 
         $registro->tipo_comentario = $request->input('tipo_comentario');
         $registro->comentario = $request->input('comentario');
-        
+
         if (!is_null($request->file('multimedia'))) {
             $ruta = 'buzon digital';
             if ($request->hasFile('multimedia') && $request->file('multimedia')->isValid()) {
@@ -61,7 +61,7 @@ class ComentariosBuzonesController extends Controller
         $registro->nombre_servidor = $request->input('nombre_SP');
         $registro->save();
 
-        Alert::success('Comentario Registrado', 'Su comentario se a enviado a la Secretaria de Honestidad, Transparencia y Función Pública para su seguimiento.');
+        Alert::success('Comentario Registrado', 'Su comentario se ha enviado a la Secretaría de Honestidad, Transparencia y Función Pública para su seguimiento.');
         return back();
     }
 
@@ -73,10 +73,10 @@ class ComentariosBuzonesController extends Controller
      */
     public function show($id)
     {
-        $buzon= Buzone::find($id);
-        $buzon=$buzon->numero_buzon;
+        $buzon = Buzone::find($id);
+        $buzon = $buzon->numero_buzon;
         $todo = ComentariosBuzone::BuzonAbierto($id)->get();
-        return view('AtencionC/verBuzon', compact('buzon'))->with('todo', $todo);;
+        return view('AtencionC/verBuzon', compact('buzon'))->with('todo', $todo);
     }
 
     /**
@@ -104,9 +104,9 @@ class ComentariosBuzonesController extends Controller
     public function enProceso($id)
     {
         $actualizar = ComentariosBuzone::find($id);
-            $actualizar->estatus = 3;
-            $actualizar->abierto_por = Auth::id();
-            $actualizar->save();
+        $actualizar->estatus = 3;
+        $actualizar->abierto_por = Auth::id();
+        $actualizar->save();
         Alert::success('Estatus actualizado', null);
         return back();
     }
@@ -114,9 +114,9 @@ class ComentariosBuzonesController extends Controller
     public function turnada($id)
     {
         $actualizar = ComentariosBuzone::find($id);
-            $actualizar->estatus = 2;
-            $actualizar->abierto_por = Auth::id();
-            $actualizar->save();
+        $actualizar->estatus = 2;
+        $actualizar->abierto_por = Auth::id();
+        $actualizar->save();
         Alert::success('Estatus actualizado', null);
         return back();
     }
@@ -129,7 +129,6 @@ class ComentariosBuzonesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
     }
 
     /**

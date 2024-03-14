@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Sistema de Contraloria Social</title>
+    <title>Sistema de Contraloría Social</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -48,17 +48,17 @@
                     <!-- Topbar Brand Logo -->
                     <div class="logo-topbar">
                         <!-- Logo light -->
-                         @if (Auth::user()->departamento == 1)
+                        @if (Auth::user()->departamento == 1)
                             <a href="{{ asset('/home') }}" class="logo-light">
-                         @elseif(Auth::user()->departamento == 2)
-                            <a href="{{ asset('/home') }}" class="logo-light">    
-                         @endif
-                            <span class="logo-lg">
-                                <img src="{{ asset('imagenes/logoCSNEW.png') }}" style="height: 65px;" alt="logo">
-                            </span>
-                            <span class="logo-sm">
-                                <img src="{{ asset('imagenes/logoCSNEW.png') }}" style="height: 65px;" alt="small logo">
-                            </span>
+                            @elseif(Auth::user()->departamento == 2)
+                                <a href="{{ asset('/home') }}" class="logo-light">
+                        @endif
+                        <span class="logo-lg">
+                            <img src="{{ asset('imagenes/logoCSNEW.png') }}" style="height: 65px;" alt="logo">
+                        </span>
+                        <span class="logo-sm">
+                            <img src="{{ asset('imagenes/logoCSNEW.png') }}" style="height: 65px;" alt="small logo">
+                        </span>
                         </a>
 
                         <!-- Logo Dark -->
@@ -157,12 +157,12 @@
                                     <a class="nav-link dropdown-toggle arrow-none" href="#"
                                         id="topnav-dashboards" role="button" data-bs-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false">
-                                        <i class="uil-dashboard"></i>Comites <div class="arrow-down"></div>
+                                        <i class="uil-dashboard"></i>Comités <div class="arrow-down"></div>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
                                         <a class="dropdown-item"
                                             href="{{ route('catalogo_municipios.index') }}">Municipios </a>
-                                        <a href="{{ route('comites.index') }}" class="dropdown-item">Comites</a>
+                                        <a href="{{ route('comites.index') }}" class="dropdown-item">Comités</a>
                                         <a href="{{ route('resumenAcreditaciones') }}" class="dropdown-item">Resumen
                                             de Acreditaciones</a>
                                     </div>
@@ -172,8 +172,8 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle arrow-none" href="#"
                                         id="topnav-dashboards" role="button" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <i class="uil-dashboard"></i>Buzon Digital <div class="arrow-down"></div>
+                                        aria-haspopup="true" aria-expanded=b "false">
+                                        <i class="uil-dashboard"></i>Buzón Digital <div class="arrow-down"></div>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
                                         <a href="{{ route('buzon.index') }}" class="dropdown-item">Buzones</a>
@@ -187,11 +187,13 @@
                                         <i class="uil-dashboard"></i>Evaluaciones <div class="arrow-down"></div>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
-                                       
-                                            <a href="{{ route('programacion_evaluaciones.index') }}"
-                                                class="dropdown-item">Programación</a>
-                                        <a href="{{ route('EvaluarparaMejorar') }}" class="dropdown-item">Evaluar P/Mejorar</a>
-                                        <a href="{{ route('evaluacionDireccionFisica') }}"  class="dropdown-item">Verificacion Fisica</a>
+
+                                        <a href="{{ route('programacion_evaluaciones.index') }}"
+                                            class="dropdown-item">Programación</a>
+                                        <a href="{{ route('EvaluarparaMejorar') }}" class="dropdown-item">Evaluar
+                                            P/Mejorar</a>
+                                        <a href="{{ route('evaluacionDireccionFisica') }}"
+                                            class="dropdown-item">Verificación Física</a>
                                     </div>
                                 </li>
                             @endif
@@ -247,19 +249,20 @@
     {{-- <script src="{{ asset('vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('vendor/datatables.net-fixedcolumns-bs5/js/fixedColumns.bootstrap5.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('vendor/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script> --}}
+     <script src="{{ asset('vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script> 
+     <script src="{{ asset('vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script> 
     {{-- <script src="{{ asset('vendor/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>  --}}
 
     <!-- Datatable Demo Aapp js -->
-    {{-- <script src="{{ asset('js/pages/demo.datatable-init.js') }}"></script> --}}
+    <script src="{{ asset('js/pages/demo.datatable-init.js') }}"></script> 
 
     <!-- App js -->
-     <script src="{{ asset('js/app.min.js') }}"></script> 
+    <script src="{{ asset('js/app.min.js') }}"></script>
 
 
     @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
 
 </body>
+
 </html>

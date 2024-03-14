@@ -19,13 +19,13 @@
                             <div class="card-body">
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="datatable-municipios-preview">
-                                        <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
+                                        <table id="basic-datatable" class="table dt-responsive w-100">
                                             <thead class="table-dark">
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Folio</th>
                                                     <th>Realizó</th>
-                                                    <th>Fecha de aplicacion</th>
+                                                    <th>Fecha de aplicación</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
@@ -42,15 +42,15 @@
                                                                 <i class="ri-task-fill"></i>
                                                             </a>
                                                             @if (Auth::user()->administrador())
-                                                            <form
-                                                                action="{{ route('programacion_evaluaciones.destroy', $dato->id_evaluacion) }}"
-                                                                method="POST" style="display: inline;">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="btn btn-primary">
-                                                                    <i class="ri-delete-bin-2-fill"></i>
-                                                                </button>
-                                                            </form>
+                                                                <form
+                                                                    action="{{ route('programacion_evaluaciones.destroy', $dato->id_evaluacion) }}"
+                                                                    method="POST" style="display: inline;">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-primary">
+                                                                        <i class="ri-delete-bin-2-fill"></i>
+                                                                    </button>
+                                                                </form>
                                                             @endif
                                                         </td>
                                                     </tr>

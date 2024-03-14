@@ -69,7 +69,6 @@ class IntegrantesComiteController extends Controller
         }
         Alert::success('Integrante agregado', null);
         return back();
-
     }
 
     public function subirDocumentacionIntegrantes(Request $request, $id)
@@ -104,17 +103,14 @@ class IntegrantesComiteController extends Controller
             //VERIFICA SI ESTAN LOS ARCHIVOS DE LOS INTEGRANTES COMPLETOS
             $resultado = IntegrantesComite::ContarPorComite(now()->year, $id_comite)->get();
             $todosRellenados = $resultado->every(function ($item) {
-                return $item->archivo_ine !== null &&
-                    $item->archivo_protesta !== null &&
-                    $item->archivo_constancia !== null &&
-                    $item->archivo_fotografia !== null;
+                return $item->archivo_ine !== null && $item->archivo_protesta !== null && $item->archivo_constancia !== null && $item->archivo_fotografia !== null;
             });
             $variable = $todosRellenados ? 1 : 0;
-            $doc=AcreditacionComite::where('id_acreditacion', $id_comite)->first();
-            
+            $doc = AcreditacionComite::where('id_acreditacion', $id_comite)->first();
+
             //FIN DE LA VERIFICACION
 
-             if ((!empty($doc->archivo_acta) && !empty($doc->archivo_lista)) and $variable == 1) {
+            if (!empty($doc->archivo_acta) && !empty($doc->archivo_lista) and $variable == 1) {
                 $doc->estatus = '3';
                 $doc->save();
             }
@@ -153,21 +149,18 @@ class IntegrantesComiteController extends Controller
         $documento->save();
 
         $resultado = IntegrantesComite::ContarPorComite(now()->year, $id_comite)->get();
-            $todosRellenados = $resultado->every(function ($item) {
-                return $item->archivo_ine !== null &&
-                    $item->archivo_protesta !== null &&
-                    $item->archivo_constancia !== null &&
-                    $item->archivo_fotografia !== null;
-            });
-            $variable = $todosRellenados ? 1 : 0;
-            $doc=AcreditacionComite::where('id_acreditacion', $id_comite)->first();
-            
-            if (!empty($doc->archivo_acta) && !empty($doc->archivo_lista)) {
-                $doc->estatus = '5';
-                $doc->save();
-            }
+        $todosRellenados = $resultado->every(function ($item) {
+            return $item->archivo_ine !== null && $item->archivo_protesta !== null && $item->archivo_constancia !== null && $item->archivo_fotografia !== null;
+        });
+        $variable = $todosRellenados ? 1 : 0;
+        $doc = AcreditacionComite::where('id_acreditacion', $id_comite)->first();
 
-        Alert::success('Documentacion eliminada', null);
+        if (!empty($doc->archivo_acta) && !empty($doc->archivo_lista)) {
+            $doc->estatus = '5';
+            $doc->save();
+        }
+
+        Alert::success('Documentación eliminada', null);
         return back();
     }
 
@@ -181,7 +174,7 @@ class IntegrantesComiteController extends Controller
     {
         $integrantes = IntegrantesComite::where('id_acreditacion_comite_fk', $id)->get();
         $doc = AcreditacionComite::where('id_acreditacion', $id)->first();
-        $estatus=$doc->estatus;
+        $estatus = $doc->estatus;
         return view('Municipios/integrantesComite', compact('id', 'estatus'))->with('integrantes', $integrantes);
     }
 
@@ -215,7 +208,7 @@ class IntegrantesComiteController extends Controller
         }
         if ($request->filled('fecha_nacimiento')) {
             //$dato->fecha_nacimiento = $request->input('fecha_nacimiento');
-            $dato->fecha_nacimiento = date("Y-m-d", strtotime(str_replace('/', '-', $request->input('fecha_nacimiento'))));
+            $dato->fecha_nacimiento = date('Y-m-d', strtotime(str_replace('/', '-', $request->input('fecha_nacimiento'))));
         }
         if ($request->filled('ocupacion')) {
             $dato->ocupacion = $request->input('ocupacion');
@@ -258,7 +251,7 @@ class IntegrantesComiteController extends Controller
         }
 
         $dato->save();
-        Alert::success('Informacion actualizada', null);
+        Alert::success('Información actualizada', null);
         return back();
     }
 
@@ -274,7 +267,7 @@ class IntegrantesComiteController extends Controller
         if ($integrante) {
             $integrante->delete();
 
-            Alert::success('Exito', 'El usuario se ha eliminado con exito');
+            Alert::success('Éxito', 'El usuario se ha eliminado con éxito');
             return back();
         } else {
             Alert::error('Error', 'No se pudo eliminar el usuario');

@@ -8,28 +8,30 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title"> <i class="ri-pie-chart-fill"></i> Informe de Encuesta de Verificacion
-                                Fisica </h4>
+                            <h4 class="page-title"> <i class="ri-pie-chart-fill"></i> Informe de Encuesta de Verificación
+                                Física </h4>
                         </div>
                     </div>
                 </div>
                 <h4 style="text-align: center"> Encuestas aplicadas:<strong> {{ $total }} </strong></h4>
-                @if($promedio > 0 and $promedio <= 4 )
-                <h4 style="text-align: center;">Satisfaccion: <strong style="color: red;">  NO SATISFACTORIO</strong></h4>
-                @elseif($promedio >= 5 and $promedio <= 7 )
-                <h4 style="text-align: center;" > Satisfaccion: <strong>REGULAR </strong></h4>
-                @elseif($promedio >= 8 and $promedio <= 10 )
-                <h4 style="text-align: center;" > Satisfaccion: <strong style="color: green;"> SATISFACTORIO </strong></h4>
+                @if ($promedio > 0 and $promedio <= 4)
+                    <h4 style="text-align: center;">Satisfacción: <strong style="color: red;"> NO SATISFACTORIO</strong></h4>
+                @elseif($promedio >= 5 and $promedio <= 7)
+                    <h4 style="text-align: center;"> Satisfacción: <strong>REGULAR </strong></h4>
+                @elseif($promedio >= 8 and $promedio <= 10)
+                    <h4 style="text-align: center;"> Satisfacción: <strong style="color: green;"> SATISFACTORIO </strong>
+                    </h4>
                 @endif
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                            <div align="right">
-                                        <a type="button" class="btn btn-success" href="{{ route('programacion_evaluaciones.show', '2' .$id) }}" >
-                                            <i class="ri-todo-line"></i><span> Ver encuestas</span>
-                                        </a>
-                                    </div><br>
+                                <div align="right">
+                                    <a type="button" class="btn btn-success"
+                                        href="{{ route('programacion_evaluaciones.show', '2' . $id) }}">
+                                        <i class="ri-todo-line"></i><span> Ver encuestas</span>
+                                    </a>
+                                </div><br>
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="datatable-municipios-preview">
                                         <table id="basic-datatable-comites" class="table w-100">
@@ -74,12 +76,18 @@
                                                     <tr>
                                                         <td>{{ $pregunta }}</td>
                                                         @php
-                                                            $cantidadSi = App\Models\VerificacionFisica::where($respuestas[$loop->index], 'SI')
+                                                            $cantidadSi = App\Models\VerificacionFisica::where(
+                                                                $respuestas[$loop->index],
+                                                                'SI',
+                                                            )
                                                                 ->where('id_programacion_fk', $id)
                                                                 ->count();
                                                             $porcentajeSi = ($cantidadSi * 100) / $total;
 
-                                                            $cantidadNo = App\Models\VerificacionFisica::where($respuestas[$loop->index], 'NO')
+                                                            $cantidadNo = App\Models\VerificacionFisica::where(
+                                                                $respuestas[$loop->index],
+                                                                'NO',
+                                                            )
                                                                 ->where('id_programacion_fk', $id)
                                                                 ->count();
                                                             $porcentajeNo = ($cantidadNo * 100) / $total;

@@ -253,8 +253,7 @@
                             <span class="text-muted mt-2 mb-0">MIXTECO ALTA 2 - TLAXIACO</span>
                         </a>
                         <br>
-                        <a target="_blank" class="text-center"
-                            href="{{ asset('files/MIXTECO ALTA 3-HUAJUAPAN.pdf') }}">
+                        <a target="_blank" class="text-center" href="{{ asset('files/MIXTECO ALTA 3-HUAJUAPAN.pdf') }}">
                             <span class="text-muted mt-2 mb-0">MIXTECO ALTA 3 - HUAJUAPAN</span>
                         </a>
                         <br>
@@ -283,8 +282,7 @@
                         <p></p>
                         <p></p>
                         <p></p>
-                            <embed src="files/GUIA2023.pdf" type="application/pdf"
-                                width="100%" height="500px"  />
+                        <embed src="files/GUIA2023.pdf" type="application/pdf" width="100%" height="500px" />
                     </div>
                 </div>
             </div>
@@ -297,9 +295,9 @@
         Eres la visita numero: {{ $contador }}
     </div>
     <!-- Fin Contador de visitas -->
-
+    {{-- 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
     <script>
         // Script para mostrar el modal automáticamente al cargar la página
         $(document).ready(function() {

@@ -8,7 +8,6 @@ use App\Models\ComentariosBuzone;
 use App\Models\CatalogoDependencia;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Support\Facades\Response;
 
 class BuzonesController extends Controller
 {
@@ -19,13 +18,11 @@ class BuzonesController extends Controller
      */
     public function index()
     {
-       // $buzones = Buzone::all();
-        $buzones=Buzone::BuzonTipo()->get();
+        $buzones = Buzone::BuzonTipo()->get();
         return view('AtencionC/buzones')->with('buzones', $buzones);
     }
 
-    // En tu controlador, crea un método para manejar la solicitud AJAX
-    public function obtenerTiposBuzon(Request $request, $tipo)
+    public function obtenerTiposBuzon($tipo)
     {
         $resultados = CatalogoDependencia::where('tipo', $tipo)->get();
         return response()->json($resultados);
@@ -49,14 +46,13 @@ class BuzonesController extends Controller
      */
     public function create()
     {
-        
     }
 
     public function informes()
     {
         $buzones = ComentariosBuzone::ContarComentariosPorDependencia()->get();
         $conteoPorTipo = ComentariosBuzone::contarPorTipoComentario()->get();
-        $conteoPorRegion=Buzone::ContarPorRegion()->get();
+        $conteoPorRegion = Buzone::ContarPorRegion()->get();
         return view('AtencionC/informes')->with('buzones', $buzones)->with('conteoPorTipo', $conteoPorTipo)->with('conteoPorRegion', $conteoPorRegion);
     }
 
@@ -75,19 +71,7 @@ class BuzonesController extends Controller
         $registro->region = $request->input('region');
         $registro->save();
 
-        Alert::success('Buzon Registrado', 'El buzon digital fue registrado de manera satisfactoria');
-        return back();
-    }
-
-    public function RegistrarComentarioBuzon(Request $request)
-    {
-        $registro = new Buzone();
-        $registro->numero_buzon = strtoupper($request->input('txtBuzon'));
-        $registro->id_catalogo_buzon_fk = $request->input('txtTipoBuzon');
-        $registro->ubicacion = $request->input('txtUbicacion');
-        $registro->save();
-
-        Alert::success('Buzon Registrado', 'El buzon digital fue registrado de manera satisfactoria');
+        Alert::success('Buzón Registrado', 'El buzón digital fue registrado de manera satisfactoria');
         return back();
     }
 
@@ -99,7 +83,6 @@ class BuzonesController extends Controller
      */
     public function show($id)
     {
-        
     }
 
     /**
@@ -110,7 +93,6 @@ class BuzonesController extends Controller
      */
     public function edit($id)
     {
-        
     }
 
     /**
@@ -127,7 +109,7 @@ class BuzonesController extends Controller
         $registro->ubicacion = $request->input('txtubicacion');
         $registro->save();
 
-        Alert::success('Buzon Registrado', 'El buzon digital fue registrado de manera satisfactoria');
+        Alert::success('Buzón actualizado', 'El buzón digital fue actualizado de manera satisfactoria');
         return back();
     }
 

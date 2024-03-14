@@ -53,10 +53,10 @@ class ProgramacionEvaluacionesController extends Controller
 
         if (is_null($elemento)) {
             $registro->save();
-            Alert::success('Evaluacion Programada correctamente', null);
+            Alert::success('Evaluación Programada correctamente', null);
             return back();
         } else {
-            Alert::error('Periodo ocupado', 'Ya existe una intervencion en las fechas seleccionadas');
+            Alert::error('Periodo ocupado', 'Ya existe una intervención en las fechas seleccionadas');
             return back();
         }
     }
@@ -72,13 +72,12 @@ class ProgramacionEvaluacionesController extends Controller
         $primerDigito = substr($id, 0, 1);
         $restoCadena = substr($id, 1);
         if ($primerDigito == 1) {
-            $datos= EvaluarparaMejorar::TraeEncuestas($restoCadena)->get();
+            $datos = EvaluarparaMejorar::TraeEncuestas($restoCadena)->get();
             return view('AtencionC/verEncuestasEpM')->with('datos', $datos);
         } else {
             $datos = VerificacionFisica::TraeEncuestas($restoCadena)->get();
             return view('AtencionC/verEncuestas')->with('datos', $datos);
         }
-        
     }
 
     /**
@@ -105,11 +104,11 @@ class ProgramacionEvaluacionesController extends Controller
                 Alert::success('Informe cargado correctamente', null);
                 return back();
             } else {
-                Alert::error('Tuvimos un error al cargar el informe, porfavor intenta nuevamente', null);
+                Alert::error('Tuvimos un error al cargar el informe, por favor intenta nuevamente', null);
                 return back();
             }
         } else {
-            Alert::error('error', 'No se ha seleccionado ningún archivo válido.');
+            Alert::error('Error', 'No se ha seleccionado ningún archivo válido.');
             return back();
         }
     }
@@ -129,7 +128,7 @@ class ProgramacionEvaluacionesController extends Controller
         $registro->tipo_intervencion = $request->input('etapa');
         $registro->save();
 
-        Alert::success('Programacion de evaluación editada correctamente', null);
+        Alert::success('Programación de evaluación editada correctamente', null);
         return back();
     }
 
@@ -144,10 +143,10 @@ class ProgramacionEvaluacionesController extends Controller
         try {
             $dato = ProgramacionEvaluacione::find($id);
             $dato->delete();
-            Alert::success('Programacion eliminada', null);
+            Alert::success('Programación eliminada', null);
             return back();
         } catch (\Exception $e) {
-            Alert::error('No se puede eliminar la programacion.', null);
+            Alert::error('No se puede eliminar la programación.', null);
             return back();
         }
     }

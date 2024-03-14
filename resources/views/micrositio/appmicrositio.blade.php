@@ -256,11 +256,11 @@
     <!-- Vendor js -->
     <script src="{{ asset('js/vendor.min.js') }}"></script>
 
-    <!-- App js -->
+    {{-- <!-- App js -->
     <script src="{{ asset('js/app.min.js') }}"></script>
 
     <!-- Remixicons Icons Demo js -->
-    <script src="{{ asset('js/pages/demo.remixicons.js') }}"></script>
+    <script src="{{ asset('js/pages/demo.remixicons.js') }}"></script>  --}}
     @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
 </body>
 

@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Comites</h4>
+                            <h4 class="page-title">Comités</h4>
                         </div>
                     </div>
                 </div>
@@ -195,7 +195,7 @@
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h4 class="modal-title" id="myLargeModalLabel">
-                                                                            Documentacion de comite</h4>
+                                                                            Documentación de comité</h4>
                                                                         <button type="button" class="btn-close"
                                                                             data-bs-dismiss="modal"
                                                                             aria-hidden="true"></button>
@@ -227,9 +227,11 @@
                                                                                     <td>Acta de asamblea</td>
                                                                                     @if (empty($mun->archivo_acta))
                                                                                         <td>
-                                                                                            <form id="form_acta_{{ $mun->id_acreditacion }}"
+                                                                                            <form
+                                                                                                id="form_acta_{{ $mun->id_acreditacion }}"
                                                                                                 action="{{ route('CSubirDoc', $mun->id_acreditacion) }}"
-                                                                                                method="POST" data-modal-id="bs-example-modal-lg-{{ $mun->id_acreditacion }}"
+                                                                                                method="POST"
+                                                                                                data-modal-id="bs-example-modal-lg-{{ $mun->id_acreditacion }}"
                                                                                                 enctype="multipart/form-data"
                                                                                                 style="display: inline-block; vertical-align: middle;">
                                                                                                 @csrf
@@ -276,9 +278,11 @@
                                                                                     <td>Lista de asistencia</td>
                                                                                     @if (empty($mun->archivo_lista))
                                                                                         <td>
-                                                                                            <form id="form_lista_{{ $mun->id_acreditacion }}"
+                                                                                            <form
+                                                                                                id="form_lista_{{ $mun->id_acreditacion }}"
                                                                                                 action="{{ route('CSubirDoc', $mun->id_acreditacion) }}"
-                                                                                                method="POST" data-modal-id="bs-example-modal-lg-{{ $mun->id_acreditacion }}"
+                                                                                                method="POST"
+                                                                                                data-modal-id="bs-example-modal-lg-{{ $mun->id_acreditacion }}"
                                                                                                 enctype="multipart/form-data"
                                                                                                 style="display: inline-block; vertical-align: middle;">
                                                                                                 @csrf
@@ -338,7 +342,7 @@
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title"
-                                                                                id="exampleModalLabel">Validacion de comite
+                                                                                id="exampleModalLabel">Validación de comité
                                                                             </h5>
                                                                             <button type="button" class="btn-close"
                                                                                 data-bs-dismiss="modal"
@@ -352,7 +356,7 @@
                                                                                 <div class="mb-3">
                                                                                     <label for="recipient-name"
                                                                                         class="col-form-label">Fecha de
-                                                                                        validacion:</label>
+                                                                                        validación:</label>
                                                                                     <input type="date"
                                                                                         class="form-control"
                                                                                         name="fecha_validacion">
@@ -384,10 +388,10 @@
     </div>
 
     <!-- Agrega las bibliotecas para exportar a Excel y PDF -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.flash.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.flash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 
 
 
@@ -421,67 +425,54 @@
         });
     </script>
     <script>
-    $(document).ready(function() {
-        // Delegación de eventos para manejar el cambio en los campos de archivo dentro de cualquier formulario
-        $(document).on('change', 'form[id^="form_"] input[type="file"]', function() {
-            // Obtener el formulario al que pertenece el campo de archivo
-            var form = $(this).closest('form');
-
-            // Obtener el ID del modal asociado al formulario
-            var modalId = form.data('modal-id');
-
-            // Manejar la subida del archivo utilizando la función handleFormSubmission, pasando el ID del modal
-            handleFormSubmission(form, modalId);
+        $(document).ready(function() {
+            $(document).on('change', 'form[id^="form_"] input[type="file"]', function() {
+                var form = $(this).closest('form');
+                var modalId = form.data('modal-id');
+                handleFormSubmission(form, modalId);
+            });
         });
-    });
 
-    // Función para manejar el envío del formulario a través de AJAX
-    function handleFormSubmission(form, modalId) {
-        var formData = new FormData(form[0]);
+        function handleFormSubmission(form, modalId) {
+            var formData = new FormData(form[0]);
 
-        // Mostrar pantalla de carga
-        $('#' + modalId + ' #overlay').fadeIn();
-        $('#' + modalId + ' #loader').fadeIn();
+            $('#' + modalId + ' #overlay').fadeIn();
+            $('#' + modalId + ' #loader').fadeIn();
 
-        // Enviar el formulario mediante AJAX
-        $.ajax({
-            url: form.attr('action'),
-            type: form.attr('method'),
-            data: formData,
-            processData: false,
-            contentType: false,
-            dataType: 'json',
-            success: function(response) {
-                // Manejar la respuesta JSON aquí
-                if (response.success) {
-                    // Mostrar el mensaje en el modal correspondiente
-                    $('#' + modalId + ' #flash-message').text(
-                        '¡El archivo se cargó correctamente! Recarga la página para visualizar los cambios.'
-                    );
-                    $('#' + modalId + ' #bonito').show();
-                } else {
-                    $('#' + modalId + ' #flash-message').text(
-                        'Ocurrió un error al tratar de cargar el archivo, por favor intente más tarde.'
-                    );
-                    $('#' + modalId + ' #bonito').show();
+            $.ajax({
+                url: form.attr('action'),
+                type: form.attr('method'),
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        $('#' + modalId + ' #flash-message').text(
+                            '¡El archivo se cargó correctamente! Recarga la página para visualizar los cambios.'
+                        );
+                        $('#' + modalId + ' #bonito').show();
+                    } else {
+                        $('#' + modalId + ' #flash-message').text(
+                            'Ocurrió un error al tratar de cargar el archivo, por favor intente más tarde.'
+                        );
+                        $('#' + modalId + ' #bonito').show();
+                    }
+                },
+                error: function(xhr, status, error) {},
+                complete: function() {
+                    // Ocultar la pantalla de carga
+                    $('#' + modalId + ' #overlay').fadeOut();
+                    $('#' + modalId + ' #loader').fadeOut();
+                    // Ocultar el mensaje flash después de 3 segundos
+                    setTimeout(function() {
+                        $('#' + modalId + ' #flash-message').empty();
+                        $('#' + modalId + ' #bonito').hide();
+                    }, 3000);
                 }
-            },
-            error: function(xhr, status, error) {
-                // Manejar errores de AJAX si es necesario
-            },
-            complete: function() {
-                // Ocultar la pantalla de carga
-                $('#' + modalId + ' #overlay').fadeOut();
-                $('#' + modalId + ' #loader').fadeOut();
-                // Ocultar el mensaje flash después de 3 segundos
-                setTimeout(function() {
-                    $('#' + modalId + ' #flash-message').empty();
-                    $('#' + modalId + ' #bonito').hide();
-                }, 3000);
-            }
-        });
-    }
-</script>
+            });
+        }
+    </script>
 
 
 @endsection

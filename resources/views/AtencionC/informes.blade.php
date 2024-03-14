@@ -80,7 +80,7 @@
                                 <h4 class="header-title">Buzones por regiones</h4>
                                 <br>
                                 <div dir="ltr">
-                                     <div id="piechart"  style="height: 500px;" ></div>
+                                    <div id="piechart" style="height: 500px;"></div>
                                 </div>
                             </div>
                             <!-- end card body-->
@@ -93,42 +93,48 @@
     </div>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-            ['Tipo', 'Cantidad'],
-            @foreach($conteoPorTipo as $tipo)
-                ['{{ $tipo->tipo_comentario }}', {{ $tipo->total }}],
-            @endforeach
-        ]);
+        google.charts.load("current", {
+            packages: ["corechart"]
+        });
+        google.charts.setOnLoadCallback(drawChart);
 
-        var options = {
-          pieHole: 0.5,
-        };
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-      }
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Tipo', 'Cantidad'],
+                @foreach ($conteoPorTipo as $tipo)
+                    ['{{ $tipo->tipo_comentario }}', {{ $tipo->total }}],
+                @endforeach
+            ]);
+
+            var options = {
+                pieHole: 0.5,
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(data, options);
+        }
     </script>
     <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Region', 'N° Buzones'],
-          @foreach($conteoPorRegion as $region)
-                ['{{ $region->region }}', {{ $region->total }}],
-            @endforeach
-        ]);
+        google.charts.load("current", {
+            packages: ["corechart"]
+        });
+        google.charts.setOnLoadCallback(drawChart);
 
-      var options = {
-        legend: 'none',
-        pieSliceText: 'label',
-        pieStartAngle: 100,
-      };
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Region', 'N° Buzones'],
+                @foreach ($conteoPorRegion as $region)
+                    ['{{ $region->region }}', {{ $region->total }}],
+                @endforeach
+            ]);
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
-      }
+            var options = {
+                legend: 'none',
+                pieSliceText: 'label',
+                pieStartAngle: 100,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
     </script>
 @endsection

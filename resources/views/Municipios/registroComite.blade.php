@@ -75,29 +75,29 @@
                                     </select>
                                 </div>
                                 @if ($edicion == 'edicion')
-                                 <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Registro Comite</label>
-                                    <input type="text" class="form-control" name="reviso"
-                                        @if ($edicion == 'edicion') value="{{ $atendio }}" readonly  @endif>
-                                </div>
+                                    <div class="mb-3">
+                                        <label for="simpleinput" class="form-label">Registro Comité</label>
+                                        <input type="text" class="form-control" name="reviso"
+                                            @if ($edicion == 'edicion') value="{{ $atendio }}" readonly @endif>
+                                    </div>
 
-                                <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Capacito Comite</label>
-                                     <select class="form-control" name="capacito">
-                                         @if ($edicion == 'edicion')
-                                            <option value="{{$idCapacito}}">{{ $capacito }}</option>
-                                        @endif
-                                        @foreach($userAtendio as $user )
-                                            <option value="{{$user->id}}">{{$user->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                    <div class="mb-3">
+                                        <label for="simpleinput" class="form-label">Capacito Comité</label>
+                                        <select class="form-control" name="capacito">
+                                            @if ($edicion == 'edicion')
+                                                <option value="{{ $idCapacito }}">{{ $capacito }}</option>
+                                            @endif
+                                            @foreach ($userAtendio as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
 
-                                <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Autorizo acreditacion</label>
-                                    <input type="text" class="form-control" name="autorizo"
-                                        @if ($edicion == 'edicion') value="{{ $autorizo }}" readonly @endif>
-                                </div>
+                                    <div class="mb-3">
+                                        <label for="simpleinput" class="form-label">Autorizo acreditación</label>
+                                        <input type="text" class="form-control" name="autorizo"
+                                            @if ($edicion == 'edicion') value="{{ $autorizo }}" readonly @endif>
+                                    </div>
                                 @endif <br>
                                 <h4>OBSERVACIONES</h4> <br>
                                 <div class="mb-3">
@@ -111,7 +111,7 @@
                                         @if ($edicion == 'edicion') value="{{ $dato->lista_asistencia }}" @endif>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Datos del municipio y controladores</label>
+                                    <label for="simpleinput" class="form-label">Datos del municipio y contralores</label>
                                     <input type="text" class="form-control" name="datos_municipio"
                                         @if ($edicion == 'edicion') value="{{ $dato->datos_municipio }}" @endif>
                                 </div>

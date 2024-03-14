@@ -10,7 +10,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\IntegrantesComite;
-use Illuminate\Support\Facades\Session;
 
 class ComitesController extends Controller
 {
@@ -111,7 +110,7 @@ class ComitesController extends Controller
 
         $documento->save();
 
-        Alert::success('Documentacion eliminada', null);
+        Alert::success('Documentación eliminada', null);
         return back();
     }
 
@@ -139,7 +138,7 @@ class ComitesController extends Controller
         $registro->estatus = 0;
         $registro->save();
 
-        Alert::success('Comite guardado', null);
+        Alert::success('Comité guardado', null);
         return redirect()->route('comites.index');
     }
 
@@ -170,7 +169,7 @@ class ComitesController extends Controller
         $dato->fecha_validado = $request->input('fecha_validacion');
         $dato->save();
 
-        Alert::success('Comite Validado', null);
+        Alert::success('Comité validado', null);
         return redirect()->route('comites.index');
     }
 
@@ -180,7 +179,7 @@ class ComitesController extends Controller
         $dato->estatus = '5';
         $dato->save();
 
-        Alert::success('Comite en revision', null);
+        Alert::success('Comité en revisión', null);
         return redirect()->route('comites.index');
     }
 
@@ -216,7 +215,7 @@ class ComitesController extends Controller
             $capacito = $capacito->name;
             $idCapacito = $dato->id_user_capacito_fk;
         }
-        $edicion = 'edicion';
+        $edicion = 'edición';
         return view('Municipios/registroComite', compact('municipio', 'id', 'edicion', 'atendio', 'autorizo', 'capacito', 'idCapacito'))->with('dato', $dato)->with('userAtendio', $userAtendio);
     }
 
@@ -261,7 +260,7 @@ class ComitesController extends Controller
 
         $dato->save();
 
-        Alert::success('Comite actualizado', null);
+        Alert::success('Comité actualizado', null);
         return redirect()->route('comites.index');
     }
 

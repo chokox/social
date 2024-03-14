@@ -66,7 +66,7 @@ Route::middleware(['auth', 'departamento:2'])->group(function () {
     Route::resource('/programacion_evaluaciones', 'App\Http\Controllers\ProgramacionEvaluacionesController');
     Route::post('/guardar-respuestaEpM', 'App\Http\Controllers\EvaluarparaMejorarController@guardarRespuestasEvaluarparaMejorar')->name('guardarEvaluarparaMejorar');
     Route::get('/evaluarparamejorar', 'App\Http\Controllers\EvaluarparaMejorarController@viewEvaluarparaMejorar')->name('EvaluarparaMejorar');
-    Route::get('resultados-evaluacion/{id}', 'App\Http\Controllers\EvaluarparaMejorarController@ResultadosEncuesta')->name('resultados_evaluarparaMejorar');    
+    Route::get('resultados-evaluacion/{id}', 'App\Http\Controllers\EvaluarparaMejorarController@ResultadosEncuesta')->name('resultados_evaluarparaMejorar');
     Route::put('/subir_informe/{id}', 'App\Http\Controllers\ProgramacionEvaluacionesController@subirInforme')->name('subirInforme');
 });
 
@@ -76,6 +76,3 @@ Route::middleware('auth')->group(function () {
     Route::resource('/catalogo_usuarios', 'App\Http\Controllers\UserController');
     Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 });
-
-
-

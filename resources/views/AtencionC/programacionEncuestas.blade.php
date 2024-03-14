@@ -40,7 +40,7 @@
                                                     <th>Dependencia/Entidad</th>
                                                     <th>Etapa</th>
                                                     <th>Fecha inicio</th>
-                                                    <th>Fecha Finalizacion</th>
+                                                    <th>Fecha Finalización</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
@@ -141,7 +141,7 @@
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h4 class="modal-title"> Editar Programacion de encuesta
+                                                                    <h4 class="modal-title"> Editar Programación de encuesta
                                                                         a {{ $item['nombre_dependecia_programa'] }} </h4>
                                                                     <button type="button" class="btn-close"
                                                                         data-bs-dismiss="modal"
@@ -172,7 +172,7 @@
                                                                                 value="{{ $item['fecha_inicio'] }}" />
                                                                         </div>
                                                                         <div class=" mb-3">
-                                                                            <label>Fecha de finalizacion</label>
+                                                                            <label>Fecha de finalización</label>
                                                                             <input type="date"
                                                                                 class="form-control form-control-sm"
                                                                                 name="fecha_fin"

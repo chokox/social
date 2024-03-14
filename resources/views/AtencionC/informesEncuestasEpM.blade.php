@@ -17,11 +17,11 @@
                 <h4 style="text-align: center"><strong> Encuestas aplicadas: {{ $total }} </strong></h4>
 
                 @if($promedio > 0 and $promedio <= 4 )
-                <h4 style="text-align: center;">Satisfaccion: <strong style="color: red;">  NO SATISFACTORIO</strong></h4>
+                <h4 style="text-align: center;">Satisfacción: <strong style="color: red;">  NO SATISFACTORIO</strong></h4>
                 @elseif($promedio >= 5 and $promedio <= 7 )
-                <h4 style="text-align: center;" > Satisfaccion: <strong>REGULAR </strong></h4>
+                <h4 style="text-align: center;" > Satisfacción: <strong>REGULAR </strong></h4>
                 @elseif($promedio >= 8 and $promedio <= 10 )
-                <h4 style="text-align: center;" > Satisfaccion: <strong style="color: green;"> SATISFACTORIO </strong></h4>
+                <h4 style="text-align: center;" > Satisfacción: <strong style="color: green;"> SATISFACTORIO </strong></h4>
                 @endif
 
                 <div class="row">

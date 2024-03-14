@@ -19,13 +19,13 @@
                             <div class="card-body">
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="datatable-municipios-preview">
-                                        <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
+                                        <table id="basic-datatable" class="table dt-responsive w-100">
                                             <thead class="table-dark">
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Folio</th>
                                                     <th>Realizó</th>
-                                                    <th>Fecha de aplicacion</th>
+                                                    <th>Fecha de aplicación</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
@@ -42,15 +42,15 @@
                                                                 <i class="ri-task-fill"></i>
                                                             </a>
                                                             @if (Auth::user()->administrador())
-                                                            <form
-                                                                action="{{ route('programacion_evaluaciones.destroy', $dato->idVerificacionFisica) }}"
-                                                                method="POST" style="display: inline;">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="btn btn-primary">
-                                                                    <i class="ri-delete-bin-2-fill"></i>
-                                                                </button>
-                                                            </form>
+                                                                <form
+                                                                    action="{{ route('programacion_evaluaciones.destroy', $dato->idVerificacionFisica) }}"
+                                                                    method="POST" style="display: inline;">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-primary">
+                                                                        <i class="ri-delete-bin-2-fill"></i>
+                                                                    </button>
+                                                                </form>
                                                             @endif
                                                         </td>
                                                     </tr>
@@ -129,7 +129,7 @@
                                                                                                 class="form-check form-check-inline">
                                                                                                 <label
                                                                                                     class="form-check-label"
-                                                                                                    for="customRadio6"><strong>{{$dato->{'info' . ($loop->index + 1)} }}</strong></label>
+                                                                                                    for="customRadio6"><strong>{{ $dato->{'info' . ($loop->index + 1)} }}</strong></label>
                                                                                             </div>
                                                                                         </div>
                                                                                         <br>
@@ -163,7 +163,7 @@
                                                                                                 class="form-check form-check-inline">
                                                                                                 <label
                                                                                                     class="form-check-label"
-                                                                                                    for="customRadio6"><strong>{{$dato->{'meca' . ($loop->index + 1)} }}</strong></label>
+                                                                                                    for="customRadio6"><strong>{{ $dato->{'meca' . ($loop->index + 1)} }}</strong></label>
                                                                                             </div>
                                                                                         </div>
                                                                                         <br>
@@ -175,8 +175,7 @@
                                                                             <h2 class="accordion-header"
                                                                                 id="panelsStayOpen-headingThree">
                                                                                 <button class="accordion-button collapsed"
-                                                                                    type="button"
-                                                                                    data-bs-toggle="collapse"
+                                                                                    type="button" data-bs-toggle="collapse"
                                                                                     data-bs-target="#panelsStayOpen-collapseThree"
                                                                                     aria-expanded="false"
                                                                                     aria-controls="panelsStayOpen-collapseThree">
@@ -199,7 +198,7 @@
                                                                                                 class="form-check form-check-inline">
                                                                                                 <label
                                                                                                     class="form-check-label"
-                                                                                                    for="customRadio6"><strong>{{$dato->{'access' . ($loop->index + 1)} }}</strong></label>
+                                                                                                    for="customRadio6"><strong>{{ $dato->{'access' . ($loop->index + 1)} }}</strong></label>
                                                                                             </div>
                                                                                         </div>
                                                                                         <br>
@@ -234,7 +233,7 @@
                                                                                                 class="form-check form-check-inline">
                                                                                                 <label
                                                                                                     class="form-check-label"
-                                                                                                    for="customRadio6"><strong>{{$dato->{'infra' . ($loop->index + 1)} }}</strong></label>
+                                                                                                    for="customRadio6"><strong>{{ $dato->{'infra' . ($loop->index + 1)} }}</strong></label>
                                                                                             </div>
                                                                                         </div>
                                                                                         <br>
