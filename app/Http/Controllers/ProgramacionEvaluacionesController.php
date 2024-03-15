@@ -46,7 +46,6 @@ class ProgramacionEvaluacionesController extends Controller
         $registro->fecha_inicio = $request->input('fecha_inicio');
         $registro->fecha_fin = $request->input('fecha_fin');
         $registro->tipo_intervencion = $request->input('etapa');
-        $registro->observaciones = $request->input('observaciones');
 
         $fechaActual = Carbon::now();
         $elemento = ProgramacionEvaluacione::where('fecha_inicio', '<=', $fechaActual)->where('fecha_fin', '>=', $fechaActual)->value('id_programacion');

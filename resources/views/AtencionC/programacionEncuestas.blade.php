@@ -371,7 +371,7 @@
                 var tipo = $(this).val();
 
                 $.ajax({
-                    url: '/obtener-tipos-buzon/' + tipo,
+                    url: '/social/obtener-tipos-buzon/' + tipo,
                     type: 'GET',
                     dataType: 'json',
                     success: function(data) {

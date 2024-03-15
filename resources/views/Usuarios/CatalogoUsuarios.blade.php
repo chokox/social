@@ -27,7 +27,7 @@
 
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="datatable-usuarios-preview">
-                                        <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
+                                          <table id="basic-datatable" class="table dt-responsive w-100">
                                             <thead class="table-dark">
                                                 <tr>
                                                     <th>Id</th>
